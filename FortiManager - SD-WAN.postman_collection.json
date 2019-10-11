@@ -1,0 +1,1139 @@
+{
+	"info": {
+		"_postman_id": "0aea1df2-546e-41d1-b0ee-69c946e4efa2",
+		"name": "FortiManager - SD-WAN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Setup",
+			"item": [
+				{
+					"name": "1 - Discover / Probe Devices FGT 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f11bb2e8-4104-4de9-acaf-8747727de34d",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"sn = jsonData.result[0].data.device.sn;",
+									"",
+									"pm.environment.set(\"sn_fgt_1\", sn)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.1\"\n                }\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Discover / Probe Devices FGT 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f11bb2e8-4104-4de9-acaf-8747727de34d",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"sn = jsonData.result[0].data.device.sn;",
+									"",
+									"pm.environment.set(\"sn_fgt_2\", sn)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.12\"\n                }\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 - Discover / Probe Devices FGT DC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f11bb2e8-4104-4de9-acaf-8747727de34d",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"sn = jsonData.result[0].data.device.sn;",
+									"",
+									"pm.environment.set(\"sn_fgt_dc\", sn)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.5\"\n                }\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Devices",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\"create_task\", \"nonblocking\"],\n                \"add-dev-list\": [\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.1\",\n                        \"name\": \"FGT-1\",\n                        \"sn\": \"{{sn_fgt_1}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    },\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.12\",\n                        \"name\": \"FGT-2\",\n                        \"sn\": \"{{sn_fgt_2}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    },\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.5\",\n                        \"name\": \"FGT-DC-5\",\n                        \"sn\": \"{{sn_fgt_dc}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Dynamic Interface",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/interface/\",\n            \"data\": [\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"port1\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port1\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"port4\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port4\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"port5\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port5\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"WirelessVLAN\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"WirelessVLAN\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": [\n                        {\n                            \"_scope\": [\n                                {\n                                    \"name\": \"FGT-1\",\n                                    \"vdom\": \"root\"\n                                }\n                            ],\n                            \"egress-shaping-profile\": [],\n                            \"intrazone-deny\": 0,\n                            \"local-intf\": [\n                                \"Clients-BR1\"\n                            ]\n                        },\n                        {\n                            \"_scope\": [\n                                {\n                                    \"name\": \"FGT-2\",\n                                    \"vdom\": \"root\"\n                                }\n                            ],\n                            \"egress-shaping-profile\": [],\n                            \"intrazone-deny\": 0,\n                            \"local-intf\": [\n                                \"Clients-BR2\"\n                            ]\n                        }\n                    ],\n                    \"name\": \"Clients-BR\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 0,\n                    \"defmap-intf\": null,\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add VPN Manager VPN Table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/vpntable\",\n            \"data\": [\n                {\n                    \"name\": \"OL_INET\",\n                    \"description\": null,\n                    \"topology\": 2,\n                    \"psk-auto-generate\": \"disable\",\n                    \"psksecret\": \"!123fortinet123!\",\n                    \"ike1keylifesec\": 28800,\n                    \"ike1dpd\": 1,\n                    \"ike1natkeepalive\": 10,\n                    \"dpd-retrycount\": 0,\n                    \"dpd-retryinterval\": [],\n                    \"ike1localid\": null,\n                    \"ike2keylifesec\": 1800,\n                    \"ike2keylifekbs\": 5120,\n                    \"ike2keepalive\": 1,\n                    \"intf-mode\": 0,\n                    \"fcc-enforcement\": 0,\n                    \"ike-version\": 2,\n                    \"negotiate-timeout\": 30,\n                    \"inter-vdom\": 0,\n                    \"certificate\": [],\n                    \"auto-zone-policy\": 1,\n                    \"vpn-zone\": [],\n                    \"spoke2hub-zone\": [],\n                    \"hub2spoke-zone\": [],\n                    \"npu-offload\": 1,\n                    \"authmethod\": 1,\n                    \"ike1dhgroup\": 12,\n                    \"dpd\": 3,\n                    \"localid-type\": 0,\n                    \"ike1mode\": 1,\n                    \"ike1nattraversal\": 1,\n                    \"ike1proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"ike2autonego\": 0,\n                    \"ike2dhgroup\": 12,\n                    \"ike2keylifetype\": 1,\n                    \"pfs\": 1,\n                    \"ike2proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"replay\": 1\n                },\n                {\n                    \"name\": \"OL_MPLS\",\n                    \"description\": null,\n                    \"topology\": 2,\n                    \"psk-auto-generate\": \"disable\",\n                    \"psksecret\": \"!123fortinet123!\",\n                    \"ike1keylifesec\": 28800,\n                    \"ike1dpd\": 1,\n                    \"ike1natkeepalive\": 10,\n                    \"dpd-retrycount\": 0,\n                    \"dpd-retryinterval\": [],\n                    \"ike1localid\": null,\n                    \"ike2keylifesec\": 1800,\n                    \"ike2keylifekbs\": 5120,\n                    \"ike2keepalive\": 1,\n                    \"intf-mode\": 0,\n                    \"fcc-enforcement\": 0,\n                    \"ike-version\": 2,\n                    \"negotiate-timeout\": 30,\n                    \"inter-vdom\": 0,\n                    \"certificate\": [],\n                    \"auto-zone-policy\": 1,\n                    \"vpn-zone\": [],\n                    \"spoke2hub-zone\": [],\n                    \"hub2spoke-zone\": [],\n                    \"npu-offload\": 1,\n                    \"authmethod\": 1,\n                    \"ike1dhgroup\": 12,\n                    \"dpd\": 3,\n                    \"localid-type\": 0,\n                    \"ike1mode\": 1,\n                    \"ike1nattraversal\": 1,\n                    \"ike1proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"ike2autonego\": 0,\n                    \"ike2dhgroup\": 12,\n                    \"ike2keylifetype\": 1,\n                    \"pfs\": 1,\n                    \"ike2proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"replay\": 1\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add VPN Manager Node",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/node\",\n            \"data\": [\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ]\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 1,\n                    \"vpntable\": [\n                        \"OL_INET\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port1\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ],\n                            \"seq\": 1\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 2,\n                    \"vpntable\": [\n                        \"OL_INET\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port1\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ],\n                            \"seq\": 1\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 3,\n                    \"vpntable\": [\n                        \"OL_INET\"\n                    ],\n                    \"role\": 0,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port1\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 0,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 0,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 1,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ],\n                            \"seq\": 1\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 4,\n                    \"vpntable\": [\n                        \"OL_MPLS\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port4\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ],\n                            \"seq\": 1\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 5,\n                    \"vpntable\": [\n                        \"OL_MPLS\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port4\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ],\n                            \"seq\": 1\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 6,\n                    \"vpntable\": [\n                        \"OL_MPLS\"\n                    ],\n                    \"role\": 0,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port4\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 0,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 0,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"local-gw\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 1,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Policy Package",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\",\n             \"data\": [\n                {\n                    \"name\": \"default\",\n                    \"obj ver\": 1,\n                    \"oid\": 1308,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-1_root\",\n                    \"obj ver\": 4,\n                    \"oid\": 1358,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-2_root\",\n                    \"obj ver\": 4,\n                    \"oid\": 1393,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-DC-5_root\",\n                    \"obj ver\": 4,\n                    \"oid\": 1413,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-1\",\n                    \"obj ver\": 4,\n                    \"oid\": 1427,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-2\",\n                    \"obj ver\": 4,\n                    \"oid\": 1430,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-DC-5\",\n                    \"obj ver\": 4,\n                    \"oid\": 1433,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"Branches-PP\",\n                    \"obj ver\": 11,\n                    \"oid\": 1456,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"DataCenter-PP\",\n                    \"obj ver\": 16,\n                    \"oid\": 1461,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Firewall Policy - Branches PP - No Interfaces",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Branches-PP/firewall/policy/\",\n            \"data\": [\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"any\",\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"any\",\n                        \"any\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 2,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Branch to Overlay\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 2,\n                    \"srcintf\": [\n                        \"any\",\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"port1\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 2,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Branch to INET\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 3,\n                    \"srcintf\": [\n                        \"any\",\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"any\",\n                        \"any\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Overlay to Branch\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Firewall Policy - DataCenter PP - No Interfaces",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/DataCenter-PP/firewall/policy/\",\n            \"data\": [\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"port5\"\n                    ],\n                    \"dstintf\": [\n                        \"any\",\n                        \"any\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"uuid\": \"618ef1ae-e8f0-51e9-8287-6b29e2edb23a\",\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"DC to Overlay\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 2,\n                    \"srcintf\": [\n                        \"any\",\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"port5\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"uuid\": \"6a689c26-e8f0-51e9-0c4c-f5a8f8d102e1\",\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Overlay to DC\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 3,\n                    \"srcintf\": [\n                        \"port5\"\n                    ],\n                    \"dstintf\": [\n                        \"port1\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"DC to INET\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 4,\n                    \"srcintf\": [\n                        \"any\",\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"port1\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Overlay to INET\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 5,\n                    \"srcintf\": [\n                        \"any\",\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"any\",\n                        \"any\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Branch to Branch\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configure FGT-1 Interfaces",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-1/global/system/interface\",\n            \"data\": [\n                {\n                    \"name\": \"OL_MPLS_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.10.1\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.10.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port4\"\n                },\n                                {\n                    \"name\": \"OL_INET_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.11.1\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.11.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port1\"\n                }\n\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configure FGT-2 Interfaces",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-2/global/system/interface\",\n            \"data\": [\n                {\n                    \"name\": \"OL_MPLS_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.10.2\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.10.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port4\"\n                },\n                                {\n                    \"name\": \"OL_INET_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.11.2\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.11.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port1\"\n                }\n\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configure FGT-DC Interfaces",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-DC-5/global/system/interface\",\n            \"data\": [\n                {\n                    \"name\": \"OL_MPLS_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.10.5\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.10.254\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port4\"\n                },\n                                {\n                    \"name\": \"OL_INET_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.11.5\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.11.254\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port1\"\n                }\n\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Dynamic Interface - Overlays",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/interface/\",\n            \"data\": [\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"OL_INET\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"OL_INET_0\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"OL_MPLS\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"OL_MPLS_0\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Firewall Policy - Branches PP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Branches-PP/firewall/policy/\",\n            \"data\": [\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"Clients-BR\",\n                        \"WirelessVLAN\"\n                    ],\n                    \"dstintf\": [\n                        \"OL_INET\",\n                        \"OL_MPLS\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 2,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Branch to Overlay\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 2,\n                    \"srcintf\": [\n                        \"Clients-BR\",\n                        \"WirelessVLAN\"\n                    ],\n                    \"dstintf\": [\n                        \"port1\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 2,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Branch to INET\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 3,\n                    \"srcintf\": [\n                        \"OL_INET\",\n                        \"OL_MPLS\"\n                    ],\n                    \"dstintf\": [\n                        \"Clients-BR\",\n                        \"WirelessVLAN\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Overlay to Branch\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Firewall Policy - DataCenter PP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/DataCenter-PP/firewall/policy/\",\n            \"data\": [\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"port5\"\n                    ],\n                    \"dstintf\": [\n                        \"OL_INET\",\n                        \"OL_MPLS\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"uuid\": \"618ef1ae-e8f0-51e9-8287-6b29e2edb23a\",\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"DC to Overlay\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 2,\n                    \"srcintf\": [\n                        \"OL_INET\",\n                        \"OL_MPLS\"\n                    ],\n                    \"dstintf\": [\n                        \"port5\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"uuid\": \"6a689c26-e8f0-51e9-0c4c-f5a8f8d102e1\",\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Overlay to DC\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 3,\n                    \"srcintf\": [\n                        \"port5\"\n                    ],\n                    \"dstintf\": [\n                        \"port1\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"DC to INET\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 4,\n                    \"srcintf\": [\n                        \"OL_INET\",\n                        \"OL_MPLS\"\n                    ],\n                    \"dstintf\": [\n                        \"port1\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Overlay to INET\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                },\n                {\n                    \"vpn_dst_node\": null,\n                    \"vpn_src_node\": null,\n                    \"policyid\": 5,\n                    \"srcintf\": [\n                        \"OL_INET\",\n                        \"OL_MPLS\"\n                    ],\n                    \"dstintf\": [\n                        \"OL_INET\",\n                        \"OL_MPLS\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": [\n                        \"always\"\n                    ],\n                    \"service\": [\n                        \"ALL\"\n                    ],\n                    \"logtraffic\": 3,\n                    \"nat\": 0,\n                    \"disclaimer\": 0,\n                    \"natip\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"diffserv-forward\": 0,\n                    \"diffserv-reverse\": 0,\n                    \"tcp-mss-sender\": 0,\n                    \"tcp-mss-receiver\": 0,\n                    \"groups\": [],\n                    \"custom-log-fields\": [],\n                    \"wccp\": 0,\n                    \"session-ttl\": 0,\n                    \"match-vip\": 0,\n                    \"traffic-shaper\": [],\n                    \"traffic-shaper-reverse\": [],\n                    \"rtp-nat\": 0,\n                    \"per-ip-shaper\": [],\n                    \"utm-status\": 0,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": [],\n                    \"schedule-timeout\": 0,\n                    \"auto-asic-offload\": 1,\n                    \"webproxy-forward-server\": [],\n                    \"replacemsg-override-group\": [],\n                    \"fsso\": 1,\n                    \"fsso-agent-for-ntlm\": [],\n                    \"logtraffic-start\": 0,\n                    \"capture-packet\": 0,\n                    \"webcache-https\": 0,\n                    \"block-notification\": 0,\n                    \"srcaddr-negate\": 0,\n                    \"dstaddr-negate\": 0,\n                    \"service-negate\": 0,\n                    \"permit-any-host\": 0,\n                    \"timeout-send-rst\": 0,\n                    \"vlan-cos-fwd\": 255,\n                    \"vlan-cos-rev\": 255,\n                    \"users\": [],\n                    \"ssl-ssh-profile\": [],\n                    \"captive-portal-exempt\": 0,\n                    \"name\": \"Branch to Branch\",\n                    \"ssl-mirror-intf\": [],\n                    \"ssl-mirror\": 0,\n                    \"dsri\": 0,\n                    \"delay-tcp-npu-session\": 0,\n                    \"internet-service\": 0,\n                    \"radius-mac-auth-bypass\": 0,\n                    \"tcp-session-without-syn\": 2,\n                    \"internet-service-src\": 0,\n                    \"internet-service-src-id\": [],\n                    \"internet-service-src-custom\": [],\n                    \"app-group\": [],\n                    \"internet-service-src-negate\": 0,\n                    \"vlan-filter\": null,\n                    \"np-acceleration\": 1,\n                    \"internet-service-src-group\": [],\n                    \"internet-service-src-custom-group\": [],\n                    \"tos\": \"0x00\",\n                    \"tos-mask\": \"0x00\",\n                    \"tos-negate\": 0,\n                    \"reputation-minimum\": 0,\n                    \"reputation-direction\": 2,\n                    \"webproxy-profile\": [],\n                    \"geoip-anycast\": 0,\n                    \"anti-replay\": 1,\n                    \"inspection-mode\": 1,\n                    \"email-collect\": 0,\n                    \"match-vip-only\": 0,\n                    \"fsso-groups\": []\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Monitor",
+			"item": [
+				{
+					"name": "Get Devices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e4ea6080-c8fb-4be2-95d0-9ce7fc99f580",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device\"\n\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Discover / Probe Devices FGT 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f11bb2e8-4104-4de9-acaf-8747727de34d",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"sn = jsonData.result[0].data.device.sn;",
+									"",
+									"pm.environment.set(\"sn_fgt_1\", sn)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.1\"\n                }\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Discover / Probe Devices FGT 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f11bb2e8-4104-4de9-acaf-8747727de34d",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"sn = jsonData.result[0].data.device.sn;",
+									"",
+									"pm.environment.set(\"sn_fgt_2\", sn)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.12\"\n                }\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Discover / Probe Devices FGT DC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f11bb2e8-4104-4de9-acaf-8747727de34d",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"sn = jsonData.result[0].data.device.sn;",
+									"",
+									"pm.environment.set(\"sn_fgt_dc\", sn)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.5\"\n                }\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Dynamic Interface",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/interface/\"\n\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get VPN Manager VPN Table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/vpntable\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get VPN Manager Node",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/node\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Policy Package",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Firewall Policy - Branches PP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Branches-PP/firewall/policy\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Firewall Policy - DataCenter PP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/DataCenter-PP/firewall/policy\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tasks",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/task/task/12\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get FGT-1 Interfaces",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-1/global/system/interface\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get FGT-2 Interfaces",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-2/global/system/interface\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get FGT-DC Interfaces",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-DC-5/global/system/interface\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7fa7635b-4ab1-4550-96da-a43f6138f827",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('session',data['session']);",
+							"postman.setEnvironmentVariable('status_code',data['result'][0]['status']['code']);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"session\" : 1,\r\n\t\"id\" : 1,\r\n\t\"method\" : \"exec\",\r\n\t\"params\" : [\r\n\t\t{\r\n\t\t\t\"url\" : \"sys/login/user\",\r\n\t\t\t\"data\" : [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"user\" : \"{{username}}\",\r\n\t\t\t\t\t\"passwd\" : \"{{password}}\"\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t}\r\n\t]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('session',data['session']);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"session\" : \"{{session}}\",\r\n  \"id\" : 1,\r\n  \"method\" : \"exec\",\r\n  \"params\" : [\r\n    {\r\n      \"url\" : \"/sys/logout\"\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				},
+				"description": "Log out a session."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
