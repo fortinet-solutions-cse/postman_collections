@@ -37,12 +37,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.1\"\n                }\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.1\"\n                }\n            }\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -86,12 +81,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.12\"\n                }\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.12\"\n                }\n            }\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -135,12 +125,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.5\"\n                }\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.5\"\n                }\n            }\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -169,12 +154,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\"create_task\", \"nonblocking\"],\n                \"add-dev-list\": [\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.1\",\n                        \"name\": \"FGT-1\",\n                        \"sn\": \"{{sn_fgt_1}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    },\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.12\",\n                        \"name\": \"FGT-2\",\n                        \"sn\": \"{{sn_fgt_2}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    },\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.5\",\n                        \"name\": \"FGT-DC-5\",\n                        \"sn\": \"{{sn_fgt_dc}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    }\n                ]\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\"create_task\", \"nonblocking\"],\n                \"add-dev-list\": [\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.1\",\n                        \"name\": \"FGT-1\",\n                        \"sn\": \"{{sn_fgt_1}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    },\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.12\",\n                        \"name\": \"FGT-2\",\n                        \"sn\": \"{{sn_fgt_2}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    },\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.5\",\n                        \"name\": \"FGT-DC-5\",\n                        \"sn\": \"{{sn_fgt_dc}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    }\n                ]\n            }\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -203,12 +183,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/interface/\",\n            \"data\": [\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"port1\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port1\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"port4\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port4\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"port5\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port5\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"WirelessVLAN\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"WirelessVLAN\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": [\n                        {\n                            \"_scope\": [\n                                {\n                                    \"name\": \"FGT-1\",\n                                    \"vdom\": \"root\"\n                                }\n                            ],\n                            \"egress-shaping-profile\": [],\n                            \"intrazone-deny\": 0,\n                            \"local-intf\": [\n                                \"Clients-BR1\"\n                            ]\n                        },\n                        {\n                            \"_scope\": [\n                                {\n                                    \"name\": \"FGT-2\",\n                                    \"vdom\": \"root\"\n                                }\n                            ],\n                            \"egress-shaping-profile\": [],\n                            \"intrazone-deny\": 0,\n                            \"local-intf\": [\n                                \"Clients-BR2\"\n                            ]\n                        }\n                    ],\n                    \"name\": \"Clients-BR\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 0,\n                    \"defmap-intf\": null,\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/interface/\",\n            \"data\": [\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"port1\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port1\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"port4\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port4\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"port5\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port5\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"WirelessVLAN\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"WirelessVLAN\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": [\n                        {\n                            \"_scope\": [\n                                {\n                                    \"name\": \"FGT-1\",\n                                    \"vdom\": \"root\"\n                                }\n                            ],\n                            \"egress-shaping-profile\": [],\n                            \"intrazone-deny\": 0,\n                            \"local-intf\": [\n                                \"Clients-BR1\"\n                            ]\n                        },\n                        {\n                            \"_scope\": [\n                                {\n                                    \"name\": \"FGT-2\",\n                                    \"vdom\": \"root\"\n                                }\n                            ],\n                            \"egress-shaping-profile\": [],\n                            \"intrazone-deny\": 0,\n                            \"local-intf\": [\n                                \"Clients-BR2\"\n                            ]\n                        }\n                    ],\n                    \"name\": \"Clients-BR\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 0,\n                    \"defmap-intf\": null,\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -266,12 +241,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/node\",\n            \"data\": [\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ]\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 1,\n                    \"vpntable\": [\n                        \"OL_INET\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port1\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ],\n                            \"seq\": 1\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 2,\n                    \"vpntable\": [\n                        \"OL_INET\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port1\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ],\n                            \"seq\": 1\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 3,\n                    \"vpntable\": [\n                        \"OL_INET\"\n                    ],\n                    \"role\": 0,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port1\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 0,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 0,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 1,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ],\n                            \"seq\": 1\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 4,\n                    \"vpntable\": [\n                        \"OL_MPLS\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port4\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ],\n                            \"seq\": 1\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 5,\n                    \"vpntable\": [\n                        \"OL_MPLS\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port4\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ],\n                            \"seq\": 1\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 6,\n                    \"vpntable\": [\n                        \"OL_MPLS\"\n                    ],\n                    \"role\": 0,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port4\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 0,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 0,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"local-gw\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 1,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/node\",\n            \"data\": [\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ]\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 1,\n                    \"vpntable\": [\n                        \"OL_INET\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port1\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ]\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 2,\n                    \"vpntable\": [\n                        \"OL_INET\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port1\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ]\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 3,\n                    \"vpntable\": [\n                        \"OL_INET\"\n                    ],\n                    \"role\": 0,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port1\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 0,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 0,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 1,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ]\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 4,\n                    \"vpntable\": [\n                        \"OL_MPLS\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port4\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ]\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 5,\n                    \"vpntable\": [\n                        \"OL_MPLS\"\n                    ],\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port4\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 0,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 8,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"ip-range\": null,\n                    \"ipv4-exclude-range\": null,\n                    \"protected_subnet\": [\n                        {\n                            \"addr\": [\n                                \"all\"\n                            ]\n                        }\n                    ],\n                    \"summary_addr\": null,\n                    \"id\": 6,\n                    \"vpntable\": [\n                        \"OL_MPLS\"\n                    ],\n                    \"role\": 0,\n                    \"usrgrp\": [],\n                    \"iface\": [\n                        \"port4\"\n                    ],\n                    \"hub_iface\": [],\n                    \"peer\": [],\n                    \"automatic_routing\": 0,\n                    \"extgw\": null,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 0,\n                    \"default-gateway\": \"0.0.0.0\",\n                    \"dns-service\": 5,\n                    \"dhcp-server\": 0,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"authpasswd\": \"!123fortinet123!\",\n                    \"authusr\": null,\n                    \"authusrgrp\": [],\n                    \"banner\": null,\n                    \"dns-mode\": 1,\n                    \"domain\": null,\n                    \"exchange-interface-ip\": 0,\n                    \"ipv4-dns-server1\": \"0.0.0.0\",\n                    \"ipv4-dns-server2\": \"0.0.0.0\",\n                    \"ipv4-dns-server3\": \"0.0.0.0\",\n                    \"ipv4-end-ip\": \"0.0.0.0\",\n                    \"ipv4-netmask\": \"255.255.255.255\",\n                    \"ipv4-split-include\": [],\n                    \"ipv4-start-ip\": \"0.0.0.0\",\n                    \"ipv4-wins-server1\": \"0.0.0.0\",\n                    \"ipv4-wins-server2\": \"0.0.0.0\",\n                    \"local-gw\": \"0.0.0.0\",\n                    \"localid\": null,\n                    \"mode-cfg\": 0,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 0,\n                    \"peergrp\": [],\n                    \"peerid\": null,\n                    \"peertype\": 1,\n                    \"tunnel-search\": 1,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1,\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -372,6 +342,74 @@
 					"response": []
 				},
 				{
+					"name": "Install policy - Hub",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"DataCenter-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Install policy - Branches",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Configure FGT-1 Interfaces",
 					"request": {
 						"method": "POST",
@@ -385,12 +423,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-1/global/system/interface\",\n            \"data\": [\n                {\n                    \"name\": \"OL_MPLS_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.10.1\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.10.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port4\"\n                },\n                                {\n                    \"name\": \"OL_INET_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.11.1\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.11.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port1\"\n                }\n\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-1/global/system/interface\",\n            \"data\": [\n                {\n                    \"name\": \"OL_MPLS_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.10.1\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.10.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port4\"\n                },\n                                {\n                    \"name\": \"OL_INET_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.11.1\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.11.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port1\"\n                }\n\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -419,12 +452,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-2/global/system/interface\",\n            \"data\": [\n                {\n                    \"name\": \"OL_MPLS_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.10.2\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.10.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port4\"\n                },\n                                {\n                    \"name\": \"OL_INET_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.11.2\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.11.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port1\"\n                }\n\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-2/global/system/interface\",\n            \"data\": [\n                {\n                    \"name\": \"OL_MPLS_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.10.2\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.10.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port4\"\n                },\n                                {\n                    \"name\": \"OL_INET_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.11.2\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.11.5\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port1\"\n                }\n\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -453,7 +481,138 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-DC-5/global/system/interface\",\n            \"data\": [\n                {\n                    \"name\": \"OL_MPLS_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.10.5\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.10.254\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port4\",\n                    \"alias\": \"OL_MPLS\"\n                },\n                                {\n                    \"name\": \"OL_INET_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.11.5\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.11.254\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port1\",\n                    \"alias\": \"OL_INET\"\n                }\n\n            ]\n        }\n    ]\n}",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-DC-5/global/system/interface\",\n            \"data\": [\n                {\n                    \"name\": \"OL_MPLS_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.10.5\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.10.254\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port4\",\n                    \"alias\": \"OL_MPLS\"\n                },\n                                {\n                    \"name\": \"OL_INET_0\",\n                    \"vdom\": \"root\",\n                    \"ip\": [\n                        \"10.0.11.5\",\n                        \"255.255.255.255\"\n                    ],\n                    \"allowaccess\": \"ping\",\n                    \"type\": \"tunnel\",\n                    \"remote-ip\": [\n                        \"10.0.11.254\",\n                        \"255.255.255.0\"\n                    ],\n                    \"fortiheartbeat\": \"enable\",\n                    \"interface\": \"port1\",\n                    \"alias\": \"OL_INET\"\n                }\n\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Script - Fix VPN in Branches",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Script - Fix VPN in Hub",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in hub\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set auto-discovery-sender enable\\n next\\n edit OL_INET_0\\n set auto-discovery-sender enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exec Script - Fix VPN in Branches",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Fix vpn in branches\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exec Script - Fix VPN in Hub",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Fix vpn in hub\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -487,12 +646,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/interface/\",\n            \"data\": [\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"OL_INET\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"OL_INET_0\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"OL_MPLS\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"OL_MPLS_0\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/interface/\",\n            \"data\": [\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"OL_INET\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"OL_INET_0\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                },\n                {\n                    \"dynamic_mapping\": null,\n                    \"name\": \"OL_MPLS\",\n                    \"description\": null,\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"OL_MPLS_0\",\n                    \"defmap-zonemember\": [],\n                    \"defmap-intrazone-deny\": 0,\n                    \"egress-shaping-profile\": [],\n                    \"color\": 0\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -639,12 +793,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.1\"\n                }\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.1\"\n                }\n            }\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -688,12 +837,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.12\"\n                }\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.12\"\n                }\n            }\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -737,12 +881,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.5\"\n                }\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.5\"\n                }\n            }\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -931,7 +1070,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/task/task/12\"\n        }\n    ]\n}"
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/task/task\"\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -960,12 +1099,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-1/global/system/interface\"\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-1/global/system/interface\"\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -994,12 +1128,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-2/global/system/interface\"\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-2/global/system/interface\"\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -1028,7 +1157,36 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-DC-5/global/system/interface\"\n        }\n    ]\n}",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/FGT-DC-5/global/system/interface\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Scripts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
