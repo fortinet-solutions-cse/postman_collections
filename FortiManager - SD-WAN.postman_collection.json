@@ -141,7 +141,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Devices",
+					"name": "4 - Add Devices",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -170,7 +170,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Dynamic Interface",
+					"name": "5 - Add Dynamic Interface",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -199,7 +199,7 @@
 					"response": []
 				},
 				{
-					"name": "Add VPN Manager VPN Table",
+					"name": "6 - Add VPN Manager VPN Table",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -228,7 +228,7 @@
 					"response": []
 				},
 				{
-					"name": "Add VPN Manager Node",
+					"name": "7 - Add VPN Manager Node",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -257,7 +257,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Policy Package",
+					"name": "8 - Add Policy Package",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -268,7 +268,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\",\n             \"data\": [\n                {\n                    \"name\": \"default\",\n                    \"obj ver\": 1,\n                    \"oid\": 1308,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-1_root\",\n                    \"obj ver\": 4,\n                    \"oid\": 1358,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-2_root\",\n                    \"obj ver\": 4,\n                    \"oid\": 1393,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-DC-5_root\",\n                    \"obj ver\": 4,\n                    \"oid\": 1413,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-1\",\n                    \"obj ver\": 4,\n                    \"oid\": 1427,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-2\",\n                    \"obj ver\": 4,\n                    \"oid\": 1430,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"FGT-DC-5\",\n                    \"obj ver\": 4,\n                    \"oid\": 1433,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"Branches-PP\",\n                    \"obj ver\": 11,\n                    \"oid\": 1456,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"DataCenter-PP\",\n                    \"obj ver\": 16,\n                    \"oid\": 1461,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                }\n            ]\n        }\n    ]\n}"
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\",\n             \"data\": [\n\n                {\n                    \"name\": \"Branches-PP\",\n                    \"obj ver\": 11,\n                    \"oid\": 1456,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"DataCenter-PP\",\n                    \"obj ver\": 16,\n                    \"oid\": 1461,\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"type\": \"pkg\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -284,7 +284,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Firewall Policy - Branches PP - No Interfaces",
+					"name": "9 - Add Firewall Policy - Branches PP - No Interfaces",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -313,7 +313,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Firewall Policy - DataCenter PP - No Interfaces",
+					"name": "10 - Add Firewall Policy - DataCenter PP - No Interfaces",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -342,7 +342,7 @@
 					"response": []
 				},
 				{
-					"name": "Install policy - Hub",
+					"name": "11 - Install policy - Hub",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -376,7 +376,7 @@
 					"response": []
 				},
 				{
-					"name": "Install policy - Branches",
+					"name": "12 - Install policy - Branches",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -410,7 +410,7 @@
 					"response": []
 				},
 				{
-					"name": "Configure FGT-1 Interfaces",
+					"name": "13 - Configure FGT-1 Interfaces",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -439,7 +439,7 @@
 					"response": []
 				},
 				{
-					"name": "Configure FGT-2 Interfaces",
+					"name": "14 - Configure FGT-2 Interfaces",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -468,7 +468,7 @@
 					"response": []
 				},
 				{
-					"name": "Configure FGT-DC Interfaces",
+					"name": "15 - Configure FGT-DC Interfaces",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -497,7 +497,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Script - Fix VPN in Branches",
+					"name": "16 - Add Script - Fix VPN in Branches",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -531,7 +531,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Script - Fix VPN in Hub",
+					"name": "17 - Add Script - Fix VPN in Hub",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -565,7 +565,7 @@
 					"response": []
 				},
 				{
-					"name": "Exec Script - Fix VPN in Branches",
+					"name": "18 - Exec Script - Fix VPN in Branches",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -599,7 +599,7 @@
 					"response": []
 				},
 				{
-					"name": "Exec Script - Fix VPN in Hub",
+					"name": "19 - Exec Script - Fix VPN in Hub",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -633,7 +633,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Dynamic Interface - Overlays",
+					"name": "20 - Add Dynamic Interface - Overlays",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -662,7 +662,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Firewall Policy - Branches PP",
+					"name": "21 - Add Firewall Policy - Branches PP",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -691,7 +691,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Firewall Policy - DataCenter PP",
+					"name": "22 - Add Firewall Policy - DataCenter PP",
 					"request": {
 						"method": "POST",
 						"header": [
