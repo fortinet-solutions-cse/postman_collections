@@ -212,7 +212,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/vpntable\",\n            \"data\": [\n                {\n                    \"name\": \"OL_INET\",\n                    \"description\": null,\n                    \"topology\": 2,\n                    \"psk-auto-generate\": \"disable\",\n                    \"psksecret\": \"!123fortinet123!\",\n                    \"ike1keylifesec\": 28800,\n                    \"ike1dpd\": 1,\n                    \"ike1natkeepalive\": 10,\n                    \"dpd-retrycount\": 0,\n                    \"dpd-retryinterval\": [],\n                    \"ike1localid\": null,\n                    \"ike2keylifesec\": 1800,\n                    \"ike2keylifekbs\": 5120,\n                    \"ike2keepalive\": 1,\n                    \"intf-mode\": 0,\n                    \"fcc-enforcement\": 0,\n                    \"ike-version\": 2,\n                    \"negotiate-timeout\": 30,\n                    \"inter-vdom\": 0,\n                    \"certificate\": [],\n                    \"auto-zone-policy\": 1,\n                    \"vpn-zone\": [],\n                    \"spoke2hub-zone\": [],\n                    \"hub2spoke-zone\": [],\n                    \"npu-offload\": 1,\n                    \"authmethod\": 1,\n                    \"ike1dhgroup\": 12,\n                    \"dpd\": 3,\n                    \"localid-type\": 0,\n                    \"ike1mode\": 1,\n                    \"ike1nattraversal\": 1,\n                    \"ike1proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"ike2autonego\": 0,\n                    \"ike2dhgroup\": 12,\n                    \"ike2keylifetype\": 1,\n                    \"pfs\": 1,\n                    \"ike2proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"replay\": 1\n                },\n                {\n                    \"name\": \"OL_MPLS\",\n                    \"description\": null,\n                    \"topology\": 2,\n                    \"psk-auto-generate\": \"disable\",\n                    \"psksecret\": \"!123fortinet123!\",\n                    \"ike1keylifesec\": 28800,\n                    \"ike1dpd\": 1,\n                    \"ike1natkeepalive\": 10,\n                    \"dpd-retrycount\": 0,\n                    \"dpd-retryinterval\": [],\n                    \"ike1localid\": null,\n                    \"ike2keylifesec\": 1800,\n                    \"ike2keylifekbs\": 5120,\n                    \"ike2keepalive\": 1,\n                    \"intf-mode\": 0,\n                    \"fcc-enforcement\": 0,\n                    \"ike-version\": 2,\n                    \"negotiate-timeout\": 30,\n                    \"inter-vdom\": 0,\n                    \"certificate\": [],\n                    \"auto-zone-policy\": 1,\n                    \"vpn-zone\": [],\n                    \"spoke2hub-zone\": [],\n                    \"hub2spoke-zone\": [],\n                    \"npu-offload\": 1,\n                    \"authmethod\": 1,\n                    \"ike1dhgroup\": 12,\n                    \"dpd\": 3,\n                    \"localid-type\": 0,\n                    \"ike1mode\": 1,\n                    \"ike1nattraversal\": 1,\n                    \"ike1proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"ike2autonego\": 0,\n                    \"ike2dhgroup\": 12,\n                    \"ike2keylifetype\": 1,\n                    \"pfs\": 1,\n                    \"ike2proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"replay\": 1\n                }\n            ]\n        }\n    ]\n}"
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/vpntable\",\n            \"data\": [\n                {\n                    \"name\": \"OL_INET\",\n                    \"description\": null,\n                    \"topology\": 2,\n                    \"psk-auto-generate\": \"disable\",\n                    \"psksecret\": \"!123fortinet123!\",\n                    \"ike1keylifesec\": 28800,\n                    \"ike1dpd\": 1,\n                    \"ike1natkeepalive\": 10,\n                    \"dpd-retrycount\": 0,\n                    \"dpd-retryinterval\": [],\n                    \"ike1localid\": null,\n                    \"ike2keylifesec\": 1800,\n                    \"ike2keylifekbs\": 5120,\n                    \"ike2keepalive\": 1,\n                    \"intf-mode\": 0,\n                    \"fcc-enforcement\": 0,\n                    \"ike-version\": 2,\n                    \"negotiate-timeout\": 30,\n                    \"inter-vdom\": 0,\n                    \"certificate\": [],\n                    \"auto-zone-policy\": 0,\n                    \"vpn-zone\": null,\n                    \"spoke2hub-zone\": [],\n                    \"hub2spoke-zone\": [],\n                    \"npu-offload\": 1,\n                    \"authmethod\": 1,\n                    \"ike1dhgroup\": 12,\n                    \"dpd\": 3,\n                    \"localid-type\": 0,\n                    \"ike1mode\": 1,\n                    \"ike1nattraversal\": 1,\n                    \"ike1proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"ike2autonego\": 0,\n                    \"ike2dhgroup\": 12,\n                    \"ike2keylifetype\": 1,\n                    \"pfs\": 1,\n                    \"ike2proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"replay\": 1\n                },\n                {\n                    \"name\": \"OL_MPLS\",\n                    \"description\": null,\n                    \"topology\": 2,\n                    \"psk-auto-generate\": \"disable\",\n                    \"psksecret\": \"!123fortinet123!\",\n                    \"ike1keylifesec\": 28800,\n                    \"ike1dpd\": 1,\n                    \"ike1natkeepalive\": 10,\n                    \"dpd-retrycount\": 0,\n                    \"dpd-retryinterval\": [],\n                    \"ike1localid\": null,\n                    \"ike2keylifesec\": 1800,\n                    \"ike2keylifekbs\": 5120,\n                    \"ike2keepalive\": 1,\n                    \"intf-mode\": 0,\n                    \"fcc-enforcement\": 0,\n                    \"ike-version\": 2,\n                    \"negotiate-timeout\": 30,\n                    \"inter-vdom\": 0,\n                    \"certificate\": [],\n                    \"auto-zone-policy\": 0,\n                    \"vpn-zone\": null,\n                    \"spoke2hub-zone\": [],\n                    \"hub2spoke-zone\": [],\n                    \"npu-offload\": 1,\n                    \"authmethod\": 1,\n                    \"ike1dhgroup\": 12,\n                    \"dpd\": 3,\n                    \"localid-type\": 0,\n                    \"ike1mode\": 1,\n                    \"ike1nattraversal\": 1,\n                    \"ike1proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"ike2autonego\": 0,\n                    \"ike2dhgroup\": 12,\n                    \"ike2keylifetype\": 1,\n                    \"pfs\": 1,\n                    \"ike2proposal\": [\n                        \"aes128-sha256\",\n                        \"aes256-sha256\"\n                    ],\n                    \"replay\": 1\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -355,12 +355,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"DataCenter-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"DataCenter-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -389,12 +384,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -510,12 +500,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -544,12 +529,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in hub\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set auto-discovery-sender enable\\n next\\n edit OL_INET_0\\n set auto-discovery-sender enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in hub\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set auto-discovery-sender enable\\n next\\n edit OL_INET_0\\n set auto-discovery-sender enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -578,12 +558,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Fix vpn in branches\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Fix vpn in branches\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"FGT-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -612,12 +587,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Fix vpn in hub\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Fix vpn in hub\",\n                    \"scope\": [\n                        {\n                            \"name\": \"FGT-DC-5\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -750,6 +720,33 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device\"\n\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tasks",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/task/task\"\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -1059,33 +1056,6 @@
 					"response": []
 				},
 				{
-					"name": "Get Tasks",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/task/task\"\n        }\n    ]\n}"
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Get FGT-1 Interfaces",
 					"request": {
 						"method": "POST",
@@ -1186,12 +1156,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\"\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\"\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
