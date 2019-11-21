@@ -13,8 +13,6 @@ adom = "root"
 
 def is_task_finished(id):
 
-    print(" Checking task: " + str(id) + " for completion.")
-
     payload = {
         "session": session,
         "id": 1,
@@ -62,8 +60,8 @@ def is_request_status_ok(response):
     
 
 
-def run_request(num_id, payload):
-    print("Running request " + str(num_id) + ".")
+def run_request(num_id, payload, name=""):
+    print("Running request " + str(num_id) + ". " + name)
 
     headers = {
         'Content-Type': "application/json",
@@ -79,10 +77,11 @@ def run_request(num_id, payload):
 
     content = json.loads(response.content)
 
-    print (" Request completed")
+    print (" Completed")
+    return content
 
-def run_request_async(num_id, payload):
-    print("Running request " + str(num_id) + ".")
+def run_request_async(num_id, payload, name=""):
+    print("Running request " + str(num_id) + ". " + name)
 
     headers = {
         'Content-Type': "application/json",
@@ -102,18 +101,19 @@ def run_request_async(num_id, payload):
     except:
         task_id = content["result"][0]["data"]["task"]
 
-    print(" Asynchronous task created: " + str(task_id))
+    print(" Asynchronous task created: " + str(task_id) + " ", end="", flush=False)
     while not is_task_finished(task_id):
+        print(".", end="", flush=True)
         sleep(1)
 
-    print (" Request completed")
+    print ("\n Completed")
+    return content
 
 
 ##############################################################
 # Login
 ##############################################################
 
-print("Running Login request")
 payload = {
 	"session" : 1,
 	"id" : 1,
@@ -131,32 +131,13 @@ payload = {
 	]
 }
 
-headers = {
-    'Content-Type': "application/json",
-    'Accept': "*/*",
-    'Cache-Control': "no-cache",
-    'Host': "34.77.13.219:10419",
-    'Accept-Encoding': "gzip, deflate",
-    'Content-Length': "200",
-    'Connection': "keep-alive",
-    'cache-control': "no-cache"
-    }
-
-response = requests.request("POST", url, data=json.dumps(payload), headers=headers, verify=False)
-
-if not is_request_status_ok(response):
-    print(" Error in request.")
-    print(response.text)
-    exit(-1)
-
-content = json.loads(response.content)
+content = run_request(0, payload, "Login")
 session = content["session"]
-print(" Request completed. Session Id = " + session)
+print("     Session Id = " + session)
 
 ##############################################################
 # 1
 ##############################################################
-print("Running request 1.")
 
 payload = {
     "session": session,
@@ -176,27 +157,13 @@ payload = {
     ]
 }
 
-headers = {
-    'Content-Type': "application/json",
-    'cache-control': "no-cache"
-    }
-
-response = requests.request("POST", url, data=json.dumps(payload), headers=headers, verify=False)
-
-if not is_request_status_ok(response):
-    print(" Error in request.")
-    print(response.text)
-    exit(-1)
-
-content = json.loads(response.content)
+content = run_request(1, payload)
 sn_fgt_1 = content["result"][0]["data"]["device"]["sn"]
-
-print (" Request completed. SN: " + str(sn_fgt_1))
+print("     SN FGT 1 = " + sn_fgt_1)
 
 ##############################################################
 # 2
 ##############################################################
-print("Running request 2.")
 
 payload = {
     "session": session,
@@ -216,27 +183,13 @@ payload = {
     ]
 }
 
-headers = {
-    'Content-Type': "application/json",
-    'cache-control': "no-cache"
-    }
-
-response = requests.request("POST", url, data=json.dumps(payload), headers=headers, verify=False)
-
-if not is_request_status_ok(response):
-    print(" Error in request.")
-    print(response.text)
-    exit(-1)
-
-content = json.loads(response.content)
+content = run_request(2, payload)
 sn_fgt_2 = content["result"][0]["data"]["device"]["sn"]
-
-print (" Request completed. SN: " + str(sn_fgt_2))
+print("     SN FGT 2 = " + sn_fgt_2)
 
 ##############################################################
 # 3
 ##############################################################
-print("Running request 3.")
 
 payload = {
     "session": session,
@@ -256,27 +209,13 @@ payload = {
     ]
 }
 
-headers = {
-    'Content-Type': "application/json",
-    'cache-control': "no-cache"
-    }
-
-response = requests.request("POST", url, data=json.dumps(payload), headers=headers, verify=False)
-
-if not is_request_status_ok(response):
-    print(" Error in request.")
-    print(response.text)
-    exit(-1)
-
-content = json.loads(response.content)
+content = run_request(3, payload)
 sn_fgt_dc = content["result"][0]["data"]["device"]["sn"]
-
-print (" Request completed. SN: " + str(sn_fgt_dc))
+print("     SN FGT DC = " + sn_fgt_dc)
 
 ##############################################################
 # 4
 ##############################################################
-print("Running request 4.")
 
 payload = {
     "session": session,
@@ -321,32 +260,13 @@ payload = {
         }
     ]
 }
-headers = {
-    'Content-Type': "application/json",
-    'cache-control': "no-cache"
-}
 
-response = requests.request("POST", url, data=json.dumps(payload), headers=headers, verify=False)
-
-if not is_request_status_ok(response):
-    print(" Error in request.")
-    print(response.text)
-    exit(-1)
-
-content = json.loads(response.content)
-
-task_id = content["result"][0]["data"]["taskid"]
-print(" Asynchronous task created: " + str(task_id))
-while not is_task_finished(task_id):
-    sleep(1)
-
-print (" Request completed")
+run_request_async(4, payload)
 
 
 ##############################################################
 # 5
 ##############################################################
-print("Running request 5.")
 
 payload = {
     "session": session,
@@ -447,27 +367,12 @@ payload = {
         }
     ]
 }
-headers = {
-    'Content-Type': "application/json",
-    'cache-control': "no-cache"
-}
 
-response = requests.request("POST", url, data=json.dumps(payload), headers=headers, verify=False)
-
-if not is_request_status_ok(response):
-    print(" Error in request.")
-    print(response.text)
-    exit(-1)
-
-content = json.loads(response.content)
-
-print (" Request completed")
-
+run_request(5, payload)
 
 ##############################################################
 # 6
 ##############################################################
-print("Running request 6.")
 
 payload = {
     "session": session,
@@ -574,26 +479,11 @@ payload = {
     ]
 }
 
-headers = {
-    'Content-Type': "application/json",
-    'cache-control': "no-cache"
-}
-
-response = requests.request("POST", url, data=json.dumps(payload), headers=headers, verify=False)
-
-if not is_request_status_ok(response):
-    print(" Error in request.")
-    print(response.text)
-    exit(-1)
-
-content = json.loads(response.content)
-
-print (" Request completed")
+run_request(6,payload)
 
 ##############################################################
 # 7
 ##############################################################
-print("Running request 7.")
 
 payload = {
     "session": session,
@@ -1041,22 +931,7 @@ payload = {
     ]
 }
 
-headers = {
-    'Content-Type': "application/json",
-    'cache-control': "no-cache"
-}
-
-response = requests.request("POST", url, data=json.dumps(payload), headers=headers, verify=False)
-
-if not is_request_status_ok(response):
-    print(" Error in request.")
-    print(response.text)
-    exit(-1)
-
-content = json.loads(response.content)
-
-print (" Request completed")
-
+run_request(7, payload)
 
 ##############################################################
 # 8
