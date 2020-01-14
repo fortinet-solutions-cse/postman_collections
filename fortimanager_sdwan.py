@@ -8,9 +8,20 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 user = "admin"
 passwd = "fortinet"
-url = "https://34.77.13.219:10419/jsonrpc"
-adom = "root"
-
+url = "https://35.205.189.29:10412//jsonrpc"
+adom = "DEMO"
+#sn_fgt_1 = "FGVM08TM19003280"
+#sn_fgt_2 = "FGVM08TM19003279"
+#sn_fgt_dc = "FGVM08TM19003278"
+branch1_ip="172.16.1.1"
+branch2_ip="172.16.1.2"
+datacenter_ip="172.16.2.5"
+#branch1_ip="192.168.0.1"
+#branch2_ip="192.168.0.12"
+#datacenter_ip="192.168.0.5"
+branch1_name = "branch1_fgt"
+branch2_name = "branch2_fgt"
+datacenter_name = "datacenter_fgt"
 def is_task_finished(id):
 
     payload = {
@@ -150,7 +161,7 @@ payload = {
                 "device": {
                     "adm_pass": passwd,
                     "adm_usr": user,
-                    "ip": "192.168.0.1"
+                    "ip": branch1_ip
                 }
             }
         }
@@ -176,7 +187,7 @@ payload = {
                 "device": {
                     "adm_pass": passwd,
                     "adm_usr": user,
-                    "ip": "192.168.0.12"
+                    "ip": branch2_ip
                 }
             }
         }
@@ -202,7 +213,7 @@ payload = {
                 "device": {
                     "adm_pass": passwd,
                     "adm_usr": user,
-                    "ip": "192.168.0.5"
+                    "ip": datacenter_ip 
                 }
             }
         }
@@ -231,8 +242,8 @@ payload = {
                     {
                         "adm_pass": passwd,
                         "adm_usr": user,
-                        "ip": "192.168.0.1",
-                        "name": "FGT-1",
+                        "ip": branch1_ip,
+                        "name": branch1_name,
                         "sn": sn_fgt_1,
                         "mgmt_mode": "fmgfaz",
                         "flags": 24
@@ -240,8 +251,8 @@ payload = {
                     {
                         "adm_pass": passwd,
                         "adm_usr": user,
-                        "ip": "192.168.0.12",
-                        "name": "FGT-2",
+                        "ip": branch2_ip,
+                        "name": branch2_name,
                         "sn": sn_fgt_2,
                         "mgmt_mode": "fmgfaz",
                         "flags": 24
@@ -249,8 +260,8 @@ payload = {
                     {
                         "adm_pass": passwd,
                         "adm_usr": user,
-                        "ip": "192.168.0.5",
-                        "name": "FGT-DC-5",
+                        "ip": datacenter_ip,
+                        "name": datacenter_name,
                         "sn": sn_fgt_dc,
                         "mgmt_mode": "fmgfaz",
                         "flags": 24
@@ -286,7 +297,7 @@ payload = {
                     "defmap-zonemember": [],
                     "defmap-intrazone-deny": 0,
                     "egress-shaping-profile": [],
-                    "color": 0
+                    "color": 2
                 },
                 {
                     "dynamic_mapping": None,
@@ -298,7 +309,7 @@ payload = {
                     "defmap-zonemember": [],
                     "defmap-intrazone-deny": 0,
                     "egress-shaping-profile": [],
-                    "color": 0
+                    "color": 2
                 },
                 {
                     "dynamic_mapping": None,
@@ -310,58 +321,31 @@ payload = {
                     "defmap-zonemember": [],
                     "defmap-intrazone-deny": 0,
                     "egress-shaping-profile": [],
-                    "color": 0
+                    "color": 2
                 },
                 {
                     "dynamic_mapping": None,
-                    "name": "WirelessVLAN",
+                    "name": "vl_fap_mgmt",
                     "description": None,
                     "single-intf": 1,
                     "default-mapping": 1,
-                    "defmap-intf": "WirelessVLAN",
+                    "defmap-intf": "vl_fap_mgmt",
                     "defmap-zonemember": [],
                     "defmap-intrazone-deny": 0,
                     "egress-shaping-profile": [],
-                    "color": 0
+                    "color": 3
                 },
                 {
-                    "dynamic_mapping": [
-                        {
-                            "_scope": [
-                                {
-                                    "name": "FGT-1",
-                                    "vdom": "root"
-                                }
-                            ],
-                            "egress-shaping-profile": [],
-                            "intrazone-deny": 0,
-                            "local-intf": [
-                                "Clients-BR1"
-                            ]
-                        },
-                        {
-                            "_scope": [
-                                {
-                                    "name": "FGT-2",
-                                    "vdom": "root"
-                                }
-                            ],
-                            "egress-shaping-profile": [],
-                            "intrazone-deny": 0,
-                            "local-intf": [
-                                "Clients-BR2"
-                            ]
-                        }
-                    ],
-                    "name": "Clients-BR",
+                    "dynamic_mapping": None,
+                    "name": "vl_lan",
                     "description": None,
                     "single-intf": 1,
-                    "default-mapping": 0,
-                    "defmap-intf": None,
+                    "default-mapping": 1,
+                    "defmap-intf": "vl_lan",
                     "defmap-zonemember": [],
                     "defmap-intrazone-deny": 0,
                     "egress-shaping-profile": [],
-                    "color": 0
+                    "color": 3
                 }
             ]
         }
@@ -560,7 +544,7 @@ payload = {
                     "xauthtype": 1,
                     "scope member": [
                         {
-                            "name": "FGT-1",
+                            "name": branch1_name,
                             "vdom": "root"
                         }
                     ]
@@ -632,7 +616,7 @@ payload = {
                     "xauthtype": 1,
                     "scope member": [
                         {
-                            "name": "FGT-2",
+                            "name": branch2_name,
                             "vdom": "root"
                         }
                     ]
@@ -704,7 +688,7 @@ payload = {
                     "xauthtype": 1,
                     "scope member": [
                         {
-                            "name": "FGT-DC-5",
+                            "name": datacenter_name,
                             "vdom": "root"
                         }
                     ]
@@ -776,7 +760,7 @@ payload = {
                     "xauthtype": 1,
                     "scope member": [
                         {
-                            "name": "FGT-1",
+                            "name": branch1_name,
                             "vdom": "root"
                         }
                     ]
@@ -848,7 +832,7 @@ payload = {
                     "xauthtype": 1,
                     "scope member": [
                         {
-                            "name": "FGT-2",
+                            "name": branch2_name,
                             "vdom": "root"
                         }
                     ]
@@ -921,7 +905,7 @@ payload = {
                     "xauthtype": 1,
                     "scope member": [
                         {
-                            "name": "FGT-DC-5",
+                            "name": datacenter_name,
                             "vdom": "root"
                         }
                     ]
@@ -959,11 +943,11 @@ payload = {
                     },
                     "scope member": [
                         {
-                            "name": "FGT-1",
+                            "name": branch1_name,
                             "vdom": "root"
                         },
                         {
-                            "name": "FGT-2",
+                            "name": branch2_name,
                             "vdom": "root"
                         }
                     ],
@@ -982,7 +966,7 @@ payload = {
                     },
                     "scope member": [
                         {
-                            "name": "FGT-DC-5",
+                            "name": datacenter_name,
                             "vdom": "root"
                         }
                     ],
@@ -1342,6 +1326,110 @@ payload = {
                     "vpn_src_node": None,
                     "policyid": 1,
                     "srcintf": [
+                        "port5",
+                        "port4"
+                    ],
+                    "dstintf": [
+                        "port4",
+                        "port5"
+                    ],
+                    "srcaddr": [
+                        "all"
+                    ],
+                    "dstaddr": [
+                        "all"
+                    ],
+                    "action": 1,
+                    "status": 1,
+                    "schedule": [
+                        "always"
+                    ],
+                    "service": [
+                        "ALL"
+                    ],
+                    "logtraffic": 2,
+                    "nat": 0,
+                    "disclaimer": 0,
+                    "natip": [
+                        "0.0.0.0",
+                        "0.0.0.0"
+                    ],
+                    "diffserv-forward": 0,
+                    "diffserv-reverse": 0,
+                    "tcp-mss-sender": 0,
+                    "tcp-mss-receiver": 0,
+                    "groups": [],
+                    "custom-log-fields": [],
+                    "wccp": 0,
+                    "session-ttl": 0,
+                    "match-vip": 0,
+                    "traffic-shaper": [],
+                    "traffic-shaper-reverse": [],
+                    "rtp-nat": 0,
+                    "per-ip-shaper": [],
+                    "utm-status": 1,
+                    "application-list": [
+                        "default"
+                    ],
+                    "profile-type": 0,
+                    "profile-protocol-options": [],
+                    "schedule-timeout": 0,
+                    "auto-asic-offload": 1,
+                    "webproxy-forward-server": [],
+                    "replacemsg-override-group": [],
+                    "fsso": 1,
+                    "fsso-agent-for-ntlm": [],
+                    "logtraffic-start": 0,
+                    "capture-packet": 0,
+                    "webcache-https": 0,
+                    "block-notification": 0,
+                    "srcaddr-negate": 0,
+                    "dstaddr-negate": 0,
+                    "service-negate": 0,
+                    "permit-any-host": 0,
+                    "timeout-send-rst": 0,
+                    "vlan-cos-fwd": 255,
+                    "vlan-cos-rev": 255,
+                    "users": [],
+                    "ssl-ssh-profile": [
+                        "certificate-inspection"
+                    ],
+                    "captive-portal-exempt": 0,
+                    "name": "FortiManager Access",
+                    "ssl-mirror-intf": [],
+                    "ssl-mirror": 0,
+                    "dsri": 0,
+                    "delay-tcp-npu-session": 0,
+                    "internet-service": 0,
+                    "radius-mac-auth-bypass": 0,
+                    "tcp-session-without-syn": 2,
+                    "internet-service-src": 0,
+                    "internet-service-src-id": [],
+                    "internet-service-src-custom": [],
+                    "app-group": [],
+                    "internet-service-src-negate": 0,
+                    "vlan-filter": None,
+                    "np-acceleration": 1,
+                    "internet-service-src-group": [],
+                    "internet-service-src-custom-group": [],
+                    "tos": "0x00",
+                    "tos-mask": "0x00",
+                    "tos-negate": 0,
+                    "reputation-minimum": 0,
+                    "reputation-direction": 2,
+                    "webproxy-profile": [],
+                    "geoip-anycast": 0,
+                    "anti-replay": 1,
+                    "inspection-mode": 1,
+                    "email-collect": 0,
+                    "match-vip-only": 0,
+                    "fsso-groups": []
+                },
+                {
+                    "vpn_dst_node": None,
+                    "vpn_src_node": None,
+                    "policyid": 2,
+                    "srcintf": [
                         "port5"
                     ],
                     "dstintf": [
@@ -1444,7 +1532,7 @@ payload = {
                 {
                     "vpn_dst_node": None,
                     "vpn_src_node": None,
-                    "policyid": 2,
+                    "policyid": 3,
                     "srcintf": [
                         "any",
                         "any"
@@ -1548,7 +1636,7 @@ payload = {
                 {
                     "vpn_dst_node": None,
                     "vpn_src_node": None,
-                    "policyid": 3,
+                    "policyid": 4,
                     "srcintf": [
                         "port5"
                     ],
@@ -1650,7 +1738,7 @@ payload = {
                 {
                     "vpn_dst_node": None,
                     "vpn_src_node": None,
-                    "policyid": 4,
+                    "policyid": 5,
                     "srcintf": [
                         "any",
                         "any"
@@ -1753,7 +1841,7 @@ payload = {
                 {
                     "vpn_dst_node": None,
                     "vpn_src_node": None,
-                    "policyid": 5,
+                    "policyid": 6,
                     "srcintf": [
                         "any",
                         "any"
@@ -1879,7 +1967,7 @@ payload = {
                     "pkg": "DataCenter-PP",
                     "scope": [
                         {
-                            "name": "FGT-DC-5",
+                            "name": datacenter_name,
                             "vdom": "root"
                         }
                     ],
@@ -1909,11 +1997,11 @@ payload = {
                     "pkg": "Branches-PP",
                     "scope": [
                         {
-                            "name": "FGT-1",
+                            "name": branch1_name,
                             "vdom": "root"
                         },
                         {
-                            "name": "FGT-2",
+                            "name": branch2_name,
                             "vdom": "root"
                         }
                     ],
@@ -1937,7 +2025,7 @@ payload = {
     "method": "set",
     "params": [
         {
-            "url": "/pm/config/device/FGT-1/global/system/interface",
+            "url": "/pm/config/device/"+branch1_name+"/global/system/interface",
             "data": [
                 {
                     "name": "OL_MPLS_0",
@@ -1989,7 +2077,7 @@ payload = {
     "method": "set",
     "params": [
         {
-            "url": "/pm/config/device/FGT-2/global/system/interface",
+            "url": "/pm/config/device/"+branch2_name+"/global/system/interface",
             "data": [
                 {
                     "name": "OL_MPLS_0",
@@ -2042,7 +2130,7 @@ payload = {
     "method": "set",
     "params": [
         {
-            "url": "/pm/config/device/FGT-DC-5/global/system/interface",
+            "url": "/pm/config/device/"+datacenter_name+"/global/system/interface",
             "data": [
                 {
                     "name": "OL_MPLS_0",
@@ -2160,11 +2248,11 @@ payload = {
                     "script": "Fix vpn in branches",
                     "scope": [
                         {
-                            "name": "FGT-1",
+                            "name": branch1_name,
                             "vdom": "root"
                         },
                         {
-                            "name": "FGT-2",
+                            "name": branch2_name,
                             "vdom": "root"
                         }
                     ]
@@ -2193,7 +2281,7 @@ payload = {
                     "script": "Fix vpn in hub",
                     "scope": [
                         {
-                            "name": "FGT-DC-5",
+                            "name": datacenter_name,
                             "vdom": "root"
                         }
                     ]
@@ -2227,7 +2315,7 @@ payload = {
                     "defmap-zonemember": [],
                     "defmap-intrazone-deny": 0,
                     "egress-shaping-profile": [],
-                    "color": 0
+                    "color": 4
                 },
                 {
                     "dynamic_mapping": None,
@@ -2239,7 +2327,7 @@ payload = {
                     "defmap-zonemember": [],
                     "defmap-intrazone-deny": 0,
                     "egress-shaping-profile": [],
-                    "color": 0
+                    "color": 4
                 }
             ]
         }
@@ -2265,8 +2353,8 @@ payload = {
                     "vpn_src_node": None,
                     "policyid": 1,
                     "srcintf": [
-                        "Clients-BR",
-                        "WirelessVLAN"
+                        "vl_lan",
+                        "vl_fap_mgmt"
                     ],
                     "dstintf": [
                         "OL_INET",
@@ -2369,8 +2457,8 @@ payload = {
                     "vpn_src_node": None,
                     "policyid": 2,
                     "srcintf": [
-                        "Clients-BR",
-                        "WirelessVLAN"
+                        "vl_lan",
+                        "vl_fap_mgmt"
                     ],
                     "dstintf": [
                         "port1"
@@ -2476,8 +2564,8 @@ payload = {
                         "OL_MPLS"
                     ],
                     "dstintf": [
-                        "Clients-BR",
-                        "WirelessVLAN"
+                        "vl_lan",
+                        "vl_fap_mgmt"
                     ],
                     "srcaddr": [
                         "all"
@@ -2596,6 +2684,110 @@ payload = {
                     "vpn_src_node": None,
                     "policyid": 1,
                     "srcintf": [
+                        "port5",
+                        "port4"
+                    ],
+                    "dstintf": [
+                        "port4",
+                        "port5"
+                    ],
+                    "srcaddr": [
+                        "all"
+                    ],
+                    "dstaddr": [
+                        "all"
+                    ],
+                    "action": 1,
+                    "status": 1,
+                    "schedule": [
+                        "always"
+                    ],
+                    "service": [
+                        "ALL"
+                    ],
+                    "logtraffic": 2,
+                    "nat": 0,
+                    "disclaimer": 0,
+                    "natip": [
+                        "0.0.0.0",
+                        "0.0.0.0"
+                    ],
+                    "diffserv-forward": 0,
+                    "diffserv-reverse": 0,
+                    "tcp-mss-sender": 0,
+                    "tcp-mss-receiver": 0,
+                    "groups": [],
+                    "custom-log-fields": [],
+                    "wccp": 0,
+                    "session-ttl": 0,
+                    "match-vip": 0,
+                    "traffic-shaper": [],
+                    "traffic-shaper-reverse": [],
+                    "rtp-nat": 0,
+                    "per-ip-shaper": [],
+                    "utm-status": 1,
+                    "application-list": [
+                        "default"
+                    ],
+                    "profile-type": 0,
+                    "profile-protocol-options": [],
+                    "schedule-timeout": 0,
+                    "auto-asic-offload": 1,
+                    "webproxy-forward-server": [],
+                    "replacemsg-override-group": [],
+                    "fsso": 1,
+                    "fsso-agent-for-ntlm": [],
+                    "logtraffic-start": 0,
+                    "capture-packet": 0,
+                    "webcache-https": 0,
+                    "block-notification": 0,
+                    "srcaddr-negate": 0,
+                    "dstaddr-negate": 0,
+                    "service-negate": 0,
+                    "permit-any-host": 0,
+                    "timeout-send-rst": 0,
+                    "vlan-cos-fwd": 255,
+                    "vlan-cos-rev": 255,
+                    "users": [],
+                    "ssl-ssh-profile": [
+                        "certificate-inspection"
+                    ],
+                    "captive-portal-exempt": 0,
+                    "name": "FortiManager Access",
+                    "ssl-mirror-intf": [],
+                    "ssl-mirror": 0,
+                    "dsri": 0,
+                    "delay-tcp-npu-session": 0,
+                    "internet-service": 0,
+                    "radius-mac-auth-bypass": 0,
+                    "tcp-session-without-syn": 2,
+                    "internet-service-src": 0,
+                    "internet-service-src-id": [],
+                    "internet-service-src-custom": [],
+                    "app-group": [],
+                    "internet-service-src-negate": 0,
+                    "vlan-filter": None,
+                    "np-acceleration": 1,
+                    "internet-service-src-group": [],
+                    "internet-service-src-custom-group": [],
+                    "tos": "0x00",
+                    "tos-mask": "0x00",
+                    "tos-negate": 0,
+                    "reputation-minimum": 0,
+                    "reputation-direction": 2,
+                    "webproxy-profile": [],
+                    "geoip-anycast": 0,
+                    "anti-replay": 1,
+                    "inspection-mode": 1,
+                    "email-collect": 0,
+                    "match-vip-only": 0,
+                    "fsso-groups": []
+                },
+                {
+                    "vpn_dst_node": None,
+                    "vpn_src_node": None,
+                    "policyid": 2,
+                    "srcintf": [
                         "port5"
                     ],
                     "dstintf": [
@@ -2698,7 +2890,7 @@ payload = {
                 {
                     "vpn_dst_node": None,
                     "vpn_src_node": None,
-                    "policyid": 2,
+                    "policyid": 3,
                     "srcintf": [
                         "OL_INET",
                         "OL_MPLS"
@@ -2802,7 +2994,7 @@ payload = {
                 {
                     "vpn_dst_node": None,
                     "vpn_src_node": None,
-                    "policyid": 3,
+                    "policyid": 4,
                     "srcintf": [
                         "port5"
                     ],
@@ -2904,7 +3096,7 @@ payload = {
                 {
                     "vpn_dst_node": None,
                     "vpn_src_node": None,
-                    "policyid": 4,
+                    "policyid": 5,
                     "srcintf": [
                         "OL_INET",
                         "OL_MPLS"
@@ -3007,7 +3199,7 @@ payload = {
                 {
                     "vpn_dst_node": None,
                     "vpn_src_node": None,
-                    "policyid": 5,
+                    "policyid": 6,
                     "srcintf": [
                         "OL_INET",
                         "OL_MPLS"
@@ -3133,7 +3325,7 @@ payload = {
                     "pkg": "DataCenter-PP",
                     "scope": [
                         {
-                            "name": "FGT-DC-5",
+                            "name": datacenter_name,
                             "vdom": "root"
                         }
                     ],
@@ -3150,6 +3342,7 @@ run_request_async(23, payload)
 # 24 - This one is like 12
 ##############################################################
 
+#sleep(60)
 payload = {
     "session": session,
     "id": 1,
@@ -3163,11 +3356,11 @@ payload = {
                     "pkg": "Branches-PP",
                     "scope": [
                         {
-                            "name": "FGT-1",
+                            "name": branch1_name,
                             "vdom": "root"
                         },
                         {
-                            "name": "FGT-2",
+                            "name": branch2_name,
                             "vdom": "root"
                         }
                     ],
