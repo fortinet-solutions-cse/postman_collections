@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-import requests, json
+import requests
+import json
 
 from urllib3.exceptions import InsecureRequestWarning
 from time import sleep
@@ -13,17 +14,18 @@ ADOM = "DEMO"
 #sn_fgt_1 = "FGVM08TM19003280"
 #sn_fgt_2 = "FGVM08TM19003279"
 #sn_fgt_dc = "FGVM08TM19003278"
-BRANCH1_IP="172.16.1.1"
-BRANCH2_IP="172.16.1.2"
-DATACENTER_IP="172.16.2.5"
-#branch1_ip="192.168.0.1"
-#branch2_ip="192.168.0.12"
-#datacenter_ip="192.168.0.5"
+BRANCH1_IP = "172.16.1.1"
+BRANCH2_IP = "172.16.1.2"
+DATACENTER_IP = "172.16.2.5"
+# branch1_ip="192.168.0.1"
+# branch2_ip="192.168.0.12"
+# datacenter_ip="192.168.0.5"
 BRANCH1_NAME = "branch1_fgt"
 BRANCH2_NAME = "branch2_fgt"
 DATACENTER_NAME = "datacenter_fgt"
 
 request_number = 0
+
 
 def is_task_finished(id):
 
@@ -43,7 +45,8 @@ def is_task_finished(id):
         'cache-control': "no-cache"
     }
 
-    response = requests.request("POST", URL, data=json.dumps(payload), headers=headers, verify=False)
+    response = requests.request("POST", URL, data=json.dumps(
+        payload), headers=headers, verify=False)
 
     if not is_request_status_ok(response):
         print(" \033[31Error in request.\033[39m")
@@ -71,12 +74,12 @@ def is_request_status_ok(response):
     return response.status_code == 200 and \
         content["result"][0]["status"]["code"] == 0 and \
         content["result"][0]["status"]["message"] == "OK"
-    
 
 
 def run_request(payload, name=""):
     global request_number
-    print("Running request \033[33m" + str(request_number) + "\033[39m. \033[93m" + name + "\033[39m")
+    print("Running request \033[33m" + str(request_number) +
+          "\033[39m. \033[93m" + name + "\033[39m")
     request_number += 1
 
     headers = {
@@ -84,7 +87,8 @@ def run_request(payload, name=""):
         'cache-control': "no-cache"
     }
 
-    response = requests.request("POST", URL, data=json.dumps(payload), headers=headers, verify=False)
+    response = requests.request("POST", URL, data=json.dumps(
+        payload), headers=headers, verify=False)
 
     if not is_request_status_ok(response):
         print(" Error in request.")
@@ -93,12 +97,14 @@ def run_request(payload, name=""):
 
     content = json.loads(response.content)
 
-    print (" \033[92mCompleted\033[39m")
+    print(" \033[92mCompleted\033[39m")
     return content
+
 
 def run_request_async(payload, name=""):
     global request_number
-    print("Running request \033[33m" + str(request_number) + "\033[39m. \033[93m" + name + "\033[39m")
+    print("Running request \033[33m" + str(request_number) +
+          "\033[39m. \033[93m" + name + "\033[39m")
     request_number += 1
 
     headers = {
@@ -106,7 +112,8 @@ def run_request_async(payload, name=""):
         'cache-control': "no-cache"
     }
 
-    response = requests.request("POST", URL, data=json.dumps(payload), headers=headers, verify=False)
+    response = requests.request("POST", URL, data=json.dumps(
+        payload), headers=headers, verify=False)
 
     if not is_request_status_ok(response):
         print(" Error in request.")
@@ -114,17 +121,18 @@ def run_request_async(payload, name=""):
         exit(-1)
 
     content = json.loads(response.content)
-    try: 
+    try:
         task_id = content["result"][0]["data"]["taskid"]
     except:
         task_id = content["result"][0]["data"]["task"]
 
-    print(" Asynchronous task created: " + str(task_id) + " ", end="", flush=False)
+    print(" Asynchronous task created: " +
+          str(task_id) + " ", end="", flush=False)
     while not is_task_finished(task_id):
         print(".", end="", flush=True)
         sleep(1)
 
-    print ("\n \033[92mCompleted\033[39m")
+    print("\n \033[92mCompleted\033[39m")
     return content
 
 
@@ -136,16 +144,16 @@ def login():
     global session
 
     payload = {
-        "session" : 1,
-        "id" : 1,
-        "method" : "exec",
-        "params" : [
+        "session": 1,
+        "id": 1,
+        "method": "exec",
+        "params": [
             {
-                "url" : "sys/login/user",
-                "data" : [
+                "url": "sys/login/user",
+                "data": [
                     {
-                        "user" : USER,
-                        "passwd" : PASSWD
+                        "user": USER,
+                        "passwd": PASSWD
                     }
                 ]
             }
@@ -888,7 +896,7 @@ def addVPNManagerNode():
 # Add Policy Package
 ##############################################################
 def addPolicyPackage():
-        
+
     payload = {
         "session": session,
         "id": 1,
@@ -1276,7 +1284,8 @@ def addFirewallPolicy_Branches_PP_No_Interfaces():
         ]
     }
 
-    run_request(payload, name="Add Firewall Policy - Branches PP - No Interfaces")
+    run_request(
+        payload, name="Add Firewall Policy - Branches PP - No Interfaces")
 
 
 ##############################################################
@@ -1917,7 +1926,8 @@ def addFirewallPolicy_DataCenter_PP_No_Interfaces():
         ]
     }
 
-    run_request(payload, name="Add Firewall Policy - DataCenter PP - No Interfaces")
+    run_request(
+        payload, name="Add Firewall Policy - DataCenter PP - No Interfaces")
 
 
 ##############################################################
@@ -1992,7 +2002,7 @@ def installPolicy_Branches():
 # Configure FGT-1 Interfaces
 ##############################################################
 def configureInterfacesFGT1():
-        
+
     payload = {
         "session": session,
         "id": 1,
@@ -2017,7 +2027,7 @@ def configureInterfacesFGT1():
                         "fortiheartbeat": "enable",
                         "interface": "port4"
                     },
-                                    {
+                    {
                         "name": "OL_INET_0",
                         "vdom": "root",
                         "ip": [
@@ -2046,7 +2056,7 @@ def configureInterfacesFGT1():
 # Configure FGT-2 Interfaces
 ##############################################################
 def configureInterfacesFGT2():
-        
+
     payload = {
         "session": session,
         "id": 1,
@@ -2071,7 +2081,7 @@ def configureInterfacesFGT2():
                         "fortiheartbeat": "enable",
                         "interface": "port4"
                     },
-                                    {
+                    {
                         "name": "OL_INET_0",
                         "vdom": "root",
                         "ip": [
@@ -2100,7 +2110,7 @@ def configureInterfacesFGT2():
 # Configure FGT-DC Interfaces
 ##############################################################
 def configureInterfacesFGTDC():
-        
+
     payload = {
         "session": session,
         "id": 1,
@@ -2222,7 +2232,7 @@ def execScript_FixVPNinBranches():
         "params": [
             {
                 "url": "/dvmdb/adom/" + ADOM + "/script/execute",
-                "data": 
+                "data":
                     {
                         "adom": ADOM,
                         "script": "Fix vpn in branches",
@@ -2237,7 +2247,7 @@ def execScript_FixVPNinBranches():
                             }
                         ]
                     }
-                
+
             }
         ]
     }
@@ -2249,7 +2259,7 @@ def execScript_FixVPNinBranches():
 # Exec Script - Fix VPN in Hub
 ##############################################################
 def execScript_FixVPNinHub():
-        
+
     payload = {
         "session": session,
         "id": 1,
@@ -2257,7 +2267,7 @@ def execScript_FixVPNinHub():
         "params": [
             {
                 "url": "/dvmdb/adom/" + ADOM + "/script/execute",
-                "data": 
+                "data":
                     {
                         "adom": ADOM,
                         "script": "Fix vpn in hub",
@@ -2268,7 +2278,7 @@ def execScript_FixVPNinHub():
                             }
                         ]
                     }
-                
+
             }
         ]
     }
@@ -3294,7 +3304,329 @@ def addFirewallPolicy_DataCenterPP():
 
     run_request(payload, name="Add Firewall Policy - DataCenter PP")
 
+
+##############################################################
+# Add Script - Hub Community List
+##############################################################
+def addScript_Hub_Community_list():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "Hub-Community-list",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config router community-list\n edit SLA_KO_MPLS\n config rule\n edit 1\n set action permit\n set match 65000:200\n next \n end \n next \n edit SLA_KO_INET \n config rule \n edit 1 \n set action permit \n set match 65000:201 \n next \n end \n next \n edit SLA_OK_INET \n config rule \n edit 1 \n set action permit \n set match 65000:101 \n next \n end \n next \n edit SLA_OK_MPLS \n config rule\n edit 1\n set action permit\n set match 65000:100\n next\n end\n next\n end",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - Hub Community List")
+
+
+##############################################################
+# Add Script - Hub Route Map
+##############################################################
+def addScript_Hub_Route_Map():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "Hub Route Map",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config router route-map \n edit OL_MPLS_IN \n config rule \n edit 3 \n set match-community SLA_KO_MPLS \n set set-weight 100 \n set set-route-tag 2 \n next \n edit 100 \n set set-weight 200 \n set set-route-tag 1 \n next \n end \n next \n edit OL_INET_IN \n config rule \n edit 1 \n set match-community SLA_KO_INET \n set set-weight 100 \n set set-route-tag 2 \n next \n edit 100 \n set set-weight 200 \n set set-route-tag 1 \n next \n end \n next \n edit OL_MPLS_OUT \n config rule \n edit 1 \n set action deny \n set match-community SLA_OK_INET \n next \n edit 2 \n set action deny \n set match-community SLA_KO_INET \n next \n edit 100 \n next \n end \n next \n edit OL_INET_OUT \n config rule \n edit 1 \n set action deny \n set match-community SLA_OK_MPLS \n next \n edit 2\n set action deny \n set match-community SLA_KO_MPLS \n next \n edit 100 \n next \n end \n next \nend",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - Hub Route Map")
+
+
+##############################################################
+# Add Script - Hub Router BGP
+##############################################################
+def addScript_Hub_Router_BGP():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM +"/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "Hub Router Bgp",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config router bgp \n set as 65000 \n set keepalive-timer 5 \n set holdtime-timer 15 \n set ibgp-multipath enable \n set network-import-check disable \n set additional-path enable \n set scan-time 20 \n config neighbor-group \n edit OL_MPLS \n set soft-reconfiguration enable \n set advertisement-interval 1 \n set remote-as 65000 \n set route-map-in OL_MPLS_IN \n set route-map-out OL_MPLS_OUT \n set additional-path both \n set route-reflector-client enable \n next \n edit OL_INET \n set soft-reconfiguration enable \n set advertisement-interval 1 \n set remote-as 65000 \n set route-map-in OL_INET_IN \n set route-map-out OL_INET_OUT \n set additional-path both \n set route-reflector-client enable \n next \n end \n config neighbor-range \n edit 1 \n set prefix 10.0.10.0 255.255.255.0 \n set neighbor-group OL_MPLS \n next \n edit 2 \n set prefix 10.0.11.0 255.255.255.0 \n set neighbor-group OL_INET \n next \n end \n config network \n edit 1 \n set prefix 172.16.0.0 255.255.255.0 \n next \n end \nend",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - Hub Router BGP")
+
+
+##############################################################
+# Add Script - Hub Router Policy
+##############################################################
+def addScript_Hub_Router_Policy():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "Hub Router Policy",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config router policy \nedit 1 \nset input-device OL_MPLS_0 \nset output-device OL_MPLS_0 \nnext \nedit 2 \nset input-device OL_INET_0 \nset output-device OL_INET_0 \nnext \n end",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - Hub Router Policy")
+
+
+##############################################################
+# Add Script - FAZ Configuration
+##############################################################
+def addScript_FAZ_Configuration():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "FAZ Configuration",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config log fortianalyzer setting \n set status enable \n set server 192.168.0.15 \n set upload-option realtime \n set serial FMG-VMTM19006959\n set certificate-verification disable \n set reliable enable \n end",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - FAZ Configuration")
+
+
+
+##############################################################
+# Add Script - Branches route map
+##############################################################
+def addScript_Branches_Route_Map():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "Branches Route map",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config router route-map \n edit SLA_OK_MPLS \n config rule \n edit 1 \n set set-community 65000:100 \n next \n end \n next \n edit SLA_KO_MPLS \n config rule \n edit 1 \n set set-community 65000:200 \n next \n end \n next \n edit SLA_OK_INET \n config rule \n edit 1 \n set set-community 65000:101 \n next \n end \n next \n edit SLA_KO_INET \n config rule \n edit 1 \n set set-community 65000:201 \n next \n end \n next \n end",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - Branches route map")
+
+
+##############################################################
+# Add Script - Branches router static
+##############################################################
+def addScript_Branches_Router_Static():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "Branch-static-route-sdwan",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config router static\n edit 2\n set virtual-wan-link enable \n next\n end",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - Branches router static")
+
+
+##############################################################
+# Add Script - Branch1 static route
+##############################################################
+def addScript_Branch1_Static_Route():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "Branch1 static route",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config router static \n edit 3 \n set dst 100.64.1.5 255.255.255.255 \n set gateway 192.2.0.2\n set device port1 \n end ",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - Branch1 static route")
+
+
+##############################################################
+# Add Script - Branch2 static route
+##############################################################
+def addScript_Branch2_Static_Route():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "Branch2 static route",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config router static \n edit 3 \n set dst 100.64.1.5 255.255.255.255 \n set gateway 203.0.113.1\n set device port1 \n end ",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - Branch2 static route")
+
+
+##############################################################
+# Add Script - Branch1 router bgp
+##############################################################
+def addScript_Branch1_Router_BGP():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "Branch1 router bgp",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config router bgp \n set as 65000 \n set keepalive-timer 5 \n set holdtime-timer 15 \n set ibgp-multipath enable \n set scan-time 20 \n config neighbor \n edit 10.0.10.5 \n set soft-reconfiguration enable \n set interface OL_MPLS_0 \n set remote-as 65000 \n set route-map-out SLA_KO_MPLS \n set route-map-out-preferable SLA_OK_MPLS \n set additional-path receive \n next \n edit 10.0.11.5 \n set soft-reconfiguration enable \n set interface OL_INET_0 \n set remote-as 65000 \n set route-map-out SLA_KO_INET \n set route-map-out-preferable SLA_OK_INET \n set additional-path receive \n next \n end \n config network \n edit 1 \n set prefix 10.0.1.0 255.255.255.0 \n next \n edit 2 \n set prefix 10.1.1.0 255.255.255.0 \n next \n end \nend",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - Add Script - Branch1 router bgp")
+
+
+##############################################################
+# Add Script - Branch2 router bgp
+##############################################################
+def addScript_Branch2_Router_BGP():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "Branch2 router bgp",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "config router bgp \n set as 65000 \n set keepalive-timer 5 \n set holdtime-timer 15 \n set ibgp-multipath enable \n set scan-time 20 \n config neighbor \n edit 10.0.10.5 \n set soft-reconfiguration enable \n set interface OL_MPLS_0 \n set remote-as 65000 \n set route-map-out SLA_KO_MPLS \n set route-map-out-preferable SLA_OK_MPLS \n set additional-path receive \n next \n edit 10.0.11.5 \n set soft-reconfiguration enable \n set interface OL_INET_0 \n set remote-as 65000 \n set route-map-out SLA_KO_INET \n set route-map-out-preferable SLA_OK_INET \n set additional-path receive \n next \n end \n config network \n edit 1 \n set prefix 10.0.2.0 255.255.255.0 \n next \n edit 2 \n set prefix 10.1.2.0 255.255.255.0 \n next \n end \nend",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - Branch2 router bgp")
+
+
 session = None
+
 
 def main():
 
@@ -3421,6 +3753,60 @@ def main():
     ##############################################################
     installPolicy_Branches()
 
+    ##############################################################
+    # 25 - Add Script - Hub Community-list
+    ##############################################################
+    addScript_Hub_Community_list()
+
+    ##############################################################
+    # 26 - Add Script - Hub Route Map
+    ##############################################################
+    addScript_Hub_Route_Map()
+
+    ##############################################################
+    # 27 - Add Script - Hub Router BGP
+    ##############################################################
+    addScript_Hub_Router_BGP()
+
+    ##############################################################
+    # 28 - Add Script - Hub Router Policy
+    ##############################################################
+    addScript_Hub_Router_Policy()
+    
+    ##############################################################
+    # 29 - Add Script - FAZ Configuration
+    ##############################################################
+    addScript_FAZ_Configuration()
+
+    ##############################################################
+    # 30 - Add Script - Branches route map
+    ##############################################################
+    addScript_Branches_Route_Map()
+
+    ##############################################################
+    # 31 - Add Script - Branches router static
+    ##############################################################
+    addScript_Branches_Router_Static()
+
+    ##############################################################
+    # 32 - Add Script - Branch1 static route
+    ##############################################################
+    addScript_Branch1_Static_Route()
+
+    ##############################################################
+    # 33 - Add Script - Branch2 static route
+    ##############################################################
+    addScript_Branch2_Static_Route()
+
+    ##############################################################
+    # 34 - Add Script - Branch1 router bgp
+    ##############################################################
+    addScript_Branch1_Router_BGP()
+
+    ##############################################################
+    # 35 - Add Script - Branch2 router bgp
+    ##############################################################
+    addScript_Branch2_Router_BGP()
+
 if __name__ == "__main__":
     main()
-
