@@ -3440,7 +3440,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Branch1 static route\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router static \\n edit 3 \\n set dst 100.64.1.5 255.255.255.255 \\n set gateway 192.2.0.2\\n set device port1 \\n end \",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Branch1 static route\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router static \\n edit 3 \\n set dst 100.64.1.5 255.255.255.255 \\n set gateway 192.2.0.2\\n set device port1 \\n next \\n edit 4 \\n set dst 128.66.0.0 255.255.255.0 \\n set gateway 192.2.0.2\\n set device port1 \\n end \",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -3553,7 +3553,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Branch2 static route\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router static \\n edit 3 \\n set dst 100.64.1.5 255.255.255.255 \\n set gateway 203.0.113.1\\n set device port1 \\n end \",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Branch2 static route\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router static \\n edit 3 \\n set dst 100.64.1.5 255.255.255.255 \\n set gateway 203.0.113.1\\n set device port1 \\n next \\n edit 4 \\n set dst 128.66.0.0 255.255.255.0 \\n set gateway 203.0.113.1\\n set device port1 \\n end \",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
