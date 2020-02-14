@@ -1,0 +1,3068 @@
+{
+	"info": {
+		"_postman_id": "d3ba9def-ffc2-4aa0-bfd2-a3ad287bf8b9",
+		"name": "SD-WAN lab - SD-WAN Configuration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Setup",
+			"item": [
+				{
+					"name": "Misc",
+					"item": [
+						{
+							"name": "25 - Add Script - Hub Community-list",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Hub-Community-list\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router community-list\\n edit SLA_KO_MPLS\\n config rule\\n edit 1\\n set action permit\\n set match 65000:200\\n next \\n end \\n next \\n edit SLA_KO_INET \\n config rule \\n edit 1 \\n set action permit \\n set match 65000:201 \\n next \\n end \\n next \\n edit SLA_OK_INET \\n config rule \\n edit 1 \\n set action permit \\n set match 65000:101 \\n next \\n end \\n next \\n edit SLA_OK_MPLS \\n config rule\\n edit 1\\n set action permit\\n set match 65000:100\\n next\\n end\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "16 - Add Script - Fix VPN in Branches",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000"
+										},
+										{
+											"key": "X-UA-Compatible",
+											"value": "IE=Edge"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=30, max=195"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "26 - Add Script - Hub Route Map",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Hub Route Map\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router route-map \\n edit OL_MPLS_IN \\n config rule \\n edit 3 \\n set match-community SLA_KO_MPLS \\n set set-weight 100 \\n set set-route-tag 2 \\n next \\n edit 100 \\n set set-weight 200 \\n set set-route-tag 1 \\n next \\n end \\n next \\n edit OL_INET_IN \\n config rule \\n edit 1 \\n set match-community SLA_KO_INET \\n set set-weight 100 \\n set set-route-tag 2 \\n next \\n edit 100 \\n set set-weight 200 \\n set set-route-tag 1 \\n next \\n end \\n next \\n edit OL_MPLS_OUT \\n config rule \\n edit 1 \\n set action deny \\n set match-community SLA_OK_INET \\n next \\n edit 2 \\n set action deny \\n set match-community SLA_KO_INET \\n next \\n edit 100 \\n next \\n end \\n next \\n edit OL_INET_OUT \\n config rule \\n edit 1 \\n set action deny \\n set match-community SLA_OK_MPLS \\n next \\n edit 2\\n set action deny \\n set match-community SLA_KO_MPLS \\n next \\n edit 100 \\n next \\n end \\n next \\nend\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "16 - Add Script - Fix VPN in Branches",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000"
+										},
+										{
+											"key": "X-UA-Compatible",
+											"value": "IE=Edge"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=30, max=195"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "27 - Add Script - Hub Router Bgp",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Hub Router Bgp\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router bgp \\n set as 65000 \\n set keepalive-timer 5 \\n set holdtime-timer 15 \\n set ibgp-multipath enable \\n set network-import-check disable \\n set additional-path enable \\n set scan-time 20 \\n config neighbor-group \\n edit OL_MPLS \\n set soft-reconfiguration enable \\n set advertisement-interval 1 \\n set remote-as 65000 \\n set route-map-in OL_MPLS_IN \\n set route-map-out OL_MPLS_OUT \\n set additional-path both \\n set route-reflector-client enable \\n next \\n edit OL_INET \\n set soft-reconfiguration enable \\n set advertisement-interval 1 \\n set remote-as 65000 \\n set route-map-in OL_INET_IN \\n set route-map-out OL_INET_OUT \\n set additional-path both \\n set route-reflector-client enable \\n next \\n end \\n config neighbor-range \\n edit 1 \\n set prefix 10.0.10.0 255.255.255.0 \\n set neighbor-group OL_MPLS \\n next \\n edit 2 \\n set prefix 10.0.11.0 255.255.255.0 \\n set neighbor-group OL_INET \\n next \\n end \\n config network \\n edit 1 \\n set prefix 172.16.0.0 255.255.255.0 \\n next \\n end \\nend\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "16 - Add Script - Fix VPN in Branches",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000"
+										},
+										{
+											"key": "X-UA-Compatible",
+											"value": "IE=Edge"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=30, max=195"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "28 - Add Script - Hub Router Policy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Hub Router Policy\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router policy \\nedit 1 \\nset input-device OL_MPLS_0 \\nset output-device OL_MPLS_0 \\nnext \\nedit 2 \\nset input-device OL_INET_0 \\nset output-device OL_INET_0 \\nnext \\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "16 - Add Script - Fix VPN in Branches",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000"
+										},
+										{
+											"key": "X-UA-Compatible",
+											"value": "IE=Edge"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=30, max=195"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "28.1 - Exec Multi Script - Hub Router XXX",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"script\": \"Hub-Community-list\",\n                \"scope\": [\n                    {\n                        \"name\": \"{{name_fgt_dc}}\",\n                        \"vdom\": \"root\"\n                    }\n                ]\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"script\": \"Hub Route Map\",\n                \"scope\": [\n                    {\n                        \"name\": \"{{name_fgt_dc}}\",\n                        \"vdom\": \"root\"\n                    }\n                ]\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"script\": \"Hub Router Bgp\",\n                \"scope\": [\n                    {\n                        \"name\": \"{{name_fgt_dc}}\",\n                        \"vdom\": \"root\"\n                    }\n                ]\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"script\": \"Hub Router Policy\",\n                \"scope\": [\n                    {\n                        \"name\": \"{{name_fgt_dc}}\",\n                        \"vdom\": \"root\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "18 - Exec Script - Fix VPN in Branches",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Fix vpn in branches\",\n                    \"scope\": [\n                        {\n                            \"name\": \"branch1_fgt\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"branch2_fgt\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 28 Oct 2019 18:03:22 GMT"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000"
+										},
+										{
+											"key": "X-UA-Compatible",
+											"value": "IE=Edge"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=30, max=193"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"task\": 5\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script/execute\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "30 - Add Script - Branches route map",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Branches Route map\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router route-map \\n edit SLA_OK_MPLS \\n config rule \\n edit 1 \\n set set-community 65000:100 \\n next \\n end \\n next \\n edit SLA_KO_MPLS \\n config rule \\n edit 1 \\n set set-community 65000:200 \\n next \\n end \\n next \\n edit SLA_OK_INET \\n config rule \\n edit 1 \\n set set-community 65000:101 \\n next \\n end \\n next \\n edit SLA_KO_INET \\n config rule \\n edit 1 \\n set set-community 65000:201 \\n next \\n end \\n next \\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "16 - Add Script - Fix VPN in Branches",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000"
+										},
+										{
+											"key": "X-UA-Compatible",
+											"value": "IE=Edge"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=30, max=195"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "34 - Add Script - Branch1 router bgp",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Branch1 router bgp\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router bgp \\n set as 65000 \\n set keepalive-timer 5 \\n set holdtime-timer 15 \\n set ibgp-multipath enable \\n set scan-time 20 \\n config neighbor \\n edit 10.0.10.5 \\n set soft-reconfiguration enable \\n set interface OL_MPLS_0 \\n set remote-as 65000 \\n set route-map-out SLA_KO_MPLS \\n set route-map-out-preferable SLA_OK_MPLS \\n set additional-path receive \\n next \\n edit 10.0.11.5 \\n set soft-reconfiguration enable \\n set interface OL_INET_0 \\n set remote-as 65000 \\n set route-map-out SLA_KO_INET \\n set route-map-out-preferable SLA_OK_INET \\n set additional-path receive \\n next \\n end \\n config network \\n edit 1 \\n set prefix 10.0.1.0 255.255.255.0 \\n next \\n edit 2 \\n set prefix 10.1.1.0 255.255.255.0 \\n next \\n end \\nend\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "16 - Add Script - Fix VPN in Branches",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000"
+										},
+										{
+											"key": "X-UA-Compatible",
+											"value": "IE=Edge"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=30, max=195"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "35 - Add Script - Branch2 router bgp",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Branch2 router bgp\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router bgp \\n set as 65000 \\n set keepalive-timer 5 \\n set holdtime-timer 15 \\n set ibgp-multipath enable \\n set scan-time 20 \\n config neighbor \\n edit 10.0.10.5 \\n set soft-reconfiguration enable \\n set interface OL_MPLS_0 \\n set remote-as 65000 \\n set route-map-out SLA_KO_MPLS \\n set route-map-out-preferable SLA_OK_MPLS \\n set additional-path receive \\n next \\n edit 10.0.11.5 \\n set soft-reconfiguration enable \\n set interface OL_INET_0 \\n set remote-as 65000 \\n set route-map-out SLA_KO_INET \\n set route-map-out-preferable SLA_OK_INET \\n set additional-path receive \\n next \\n end \\n config network \\n edit 1 \\n set prefix 10.0.2.0 255.255.255.0 \\n next \\n edit 2 \\n set prefix 10.1.2.0 255.255.255.0 \\n next \\n end \\nend\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "16 - Add Script - Fix VPN in Branches",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "gzip"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=63072000"
+										},
+										{
+											"key": "X-UA-Compatible",
+											"value": "IE=Edge"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=30, max=195"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "200 - Enable SD-WAN in ADOM",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/\",\n            \"data\": \n                {\n                    \"flags\": [ \"central_sdwan\"],\n                    \"name\": \"root\"\n\n                }\n            \n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "201 - Create SD-WAN Interface OL_INET",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/virtual-wan-link/members/OL_INET\",\n            \"data\": {\n                \"name\": \"OL_INET\",\n                \"comment\": null,\n                \"interface\": \"OL_INET_0\",\n                \"gateway\": \"0.0.0.0\",\n                \"cost\": 0,\n                \"weight\": 1,\n                \"volume-ratio\": 1,\n                \"dynamic_mapping\": [\n                    {\n                        \"_scope\": [\n                            {\n                                \"name\": \"{{name_fgt_2}}\",\n                                \"vdom\": \"root\"\n                            }\n                        ],\n                        \"interface\": \"OL_INET_0\",\n                        \"gateway\": \"10.0.11.5\",\n                        \"weight\": 1,\n                        \"cost\": 0,\n                        \"volume-ratio\": 1,\n                        \"gateway6\": \"::\",\n                        \"ingress-spillover-threshold\": 0,\n                        \"priority\": 0,\n                        \"source\": \"0.0.0.0\",\n                        \"source6\": \"::\",\n                        \"spillover-threshold\": 0,\n                        \"status\": 1\n                    },\n                    {\n                        \"_scope\": [\n                            {\n                                \"name\": \"{{name_fgt_1}}\",\n                                \"vdom\": \"root\"\n                            }\n                        ],\n                        \"interface\": \"OL_INET_0\",\n                        \"gateway\": \"10.0.11.5\",\n                        \"weight\": 1,\n                        \"cost\": 0,\n                        \"volume-ratio\": 1,\n                        \"gateway6\": \"::\",\n                        \"ingress-spillover-threshold\": 0,\n                        \"priority\": 0,\n                        \"source\": \"0.0.0.0\",\n                        \"source6\": \"::\",\n                        \"spillover-threshold\": 0,\n                        \"status\": 1\n                    },\n                    {\n                        \"_scope\": [\n                            {\n                                \"name\": \"{{name_fgt_dc}}\",\n                                \"vdom\": \"root\"\n                            }\n                        ],\n                        \"interface\": \"OL_INET_0\",\n                        \"gateway\": \"0.0.0.0\",\n                        \"weight\": 1,\n                        \"cost\": 0,\n                        \"volume-ratio\": 1,\n                        \"gateway6\": \"::\",\n                        \"ingress-spillover-threshold\": 0,\n                        \"priority\": 0,\n                        \"source\": \"0.0.0.0\",\n                        \"source6\": \"::\",\n                        \"spillover-threshold\": 0,\n                        \"status\": 1\n                    }\n                ],\n                \"gateway6\": \"::\",\n                \"ingress-spillover-threshold\": 0,\n                \"priority\": 20,\n                \"source\": \"0.0.0.0\",\n                \"source6\": \"::\",\n                \"spillover-threshold\": 0,\n                \"status\": 1\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "202 - Create SD-WAN Interface OL_MPLS",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/virtual-wan-link/members/OL_MPLS\",\n            \"data\": {\n                \"name\": \"OL_MPLS\",\n                \"comment\": null,\n                \"interface\": \"OL_MPLS_0\",\n                \"gateway\": \"10.0.10.5\",\n                \"cost\": 0,\n                \"weight\": 1,\n                \"volume-ratio\": 1,\n                \"dynamic_mapping\": [\n                    {\n                        \"_scope\": [\n                            {\n                                \"name\": \"{{name_fgt_dc}}\",\n                                \"vdom\": \"root\"\n                            }\n                        ],\n                        \"interface\": \"OL_MPLS_0\",\n                        \"gateway\": \"0.0.0.0\",\n                        \"weight\": 1,\n                        \"cost\": 0,\n                        \"volume-ratio\": 1,\n                        \"gateway6\": \"::\",\n                        \"ingress-spillover-threshold\": 0,\n                        \"priority\": 0,\n                        \"source\": \"0.0.0.0\",\n                        \"source6\": \"::\",\n                        \"spillover-threshold\": 0,\n                        \"status\": 1\n                    }\n                ],\n                \"gateway6\": \"::\",\n                \"ingress-spillover-threshold\": 0,\n                \"priority\": 20,\n                \"source\": \"0.0.0.0\",\n                \"source6\": \"::\",\n                \"spillover-threshold\": 0,\n                \"status\": 1\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "203 - Create SD-WAN Interface Port1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/virtual-wan-link/members/port1\",\n            \"data\": {\n                \"name\": \"port1\",\n                \"comment\": null,\n                \"interface\": \"port1\",\n                \"gateway\": \"0.0.0.0\",\n                \"cost\": 0,\n                \"weight\": 1,\n                \"volume-ratio\": 1,\n                \"dynamic_mapping\": [\n                    {\n                        \"_scope\": [\n                            {\n                                \"name\": \"{{name_fgt_1}}\",\n                                \"vdom\": \"root\"\n                            }\n                        ],\n                        \"interface\": \"port1\",\n                        \"gateway\": \"192.2.0.2\",\n                        \"weight\": 1,\n                        \"cost\": 0,\n                        \"volume-ratio\": 1,\n                        \"gateway6\": \"::\",\n                        \"ingress-spillover-threshold\": 0,\n                        \"priority\": 0,\n                        \"source\": \"0.0.0.0\",\n                        \"source6\": \"::\",\n                        \"spillover-threshold\": 0,\n                        \"status\": 1\n                    },\n                    {\n                        \"_scope\": [\n                            {\n                                \"name\": \"{{name_fgt_2}}\",\n                                \"vdom\": \"root\"\n                            }\n                        ],\n                        \"interface\": \"port1\",\n                        \"gateway\": \"203.0.113.1\",\n                        \"weight\": 1,\n                        \"cost\": 0,\n                        \"volume-ratio\": 1,\n                        \"gateway6\": \"::\",\n                        \"ingress-spillover-threshold\": 0,\n                        \"priority\": 0,\n                        \"source\": \"0.0.0.0\",\n                        \"source6\": \"::\",\n                        \"spillover-threshold\": 0,\n                        \"status\": 1\n                    }\n                ],\n                \"gateway6\": \"::\",\n                \"ingress-spillover-threshold\": 0,\n                \"priority\": 10,\n                \"source\": \"0.0.0.0\",\n                \"source6\": \"::\",\n                \"spillover-threshold\": 0,\n                \"status\": 1\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "204 - Create Health Check Servers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/virtual-wan-link/server\",\n            \"data\": [\n                {\n                    \"name\": \"DC Host\",\n                    \"description\": null,\n                    \"server\": [\n                        \"172.16.0.7\"\n                    ],\n                    \"dynamic_mapping\": null\n                },\n                {\n                    \"name\": \"Internet Host\",\n                    \"description\": null,\n                    \"server\": [\n                        \"www.fortinet.com\"\n                    ],\n                    \"dynamic_mapping\": null\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "205 - Create Template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/wanprof/adom/{{adom}}/\",\n            \"data\": {\n            \t\"name\": \"Branch-Template\",\n            \t\"type\": \"wanprof\"\n            \t\n            }\n        }\n            \n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "206 - Populate Template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Branch-Template/system/virtual-wan-link\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 1,\n                \"fail-detect\": \"disable\",\n                \"neighbor-hold-boot-time\": 0,\n                \"neighbor-hold-down\": 0,\n                \"neighbor-hold-down-time\": 0,\n                \"members\": [\n                    {\n                        \"_dynamic-member\": [\n                            \"OL_INET\"\n                        ],\n                        \"cost\": 0,\n                        \"gateway\": \"0.0.0.0\",\n                        \"gateway6\": \"::\",\n                        \"ingress-spillover-threshold\": 0,\n                        \"interface\": [],\n                        \"priority\": 0,\n                        \"source\": \"0.0.0.0\",\n                        \"source6\": \"::\",\n                        \"spillover-threshold\": 0,\n                        \"status\": 1,\n                        \"volume-ratio\": 1,\n                        \"weight\": 1\n                    },\n                    {\n                        \"_dynamic-member\": [\n                            \"OL_MPLS\"\n                        ],\n                        \"cost\": 0,\n                        \"gateway\": \"0.0.0.0\",\n                        \"gateway6\": \"::\",\n                        \"ingress-spillover-threshold\": 0,\n                        \"interface\": [],\n                        \"priority\": 0,\n                        \"source\": \"0.0.0.0\",\n                        \"source6\": \"::\",\n                        \"spillover-threshold\": 0,\n                        \"status\": 1,\n                        \"volume-ratio\": 1,\n                        \"weight\": 1\n                    }\n                ],\n                \"service\": [\n                    {\n                        \"addr-mode\": 7,\n                        \"default\": 0,\n                        \"dscp-forward\": 0,\n                        \"dscp-forward-tag\": \"000000\",\n                        \"dscp-reverse\": 0,\n                        \"dscp-reverse-tag\": \"000000\",\n                        \"dst\": [\n                            \"all\"\n                        ],\n                        \"dst-negate\": 0,\n                        \"end-port\": 65535,\n                        \"gateway\": 0,\n                        \"groups\": [],\n                        \"hold-down-time\": 0,\n                        \"id\": 1,\n                        \"input-device\": [],\n                        \"internet-service\": 0,\n                        \"link-cost-threshold\": 10,\n                        \"mode\": 4,\n                        \"name\": \"ICMP\",\n                        \"priority-members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"protocol\": 1,\n                        \"role\": 3,\n                        \"route-tag\": 0,\n                        \"sla\": [\n                            {\n                                \"health-check\": \"Datacenter\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"sla-compare-method\": 0,\n                        \"src\": [\n                            \"all\"\n                        ],\n                        \"src-negate\": 0,\n                        \"standalone-action\": 0,\n                        \"start-port\": 1,\n                        \"status\": 1,\n                        \"tos\": \"0x00\",\n                        \"tos-mask\": \"0x00\",\n                        \"users\": []\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"Datacenter\",\n                        \"_dynamic-server\": [\n                            \"DC Host\"\n                        ],\n                        \"protocol\": 1,\n                        \"port\": 80,\n                        \"members\": [\n                            1,\n                            2\n                        ],\n                        \"failtime\": 5,\n                        \"recoverytime\": 5,\n                        \"security-mode\": 0,\n                        \"update-cascade-interface\": 1,\n                        \"update-static-route\": 1,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"jitter-threshold\": 5,\n                                \"latency-threshold\": 5,\n                                \"link-cost-factor\": 7,\n                                \"packetloss-threshold\": 0\n                            }\n                        ],\n                        \"addr-mode\": 7,\n                        \"ha-priority\": 1,\n                        \"http-agent\": \"Chrome/ Safari/\",\n                        \"http-get\": \"/\",\n                        \"interval\": 500,\n                        \"packet-size\": 64,\n                        \"probe-packets\": 1,\n                        \"sla-fail-log-period\": 0,\n                        \"sla-pass-log-period\": 0,\n                        \"threshold-alert-jitter\": 0,\n                        \"threshold-alert-latency\": 0,\n                        \"threshold-alert-packetloss\": 0,\n                        \"threshold-warning-jitter\": 0,\n                        \"threshold-warning-latency\": 0,\n                        \"threshold-warning-packetloss\": 0\n                    }\n                ],\n                \"neighbor\": []\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "207 - Assign Templates to Branches",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/wanprof/adom/{{adom}}/Branch-Template\",\n            \"data\": {\n                \"name\": \"Branch-Template\",\n                \"description\": \"\",\n                \"scope member\": [\n                    {\n                    \t\"name\": \"{{name_fgt_1}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_fgt_2}}\",\n                    \t\"vdom\": \"root\"\n                    }\n                ],\n                \"type\": \"wanprof\"\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "208 - Install policy - Branches",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"{{name_fgt_1}}\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"{{name_fgt_2}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "12 - Install policy - Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"branch1_fgt\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"branch2_fgt\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:02:09 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=199"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"task\": 4\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/securityconsole/install/package\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "209 - Add Script - Branch Static Route SDWAN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Branch-static-route-sdwan\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router static\\n edit 2\\n set virtual-wan-link enable \\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "210 - Exec Script - Branch Static Route SDWAN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Branch-static-route-sdwan\",\n                    \"scope\": [\n                        {\n                            \"name\": \"{{name_fgt_1}}\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"{{name_fgt_2}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "18 - Exec Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Fix vpn in branches\",\n                    \"scope\": [\n                        {\n                            \"name\": \"branch1_fgt\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"branch2_fgt\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:22 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=193"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"task\": 5\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script/execute\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "211 - Add Script - Branch1 static route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Branch1 static route\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router static \\n edit 3 \\n set dst 100.64.1.5 255.255.255.255 \\n set gateway 192.2.0.2\\n set device port1 \\n next \\n edit 4 \\n set dst 128.66.0.0 255.255.255.0 \\n set gateway 192.2.0.2\\n set device port1 \\n end \",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "212 - Exec Script - Branch1 static route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Branch1 static route\",\n                    \"scope\": [\n                        {\n                            \"name\": \"{{name_fgt_1}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "18 - Exec Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Fix vpn in branches\",\n                    \"scope\": [\n                        {\n                            \"name\": \"branch1_fgt\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"branch2_fgt\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:22 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=193"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"task\": 5\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script/execute\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "213 - Add Script - Branch2 static route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Branch2 static route\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config router static \\n edit 3 \\n set dst 100.64.1.5 255.255.255.255 \\n set gateway 203.0.113.1\\n set device port1 \\n next \\n edit 4 \\n set dst 128.66.0.0 255.255.255.0 \\n set gateway 203.0.113.1\\n set device port1 \\n end \",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "214 - Exec Script - Branch2 static route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Branch2 static route\",\n                    \"scope\": [\n                        {\n                            \"name\": \"{{name_fgt_2}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "18 - Exec Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": \n                {\n                \t\"adom\": \"{{adom}}\",\n                    \"script\": \"Fix vpn in branches\",\n                    \"scope\": [\n                        {\n                            \"name\": \"branch1_fgt\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"branch2_fgt\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            \n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:22 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=193"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"task\": 5\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script/execute\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "215 - Install policy - Branches",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"{{name_fgt_1}}\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"{{name_fgt_2}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "12 - Install policy - Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"branch1_fgt\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"branch2_fgt\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:02:09 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=199"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"task\": 4\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/securityconsole/install/package\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Monitor",
+			"item": [
+				{
+					"name": "Get ADOMs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom\",\n            \"data\": []\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Tasks",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/task/task/65\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Tasks",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/task/task\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:10:34 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=199"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": [\n                {\n                    \"history\": [\n                        {\n                            \"detail\": \"2019-10-16 07:00:17:Start  dvmdb adom root object member\",\n                            \"name\": \" dvmdb adom root object member\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-16 07:00:20:Task completed successfully\",\n                            \"name\": \" dvmdb adom root object member\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"line\": [\n                        {\n                            \"detail\": \"Task completed successfully\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \" dvmdb adom root object member\",\n                            \"oid\": 0,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"id\": 1,\n                    \"state\": 4,\n                    \"src\": 0,\n                    \"flags\": 0,\n                    \"percent\": 100,\n                    \"tot_percent\": 100,\n                    \"num_lines\": 1,\n                    \"num_err\": 0,\n                    \"num_warn\": 0,\n                    \"num_done\": 1,\n                    \"pid\": 0,\n                    \"adom\": 3,\n                    \"start_tm\": 1571234417,\n                    \"end_tm\": 1571234420,\n                    \"user\": \"admin\",\n                    \"title\": \" dvmdb adom root object member\"\n                },\n                {\n                    \"history\": [\n                        {\n                            \"detail\": \"2019-10-28 10:54:14:discoverdev\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:17:adddev\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 16,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:17:initconfdb\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 40,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:19:retrieveconf\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 50,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:33:loaddata\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 70,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:45:devaddsuccess\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:14:discoverdev\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:16:adddev\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 16,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:16:initconfdb\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 40,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:18:retrieveconf\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 50,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:33:loaddata\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 70,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:46:devaddsuccess\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:14:discoverdev\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:18:adddev\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 16,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:18:initconfdb\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 40,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:20:retrieveconf\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 50,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:33:loaddata\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 70,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 10:54:45:devaddsuccess\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"line\": [\n                        {\n                            \"detail\": \"devaddsuccess\",\n                            \"err\": 0,\n                            \"ip\": \"192.168.0.1\",\n                            \"name\": \"branch1_fgt\",\n                            \"oid\": 150,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"devaddsuccess\",\n                            \"err\": 0,\n                            \"ip\": \"192.168.0.12\",\n                            \"name\": \"branch2_fgt\",\n                            \"oid\": 138,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"devaddsuccess\",\n                            \"err\": 0,\n                            \"ip\": \"192.168.0.5\",\n                            \"name\": \"datacenter_fgt\",\n                            \"oid\": 162,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"id\": 2,\n                    \"state\": 4,\n                    \"src\": 0,\n                    \"flags\": 0,\n                    \"percent\": 100,\n                    \"tot_percent\": 300,\n                    \"num_lines\": 3,\n                    \"num_err\": 0,\n                    \"num_warn\": 0,\n                    \"num_done\": 3,\n                    \"pid\": 5148,\n                    \"adom\": 3,\n                    \"start_tm\": 1572285254,\n                    \"end_tm\": 1572285286,\n                    \"user\": \"admin\",\n                    \"title\": \"addmultdevtitle\"\n                },\n                {\n                    \"history\": [\n                        {\n                            \"detail\": \"2019-10-28 11:01:48:start to install dev (datacenter_fgt)\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:01:50:init state: start to get pre-checksum\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 15,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:01:57:get pre-checksum state: start get diff (chkout=1)\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 25,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:01:57:script done state: start to FGFM install\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 35,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:01:57:fgfm install state: prepare to post-checksum\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 80,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:01:install and save finished status=OK\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:01:50:Start copying policy to devdb, device(datacenter_fgt), vdomid(root)\",\n                            \"name\": \"datacenter_fgt[copy]\",\n                            \"percent\": 1,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:01:50:Initiate request to install to real device\",\n                            \"name\": \"datacenter_fgt[copy]\",\n                            \"percent\": 80,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:01:50:Copy to device done\",\n                            \"name\": \"datacenter_fgt[copy]\",\n                            \"percent\": 90,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:04:Installation to real device done\",\n                            \"name\": \"datacenter_fgt[copy]\",\n                            \"percent\": 100,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:01:50:Init vpn context done\",\n                            \"name\": \"VPN manager\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"line\": [\n                        {\n                            \"detail\": \"install and save finished status=OK\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"datacenter_fgt\",\n                            \"oid\": 162,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"Installation to real device done\",\n                            \"err\": 0,\n                            \"ip\": \"192.168.0.5\",\n                            \"name\": \"datacenter_fgt[copy]\",\n                            \"oid\": 162,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"Init vpn context done\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"VPN manager\",\n                            \"oid\": 0,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"id\": 3,\n                    \"state\": 4,\n                    \"src\": 1,\n                    \"flags\": 0,\n                    \"percent\": 100,\n                    \"tot_percent\": 300,\n                    \"num_lines\": 3,\n                    \"num_err\": 0,\n                    \"num_warn\": 0,\n                    \"num_done\": 3,\n                    \"pid\": 7355,\n                    \"adom\": 3,\n                    \"start_tm\": 1572285706,\n                    \"end_tm\": 1572285724,\n                    \"user\": \"admin\",\n                    \"title\": \"Install Package 'DataCenter-PP'\"\n                },\n                {\n                    \"history\": [\n                        {\n                            \"detail\": \"2019-10-28 11:02:12:start to install dev (branch1_fgt)\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:14:init state: start to get pre-checksum\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 15,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:23:get pre-checksum state: start get diff (chkout=1)\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 25,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:23:script done state: start to FGFM install\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 35,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:23:fgfm install state: prepare to post-checksum\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 80,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:23:install and save finished status=OK\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:14:Start copying policy to devdb, device(branch1_fgt), vdomid(root)\",\n                            \"name\": \"branch1_fgt[copy]\",\n                            \"percent\": 1,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:14:Initiate request to install to real device\",\n                            \"name\": \"branch1_fgt[copy]\",\n                            \"percent\": 80,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:14:Copy to device done\",\n                            \"name\": \"branch1_fgt[copy]\",\n                            \"percent\": 90,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:29:Installation to real device done\",\n                            \"name\": \"branch1_fgt[copy]\",\n                            \"percent\": 100,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:11:start to install dev (branch2_fgt)\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:14:init state: start to get pre-checksum\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 15,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:23:get pre-checksum state: start get diff (chkout=1)\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 25,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:23:script done state: start to FGFM install\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 35,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:23:fgfm install state: prepare to post-checksum\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 80,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:23:install and save finished status=OK\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:14:Start copying policy to devdb, device(branch2_fgt), vdomid(root)\",\n                            \"name\": \"branch2_fgt[copy]\",\n                            \"percent\": 1,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:14:Initiate request to install to real device\",\n                            \"name\": \"branch2_fgt[copy]\",\n                            \"percent\": 80,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:14:Copy to device done\",\n                            \"name\": \"branch2_fgt[copy]\",\n                            \"percent\": 90,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:29:Installation to real device done\",\n                            \"name\": \"branch2_fgt[copy]\",\n                            \"percent\": 100,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:02:14:Init vpn context done\",\n                            \"name\": \"VPN manager\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"line\": [\n                        {\n                            \"detail\": \"install and save finished status=OK\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"branch1_fgt\",\n                            \"oid\": 150,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"Installation to real device done\",\n                            \"err\": 0,\n                            \"ip\": \"192.168.0.1\",\n                            \"name\": \"branch1_fgt[copy]\",\n                            \"oid\": 150,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"install and save finished status=OK\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"branch2_fgt\",\n                            \"oid\": 138,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"Installation to real device done\",\n                            \"err\": 0,\n                            \"ip\": \"192.168.0.12\",\n                            \"name\": \"branch2_fgt[copy]\",\n                            \"oid\": 138,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"Init vpn context done\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"VPN manager\",\n                            \"oid\": 0,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"id\": 4,\n                    \"state\": 4,\n                    \"src\": 1,\n                    \"flags\": 0,\n                    \"percent\": 100,\n                    \"tot_percent\": 500,\n                    \"num_lines\": 5,\n                    \"num_err\": 0,\n                    \"num_warn\": 0,\n                    \"num_done\": 5,\n                    \"pid\": 7494,\n                    \"adom\": 3,\n                    \"start_tm\": 1572285729,\n                    \"end_tm\": 1572285749,\n                    \"user\": \"admin\",\n                    \"title\": \"Install Package 'Branches-PP'\"\n                },\n                {\n                    \"history\": [\n                        {\n                            \"detail\": \"2019-10-28 11:03:23:start installing script Fix vpn in branches to branch1_fgt\",\n                            \"name\": \"branch1_fgt(Fix vpn in branches)\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:03:28:init state: start to run-on-db\",\n                            \"name\": \"branch1_fgt(Fix vpn in branches)\",\n                            \"percent\": 30,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:03:28:running on_db script succeeded\",\n                            \"name\": \"branch1_fgt(Fix vpn in branches)\",\n                            \"percent\": 70,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:03:28:Script Fix vpn in branches executed on local db of branch1_fgt. View Script Execution History log file for result.\",\n                            \"name\": \"branch1_fgt(Fix vpn in branches)\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:03:23:start installing script Fix vpn in branches to branch2_fgt\",\n                            \"name\": \"branch2_fgt(Fix vpn in branches)\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:03:28:init state: start to run-on-db\",\n                            \"name\": \"branch2_fgt(Fix vpn in branches)\",\n                            \"percent\": 30,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:03:28:running on_db script succeeded\",\n                            \"name\": \"branch2_fgt(Fix vpn in branches)\",\n                            \"percent\": 70,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:03:28:Script Fix vpn in branches executed on local db of branch2_fgt. View Script Execution History log file for result.\",\n                            \"name\": \"branch2_fgt(Fix vpn in branches)\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"line\": [\n                        {\n                            \"detail\": \"Script Fix vpn in branches executed on local db of branch1_fgt. View Script Execution History log file for result.\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"branch1_fgt(Fix vpn in branches)\",\n                            \"oid\": 150,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"Script Fix vpn in branches executed on local db of branch2_fgt. View Script Execution History log file for result.\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"branch2_fgt(Fix vpn in branches)\",\n                            \"oid\": 138,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"id\": 5,\n                    \"state\": 4,\n                    \"src\": 4,\n                    \"flags\": 0,\n                    \"percent\": 100,\n                    \"tot_percent\": 200,\n                    \"num_lines\": 2,\n                    \"num_err\": 0,\n                    \"num_warn\": 0,\n                    \"num_done\": 2,\n                    \"pid\": 0,\n                    \"adom\": 3,\n                    \"start_tm\": 1572285802,\n                    \"end_tm\": 1572285808,\n                    \"user\": \"admin\",\n                    \"title\": \"Run Script\"\n                },\n                {\n                    \"history\": [\n                        {\n                            \"detail\": \"2019-10-28 11:03:35:start installing script Fix vpn in hub to datacenter_fgt\",\n                            \"name\": \"datacenter_fgt(Fix vpn in hub)\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:03:37:init state: start to run-on-db\",\n                            \"name\": \"datacenter_fgt(Fix vpn in hub)\",\n                            \"percent\": 30,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:03:37:running on_db script succeeded\",\n                            \"name\": \"datacenter_fgt(Fix vpn in hub)\",\n                            \"percent\": 70,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:03:37:Script Fix vpn in hub executed on local db of datacenter_fgt. View Script Execution History log file for result.\",\n                            \"name\": \"datacenter_fgt(Fix vpn in hub)\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"line\": [\n                        {\n                            \"detail\": \"Script Fix vpn in hub executed on local db of datacenter_fgt. View Script Execution History log file for result.\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"datacenter_fgt(Fix vpn in hub)\",\n                            \"oid\": 162,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"id\": 6,\n                    \"state\": 4,\n                    \"src\": 4,\n                    \"flags\": 0,\n                    \"percent\": 100,\n                    \"tot_percent\": 100,\n                    \"num_lines\": 1,\n                    \"num_err\": 0,\n                    \"num_warn\": 0,\n                    \"num_done\": 1,\n                    \"pid\": 0,\n                    \"adom\": 3,\n                    \"start_tm\": 1572285815,\n                    \"end_tm\": 1572285817,\n                    \"user\": \"admin\",\n                    \"title\": \"Run Script\"\n                },\n                {\n                    \"history\": [\n                        {\n                            \"detail\": \"2019-10-28 11:08:25:start to install dev (datacenter_fgt)\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:27:init state: start to get pre-checksum\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 15,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:33:get pre-checksum state: start get diff (chkout=1)\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 25,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:33:script done state: start to FGFM install\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 35,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:33:fgfm install state: prepare to post-checksum\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 80,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:39:install and save finished status=OK\",\n                            \"name\": \"datacenter_fgt\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:27:Start copying policy to devdb, device(datacenter_fgt), vdomid(root)\",\n                            \"name\": \"datacenter_fgt[copy]\",\n                            \"percent\": 1,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:27:Initiate request to install to real device\",\n                            \"name\": \"datacenter_fgt[copy]\",\n                            \"percent\": 80,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:27:Copy to device done\",\n                            \"name\": \"datacenter_fgt[copy]\",\n                            \"percent\": 90,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:43:Installation to real device done\",\n                            \"name\": \"datacenter_fgt[copy]\",\n                            \"percent\": 100,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:27:Init vpn context done\",\n                            \"name\": \"VPN manager\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"line\": [\n                        {\n                            \"detail\": \"install and save finished status=OK\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"datacenter_fgt\",\n                            \"oid\": 162,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"Installation to real device done\",\n                            \"err\": 0,\n                            \"ip\": \"192.168.0.5\",\n                            \"name\": \"datacenter_fgt[copy]\",\n                            \"oid\": 162,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"Init vpn context done\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"VPN manager\",\n                            \"oid\": 0,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"id\": 7,\n                    \"state\": 4,\n                    \"src\": 1,\n                    \"flags\": 0,\n                    \"percent\": 100,\n                    \"tot_percent\": 300,\n                    \"num_lines\": 3,\n                    \"num_err\": 0,\n                    \"num_warn\": 0,\n                    \"num_done\": 3,\n                    \"pid\": 8861,\n                    \"adom\": 3,\n                    \"start_tm\": 1572286104,\n                    \"end_tm\": 1572286123,\n                    \"user\": \"admin\",\n                    \"title\": \"Install Package 'DataCenter-PP'\"\n                },\n                {\n                    \"history\": [\n                        {\n                            \"detail\": \"2019-10-28 11:08:46:start to install dev (branch1_fgt)\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:48:init state: start to get pre-checksum\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 15,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:56:get pre-checksum state: start get diff (chkout=1)\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 25,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:56:script done state: start to FGFM install\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 35,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:56:fgfm install state: prepare to post-checksum\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 80,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:09:00:install and save finished status=OK\",\n                            \"name\": \"branch1_fgt\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:48:Start copying policy to devdb, device(branch1_fgt), vdomid(root)\",\n                            \"name\": \"branch1_fgt[copy]\",\n                            \"percent\": 1,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:48:Initiate request to install to real device\",\n                            \"name\": \"branch1_fgt[copy]\",\n                            \"percent\": 80,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:48:Copy to device done\",\n                            \"name\": \"branch1_fgt[copy]\",\n                            \"percent\": 90,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:09:03:Installation to real device done\",\n                            \"name\": \"branch1_fgt[copy]\",\n                            \"percent\": 100,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:46:start to install dev (branch2_fgt)\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 0,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:48:init state: start to get pre-checksum\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 15,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:56:get pre-checksum state: start get diff (chkout=1)\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 25,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:56:script done state: start to FGFM install\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 35,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:56:fgfm install state: prepare to post-checksum\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 80,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:09:00:install and save finished status=OK\",\n                            \"name\": \"branch2_fgt\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:48:Start copying policy to devdb, device(branch2_fgt), vdomid(root)\",\n                            \"name\": \"branch2_fgt[copy]\",\n                            \"percent\": 1,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:48:Initiate request to install to real device\",\n                            \"name\": \"branch2_fgt[copy]\",\n                            \"percent\": 80,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:48:Copy to device done\",\n                            \"name\": \"branch2_fgt[copy]\",\n                            \"percent\": 90,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:09:03:Installation to real device done\",\n                            \"name\": \"branch2_fgt[copy]\",\n                            \"percent\": 100,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"2019-10-28 11:08:48:Init vpn context done\",\n                            \"name\": \"VPN manager\",\n                            \"percent\": 100,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"line\": [\n                        {\n                            \"detail\": \"install and save finished status=OK\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"branch1_fgt\",\n                            \"oid\": 150,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"Installation to real device done\",\n                            \"err\": 0,\n                            \"ip\": \"192.168.0.1\",\n                            \"name\": \"branch1_fgt[copy]\",\n                            \"oid\": 150,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"install and save finished status=OK\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"branch2_fgt\",\n                            \"oid\": 138,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        },\n                        {\n                            \"detail\": \"Installation to real device done\",\n                            \"err\": 0,\n                            \"ip\": \"192.168.0.12\",\n                            \"name\": \"branch2_fgt[copy]\",\n                            \"oid\": 138,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"detail\": \"Init vpn context done\",\n                            \"err\": 0,\n                            \"ip\": \"\",\n                            \"name\": \"VPN manager\",\n                            \"oid\": 0,\n                            \"percent\": 100,\n                            \"state\": 4,\n                            \"vdom\": \"\"\n                        }\n                    ],\n                    \"id\": 8,\n                    \"state\": 4,\n                    \"src\": 1,\n                    \"flags\": 0,\n                    \"percent\": 100,\n                    \"tot_percent\": 500,\n                    \"num_lines\": 5,\n                    \"num_err\": 0,\n                    \"num_warn\": 0,\n                    \"num_done\": 5,\n                    \"pid\": 8989,\n                    \"adom\": 3,\n                    \"start_tm\": 1572286123,\n                    \"end_tm\": 1572286143,\n                    \"user\": \"admin\",\n                    \"title\": \"Install Package 'Branches-PP'\"\n                }\n            ],\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/task/task\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7fa7635b-4ab1-4550-96da-a43f6138f827",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('session',data['session']);",
+							"postman.setEnvironmentVariable('status_code',data['result'][0]['status']['code']);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"session\" : 1,\r\n\t\"id\" : 1,\r\n\t\"method\" : \"exec\",\r\n\t\"params\" : [\r\n\t\t{\r\n\t\t\t\"url\" : \"sys/login/user\",\r\n\t\t\t\"data\" : [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"user\" : \"{{username}}\",\r\n\t\t\t\t\t\"passwd\" : \"{{password}}\"\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t}\r\n\t]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('session',data['session']);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"session\" : \"{{session}}\",\r\n  \"id\" : 1,\r\n  \"method\" : \"exec\",\r\n  \"params\" : [\r\n    {\r\n      \"url\" : \"/sys/logout\"\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				},
+				"description": "Log out a session."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "606444ed-d950-49ac-96b9-e46a0346c14c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c2055167-54db-465b-a820-f17b92a597e2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
