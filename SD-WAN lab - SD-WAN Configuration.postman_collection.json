@@ -1485,7 +1485,120 @@
 					]
 				},
 				{
-					"name": "205 - Create Template",
+					"name": "204.1 - Create BGP Neighbors",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/virtual-wan-link/neighbor\",\n            \"data\": [\n            \t                {\n                    \"name\": \"OL_INET\",\n                    \"description\": null,\n                    \"ip\": \"10.0.11.5\",\n                    \"role\": 3,\n                    \"dynamic_mapping\": null\n                },\n                {\n                    \"name\": \"OL_MPLS\",\n                    \"description\": null,\n                    \"ip\": \"10.0.10.5\",\n                    \"role\": 3,\n                    \"dynamic_mapping\": null\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "205 - Create SDWAN Branch Template",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1598,7 +1711,7 @@
 					]
 				},
 				{
-					"name": "206 - Populate Template",
+					"name": "206 - Populate SDWAN Branch Template",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1711,7 +1824,7 @@
 					]
 				},
 				{
-					"name": "207 - Assign Templates to Branches",
+					"name": "207 - Assign Template to Branches",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2724,6 +2837,458 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"task\": 4\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/securityconsole/install/package\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "216 - Create SDWAN Hub Template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/wanprof/adom/{{adom}}/\",\n            \"data\": {\n            \t\"name\": \"Hub-Template\",\n            \t\"type\": \"wanprof\"\n            \t\n            }\n        }\n            \n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "217 - Populate SDWAN Hub Template",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Branch-Template/system/virtual-wan-link\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 1,\n                \"fail-detect\": \"disable\",\n                \"neighbor-hold-boot-time\": 0,\n                \"neighbor-hold-down\": 0,\n                \"neighbor-hold-down-time\": 0,\n                \"members\": [\n                    {\n                        \"_dynamic-member\": [\n                            \"OL_INET\"\n                        ],\n                        \"cost\": 0,\n                        \"gateway\": \"0.0.0.0\",\n                        \"gateway6\": \"::\",\n                        \"ingress-spillover-threshold\": 0,\n                        \"interface\": [],\n                        \"priority\": 0,\n                        \"source\": \"0.0.0.0\",\n                        \"source6\": \"::\",\n                        \"spillover-threshold\": 0,\n                        \"status\": 1,\n                        \"volume-ratio\": 1,\n                        \"weight\": 1\n                    },\n                    {\n                        \"_dynamic-member\": [\n                            \"OL_MPLS\"\n                        ],\n                        \"cost\": 0,\n                        \"gateway\": \"0.0.0.0\",\n                        \"gateway6\": \"::\",\n                        \"ingress-spillover-threshold\": 0,\n                        \"interface\": [],\n                        \"priority\": 0,\n                        \"source\": \"0.0.0.0\",\n                        \"source6\": \"::\",\n                        \"spillover-threshold\": 0,\n                        \"status\": 1,\n                        \"volume-ratio\": 1,\n                        \"weight\": 1\n                    }\n                ],\n                \"service\": [\n                    {\n                        \"addr-mode\": 7,\n                        \"default\": 0,\n                        \"dscp-forward\": 0,\n                        \"dscp-forward-tag\": \"000000\",\n                        \"dscp-reverse\": 0,\n                        \"dscp-reverse-tag\": \"000000\",\n                        \"dst\": [\n                            \"all\"\n                        ],\n                        \"dst-negate\": 0,\n                        \"end-port\": 65535,\n                        \"gateway\": 0,\n                        \"groups\": [],\n                        \"hold-down-time\": 0,\n                        \"id\": 1,\n                        \"input-device\": [],\n                        \"internet-service\": 0,\n                        \"link-cost-threshold\": 10,\n                        \"mode\": 4,\n                        \"name\": \"ICMP\",\n                        \"priority-members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"protocol\": 1,\n                        \"role\": 3,\n                        \"route-tag\": 0,\n                        \"sla\": [\n                            {\n                                \"health-check\": \"Datacenter\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"sla-compare-method\": 0,\n                        \"src\": [\n                            \"all\"\n                        ],\n                        \"src-negate\": 0,\n                        \"standalone-action\": 0,\n                        \"start-port\": 1,\n                        \"status\": 1,\n                        \"tos\": \"0x00\",\n                        \"tos-mask\": \"0x00\",\n                        \"users\": []\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"Datacenter\",\n                        \"_dynamic-server\": [\n                            \"DC Host\"\n                        ],\n                        \"protocol\": 1,\n                        \"port\": 80,\n                        \"members\": [\n                            1,\n                            2\n                        ],\n                        \"failtime\": 5,\n                        \"recoverytime\": 5,\n                        \"security-mode\": 0,\n                        \"update-cascade-interface\": 1,\n                        \"update-static-route\": 1,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"jitter-threshold\": 5,\n                                \"latency-threshold\": 5,\n                                \"link-cost-factor\": 7,\n                                \"packetloss-threshold\": 0\n                            }\n                        ],\n                        \"addr-mode\": 7,\n                        \"ha-priority\": 1,\n                        \"http-agent\": \"Chrome/ Safari/\",\n                        \"http-get\": \"/\",\n                        \"interval\": 500,\n                        \"packet-size\": 64,\n                        \"probe-packets\": 1,\n                        \"sla-fail-log-period\": 0,\n                        \"sla-pass-log-period\": 0,\n                        \"threshold-alert-jitter\": 0,\n                        \"threshold-alert-latency\": 0,\n                        \"threshold-alert-packetloss\": 0,\n                        \"threshold-warning-jitter\": 0,\n                        \"threshold-warning-latency\": 0,\n                        \"threshold-warning-packetloss\": 0\n                    }\n                ],\n                \"neighbor\": []\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "218 - Assign Template to Hub",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/wanprof/adom/{{adom}}/Hub-Template\",\n            \"data\": {\n                \"name\": \"Hub-Template\",\n                \"description\": \"\",\n                \"scope member\": [\n                    {\n                    \t\"name\": \"{{name_fgt_dc}}\",\n                    \t\"vdom\": \"root\"\n                    }\n                ],\n                \"type\": \"wanprof\"\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "16 - Add Script - Fix VPN in Branches",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Fix vpn in branches\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config vpn ipsec phase1-interface\\n edit OL_MPLS_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n edit OL_INET_0\\n set tunnel-search nexthop\\n set auto-discovery-receiver enable\\n next\\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:03:06 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=195"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"name\": \"Fix vpn in branches\"\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/dvmdb/adom/root/script\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "219 - Install policy - Hub",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"DataCenter-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"{{name_fgt_dc}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "11 - Install policy - Hub",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"DataCenter-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"datacenter_fgt\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 28 Oct 2019 18:01:45 GMT"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000"
+								},
+								{
+									"key": "X-UA-Compatible",
+									"value": "IE=Edge"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=30, max=200"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"result\": [\n        {\n            \"data\": {\n                \"task\": 3\n            },\n            \"status\": {\n                \"code\": 0,\n                \"message\": \"OK\"\n            },\n            \"url\": \"/securityconsole/install/package\"\n        }\n    ]\n}"
 						}
 					]
 				}
