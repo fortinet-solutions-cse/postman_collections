@@ -3421,20 +3421,20 @@ def addDynamicRoutingCLITemplate_Hub():
 
     payload = {
         "session": session,
-     "id": 1,
-    "method": "set",
-    "params": [
-        {
-            "url": "/pm/config/adom/" + ADOM + "/obj/cli/template",
-            "data": {
-                "name": "Hub-Routing",
-                "scope member": [
-                    {
-                        "name": DATACENTER_NAME,
-                        "vdom": "root"
-                    }
-                ],
-                "script": "# Define BGP Communities \n\
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/pm/config/adom/" + ADOM + "/obj/cli/template",
+                "data": {
+                    "name": "Hub-Routing",
+                    "scope member": [
+                        {
+                            "name": DATACENTER_NAME,
+                            "vdom": "root"
+                        }
+                    ],
+                    "script": "# Define BGP Communities \n\
 config router community-list \n\
     edit \"SLA_KO_MPLS\" \n\
         config rule \n\
@@ -3585,10 +3585,10 @@ config router policy \n\
     set output-device \"OL_INET_0\" \n\
   next \n\
 end"
+                }
             }
-        }
-    ]
-}
+        ]
+    }
     run_request(payload, name="Add Dynamic Routing CLI Template - Hub")
 
 
@@ -3599,24 +3599,24 @@ def addDynamicRoutingCLITemplate_Branches():
 
     payload = {
         "session": session,
-    "id": 1,
-    "method": "set",
-    "params": [
-        {
-            "url": "/pm/config/adom/" + ADOM + "/obj/cli/template",
-            "data": {
-                "name": "Branch-Routing",
-                "scope member": [
-                    {
-                        "name": BRANCH1_NAME,
-                        "vdom": "root"
-                    },
-                    {
-                        "name": BRANCH2_NAME,
-                        "vdom": "root"
-                    }
-                ],
-                "script": "# Set BGP Communities with route-maps \n\
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/pm/config/adom/" + ADOM + "/obj/cli/template",
+                "data": {
+                    "name": "Branch-Routing",
+                    "scope member": [
+                        {
+                            "name": BRANCH1_NAME,
+                            "vdom": "root"
+                        },
+                        {
+                            "name": BRANCH2_NAME,
+                            "vdom": "root"
+                        }
+                    ],
+                    "script": "# Set BGP Communities with route-maps \n\
 config router route-map \n\
   edit \"SLA_OK_MPLS\" \n\
       config rule \n\
@@ -3688,11 +3688,12 @@ config router bgp \n\
     next \n\
   end \n\
 end"
+                }
             }
-        }
-    ]
-}
+        ]
+    }
     run_request(payload, name="Add Dynamic Routing CLI Template - Branch")
+
 
 """
 ##############################################################
@@ -4162,6 +4163,7 @@ def main():
     ##############################################################
     addScript_Branch2_Router_BGP()
     """
+
 
 if __name__ == "__main__":
     main()
