@@ -9,17 +9,11 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 USER = "admin"
 PASSWD = "fortinet"
-URL = "https://104.199.86.56:10412//jsonrpc"
+URL = "https://104.199.86.56:10411//jsonrpc"
 ADOM = "DEMO"
-#sn_fgt_1 = "FGVM08TM19003280"
-#sn_fgt_2 = "FGVM08TM19003279"
-#sn_fgt_dc = "FGVM08TM19003278"
 BRANCH1_IP = "172.16.1.1"
 BRANCH2_IP = "172.16.1.2"
 DATACENTER_IP = "172.16.2.5"
-# branch1_ip="192.168.0.1"
-# branch2_ip="192.168.0.12"
-# datacenter_ip="192.168.0.5"
 BRANCH1_NAME = "branch1_fgt"
 BRANCH2_NAME = "branch2_fgt"
 DATACENTER_NAME = "datacenter_fgt"
@@ -243,6 +237,103 @@ def addDevices(sn_fgt_1, sn_fgt_2, sn_fgt_dc):
     }
 
     run_request_async(payload, name="Add Devices")
+
+
+##############################################################
+# Get FMG Serial Number
+##############################################################
+def getFmgSerialNumber():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "get",
+        "params": [
+            {
+                "url": "/sys/status"
+            }
+        ]
+    }
+
+    content = run_request(payload, name="Get FMG Serial Number")
+    sn_fmg = content["result"][0]["data"]["Serial Number"]
+    return sn_fmg
+
+
+##############################################################
+# Add Script - FAZ Configuration
+##############################################################
+def addScript_FAZConfiguration():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "set",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script",
+                "data": [
+                    {
+                        "script_schedule": None,
+                        "name": "FAZ Configuration",
+                        "type": "cli",
+                        "desc": "",
+                        "content": "# FAZ Configuration \n\
+config log fortianalyzer setting \n\
+  set status enable \n\
+  set server 192.168.0.15 \n\
+  set upload-option realtime \n\
+  set serial FMG-VMTM19006959 \n\
+  set certificate-verification disable \n\
+  set reliable enable \n\
+end",
+                        "target": "device_database"
+                    }
+                ]
+            }
+        ]
+    }
+
+    run_request(payload, name="Add Script - FAZ Configuration")
+
+
+##############################################################
+# Exec Script - FAZ Configuration
+##############################################################
+def execScript_FAZConfiguration():
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "exec",
+        "params": [
+            {
+                "url": "/dvmdb/adom/" + ADOM + "/script/execute",
+                "data":
+                    {
+                        "adom": ADOM,
+                        "script": "FAZ Configuration",
+                        "scope": [
+                            {
+                                "name": BRANCH1_NAME,
+                                "vdom": "root"
+                            },
+                            {
+                                "name": BRANCH2_NAME,
+                                "vdom": "root"
+                            },
+                            {
+                                "name": DATACENTER_NAME,
+                                "vdom": "root"
+                            }
+                        ]
+                    }
+
+            }
+        ]
+    }
+
+    run_request_async(payload, name="Exec Script - FAZ Configuration")
 
 
 ##############################################################
@@ -2180,7 +2271,17 @@ def addScript_FixVPNinBranches():
                         "name": "Fix vpn in branches",
                         "type": "cli",
                         "desc": "",
-                        "content": "config vpn ipsec phase1-interface\n edit OL_MPLS_0\n set tunnel-search nexthop\n set auto-discovery-receiver enable\n next\n edit OL_INET_0\n set tunnel-search nexthop\n set auto-discovery-receiver enable\n next\n end",
+                        "content": "# Fix VPN in Branches\n\
+config vpn ipsec phase1-interface\n\
+  edit OL_MPLS_0\n\
+    set tunnel-search nexthop\n\
+    set auto-discovery-receiver enable\n\
+  next\n\
+  edit OL_INET_0\n\
+    set tunnel-search nexthop\n\
+    set auto-discovery-receiver enable\n\
+  next\n\
+end",
                         "target": "device_database"
                     }
                 ]
@@ -2209,7 +2310,15 @@ def addScript_FixVPNinHub():
                         "name": "Fix vpn in hub",
                         "type": "cli",
                         "desc": "",
-                        "content": "config vpn ipsec phase1-interface\n edit OL_MPLS_0\n set auto-discovery-sender enable\n next\n edit OL_INET_0\n set auto-discovery-sender enable\n next\n end",
+                        "content": "# Fix VPN in Hub\n\
+config vpn ipsec phase1-interface\n\
+  edit OL_MPLS_0\n\
+    set auto-discovery-sender enable\n\
+    next\n\
+  edit OL_INET_0\n\
+    set auto-discovery-sender enable\n\
+  next\n\
+end",
                         "target": "device_database"
                     }
                 ]
@@ -3306,6 +3415,287 @@ def addFirewallPolicy_DataCenterPP():
 
 
 ##############################################################
+# Add Dynamic Routing CLI Template - Hub
+##############################################################
+def addDynamicRoutingCLITemplate_Hub():
+
+    payload = {
+        "session": session,
+     "id": 1,
+    "method": "set",
+    "params": [
+        {
+            "url": "/pm/config/adom/" + ADOM + "/obj/cli/template",
+            "data": {
+                "name": "Hub-Routing",
+                "scope member": [
+                    {
+                        "name": DATACENTER_NAME,
+                        "vdom": "root"
+                    }
+                ],
+                "script": "# Define BGP Communities \n\
+config router community-list \n\
+    edit \"SLA_KO_MPLS\" \n\
+        config rule \n\
+            edit 1 \n\
+                set action permit \n\
+                set match \"65000:200\" \n\
+            next \n\
+        end \n\
+    next \n\
+    edit \"SLA_KO_INET\" \n\
+        config rule \n\
+            edit 1 \n\
+                set action permit \n\
+                set match \"65000:201\" \n\
+            next \n\
+        end \n\
+    next \n\
+    edit \"SLA_OK_INET\" \n\
+        config rule \n\
+            edit 1 \n\
+                set action permit \n\
+                set match \"65000:101\" \n\
+            next \n\
+        end \n\
+    next \n\
+    edit \"SLA_OK_MPLS\" \n\
+        config rule \n\
+            edit 1 \n\
+                set action permit \n\
+                set match \"65000:100\" \n\
+            next \n\
+        end \n\
+    next \n\
+end \n\
+ \n\
+# Match Communities with route-maps \n\
+config router route-map \n\
+	edit \"OL_MPLS_IN\" \n\
+		config rule \n\
+			edit 3 \n\
+				set match-community \"SLA_KO_MPLS\" \n\
+				set set-weight 100 \n\
+				set set-route-tag 2 \n\
+			next \n\
+			edit 100 \n\
+				set set-weight 200 \n\
+				set set-route-tag 1 \n\
+			next \n\
+		end \n\
+	next \n\
+	edit \"OL_INET_IN\" \n\
+		config rule \n\
+			edit 1 \n\
+				set match-community \"SLA_KO_INET\" \n\
+				set set-weight 100 \n\
+				set set-route-tag 2 \n\
+			next \n\
+			edit 100 \n\
+				set set-weight 200 \n\
+				set set-route-tag 1 \n\
+			next \n\
+		end \n\
+	next \n\
+	edit \"OL_MPLS_OUT\" \n\
+		config rule \n\
+			edit 1 \n\
+				set action deny \n\
+				set match-community \"SLA_OK_INET\" \n\
+			next \n\
+			edit 2 \n\
+				set action deny \n\
+				set match-community \"SLA_KO_INET\" \n\
+			next \n\
+			edit 100 \n\
+			next \n\
+		end \n\
+	next \n\
+	edit \"OL_INET_OUT\" \n\
+		config rule \n\
+			edit 1 \n\
+				set action deny \n\
+				set match-community \"SLA_OK_MPLS\" \n\
+			next \n\
+			edit 2 \n\
+				set action deny \n\
+				set match-community \"SLA_KO_MPLS\" \n\
+			next \n\
+			edit 100 \n\
+			next \n\
+		end \n\
+	next \n\
+end \n\
+ \n\
+# Configure BGP neighbors \n\
+config router bgp \n\
+    set as 65000 \n\
+    set keepalive-timer 5 \n\
+    set holdtime-timer 15 \n\
+    set ibgp-multipath enable \n\
+    set network-import-check disable \n\
+    set additional-path enable \n\
+    set scan-time 20 \n\
+    config neighbor-group \n\
+        edit \"OL_MPLS\" \n\
+            set soft-reconfiguration enable \n\
+            set advertisement-interval 1 \n\
+            set remote-as 65000 \n\
+            set route-map-in \"OL_MPLS_IN\" \n\
+            set route-map-out \"OL_MPLS_OUT\" \n\
+            set additional-path both \n\
+            set route-reflector-client enable \n\
+        next \n\
+        edit \"OL_INET\" \n\
+            set soft-reconfiguration enable \n\
+            set advertisement-interval 1 \n\
+            set remote-as 65000 \n\
+            set route-map-in \"OL_INET_IN\" \n\
+            set route-map-out \"OL_INET_OUT\" \n\
+            set additional-path both \n\
+            set route-reflector-client enable \n\
+        next \n\
+    end \n\
+    config neighbor-range \n\
+        edit 1 \n\
+            set prefix 10.0.10.0 255.255.255.0 \n\
+            set neighbor-group \"OL_MPLS\" \n\
+        next \n\
+        edit 2 \n\
+            set prefix 10.0.11.0 255.255.255.0 \n\
+            set neighbor-group \"OL_INET\" \n\
+        next \n\
+    end \n\
+    config network \n\
+        edit 1 \n\
+            set prefix 172.16.0.0 255.255.255.0 \n\
+        next \n\
+    end \n\
+end \n\
+ \n\
+# Overlay stickiness \n\
+config router policy \n\
+  edit 1 \n\
+    set input-device \"OL_MPLS_0\" \n\
+    set output-device \"OL_MPLS_0\" \n\
+  next \n\
+  edit 2 \n\
+    set input-device \"OL_INET_0\" \n\
+    set output-device \"OL_INET_0\" \n\
+  next \n\
+end"
+            }
+        }
+    ]
+}
+    run_request(payload, name="Add Dynamic Routing CLI Template - Hub")
+
+
+##############################################################
+# Add Dynamic Routing CLI Template - Branches
+##############################################################
+def addDynamicRoutingCLITemplate_Branches():
+
+    payload = {
+        "session": session,
+    "id": 1,
+    "method": "set",
+    "params": [
+        {
+            "url": "/pm/config/adom/" + ADOM + "/obj/cli/template",
+            "data": {
+                "name": "Branch-Routing",
+                "scope member": [
+                    {
+                        "name": BRANCH1_NAME,
+                        "vdom": "root"
+                    },
+                    {
+                        "name": BRANCH2_NAME,
+                        "vdom": "root"
+                    }
+                ],
+                "script": "# Set BGP Communities with route-maps \n\
+config router route-map \n\
+  edit \"SLA_OK_MPLS\" \n\
+      config rule \n\
+          edit 1 \n\
+              set set-community \"65000:100\" \n\
+          next \n\
+      end \n\
+  next \n\
+  edit \"SLA_KO_MPLS\" \n\
+      config rule \n\
+          edit 1 \n\
+              set set-community \"65000:200\" \n\
+          next \n\
+      end \n\
+  next \n\
+  edit \"SLA_OK_INET\" \n\
+      config rule \n\
+          edit 1 \n\
+              set set-community \"65000:101\" \n\
+          next \n\
+      end \n\
+  next \n\
+  edit \"SLA_KO_INET\" \n\
+      config rule \n\
+          edit 1 \n\
+              set set-community \"65000:201\" \n\
+          next \n\
+      end \n\
+  next \n\
+end \n\
+ \n\
+# BGP to Hub \n\
+config router bgp \n\
+  set as 65000 \n\
+  set keepalive-timer 5 \n\
+  set holdtime-timer 15 \n\
+  set ibgp-multipath enable \n\
+  set scan-time 20 \n\
+  config neighbor \n\
+    edit \"10.0.10.5\" \n\
+        set soft-reconfiguration enable \n\
+        set interface \"OL_MPLS_0\" \n\
+        set remote-as 65000 \n\
+        set route-map-out \"SLA_KO_MPLS\" \n\
+        set route-map-out-preferable \"SLA_OK_MPLS\" \n\
+        set additional-path receive \n\
+    next \n\
+    edit \"10.0.11.5\" \n\
+        set soft-reconfiguration enable \n\
+        set interface \"OL_INET_0\" \n\
+        set remote-as 65000 \n\
+        set route-map-out \"SLA_KO_INET\" \n\
+        set route-map-out-preferable \"SLA_OK_INET\" \n\
+        set additional-path receive \n\
+    next \n\
+  end \n\
+  config network \n\
+    edit 1 \n\
+      set prefix 10.0.1.0 255.255.255.0 \n\
+    next \n\
+    edit 2 \n\
+      set prefix 10.1.1.0 255.255.255.0 \n\
+    next \n\
+    edit 3 \n\
+      set prefix 10.0.2.0 255.255.255.0 \n\
+    next \n\
+    edit 4 \n\
+      set prefix 10.1.2.0 255.255.255.0 \n\
+    next \n\
+  end \n\
+end"
+            }
+        }
+    ]
+}
+    run_request(payload, name="Add Dynamic Routing CLI Template - Branch")
+
+"""
+##############################################################
 # Add Script - Hub Community List
 ##############################################################
 def addScript_Hub_Community_list():
@@ -3374,7 +3764,7 @@ def addScript_Hub_Router_BGP():
         "method": "set",
         "params": [
             {
-                "url": "/dvmdb/adom/" + ADOM +"/script",
+                "url": "/dvmdb/adom/" + ADOM + "/script",
                 "data": [
                     {
                         "script_schedule": None,
@@ -3419,36 +3809,6 @@ def addScript_Hub_Router_Policy():
     }
 
     run_request(payload, name="Add Script - Hub Router Policy")
-
-
-##############################################################
-# Add Script - FAZ Configuration
-##############################################################
-def addScript_FAZ_Configuration():
-
-    payload = {
-        "session": session,
-        "id": 1,
-        "method": "set",
-        "params": [
-            {
-                "url": "/dvmdb/adom/" + ADOM + "/script",
-                "data": [
-                    {
-                        "script_schedule": None,
-                        "name": "FAZ Configuration",
-                        "type": "cli",
-                        "desc": "",
-                        "content": "config log fortianalyzer setting \n set status enable \n set server 192.168.0.15 \n set upload-option realtime \n set serial FMG-VMTM19006959\n set certificate-verification disable \n set reliable enable \n end",
-                        "target": "device_database"
-                    }
-                ]
-            }
-        ]
-    }
-
-    run_request(payload, name="Add Script - FAZ Configuration")
-
 
 
 ##############################################################
@@ -3623,20 +3983,18 @@ def addScript_Branch2_Router_BGP():
     }
 
     run_request(payload, name="Add Script - Branch2 router bgp")
-
+"""
 
 session = None
 
 
 def main():
 
-    ##############################################################
     # Login
     ##############################################################
     login()
     print("     Session Id = " + session)
 
-    ##############################################################
     # 1,2,3 - Discover / Probe Devices FGT
     ##############################################################
     sn_fgt_1 = probeFortiGateDevice(BRANCH1_IP)
@@ -3648,111 +4006,112 @@ def main():
     sn_fgt_dc = probeFortiGateDevice(DATACENTER_IP)
     print("     SN FGT DC = " + sn_fgt_dc)
 
-    ##############################################################
     # 4 - Add Devices
     ##############################################################
     addDevices(sn_fgt_1, sn_fgt_2, sn_fgt_dc)
 
+    # 4.1 - Add Devices
     ##############################################################
+    sn_fmg = getFmgSerialNumber()
+    print("     SN FMG = " + sn_fmg)
+
+    # 4.2 - Add Script - FAZ Configuration
+    ##############################################################
+    addScript_FAZConfiguration()
+
+    # 4.3 - Exec Script - FAZ Configuration
+    ##############################################################
+    execScript_FAZConfiguration()
+
     # 5 - Add Dynamic Interface
     ##############################################################
     addDynamicInterface()
 
-    ##############################################################
     # 6 - Add VPN Manager VPN Table
     ##############################################################
     addVPNManagerVPNTable()
 
-    ##############################################################
     # 7 - Add VPN Manager Node
     ##############################################################
     addVPNManagerNode()
 
-    ##############################################################
     # 8 - Add Policy Package
     ##############################################################
     addPolicyPackage()
 
-    ##############################################################
     # 9 - Add Firewall Policy - Branches PP - No Interfaces
     ##############################################################
     addFirewallPolicy_Branches_PP_No_Interfaces()
 
-    ##############################################################
     # 10 - Add Firewall Policy - DataCenter PP - No Interfaces
     ##############################################################
     addFirewallPolicy_DataCenter_PP_No_Interfaces()
 
-    ##############################################################
     # 11 - Install policy - Hub
     ##############################################################
     installPolicy_Hub()
 
-    ##############################################################
     # 12 - Install policy - Branches
     ##############################################################
     installPolicy_Branches()
 
-    ##############################################################
     # 13 - Configure FGT-1 Interfaces
     ##############################################################
     configureInterfacesFGT1()
 
-    ##############################################################
     # 14 - Configure FGT-2 Interfaces
     ##############################################################
     configureInterfacesFGT2()
 
-    ##############################################################
     # 15 - Configure FGT-DC Interfaces
     ##############################################################
     configureInterfacesFGTDC()
 
-    ##############################################################
     # 16 - Add Script - Fix VPN in Branches
     ##############################################################
     addScript_FixVPNinBranches()
 
-    ##############################################################
     # 17 - Add Script - Fix VPN in Hub
     ##############################################################
     addScript_FixVPNinHub()
 
-    ##############################################################
     # 18 - Exec Script - Fix VPN in Branches
     ##############################################################
     execScript_FixVPNinBranches()
 
-    ##############################################################
     # 19 - Exec Script - Fix VPN in Hub
     ##############################################################
     execScript_FixVPNinHub()
 
-    ##############################################################
     # 20 - Add Dynamic Interface - Overlays
     ##############################################################
     addDynamicInterface_Overlays()
 
-    ##############################################################
     # 21 - Add Firewall Policy - Branches PP
     ##############################################################
     addFirewallPolicy_BranchesPP()
 
-    ##############################################################
     # 22 - Add Firewall Policy - DataCenter PP
     ##############################################################
     addFirewallPolicy_DataCenterPP()
 
+    # 22.1 - Add Dynamic Routing CLI Template - Hub
     ##############################################################
+    addDynamicRoutingCLITemplate_Hub()
+
+    # 22.2 - Add Dynamic Routing CLI Template - Branches
+    ##############################################################
+    addDynamicRoutingCLITemplate_Branches()
+
     # 23 - This one is like 11
     ##############################################################
     installPolicy_Hub()
 
-    ##############################################################
     # 24 - This one is like 12
     ##############################################################
     installPolicy_Branches()
 
+    """
     ##############################################################
     # 25 - Add Script - Hub Community-list
     ##############################################################
@@ -3772,11 +4131,6 @@ def main():
     # 28 - Add Script - Hub Router Policy
     ##############################################################
     addScript_Hub_Router_Policy()
-    
-    ##############################################################
-    # 29 - Add Script - FAZ Configuration
-    ##############################################################
-    addScript_FAZ_Configuration()
 
     ##############################################################
     # 30 - Add Script - Branches route map
@@ -3807,6 +4161,7 @@ def main():
     # 35 - Add Script - Branch2 router bgp
     ##############################################################
     addScript_Branch2_Router_BGP()
+    """
 
 if __name__ == "__main__":
     main()

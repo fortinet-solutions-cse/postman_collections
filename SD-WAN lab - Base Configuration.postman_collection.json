@@ -2418,7 +2418,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"FAZ Configuration\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"config log fortianalyzer setting \\n set status enable \\n set server 192.168.0.15 \\n set upload-option realtime \\n set serial {{sn_fmg}}\\n set certificate-verification disable \\n set reliable enable \\n end\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"FAZ Configuration\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"# FAZ Configuration\nconfig log fortianalyzer setting\n  set status enable\n  set server 192.168.0.15\n  set upload-option realtime\n  set serial {{sn_fmg}}\n  set certificate-verification disable\n  set reliable enable\nend\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -4834,7 +4834,7 @@
 					]
 				},
 				{
-					"name": "22.2 - Add Dynamic Routing CLI Template - Branch",
+					"name": "22.2 - Add Dynamic Routing CLI Template - Branches",
 					"request": {
 						"method": "POST",
 						"header": [
