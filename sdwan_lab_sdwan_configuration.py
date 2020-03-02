@@ -14,9 +14,9 @@ ADOM = "DEMO"
 BRANCH1_IP = "172.16.1.1"
 BRANCH2_IP = "172.16.1.2"
 DATACENTER_IP = "172.16.2.5"
-BRANCH1_NAME = "branch1_fgt"
-BRANCH2_NAME = "branch2_fgt"
-DATACENTER_NAME = "datacenter_fgt"
+BRANCH1_NAME = "" # This will be discovered automatically by the script
+BRANCH2_NAME = "" # This will be discovered automatically by the script
+DATACENTER_NAME = "" # This will be discovered automatically by the script
 
 request_number = 0
 
@@ -159,6 +159,35 @@ def login():
     return session
 
 
+##############################################################
+# Discover / Probe Devices FGT
+##############################################################
+def probeFortiGateDevice(branch_ip):
+
+    payload = {
+        "session": session,
+        "id": 1,
+        "method": "exec",
+        "params": [
+            {
+                "url": "/dvm/cmd/discover/device",
+                "data": {
+                    "device": {
+                        "adm_pass": PASSWD,
+                        "adm_usr": USER,
+                        "ip": branch_ip
+                    }
+                }
+            }
+        ]
+    }
+
+    content = run_request(payload, name="Discover / Probe FGT Devices")
+    sn_fgt = content["result"][0]["data"]["device"]["sn"]
+    name_fgt = content["result"][0]["data"]["device"]["hostname"]
+    return sn_fgt, name_fgt
+    
+    
 ##############################################################
 # Enable SD-WAN in ADOM
 ##############################################################
@@ -1161,10 +1190,23 @@ session = None
 
 def main():
 
+    global BRANCH1_NAME, BRANCH2_NAME, DATACENTER_NAME
+
     # Login
     ##############################################################
     login()
     print("     Session Id = " + session)
+
+    # Discover / Probe Devices FGT
+    ##############################################################
+    sn_fgt_1, BRANCH1_NAME = probeFortiGateDevice(BRANCH1_IP)
+    print("     SN FGT 1 = " + sn_fgt_1 + " Name: " + BRANCH1_NAME)
+
+    sn_fgt_2, BRANCH2_NAME = probeFortiGateDevice(BRANCH2_IP)
+    print("     SN FGT 2 = " + sn_fgt_2 + " Name: " + BRANCH2_NAME)
+
+    sn_fgt_dc, DATACENTER_NAME = probeFortiGateDevice(DATACENTER_IP)
+    print("     SN FGT DC = " + sn_fgt_dc + " Name: " + DATACENTER_NAME)
 
     # Enable SD-WAN in ADOM
     ##############################################################
