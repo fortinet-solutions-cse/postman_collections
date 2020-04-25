@@ -1,21 +1,26 @@
 # SDWAN automation with FortiManager
 
-This repository contains automation scripts and Postman collections to automate FortiManager operation for a successful deployment of an SDWAN configuration. This is achieved using JSON RPC API interface of FortiManager.
+This repository contains automation scripts and Postman collections to automate FortiManager operation for a successful deployment of an SD-WAN configuration. This is achieved using JSON RPC API interface of FortiManager.
 
-It is structured in the following parts:
-- Base Configuration: Intended to run basic settings, add devices, setup policy packages, VPNs, etc.
-- SDWAN configuration: It covers BGP, ADVPN and SDWAN general configuration
+## Files
 
+- `Managed_SDWAN_6_4.postman.json` - Postman collection for controlled execution
+  of requests. Postman supports manual step-by-step execution, as well as batch run.
 
-For each part you can choose to configure FortiManager using two alternatives:
+## Use Cases
 
-- <b>Postman collections</b>: They allow to issue each request individually, iterating all the steps manually. Postman lets you visually inspect each request, result, headers and every detail or each JSON RPC API call.
-- <b>Python scripts</b>: They run all the configuration steps automatically with no interaction required.
+The collection is designed to be used when building SD-WAN demonstrations.
+It can also be used as a learning tool, to get familiar with API exposed by FortiManager.
 
+Scenarios covered:
 
-In order to use these tools, just clone the repo and follow steps below:
+- Base environment setup
+- Dual-Hub Single-Region SD-WAN Topology
+- End-to-End Segmentation in SD-WAN Topology
+- Dual-Region SD-WAN Topology
 
-- <b>Postman</b>: Just import the .json file into Postman. A new collection will be created per each file.
-- <b>Python</b>: Run the python script of your choice (inspect header lines first to adjust for your particular environemt)
+## Usage
+
+Clone the repository and import the JSON file into Postman.
 
 Enjoy!
