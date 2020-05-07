@@ -9,7 +9,7 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 USER = "admin"
 PASSWD = "fortinet"
-URL = "https://104.199.86.56:10411//jsonrpc"
+URL = "https://PUT-FMG-IP-HERE:10411//jsonrpc" # Set correct FMG IP:port here!
 ADOM = "DEMO"
 BRANCH1_IP = "172.16.1.1"
 BRANCH2_IP = "172.16.1.2"
@@ -601,11 +601,11 @@ def addVPNManagerNode():
                         "localid": None,
                         "mode-cfg": 0,
                         "mode-cfg-ip-version": 0,
-                        "net-device": 0,
+                        "net-device": 1,
                         "peergrp": [],
                         "peerid": None,
                         "peertype": 8,
-                        "tunnel-search": 1,
+                        "tunnel-search": 0,
                         "unity-support": 1,
                         "xauthtype": 1,
                         "scope member": [
@@ -673,11 +673,11 @@ def addVPNManagerNode():
                         "localid": None,
                         "mode-cfg": 0,
                         "mode-cfg-ip-version": 0,
-                        "net-device": 0,
+                        "net-device": 1,
                         "peergrp": [],
                         "peerid": None,
                         "peertype": 8,
-                        "tunnel-search": 1,
+                        "tunnel-search": 0,
                         "unity-support": 1,
                         "xauthtype": 1,
                         "scope member": [
@@ -817,11 +817,11 @@ def addVPNManagerNode():
                         "localid": None,
                         "mode-cfg": 0,
                         "mode-cfg-ip-version": 0,
-                        "net-device": 0,
+                        "net-device": 1,
                         "peergrp": [],
                         "peerid": None,
                         "peertype": 8,
-                        "tunnel-search": 1,
+                        "tunnel-search": 0,
                         "unity-support": 1,
                         "xauthtype": 1,
                         "scope member": [
@@ -889,11 +889,11 @@ def addVPNManagerNode():
                         "localid": None,
                         "mode-cfg": 0,
                         "mode-cfg-ip-version": 0,
-                        "net-device": 0,
+                        "net-device": 1,
                         "peergrp": [],
                         "peerid": None,
                         "peertype": 8,
-                        "tunnel-search": 1,
+                        "tunnel-search": 0,
                         "unity-support": 1,
                         "xauthtype": 1,
                         "scope member": [
@@ -1100,7 +1100,6 @@ def addFirewallPolicy_Branches_PP_No_Interfaces():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -1203,7 +1202,6 @@ def addFirewallPolicy_Branches_PP_No_Interfaces():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -1307,7 +1305,6 @@ def addFirewallPolicy_Branches_PP_No_Interfaces():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -1432,7 +1429,6 @@ def addFirewallPolicy_DataCenter_PP_No_Interfaces():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -1535,7 +1531,6 @@ def addFirewallPolicy_DataCenter_PP_No_Interfaces():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -1639,7 +1634,6 @@ def addFirewallPolicy_DataCenter_PP_No_Interfaces():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -1742,7 +1736,6 @@ def addFirewallPolicy_DataCenter_PP_No_Interfaces():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -1845,7 +1838,6 @@ def addFirewallPolicy_DataCenter_PP_No_Interfaces():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -1949,7 +1941,6 @@ def addFirewallPolicy_DataCenter_PP_No_Interfaces():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -2494,7 +2485,6 @@ def addFirewallPolicy_BranchesPP():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -2597,7 +2587,6 @@ def addFirewallPolicy_BranchesPP():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -2701,7 +2690,6 @@ def addFirewallPolicy_BranchesPP():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -2826,7 +2814,6 @@ def addFirewallPolicy_DataCenterPP():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -2929,7 +2916,6 @@ def addFirewallPolicy_DataCenterPP():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -3033,7 +3019,6 @@ def addFirewallPolicy_DataCenterPP():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -3136,7 +3121,6 @@ def addFirewallPolicy_DataCenterPP():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -3239,7 +3223,6 @@ def addFirewallPolicy_DataCenterPP():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -3343,7 +3326,6 @@ def addFirewallPolicy_DataCenterPP():
                         "groups": [],
                         "custom-log-fields": [],
                         "wccp": 0,
-                        "session-ttl": 0,
                         "match-vip": 0,
                         "traffic-shaper": [],
                         "traffic-shaper-reverse": [],
@@ -3477,11 +3459,9 @@ config router route-map \n\
 		config rule \n\
 			edit 3 \n\
 				set match-community \"SLA_KO_MPLS\" \n\
-				set set-weight 100 \n\
 				set set-route-tag 2 \n\
 			next \n\
 			edit 100 \n\
-				set set-weight 200 \n\
 				set set-route-tag 1 \n\
 			next \n\
 		end \n\
@@ -3490,11 +3470,9 @@ config router route-map \n\
 		config rule \n\
 			edit 1 \n\
 				set match-community \"SLA_KO_INET\" \n\
-				set set-weight 100 \n\
 				set set-route-tag 2 \n\
 			next \n\
 			edit 100 \n\
-				set set-weight 200 \n\
 				set set-route-tag 1 \n\
 			next \n\
 		end \n\

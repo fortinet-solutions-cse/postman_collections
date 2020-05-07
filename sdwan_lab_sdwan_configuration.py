@@ -9,7 +9,7 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 USER = "admin"
 PASSWD = "fortinet"
-URL = "https://104.199.86.56:10411//jsonrpc"
+URL = "https://PUT-FMG-IP-HERE:10411//jsonrpc" # Set correct FMG IP:port here!
 ADOM = "DEMO"
 BRANCH1_IP = "172.16.1.1"
 BRANCH2_IP = "172.16.1.2"
@@ -186,8 +186,8 @@ def probeFortiGateDevice(branch_ip):
     sn_fgt = content["result"][0]["data"]["device"]["sn"]
     name_fgt = content["result"][0]["data"]["device"]["hostname"]
     return sn_fgt, name_fgt
-    
-    
+
+
 ##############################################################
 # Enable SD-WAN in ADOM
 ##############################################################
