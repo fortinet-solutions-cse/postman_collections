@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "7643d93b-7254-4272-88ae-1648ef8cdb40",
-		"name": "Managed SD-WAN 6.4",
+		"name": "Managed Secure SD-WAN 6.4",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -2267,6 +2267,170 @@
 					],
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Install Policy - Hubs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c69ee852-524e-4bb4-822b-56010d04f1dc",
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"DataCenter-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Hubs\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Install Policy - Spokes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d7e1e608-4321-44e8-84db-a3ae0b154c19",
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Spokes\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -2924,6 +3088,170 @@
 					],
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Install Policy - Hubs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3aaa5cc0-3364-4972-83e2-77d70bd8889c",
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"DataCenter-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Hubs\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Install Policy - Spokes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0c0a50e8-a5b4-4934-8700-038c2d8f6f22",
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Spokes\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
