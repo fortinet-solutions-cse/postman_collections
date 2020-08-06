@@ -72,7 +72,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"device\": {\n                    \"name\": \"{{name_ztp_fgt}}\",\n                    \"adm_usr\": \"admin\",\n                    \"os_ver\": 6,\n                    \"version\": 600,\n                    \"os_type\": 0,\n                    \"mr\": 4,\n                    \"platform_str\": \"FortiGate-VM64\",\n                    \"mgmt_mode\": 3,\n                    \"flags\": 67371040,\n                    \"prefer_img_ver\": null,\n                    \"sn\": \"FGVM08TM19003257\",\n                    \"faz.perm\": 15,\n                    \"faz.quota\": 0,\n                    \"platform_id\": 108,\n                    \"branch_pt\": 1637,\n                    \"build\": 1637\n                },\n                \"groups\": [\n                    {\n                        \"adom\": \"{{adom}}\",\n                        \"name\": \"Spokes\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+					"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"device\": {\n                    \"name\": \"{{name_fgt_ztp}}\",\n                    \"adm_usr\": \"admin\",\n                    \"os_ver\": 6,\n                    \"version\": 600,\n                    \"os_type\": 0,\n                    \"mr\": 4,\n                    \"platform_str\": \"FortiGate-VM64\",\n                    \"mgmt_mode\": 3,\n                    \"flags\": 67371040,\n                    \"prefer_img_ver\": null,\n                    \"sn\": \"FGVM08TM19003257\",\n                    \"faz.perm\": 15,\n                    \"faz.quota\": 0,\n                    \"platform_id\": 108,\n                    \"branch_pt\": 1637,\n                    \"build\": 1637\n                },\n                \"groups\": [\n                    {\n                        \"adom\": \"{{adom}}\",\n                        \"name\": \"Spokes\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -118,7 +118,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"1\",\n    \"session\": \"{{session}}\",\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/{{name_ztp_fgt}}\",\n            \"data\": {\n                \"name\": \"{{name_ztp_fgt}}\",\n                \"latitude\": \"40.418852\",\n                \"longitude\": \" -3.693454\",\n                \"meta fields\": {\n                    \"Address\": \"Madrid, Spain\",\n                    \"branch-id\": \"3\",\n                    \"dc-id\": \"\",\n                    \"remote-dc-id\": \"\"\n                },\n                \"flags\": 69468192\n            }\n        }\n    ]\n}",
+					"raw": "{\n    \"id\": \"1\",\n    \"session\": \"{{session}}\",\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/{{name_fgt_ztp}}\",\n            \"data\": {\n                \"name\": \"{{name_fgt_ztp}}\",\n                \"latitude\": \"40.418852\",\n                \"longitude\": \" -3.693454\",\n                \"meta fields\": {\n                    \"Address\": \"Madrid, Spain\",\n                    \"branch-id\": \"3\",\n                    \"dc-id\": \"\",\n                    \"remote-dc-id\": \"\"\n                },\n                \"flags\": 69468192\n            }\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -164,7 +164,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/wanprof/adom/{{adom}}/sdwan.branches\",\n            \"data\": {\n                \"name\": \"sdwan.branches\",\n                \"description\": \"\",\n                \"scope member\": [\n                    {\n                    \t\"name\": \"{{name_fgt_1}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_fgt_2}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_ztp_fgt}}\",\n                    \t\"vdom\": \"root\"\n                    }\n                ],\n                \"type\": \"wanprof\"\n            }\n        }\n    ]\n}",
+					"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/wanprof/adom/{{adom}}/sdwan.branches\",\n            \"data\": {\n                \"name\": \"sdwan.branches\",\n                \"description\": \"\",\n                \"scope member\": [\n                    {\n                    \t\"name\": \"{{name_fgt_1}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_fgt_2}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_fgt_ztp}}\",\n                    \t\"vdom\": \"root\"\n                    }\n                ],\n                \"type\": \"wanprof\"\n            }\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -202,6 +202,7 @@
 					"script": {
 						"id": "1cd2ab19-8330-48f6-9c8d-3ceb27002e08",
 						"exec": [
+							"/*",
 							"pm.sendRequest({",
 							"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
 							"    method: 'POST',",
@@ -213,7 +214,8 @@
 							"}, function (err, response) {",
 							"    var sn = response.json().result[0].data[\"Serial Number\"];",
 							"    pm.environment.set(\"sn_fmg\", sn)",
-							"});"
+							"});",
+							"*/"
 						],
 						"type": "text/javascript"
 					}
@@ -231,7 +233,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Configure ZTP Interfaces\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"# Interfaces for ZTP device\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set ip 10.50.50.11 255.255.255.248\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port10\n    set mode dhcp\n    set type physical\n    set allowaccess ping http https\n    set vdom root\n  next\nend\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+					"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Configure ZTP Interfaces\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"# Interfaces for ZTP device\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set ip 10.50.50.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port10\n    set ip 192.168.0.14 255.255.255.0\n    set mode static\n    set type physical\n    set allowaccess ping http https\n    set vdom root\n  next\nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
 				},
 				"url": {
 					"raw": "https://{{ip}}/jsonrpc",
@@ -313,7 +315,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"script\": \"Configure ZTP Interfaces\",\n                \"scope\": [\n                    {\n                        \"name\": \"{{name_ztp_fgt}}\",\n                        \"vdom\": \"root\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+					"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"script\": \"Configure ZTP Interfaces\",\n                \"scope\": [\n                    {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
 				},
 				"url": {
 					"raw": "https://{{ip}}/jsonrpc",
@@ -329,12 +331,12 @@
 			"response": []
 		},
 		{
-			"name": "6 - Map vl_lan interface",
+			"name": "6 - Add CLI Template - Interfaces",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "2e93e2f6-ccda-498f-b4d2-04395de38b7a",
+						"id": "46bdf343-ec69-4973-a3b5-74f3e649e609",
 						"exec": [
 							""
 						],
@@ -354,7 +356,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"1\",\n    \"session\": \"{{session}}\",\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dynamic/interface/vl_lan/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"{{name_ztp_fgt}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"local-intf\": [\n                        \"port5\"\n                    ],\n                    \"intrazone-deny\": 0,\n                    \"egress-shaping-profile\": null,\n                    \"ingress-shaping-profile\": null\n                }\n            ]\n        }\n    ]\n}",
+					"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"ZTP-Interfaces\",\n                    \"script\": \"# Set interfaces on ZTP device\n# Configure tunnel interface IPs\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set ip 10.50.50.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port10\n    set ip 192.168.0.14 255.255.255.0\n    set mode static\n    set type physical\n    set allowaccess ping http https\n    set vdom root\n  next\nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\"\n            }\n            ]\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -375,58 +377,12 @@
 			"response": []
 		},
 		{
-			"name": "7 - Add CLI Template - Interfaces",
+			"name": "7 - Add CLI Template Group",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "0cdf23b5-e618-4ed8-b0f2-79879717f088",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"ZTP-Interfaces\",\n                    \"script\": \"# Set interfaces on ZTP device\n# Configure tunnel interface IPs\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set allowaccess ping\n    set vdom root\n  next\nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\"\n            }\n            ]\n        }\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://{{ip}}/jsonrpc",
-					"protocol": "https",
-					"host": [
-						"{{ip}}"
-					],
-					"path": [
-						"jsonrpc"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "8 - Add CLI Template Group",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "96951c6d-89a4-4359-9984-19831595ffc6",
+						"id": "6d81bca8-54de-4f3f-9ddb-bdb024bf4bcf",
 						"exec": [
 							""
 						],
@@ -467,12 +423,12 @@
 			"response": []
 		},
 		{
-			"name": "9 - Assing CLI template Group to ZTP device",
+			"name": "8 - Assing CLI template Group to ZTP device",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "cbb751bc-e0b0-4508-9a58-32e1465dfee9",
+						"id": "9d84cf78-c309-4ed7-8da6-be8269a76e8a",
 						"exec": [
 							""
 						],
@@ -492,7 +448,53 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template-ZTP\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"ZTP-Interfaces\"\n        ],\n        \"scope member\": [\n          {\n            \"name\": \"{{name_ztp_fgt}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+					"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template-ZTP\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"ZTP-Interfaces\"\n        ],\n        \"scope member\": [\n          {\n            \"name\": \"{{name_fgt_ztp}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9 - Map vl_lan interface",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2e93e2f6-ccda-498f-b4d2-04395de38b7a",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"session\": \"{{session}}\",\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dynamic/interface/vl_lan/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"{{name_fgt_ztp}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"local-intf\": [\n                        \"port5\"\n                    ],\n                    \"intrazone-deny\": 0,\n                    \"egress-shaping-profile\": null,\n                    \"ingress-shaping-profile\": null\n                }\n            ]\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
