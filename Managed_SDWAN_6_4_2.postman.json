@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7643d93b-7254-4272-88ae-1648ef8cdb40",
+		"_postman_id": "5f4b200d-508b-4d60-8a7a-3bbea4f72f33",
 		"name": "Managed Secure SD-WAN 6.4.2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f11bb2e8-4104-4de9-acaf-8747727de34d",
+								"id": "830e8053-c80c-4742-8a3e-0ed317145109",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -66,7 +66,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f11bb2e8-4104-4de9-acaf-8747727de34d",
+								"id": "4aebed1f-ba79-4bfb-8208-73e4bc33c877",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -118,7 +118,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f11bb2e8-4104-4de9-acaf-8747727de34d",
+								"id": "179c0f19-5d72-4ea9-a827-745475b88fc6",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -171,7 +171,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f11bb2e8-4104-4de9-acaf-8747727de34d",
+								"id": "b929de29-2a3a-4ea2-baa4-d6932dc31aca",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -224,7 +224,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "00fc4e54-1af6-49a5-bb47-651a6428d9ad",
+								"id": "bec9071c-c5ee-4c3c-afdc-b8009048a374",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -311,7 +311,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1ef9f1a7-bb43-46a9-ab46-b48f6ea4350d",
+								"id": "ec6012cb-80cf-45df-bb6a-5bea191e7ab3",
 								"exec": [
 									""
 								],
@@ -357,7 +357,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a24226f4-9753-4751-a781-018c7492bdb6",
+								"id": "8278f260-15ee-4a19-84f6-cf86ec64a5a4",
 								"exec": [
 									""
 								],
@@ -403,7 +403,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ab94f3a2-2e61-4f30-83b6-be860aa2a4bc",
+								"id": "f7bc457b-d8dd-4673-978c-e9e7f1997a4b",
 								"exec": [
 									""
 								],
@@ -449,7 +449,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3c13162a-52a5-4a2d-9a03-548f87834ed1",
+								"id": "ed4b5775-983a-463b-a55a-fc3b28004024",
 								"exec": [
 									""
 								],
@@ -495,7 +495,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7f09c8ca-72b7-4a5f-be7f-ebc4c280395b",
+								"id": "630ed82c-f496-4ef9-905d-4b7c7f5a4c35",
 								"exec": [
 									""
 								],
@@ -541,7 +541,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7eb163fc-691b-421b-9845-a6140c701a6f",
+								"id": "ed623c44-746a-42bd-ba65-6e848d6cb1c5",
 								"exec": [
 									""
 								],
@@ -587,7 +587,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "eac64c67-cc60-46d0-a9a5-5d064eca64f1",
+								"id": "892121ad-c7fb-4f1c-b4cb-b31a2191a7be",
 								"exec": [
 									""
 								],
@@ -628,7 +628,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "68bd55e0-1582-4a48-97fa-168b28cbbeba",
+								"id": "877916f1-1cec-43a7-806d-82dd08cb39ac",
 								"exec": [
 									""
 								],
@@ -667,7 +667,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ac39f376-eea0-4a7c-bdbc-2110e10ca3c6",
+								"id": "5ddc84d9-889f-4e6a-91ca-1665b51829b2",
 								"exec": [
 									""
 								],
@@ -677,7 +677,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5f3a35fc-1b6d-4981-a2d2-92068311abd9",
+								"id": "8b107e7c-001b-4d27-adc8-288b704875e0",
 								"exec": [
 									"pm.sendRequest({",
 									"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
@@ -729,7 +729,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bf5ce4a2-ce8a-4ede-9931-480e3fd4f438",
+								"id": "28345e5e-6a46-410c-bf45-a6573d57b3f4",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -811,7 +811,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ac39f376-eea0-4a7c-bdbc-2110e10ca3c6",
+								"id": "4f8dffa5-87a9-46be-908e-d0f25893df73",
 								"exec": [
 									""
 								],
@@ -821,7 +821,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5f3a35fc-1b6d-4981-a2d2-92068311abd9",
+								"id": "c64ea89b-c578-4f3e-9860-e1e8c37ecfb2",
 								"exec": [
 									"pm.sendRequest({",
 									"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
@@ -882,7 +882,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "36c56731-b4f8-47b0-9722-f87ac56eb8e4",
+										"id": "88c0abc0-bba4-4409-8ddc-c2fe1d8dee86",
 										"exec": [
 											""
 										],
@@ -923,7 +923,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d0f916c4-359a-417c-bd91-b219f9f03121",
+										"id": "680f827b-e080-4868-b26d-b59fa7a65734",
 										"exec": [
 											""
 										],
@@ -969,7 +969,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "61a2f522-803a-4d36-a7df-18484b977027",
 										"exec": [
 											""
 										],
@@ -1015,7 +1015,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7eb163fc-691b-421b-9845-a6140c701a6f",
+										"id": "1a7db465-da4c-4939-ae4e-d971871ca5a6",
 										"exec": [
 											""
 										],
@@ -1061,7 +1061,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "f887f45d-0d5d-420d-add5-98094e891f24",
 										"exec": [
 											""
 										],
@@ -1071,7 +1071,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "a5491efa-e42b-446e-88cd-97829f1b3f8a",
 										"exec": [
 											""
 										],
@@ -1117,7 +1117,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "6e3d25dd-b595-4c35-a837-afe4380893d8",
 										"exec": [
 											""
 										],
@@ -1162,7 +1162,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "fd426313-26a1-4edb-8deb-94edf458f234",
+								"id": "04ffac3f-4146-44e9-ac4e-6b4190a4c1c2",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1172,7 +1172,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b0f165e2-6106-45ad-9235-434e011b4e3b",
+								"id": "0298d86e-464e-472c-af97-2ba0bc966762",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1192,7 +1192,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "3fc53b01-cb1a-45bf-abbc-0d196a25c112",
 										"exec": [
 											""
 										],
@@ -1202,7 +1202,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "1970e10d-f0b0-429b-8939-83a957d7b747",
 										"exec": [
 											""
 										],
@@ -1248,7 +1248,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "c0b66007-40a1-4248-b66f-96bee3d5be67",
 										"exec": [
 											""
 										],
@@ -1258,7 +1258,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "aa0d92ee-84f3-41c5-8687-3b7fea45eb4b",
 										"exec": [
 											""
 										],
@@ -1304,7 +1304,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "42ebaf5a-8663-460e-9d1a-be909de2a897",
 										"exec": [
 											""
 										],
@@ -1502,7 +1502,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "eac64c67-cc60-46d0-a9a5-5d064eca64f1",
+										"id": "e72656b3-3c70-4054-b699-12b50d527c4e",
 										"exec": [
 											""
 										],
@@ -1543,7 +1543,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "75a0f290-a11d-4285-8a12-9232506e5361",
+										"id": "050003f3-aa63-4b8c-8980-87a380586693",
 										"exec": [
 											""
 										],
@@ -1591,7 +1591,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "feb1f693-4761-4032-8462-35085910ad41",
 										"exec": [
 											""
 										],
@@ -1601,7 +1601,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "2452ec7a-3d84-436d-956b-c155a381f9d0",
 										"exec": [
 											""
 										],
@@ -1647,7 +1647,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "31ae4c9f-3be8-4c76-b556-8d2a73cbda45",
 										"exec": [
 											""
 										],
@@ -1693,7 +1693,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7eb163fc-691b-421b-9845-a6140c701a6f",
+										"id": "ef67366e-cf48-4ade-ada0-f5ac36bd6fca",
 										"exec": [
 											""
 										],
@@ -1739,7 +1739,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c303cc35-1693-4ff2-a328-ad9cbe027866",
+										"id": "d5ab9745-3db8-422e-8d5a-4ba56e602525",
 										"exec": [
 											"function waitOnTask(retries) {",
 											"    if (!retries) {",
@@ -1822,7 +1822,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "75a0f290-a11d-4285-8a12-9232506e5361",
+										"id": "da362dca-4032-4f98-be8f-c13c3980f2a9",
 										"exec": [
 											""
 										],
@@ -1870,7 +1870,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d0f916c4-359a-417c-bd91-b219f9f03121",
+										"id": "fb02c352-af4f-42da-b486-0d574965e8c1",
 										"exec": [
 											""
 										],
@@ -1916,7 +1916,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "79833165-c21c-4eef-b322-a376c9c228f2",
+										"id": "9c3b298f-89d6-4835-8dae-b1c02ffe3f0a",
 										"exec": [
 											"function waitOnTask(retries) {",
 											"    if (!retries) {",
@@ -1999,7 +1999,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7eb163fc-691b-421b-9845-a6140c701a6f",
+										"id": "d1aa1613-7ae7-4556-b15f-b0ef7083516f",
 										"exec": [
 											""
 										],
@@ -2045,7 +2045,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "75a0f290-a11d-4285-8a12-9232506e5361",
+										"id": "2b1ed406-aeab-4d26-8c9d-beeed0ad3466",
 										"exec": [
 											""
 										],
@@ -2086,7 +2086,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "298dd071-9c2d-4a5a-89c8-b15dea7598c2",
 										"exec": [
 											""
 										],
@@ -2096,7 +2096,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "3f4b5038-860a-45bc-a7b2-94f0deb5a3db",
 										"exec": [
 											""
 										],
@@ -2142,7 +2142,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "fc1f09bc-f535-4652-adc8-66ba7a2ab96e",
 										"exec": [
 											""
 										],
@@ -2192,7 +2192,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c69ee852-524e-4bb4-822b-56010d04f1dc",
+								"id": "1e8ef67b-5b9f-4e7f-8a68-66adda90de24",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -2274,7 +2274,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d7e1e608-4321-44e8-84db-a3ae0b154c19",
+								"id": "7ff1c710-ee34-46a0-87dc-5e01134592a3",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -2365,7 +2365,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "36c56731-b4f8-47b0-9722-f87ac56eb8e4",
+										"id": "b25b9c40-b483-42db-89e9-e7ac63569e20",
 										"exec": [
 											""
 										],
@@ -2406,7 +2406,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d0f916c4-359a-417c-bd91-b219f9f03121",
+										"id": "4d3efd54-7138-414c-b952-d48f02d2123c",
 										"exec": [
 											""
 										],
@@ -2452,7 +2452,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "f52d3bd2-3ce0-4c7e-9c78-dc3eddc19709",
 										"exec": [
 											""
 										],
@@ -2498,7 +2498,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7eb163fc-691b-421b-9845-a6140c701a6f",
+										"id": "1b1f51ed-bbfc-40bd-a924-40012d013522",
 										"exec": [
 											""
 										],
@@ -2544,7 +2544,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "6c3addbc-45af-4632-8156-ea9d2746820a",
 										"exec": [
 											""
 										],
@@ -2554,7 +2554,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "15af5422-2950-4a7e-9f1c-93d7756b3f7f",
 										"exec": [
 											""
 										],
@@ -2600,7 +2600,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "b1497e2c-ed18-4649-bbb0-b2d7f65c4b4f",
 										"exec": [
 											""
 										],
@@ -2645,7 +2645,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "fd426313-26a1-4edb-8deb-94edf458f234",
+								"id": "e3231b02-c7f6-4fd2-9021-bca5a6ba8358",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2655,7 +2655,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b0f165e2-6106-45ad-9235-434e011b4e3b",
+								"id": "5e2b4973-54d0-4b9c-b19b-d1d30ef6dd0e",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2675,7 +2675,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "27aa1204-996d-40bb-8f81-d45ff16d3406",
 										"exec": [
 											""
 										],
@@ -2685,7 +2685,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "aa5de525-2da8-4c43-b5f6-ff8618a55280",
 										"exec": [
 											""
 										],
@@ -2731,7 +2731,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "f50fd716-e00b-4e6e-acdc-7e594efa6287",
 										"exec": [
 											""
 										],
@@ -2741,7 +2741,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "5278bd5e-823f-4de5-b9be-372d13e9fb8d",
 										"exec": [
 											""
 										],
@@ -2787,7 +2787,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "e7317337-7f2e-4373-8057-dde8d9aebd60",
 										"exec": [
 											""
 										],
@@ -2927,7 +2927,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "eac64c67-cc60-46d0-a9a5-5d064eca64f1",
+										"id": "25d5bd45-2238-45ae-837e-eed687673ae0",
 										"exec": [
 											""
 										],
@@ -2968,7 +2968,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "75a0f290-a11d-4285-8a12-9232506e5361",
+										"id": "1be3474e-519c-40c1-9928-5d873ad724e7",
 										"exec": [
 											""
 										],
@@ -3013,7 +3013,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3aaa5cc0-3364-4972-83e2-77d70bd8889c",
+								"id": "1abb8e25-fb7f-41e4-b480-030e714a9825",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -3095,7 +3095,604 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0c0a50e8-a5b4-4934-8700-038c2d8f6f22",
+								"id": "eb2a3771-f50b-40c8-a0d8-bb82cec027a5",
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Spokes\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Zero Touch Provisioning",
+			"item": [
+				{
+					"name": "1 - Add Device",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "749b7f8c-dad2-4b01-98bc-2e1fcb153a6b",
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed to add some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.taskid;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"device\": {\n                    \"name\": \"{{name_fgt_ztp}}\",\n                    \"adm_usr\": \"admin\",\n                    \"os_ver\": 6,\n                    \"version\": 600,\n                    \"os_type\": 0,\n                    \"mr\": 4,\n                    \"platform_str\": \"FortiGate-VM64\",\n                    \"mgmt_mode\": 3,\n                    \"flags\": 67371040,\n                    \"prefer_img_ver\": null,\n                    \"sn\": \"FGVM08TM19003257\",\n                    \"faz.perm\": 15,\n                    \"faz.quota\": 0,\n                    \"platform_id\": 108,\n                    \"branch_pt\": 1637,\n                    \"build\": 1637\n                },\n                \"groups\": [\n                    {\n                        \"adom\": \"{{adom}}\",\n                        \"name\": \"Spokes\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Set Device Properties",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "134151e2-dd24-4006-9c76-4cc388140098",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"session\": \"{{session}}\",\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/{{name_fgt_ztp}}\",\n            \"data\": {\n                \"name\": \"{{name_fgt_ztp}}\",\n                \"latitude\": \"40.418852\",\n                \"longitude\": \" -3.693454\",\n                \"meta fields\": {\n                    \"Address\": \"Madrid, Spain\",\n                    \"branch-id\": \"3\",\n                    \"dc-id\": \"\",\n                    \"remote-dc-id\": \"\"\n                },\n                \"flags\": 69468192\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 - Assign SDWAN Template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd2b1921-3222-4913-a916-2e4b0f18ff7f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/wanprof/adom/{{adom}}/sdwan.branches\",\n            \"data\": {\n                \"name\": \"sdwan.branches\",\n                \"description\": \"\",\n                \"scope member\": [\n                    {\n                    \t\"name\": \"{{name_fgt_1}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_fgt_2}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_fgt_ztp}}\",\n                    \t\"vdom\": \"root\"\n                    }\n                ],\n                \"type\": \"wanprof\"\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 - Add Script - Configure ZTP Interfaces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "015007eb-d18d-46ce-8039-fe3e87c873e1",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a81218ac-8a33-46b4-ad32-190575b1c97c",
+								"exec": [
+									"/*",
+									"pm.sendRequest({",
+									"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"    method: 'POST',",
+									"    header: \"Content-Type:application/json\",",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/sys/status\"}]})",
+									"    }",
+									"}, function (err, response) {",
+									"    var sn = response.json().result[0].data[\"Serial Number\"];",
+									"    pm.environment.set(\"sn_fmg\", sn)",
+									"});",
+									"*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Configure ZTP Interfaces\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"# Interfaces for ZTP device\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set ip 10.50.50.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port10\n    set ip 192.168.0.14 255.255.255.0\n    set mode static\n    set type physical\n    set allowaccess ping http https\n    set vdom root\n  next\nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 - Exec Script - Configure ZTP interfaces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "699cf3b9-ae66-4659-a4ba-0011eeff13f7",
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed to add some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"script\": \"Configure ZTP Interfaces\",\n                \"scope\": [\n                    {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6 - Add CLI Template - Interfaces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "380df034-8fa5-4cdf-adb8-e1e3d8b2c3b1",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"ZTP-Interfaces\",\n                    \"script\": \"# Set interfaces on ZTP device\n# Configure tunnel interface IPs\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set ip 10.50.50.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port10\n    set ip 192.168.0.14 255.255.255.0\n    set mode static\n    set type physical\n    set allowaccess ping http https\n    set vdom root\n  next\nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\"\n            }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7 - Add CLI Template Group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fda73a06-bb75-4d41-8d1d-6e439ffc521a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"set\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template-ZTP\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"ZTP-Interfaces\"\n        ]\n      }\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8 - Assing CLI template Group to ZTP device",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5ef9fde5-6a23-4a8a-85f5-52bf700e0a16",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template-ZTP\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"ZTP-Interfaces\"\n        ],\n        \"scope member\": [\n          {\n            \"name\": \"{{name_fgt_ztp}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9 - Map vl_lan interface",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93c328be-d946-43d3-97ad-2d78e4029e6a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"session\": \"{{session}}\",\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dynamic/interface/vl_lan/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"{{name_fgt_ztp}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"local-intf\": [\n                        \"port5\"\n                    ],\n                    \"intrazone-deny\": 0,\n                    \"egress-shaping-profile\": null,\n                    \"ingress-shaping-profile\": null\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10 - Install Policy - Spokes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e07f78d0-4991-4cec-a8c1-3c480661bc03",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -3186,7 +3783,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "36c56731-b4f8-47b0-9722-f87ac56eb8e4",
+										"id": "394874c4-657d-4b40-a38a-2b877bc5fa00",
 										"exec": [
 											""
 										],
@@ -3227,7 +3824,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d0f916c4-359a-417c-bd91-b219f9f03121",
+										"id": "2c93b904-dae6-4799-bccf-0bc202427b25",
 										"exec": [
 											""
 										],
@@ -3273,7 +3870,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "36c56731-b4f8-47b0-9722-f87ac56eb8e4",
+										"id": "64fce91a-a0a3-401b-9ea3-a5f41c31748f",
 										"exec": [
 											""
 										],
@@ -3314,7 +3911,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d0f916c4-359a-417c-bd91-b219f9f03121",
+										"id": "f4027bdd-8144-4dc3-b66e-7766d70f362d",
 										"exec": [
 											""
 										],
@@ -3360,7 +3957,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c303cc35-1693-4ff2-a328-ad9cbe027866",
+										"id": "67037096-b901-4d7e-9bc1-cd5e4f7c7027",
 										"exec": [
 											"function waitOnTask(retries) {",
 											"    if (!retries) {",
@@ -3443,7 +4040,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c303cc35-1693-4ff2-a328-ad9cbe027866",
+										"id": "a110a5fd-905a-4901-9f89-df3fb9828e54",
 										"exec": [
 											"function waitOnTask(retries) {",
 											"    if (!retries) {",
@@ -3526,7 +4123,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7eb163fc-691b-421b-9845-a6140c701a6f",
+										"id": "771660bb-4686-4202-81cc-1af729b028c0",
 										"exec": [
 											""
 										],
@@ -3572,7 +4169,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "c98bc786-943a-49c8-a5b6-18bd4d073efa",
 										"exec": [
 											""
 										],
@@ -3582,7 +4179,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "fb205cef-f1ad-4d26-80a3-a61be3cbe2a1",
 										"exec": [
 											""
 										],
@@ -3628,7 +4225,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "a8989d2d-3e74-4f7a-9488-18acc1e2d6e0",
 										"exec": [
 											""
 										],
@@ -3681,7 +4278,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "d72b2889-8472-4004-b5f0-6f607d49e86e",
 										"exec": [
 											""
 										],
@@ -3691,7 +4288,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "8b882988-e65d-4fa4-a656-6581a8f16c07",
 										"exec": [
 											""
 										],
@@ -3737,7 +4334,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "7a33769d-a5e7-4df3-89c4-7b6c950aa53b",
 										"exec": [
 											""
 										],
@@ -3747,7 +4344,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "8d6d3467-dcde-4089-bc33-4ee290c26add",
 										"exec": [
 											""
 										],
@@ -3793,7 +4390,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "85dbd249-6f48-4a0c-af0e-a1e56bcb5d71",
 										"exec": [
 											""
 										],
@@ -3846,7 +4443,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "4780ac27-f2b3-48b4-ac50-49c4df9a2212",
 										"exec": [
 											""
 										],
@@ -3856,7 +4453,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "d8aed39a-caf8-46b3-9e98-1707bae17e8b",
+										"id": "85c547d8-5f78-4b40-9262-de9549c846ee",
 										"exec": [
 											""
 										],
@@ -3902,7 +4499,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "94e8f410-949f-4b08-881b-7b95fba7a88e",
+										"id": "ab128887-c8bc-485e-9c81-dc0844bad6bb",
 										"exec": [
 											""
 										],
@@ -3948,7 +4545,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7eb163fc-691b-421b-9845-a6140c701a6f",
+										"id": "3eaf3f86-d181-42d1-8b9e-89e7c2a8235f",
 										"exec": [
 											""
 										],
@@ -4146,7 +4743,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "eac64c67-cc60-46d0-a9a5-5d064eca64f1",
+										"id": "9d132f59-dd39-4ee1-849f-098337b21576",
 										"exec": [
 											""
 										],
@@ -4187,7 +4784,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "75a0f290-a11d-4285-8a12-9232506e5361",
+										"id": "3ec3f37a-552c-4601-ada4-5a43f8b68d6a",
 										"exec": [
 											""
 										],
@@ -4238,7 +4835,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e4ea6080-c8fb-4be2-95d0-9ce7fc99f580",
+								"id": "ed373af6-86db-4652-9857-013e0d3d87e6",
 								"exec": [
 									""
 								],
@@ -4277,7 +4874,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e4ea6080-c8fb-4be2-95d0-9ce7fc99f580",
+								"id": "3b57eca6-78fc-4c89-9fa5-dcd59547012d",
 								"exec": [
 									""
 								],
@@ -4316,7 +4913,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e4ea6080-c8fb-4be2-95d0-9ce7fc99f580",
+								"id": "80835a8a-8ca3-4b06-939b-7e80e8ab738e",
 								"exec": [
 									""
 								],
@@ -4855,7 +5452,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c303cc35-1693-4ff2-a328-ad9cbe027866",
+						"id": "220c5e74-333d-4b32-8f68-b745605b34ae",
 						"exec": [
 							"function waitOnTask(retries) {",
 							"    if (!retries) {",
@@ -4937,7 +5534,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c303cc35-1693-4ff2-a328-ad9cbe027866",
+						"id": "58183a14-fe55-43ef-a3e3-0654287bac3d",
 						"exec": [
 							"function waitOnTask(retries) {",
 							"    if (!retries) {",
@@ -5019,7 +5616,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c303cc35-1693-4ff2-a328-ad9cbe027866",
+						"id": "7988dcff-4b00-44f9-b558-4e170ae34dc9",
 						"exec": [
 							"function waitOnTask(retries) {",
 							"    if (!retries) {",
@@ -5101,7 +5698,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7fa7635b-4ab1-4550-96da-a43f6138f827",
+						"id": "87ea14af-a16e-4f50-b9f8-dd839eadbe1c",
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"",
@@ -5148,7 +5745,8 @@
 							"var data = JSON.parse(responseBody);",
 							"",
 							"postman.setEnvironmentVariable('session',data['session']);"
-						]
+						],
+						"id": "c8805022-769a-4105-85ba-141c35bca5a4"
 					}
 				}
 			],
@@ -5183,7 +5781,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "23fd9a27-876d-42f9-ac43-9c4d8ced64e1",
+				"id": "270565db-1aee-45e1-9e21-cc3281e58490",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -5193,7 +5791,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d794b31e-9592-4ace-ae61-ba18bc8a4152",
+				"id": "1ca8a40a-fac6-4c38-8b67-806888119ba3",
 				"type": "text/javascript",
 				"exec": [
 					"pm.test(\"HTTP Status code is 200 OK\", function () {",
