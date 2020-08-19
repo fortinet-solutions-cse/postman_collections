@@ -4,7 +4,7 @@ This repository contains automation scripts and Postman collections to automate 
 
 ## Files
 
-- `Managed_SDWAN_6_4.postman.json` - Postman collection for controlled execution
+- `Managed_SDWAN_6_4_2.postman.json` - Postman collection for controlled execution
   of requests. Postman supports manual step-by-step execution, as well as batch run.
 
 ## Use Cases
@@ -17,6 +17,7 @@ Scenarios covered:
 - Base environment setup
 - Dual-Hub Single-Region SD-WAN Topology
 - End-to-End Segmentation in SD-WAN Topology
+- Zero-Touch Provisioning in SD-WAN Topology
 - Dual-Region SD-WAN Topology
 
 ## Usage
