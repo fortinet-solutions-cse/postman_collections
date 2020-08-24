@@ -561,7 +561,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/interface/\",\n            \"data\": [\n                {\n                    \"name\": \"port1\",\n                    \"description\": \"INET\",\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port1\",\n                    \"color\": 2\n                },\n                {\n                    \"name\": \"port4\",\n                    \"description\": \"MPLS\",\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port4\",\n                    \"color\": 2\n                },\n                {\n                    \"name\": \"vl_lan_ts\",\n                    \"description\": \"LAN TS\",\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"vl_lan_ts\",\n                    \"color\": 6\n                },\n                {\n                    \"name\": \"vl_lan\",\n                    \"description\": \"LAN\",\n                    \"dynamic_mapping\": [\n                        {\n                            \"_scope\": {\n                                \"name\": \"{{name_fgt_1}}\",\n                                \"vdom\": \"root\"\n                            },\n                            \"local-intf\": \"vl_lan\"\n                        },\n                        {\n                            \"_scope\": {\n                                \"name\": \"{{name_fgt_2}}\",\n                                \"vdom\": \"root\"\n                            },\n                            \"local-intf\": \"vl_lan\"\n                        },\n                        {\n                            \"_scope\": {\n                                \"name\": \"{{name_fgt_dc}}\",\n                                \"vdom\": \"root\"\n                            },\n                            \"local-intf\": \"port5\"\n                        },\n                        {\n                            \"_scope\": {\n                                \"name\": \"{{name_fgt_dc_2}}\",\n                                \"vdom\": \"root\"\n                            },\n                            \"local-intf\": \"port5\"\n                        }\n                    ],\n                    \"single-intf\": 1,\n                    \"default-mapping\": 0,\n                    \"color\": 11\n                }\n            ]\n        }\n    ]\n}",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/interface/\",\n            \"data\": [\n                {\n                    \"name\": \"port1\",\n                    \"description\": \"INET\",\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port1\",\n                    \"color\": 2\n                },\n                {\n                    \"name\": \"port4\",\n                    \"description\": \"MPLS\",\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"port4\",\n                    \"color\": 2\n                },\n                {\n                    \"name\": \"vl_lan_ts\",\n                    \"description\": \"LAN TS\",\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"vl_lan_ts\",\n                    \"color\": 6\n                },\n                {\n                    \"name\": \"vl_lan\",\n                    \"description\": \"LAN\",\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"vl_lan\",                    \n                    \"dynamic_mapping\": [\n                        {\n                            \"_scope\": {\n                                \"name\": \"{{name_fgt_dc}}\",\n                                \"vdom\": \"root\"\n                            },\n                            \"local-intf\": \"port5\"\n                        },\n                        {\n                            \"_scope\": {\n                                \"name\": \"{{name_fgt_dc_2}}\",\n                                \"vdom\": \"root\"\n                            },\n                            \"local-intf\": \"port5\"\n                        }\n                    ],\n                    \"single-intf\": 1,\n                    \"color\": 11\n                }\n            ]\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2671,7 +2671,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n            \"data\": [\n                {\n                    \"name\": \"Hub-Template\",\n                    \"member\": [\n                        \"Hub-Overlay\",\n                        \"Hub-Routing-BGP\",\n                        \"Hub-Routing-InterDC\",\n                        \"Hub-Overlay-TS\",\n                        \"Hub-Routing-TS\"\n                    ],\n                    \"scope member\": [\n                        {\n                            \"name\": \"{{name_fgt_dc}}\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"{{name_fgt_dc_2}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"Spoke-Template\",\n                    \"member\": [\n                        \"Spoke-Overlay\",\n                        \"Spoke-Routing-BGP\",\n                        \"Spoke-Overlay-TS\",\n                        \"Spoke-Routing-TS\"\n                    ],\n                    \"scope member\": [\n                        {\n                            \"name\": \"{{name_fgt_1}}\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"{{name_fgt_2}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n            \"data\": [\n                {\n                    \"name\": \"Hub-Template\",\n                    \"member\": [\n                        \"Hub-Overlay\",\n                        \"Hub-Routing-BGP\",\n                        \"Hub-Routing-InterDC\",\n                        \"Hub-Overlay-TS\",\n                        \"Hub-Routing-TS\"\n                    ],\n                    \"scope member\": [\n                        {\n                            \"name\": \"{{name_fgt_dc}}\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"{{name_fgt_dc_2}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"Spoke-Template\",\n                    \"member\": [\n                        \"Spoke-Overlay\",\n                        \"Spoke-Routing-BGP\",\n                        \"Spoke-Routing-RIA\",\n                        \"Spoke-Overlay-TS\",\n                        \"Spoke-Routing-TS\"\n                    ],\n                    \"scope member\": [\n                        {\n                            \"name\": \"{{name_fgt_1}}\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"{{name_fgt_2}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3108,7 +3108,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"device\": {\n                    \"name\": \"{{name_fgt_ztp}}\",\n                    \"adm_usr\": \"admin\",\n                    \"os_ver\": 6,\n                    \"version\": 600,\n                    \"os_type\": 0,\n                    \"mr\": 4,\n                    \"platform_str\": \"FortiGate-VM64\",\n                    \"mgmt_mode\": 3,\n                    \"flags\": 67371040,\n                    \"prefer_img_ver\": null,\n                    \"sn\": \"FGVM08TM19003257\",\n                    \"faz.perm\": 15,\n                    \"faz.quota\": 0,\n                    \"platform_id\": 108,\n                    \"branch_pt\": 1637,\n                    \"build\": 1637\n                },\n                \"groups\": [\n                    {\n                        \"adom\": \"{{adom}}\",\n                        \"name\": \"Spokes\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"device\": {\n                    \"name\": \"{{name_fgt_ztp}}\",\n                    \"adm_usr\": \"admin\",\n                    \"os_ver\": 6,\n                    \"version\": 600,\n                    \"os_type\": 0,\n                    \"mr\": 4,\n                    \"platform_str\": \"FortiGate-VM64\",\n                    \"mgmt_mode\": 3,\n                    \"flags\": 67371040,\n                    \"prefer_img_ver\": null,\n                    \"sn\": \"FGVM08TM19003267\",\n                    \"faz.perm\": 15,\n                    \"faz.quota\": 0\n                },\n                \"groups\": [\n                    {\n                        \"adom\": \"{{adom}}\",\n                        \"name\": \"Spokes\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3175,7 +3175,53 @@
 					"response": []
 				},
 				{
-					"name": "3 - Assign SDWAN Template",
+					"name": "3 - Add VPN Spokes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "140ce1a6-4473-40be-8d6a-c4f15974164a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/node\",\n            \"data\": [\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"TS_INET\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port1\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"TS_MPLS\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port4\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"OL_INET\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port1\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"OL_MPLS\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port4\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 - Assign SDWAN Template",
 					"event": [
 						{
 							"listen": "test",
@@ -3221,7 +3267,7 @@
 					"response": []
 				},
 				{
-					"name": "4 - Add Script - Configure ZTP Interfaces",
+					"name": "5 - Add Script - Configure ZTP Interfaces",
 					"event": [
 						{
 							"listen": "test",
@@ -3269,7 +3315,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": [\n                {\n                    \"script_schedule\": null,\n                    \"name\": \"Configure ZTP Interfaces\",\n                    \"type\": \"cli\",\n                    \"desc\": \"\",\n                    \"content\": \"# Interfaces for ZTP device\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set ip 10.50.50.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port10\n    set ip 192.168.0.14 255.255.255.0\n    set mode static\n    set type physical\n    set allowaccess ping http https\n    set vdom root\n  next\nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\",\n                    \"target\": \"device_database\"\n                }\n            ]\n        }\n    ]\n}"
+							"raw": "{\n  \"session\": \"{{session}}\",\n  \"id\": 1,\n  \"method\": \"set\",\n  \"params\": [\n    {\n      \"url\": \"/dvmdb/adom/{{adom}}/script\",\n      \"data\": [\n        {\n          \"script_schedule\": null,\n          \"name\": \"Configure ZTP Interfaces\",\n          \"type\": \"cli\",\n          \"desc\": \"\",\n          \"content\": \"# Interfaces for ZTP device\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set type physical\n    set vdom root\n  next\n  edit port10\n    set mode dhcp\n    set type physical\n    set allowaccess ping http https fgfm ssh\n    set vdom root\n  next\n  edit vl_lan\n    set vdom root\n    set ip 10.0.3.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 3\n    set interface port5\n    set vlanid 1000\n  next  \n  edit vl_lan_ts\n    set vdom root\n    set ip 10.0.103.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 6\n    set interface port5\n    set vlanid 1100\n  next   \nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\",\n                    \"target\": \"device_database\"\n        }\n      ]\n    }\n  ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -3285,7 +3331,7 @@
 					"response": []
 				},
 				{
-					"name": "5 - Exec Script - Configure ZTP interfaces",
+					"name": "6 - Exec Script - Configure ZTP interfaces",
 					"event": [
 						{
 							"listen": "test",
@@ -3367,7 +3413,7 @@
 					"response": []
 				},
 				{
-					"name": "6 - Add CLI Template - Interfaces",
+					"name": "7 - Add CLI Template - Interfaces",
 					"event": [
 						{
 							"listen": "test",
@@ -3392,7 +3438,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"ZTP-Interfaces\",\n                    \"script\": \"# Set interfaces on ZTP device\n# Configure tunnel interface IPs\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set ip 10.50.50.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port10\n    set ip 192.168.0.14 255.255.255.0\n    set mode static\n    set type physical\n    set allowaccess ping http https\n    set vdom root\n  next\nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\"\n            }\n            ]\n        }\n    ]\n}",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"ZTP-Interfaces\",\n                    \"script\": \"# Set interfaces on ZTP device\n# Configure tunnel interface IPs\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set type physical\n    set vdom root\n  next\n  edit port10\n    set mode dhcp\n    set type physical\n    set allowaccess ping http https fgfm ssh\n    set vdom root\n  next\n  edit vl_lan\n    set vdom root\n    set ip 10.0.3.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 3\n    set interface port5\n    set vlanid 1000\n  next  \n  edit vl_lan_ts\n    set vdom root\n    set ip 10.0.103.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 6\n    set interface port5\n    set vlanid 1100\n  next \nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\"\n            }\n            ]\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3413,7 +3459,7 @@
 					"response": []
 				},
 				{
-					"name": "7 - Add CLI Template Group",
+					"name": "8 - Add CLI Template Group",
 					"event": [
 						{
 							"listen": "test",
@@ -3459,7 +3505,7 @@
 					"response": []
 				},
 				{
-					"name": "8 - Assing CLI template Group to ZTP device",
+					"name": "9 - Assing CLI template Group to ZTP device",
 					"event": [
 						{
 							"listen": "test",
@@ -3485,52 +3531,6 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template-ZTP\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"ZTP-Interfaces\"\n        ],\n        \"scope member\": [\n          {\n            \"name\": \"{{name_fgt_ztp}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "9 - Map vl_lan interface",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "95351ce4-82c8-41aa-a906-c8d2aa1be537",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": \"1\",\n    \"session\": \"{{session}}\",\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dynamic/interface/vl_lan/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"{{name_fgt_ztp}}\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"local-intf\": [\n                        \"port5\"\n                    ],\n                    \"intrazone-deny\": 0,\n                    \"egress-shaping-profile\": null,\n                    \"ingress-shaping-profile\": null\n                }\n            ]\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
