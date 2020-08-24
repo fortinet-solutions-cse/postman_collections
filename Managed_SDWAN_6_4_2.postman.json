@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5d91a096-3d65-488c-ae6d-7c5146272b5c",
+		"_postman_id": "b5fc64c2-9313-4423-816f-29d226a5a835",
 		"name": "Managed Secure SD-WAN 6.4.2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "522be8cc-414d-4e7e-b72e-51773393a3bd",
+								"id": "92dae8da-d7e5-48ef-8b85-3f01a7a2f824",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -66,7 +66,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "57deb9ff-6d20-40fb-89cf-6d099de084c8",
+								"id": "5c9a7469-fe51-4b97-a4de-c9bb0bddf7f0",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -118,7 +118,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c4dff506-8692-4142-b0e7-75cd7a0a82a0",
+								"id": "e7e3885e-4f4d-49c7-b284-2cca551dde5c",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -171,7 +171,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "af0c42eb-2e91-4869-8b74-c061e76d0d41",
+								"id": "42f6976c-19f5-4952-a751-093641a5db6f",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -224,7 +224,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "724bdb2b-4df5-40bf-b424-da1b3253299a",
+								"id": "99cbb6cc-a26d-4544-8c0a-1a4ec6b0daee",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -311,7 +311,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e2804716-56de-46c2-ac0d-e866a52d4e02",
+								"id": "54111065-4907-4419-9e47-88fa8804182d",
 								"exec": [
 									""
 								],
@@ -357,7 +357,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f0883dfd-2c74-4b59-ba6d-0c246f32fac9",
+								"id": "5a271bd6-0d0c-4ee9-b093-4a21c3c1ce15",
 								"exec": [
 									""
 								],
@@ -403,7 +403,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f5660471-d289-466b-9aa9-e97ab990f62d",
+								"id": "5cf15c58-9844-4b17-802e-f352bb1b9075",
 								"exec": [
 									""
 								],
@@ -449,7 +449,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "20fda3d7-9fc5-4242-bf40-0a2f4f360a1a",
+								"id": "1d7de772-71cb-4b0e-a831-bb8388359af0",
 								"exec": [
 									""
 								],
@@ -495,7 +495,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "43824017-c95a-40b2-a38f-2f5cd995a302",
+								"id": "0550f959-3d88-4a31-be17-57d490cff866",
 								"exec": [
 									""
 								],
@@ -541,7 +541,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7d8cb4cf-c3e9-4c8c-99ee-4f9f506bfa9b",
+								"id": "ba95f5d2-c1e5-481f-8e1c-2950b9ec0257",
 								"exec": [
 									""
 								],
@@ -587,7 +587,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "57f047c0-7b0e-488a-a070-80feb844815b",
+								"id": "1a8a2b2a-dd3c-416f-9f58-d7c1af499467",
 								"exec": [
 									""
 								],
@@ -628,7 +628,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e480a284-1020-4dd9-ba81-25c6efda9a03",
+								"id": "f6647f83-e442-4ea1-952c-81bda0abd213",
 								"exec": [
 									""
 								],
@@ -667,7 +667,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "83820ca6-d709-4eb8-85c4-b1aebdaac03d",
+								"id": "faa0a000-b4db-4f9a-b600-96c2d7507f37",
 								"exec": [
 									""
 								],
@@ -708,7 +708,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "931d193c-65b3-4346-8545-72be9b51abe4",
+								"id": "11409e49-8d96-4297-8ac3-bf7b278799b6",
 								"exec": [
 									""
 								],
@@ -718,7 +718,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "287d57aa-850d-485a-a2c9-fba6f2158510",
+								"id": "b041a294-0e82-4982-8ff2-09e61647e28e",
 								"exec": [
 									"pm.sendRequest({",
 									"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
@@ -770,7 +770,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2b9eb228-9022-461d-a3ee-a80c6a67c441",
+								"id": "64d3d249-b87e-4843-9b7f-e50cafc1c682",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -852,7 +852,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0c128915-ec67-4017-acac-023bab27e66e",
+								"id": "5eb2a361-6837-4829-82e1-cce8f40d4f11",
 								"exec": [
 									""
 								],
@@ -862,7 +862,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "030dff6a-f274-43e5-af24-afd02a29c2a2",
+								"id": "49db1795-653f-467e-8feb-e9dce284e5cf",
 								"exec": [
 									"pm.sendRequest({",
 									"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
@@ -923,7 +923,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "967378f7-d3bc-4b1b-8974-d60beb37cd03",
+										"id": "96e20791-d264-48f8-8c02-fd9dff2f2311",
 										"exec": [
 											""
 										],
@@ -964,7 +964,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "21479078-0523-4c9d-be1a-0b3362a90806",
+										"id": "0f84af84-3a3a-49c5-8b2f-49688344688f",
 										"exec": [
 											""
 										],
@@ -1010,7 +1010,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c54ac5d7-d72a-473e-a9cd-b80d20f030b8",
+										"id": "f47ea244-ea7f-41a6-9d9b-ca8a7d4bbb91",
 										"exec": [
 											""
 										],
@@ -1056,7 +1056,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "b624938e-3617-4155-a9f0-8e6102b929aa",
+										"id": "7fcdf628-73a7-4292-b512-d7d825974254",
 										"exec": [
 											""
 										],
@@ -1102,7 +1102,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "1bdf3f88-08b7-40d5-a70b-27edb1e7349f",
+										"id": "6eeb7de9-6c99-4b74-a0c2-1a78c41752d4",
 										"exec": [
 											""
 										],
@@ -1112,7 +1112,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "7617f475-79cf-4e67-a063-f1a61a20cf6e",
+										"id": "96ed474f-a93d-47a5-a08b-734eb9b94442",
 										"exec": [
 											""
 										],
@@ -1158,7 +1158,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "2ef2e78e-d2ed-4673-8a8c-9852298d6160",
+										"id": "220e098d-e93c-4748-9a34-389cedb4e01a",
 										"exec": [
 											""
 										],
@@ -1203,7 +1203,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "febfa012-1894-483a-a580-b5df41617999",
+								"id": "f86945ab-bb62-4217-b1cd-d05466d0f682",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1213,7 +1213,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2282bbd3-8a52-44f5-b461-b5ac283b8784",
+								"id": "f6d77266-a547-4faf-99bf-548e1a6decb4",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1233,7 +1233,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "af40d186-5a1e-4589-8eff-006cd495ff09",
+										"id": "c01dc4c8-daf6-4b8d-87bd-2772475a1725",
 										"exec": [
 											""
 										],
@@ -1243,7 +1243,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "2edbabbe-b907-4210-911b-c610bb2c237b",
+										"id": "1d263c36-4a9b-42fc-b896-4783943c8783",
 										"exec": [
 											""
 										],
@@ -1289,7 +1289,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ebd62a2c-7fb9-441b-91e0-d71c8dbaba54",
+										"id": "41d62fa7-767c-499f-852f-eb0922b421f1",
 										"exec": [
 											""
 										],
@@ -1299,7 +1299,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "8ff10de7-1600-43d5-961c-50ec9ca61a43",
+										"id": "c355ef7b-ec91-407c-b2c2-91d250299b54",
 										"exec": [
 											""
 										],
@@ -1345,7 +1345,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "399b18e6-f942-47f9-b7d8-9a67236a7866",
+										"id": "8f51d956-e364-49e0-8927-6070d9dd9fdc",
 										"exec": [
 											""
 										],
@@ -1543,7 +1543,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "19d69a43-3759-4e41-a050-d85509d3c2c6",
+										"id": "50fc1df6-e73f-4fc7-9d2f-4e5d3ba01e47",
 										"exec": [
 											""
 										],
@@ -1584,7 +1584,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "5a285f2c-6989-483a-9744-1aaa302ca9d9",
+										"id": "96d0b92c-fd19-4691-a19c-581b5a9dd578",
 										"exec": [
 											""
 										],
@@ -1625,7 +1625,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c1fd866c-feba-40d4-a52f-815b4d36ceed",
+										"id": "52c98d90-002c-4dd6-af2e-4538651aeff1",
 										"exec": [
 											""
 										],
@@ -1635,7 +1635,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "f4d85e1a-8dff-4c0b-b4b4-49fd690db872",
+										"id": "c0b74f22-27bd-4e34-8a6a-2e5066ba883f",
 										"exec": [
 											""
 										],
@@ -1681,7 +1681,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "68e58143-e552-41c8-921b-1fc326efc716",
+										"id": "a8e3da3e-149e-491b-bfb4-91a4e65657a8",
 										"exec": [
 											""
 										],
@@ -1734,7 +1734,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "a9b984ec-49b4-4b51-99ce-8b26c4e498e4",
+										"id": "ac07c68e-14d6-4b13-be42-0c7524b93343",
 										"exec": [
 											""
 										],
@@ -1780,7 +1780,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "0ca6aa9b-61a2-432e-bd7e-c68b8f583bed",
+										"id": "19332fb7-4ad8-418d-a410-32ec61bf10c9",
 										"exec": [
 											"function waitOnTask(retries) {",
 											"    if (!retries) {",
@@ -1863,7 +1863,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "e416c8f1-ff41-49d7-a116-052b09f87421",
+										"id": "275b95a3-5588-4dfd-9cf7-84875a432eec",
 										"exec": [
 											""
 										],
@@ -1909,7 +1909,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "30767c5c-b474-4cfb-b36f-bbcf5d7ab815",
+										"id": "043c28c6-3b5d-42d9-9e4d-d115e003a52b",
 										"exec": [
 											""
 										],
@@ -1950,7 +1950,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "30513c2a-89c3-4eb2-90fd-21c824310926",
+										"id": "0baf2803-ccd2-4643-9ae7-db8a07558004",
 										"exec": [
 											""
 										],
@@ -1960,7 +1960,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "904681f4-f242-430e-b229-7860414332a2",
+										"id": "bb921d70-5242-4426-94c1-f2e367fcb3d8",
 										"exec": [
 											""
 										],
@@ -2006,7 +2006,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "69179250-3213-488e-995a-e34612f39008",
+										"id": "8d6c97f3-2bf0-48a8-a8b5-87aa2bb4bdb3",
 										"exec": [
 											""
 										],
@@ -2056,7 +2056,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f3b6edc3-20e8-4262-91f8-a1f2db85675a",
+								"id": "e851a0a8-9cf7-4c55-8492-e5e6af21bba4",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -2138,7 +2138,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "36f8fcce-45a9-4ade-87ae-b79821af2d5e",
+								"id": "c1f839d1-4aed-4550-9980-76ae6ccdfed0",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -2229,7 +2229,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "01ac0b09-e2f6-4874-ab19-305bd37697f2",
+										"id": "80f71743-77c2-4085-9c84-7ff8445b744a",
 										"exec": [
 											""
 										],
@@ -2270,7 +2270,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "73263265-4475-4744-9804-86ffcdffa11e",
+										"id": "be1253d8-26f4-4728-9e7b-6f4d04b4958d",
 										"exec": [
 											""
 										],
@@ -2316,7 +2316,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "0faf2d62-93c7-482e-9519-01da10015d57",
+										"id": "4417c8c9-1dee-4280-9f27-70d8a54fc14c",
 										"exec": [
 											""
 										],
@@ -2362,7 +2362,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "2f7fbee5-af9d-4028-a5ad-eecbd938cba5",
+										"id": "23dcb6d2-4a5b-4143-8fe9-792e6648df7a",
 										"exec": [
 											""
 										],
@@ -2408,7 +2408,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "53c251f5-4332-4d5a-b3ff-bb3de41e9b1f",
+										"id": "069dc907-af7a-4c70-a9b1-fbe3752f8bcb",
 										"exec": [
 											""
 										],
@@ -2418,7 +2418,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "6e253125-29e1-4e94-a285-f53ff858d426",
+										"id": "9c6cfd22-a5d3-4cf2-948e-b790f7aacbab",
 										"exec": [
 											""
 										],
@@ -2464,7 +2464,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "335d0341-8582-41a8-815c-1319e6beac52",
+										"id": "711b00ed-1f35-4877-8d81-5ea0a8e6e2ff",
 										"exec": [
 											""
 										],
@@ -2509,7 +2509,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "34e7c9a6-cab6-4988-a798-d0a8468ee774",
+								"id": "b2b56b15-070a-4b47-b7af-3a450d83ad02",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2519,7 +2519,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7a1c6134-5609-4430-be90-15c480c22c72",
+								"id": "c47f8492-d871-449f-a336-39c87cb4f0f9",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2539,7 +2539,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "2492b13c-d78b-41ff-80f2-888911bf79a7",
+										"id": "7743ebb1-6bb6-4c35-aa0e-e917b8b58abf",
 										"exec": [
 											""
 										],
@@ -2549,7 +2549,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "33de0582-68c4-4892-a28b-df2db65c70a8",
+										"id": "1652b449-e5a5-48df-aec0-9088d97bcb95",
 										"exec": [
 											""
 										],
@@ -2595,7 +2595,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "5c037a43-1288-4147-bb82-d9d91b353f86",
+										"id": "d0c23c02-2635-4af4-9916-b66faae4bac3",
 										"exec": [
 											""
 										],
@@ -2605,7 +2605,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "de5e9a43-38e4-46f0-8535-a2e7fb1fa01d",
+										"id": "15ad2ed8-f7fa-4db5-867e-126d93a19e05",
 										"exec": [
 											""
 										],
@@ -2651,7 +2651,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c93326cd-ec81-45c0-ae96-41d16f78f519",
+										"id": "d8ee8b6e-4eba-4736-978a-f374918336ff",
 										"exec": [
 											""
 										],
@@ -2791,7 +2791,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f9541933-6a1a-43c0-ab1f-3f1bed5d4998",
+										"id": "51df9b73-b961-4a4c-a901-acd253bf29b3",
 										"exec": [
 											""
 										],
@@ -2832,7 +2832,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ff079054-c747-462d-b504-c1ca59471b66",
+										"id": "62198da4-e0a4-4d02-9f31-ca16acffad7c",
 										"exec": [
 											""
 										],
@@ -2877,7 +2877,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c057807a-fae6-4268-84c7-3c8445e9b809",
+								"id": "63e95f27-ba00-40f9-a6a5-d6becaf422f5",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -2959,7 +2959,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6aa17fe8-f0a5-4202-9d06-6f8ec3268104",
+								"id": "926b29d2-f044-468c-b485-bdcbd31ba8d3",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -3047,7 +3047,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "cbc37841-4c49-4740-9da8-3d58c752099d",
+								"id": "bcaab220-2c73-467f-bb7a-672e68b04e5d",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -3134,7 +3134,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "cc5b6679-48f8-426f-a58e-45a7c0ab965c",
+								"id": "fce14449-73d7-4036-a62d-83b68ff0e935",
 								"exec": [
 									""
 								],
@@ -3180,7 +3180,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "140ce1a6-4473-40be-8d6a-c4f15974164a",
+								"id": "f93dcc0f-b3f0-4ce7-b0c8-d45280d2f387",
 								"exec": [
 									""
 								],
@@ -3221,12 +3221,58 @@
 					"response": []
 				},
 				{
-					"name": "4 - Assign SDWAN Template",
+					"name": "4 - Assign CLI Template Group",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "2687c2c9-7db1-439a-8ea5-840e0da2dff8",
+								"id": "3ed6e926-6912-4332-9488-bd6befea998d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"Spoke-Routing-RIA\",\n          \"Spoke-Overlay-TS\",\n          \"Spoke-Routing-TS\"\n        ],\n        \"scope member\": [\n          {\n            \"name\": \"{{name_fgt_1}}\",\n            \"vdom\": \"root\"\n          },\n          {\n            \"name\": \"{{name_fgt_2}}\",\n            \"vdom\": \"root\"\n          },\n          {\n            \"name\": \"{{name_fgt_ztp}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 - Assign SDWAN Template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b4ca12cc-00e5-4b1a-9369-a55fcaba2fb2",
 								"exec": [
 									""
 								],
@@ -3267,12 +3313,12 @@
 					"response": []
 				},
 				{
-					"name": "5 - Add Script - Configure ZTP Interfaces",
+					"name": "6 - Add Script - Configure ZTP Interfaces",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "e5ab5c51-1492-4f24-a6e4-2bd1191ea476",
+								"id": "1df65322-cc50-47f3-b1fd-4eca68e1b294",
 								"exec": [
 									""
 								],
@@ -3282,7 +3328,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "64ad84d3-d690-4210-a855-bfb77112e3b9",
+								"id": "2b13c62d-0662-4f18-9f44-5a20afb500e9",
 								"exec": [
 									"/*",
 									"pm.sendRequest({",
@@ -3331,12 +3377,12 @@
 					"response": []
 				},
 				{
-					"name": "6 - Exec Script - Configure ZTP interfaces",
+					"name": "7 - Exec Script - Configure ZTP interfaces",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "9eb4e49b-b409-4905-8abc-83215cba178a",
+								"id": "b5725b7e-261e-4a3d-9249-6b653e35bfbe",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -3413,150 +3459,12 @@
 					"response": []
 				},
 				{
-					"name": "7 - Add CLI Template - Interfaces",
+					"name": "8 - Install Policy - Spokes",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "3ca596d0-79e6-43f4-bf37-0bce4e1dab68",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"ZTP-Interfaces\",\n                    \"script\": \"# Set interfaces on ZTP device\n# Configure tunnel interface IPs\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set type physical\n    set vdom root\n  next\n  edit port10\n    set mode dhcp\n    set type physical\n    set allowaccess ping http https fgfm ssh\n    set vdom root\n  next\n  edit vl_lan\n    set vdom root\n    set ip 10.0.3.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 3\n    set interface port5\n    set vlanid 1000\n  next  \n  edit vl_lan_ts\n    set vdom root\n    set ip 10.0.103.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 6\n    set interface port5\n    set vlanid 1100\n  next \nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\"\n            }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "8 - Add CLI Template Group",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "d41c7adb-290c-49d9-a412-c89e5460fd95",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"set\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template-ZTP\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"ZTP-Interfaces\"\n        ]\n      }\n    }\n  ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "9 - Assing CLI template Group to ZTP device",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "9647cd6d-f8d0-4056-9db0-abd5e12268c2",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template-ZTP\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"ZTP-Interfaces\"\n        ],\n        \"scope member\": [\n          {\n            \"name\": \"{{name_fgt_ztp}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "10 - Install Policy - Spokes",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "2d2e5337-bba9-4eeb-b15f-f7c91c9cf666",
+								"id": "05cf8f70-141d-4b70-8e51-82637e8b3939",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -3647,7 +3555,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d1623280-a5a7-4a26-a3fd-5f2a6e7b20b3",
+										"id": "fa4a629b-f260-46f3-af80-79df46c24fbb",
 										"exec": [
 											""
 										],
@@ -3688,7 +3596,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "2ee712fb-c441-472d-a48a-a03a551cfaa2",
+										"id": "29a1c078-a22f-49f7-a58d-a012258ed8af",
 										"exec": [
 											""
 										],
@@ -3734,7 +3642,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "8a7dd9bc-bc5c-4b33-b48e-dd62a22de383",
+										"id": "f3659936-1c78-4486-ad2b-de109c06593f",
 										"exec": [
 											""
 										],
@@ -3775,7 +3683,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "df1d3f6d-9dbd-418a-b746-cf409640d0c2",
+										"id": "52e0bd8c-329e-44a6-beca-134da6232506",
 										"exec": [
 											""
 										],
@@ -3821,7 +3729,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c7fa5830-d50e-40d3-af45-86372f187b91",
+										"id": "3921e8b9-19f4-42eb-af6c-219d741aed65",
 										"exec": [
 											"function waitOnTask(retries) {",
 											"    if (!retries) {",
@@ -3904,7 +3812,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "941dec33-b2b0-4e7d-9bd0-5c62fded496c",
+										"id": "97d4c032-392a-4f41-a165-e0e876266b19",
 										"exec": [
 											""
 										],
@@ -3950,7 +3858,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "da02d8c6-0beb-4794-a254-c1351bd35ac8",
+										"id": "2e82c59a-e40c-494f-8996-d46e4269384d",
 										"exec": [
 											""
 										],
@@ -3960,7 +3868,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "636c46ae-38dd-4456-bce1-5b5920c04365",
+										"id": "635708d8-3bee-4322-a961-3df0523435d4",
 										"exec": [
 											""
 										],
@@ -4006,7 +3914,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "e72e11c5-d9d0-41e7-922b-d4ab477c7817",
+										"id": "cd4ba298-c146-4927-981d-c3c527e03d73",
 										"exec": [
 											""
 										],
@@ -4059,7 +3967,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "5b575980-7f32-4ffa-a6d9-48f61901fb8a",
+										"id": "6025db28-2af3-48cd-bef2-f9617089a6c4",
 										"exec": [
 											""
 										],
@@ -4069,7 +3977,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "41cf5833-5893-4d4f-b23f-454e239a67ee",
+										"id": "3776a473-73a5-4784-b0dc-82a3b9c7adbd",
 										"exec": [
 											""
 										],
@@ -4115,7 +4023,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ede2561c-30a7-4760-95c7-39c2a030a8b3",
+										"id": "c2f233f8-3b05-4508-af4a-862672c99337",
 										"exec": [
 											""
 										],
@@ -4125,7 +4033,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "71b2a2c7-1575-4107-943d-6ad3a468478f",
+										"id": "1db555b0-9019-4bfc-a473-38978bb55451",
 										"exec": [
 											""
 										],
@@ -4171,7 +4079,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "a4638eb2-610a-4b2c-b208-61db262b9eb9",
+										"id": "3086209c-1634-44cb-ad8c-b9f86442c7d9",
 										"exec": [
 											""
 										],
@@ -4369,7 +4277,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "b1558979-8c85-40bf-a62b-9ed461553ce0",
+										"id": "addd10d7-2410-4e44-803b-f4a11ce1703e",
 										"exec": [
 											""
 										],
@@ -4410,7 +4318,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "e8ba0bbb-8eeb-41b9-bbb3-3ebb6018634b",
+										"id": "e80f62a0-4d79-4388-b0a8-4ae4759dea96",
 										"exec": [
 											""
 										],
@@ -4461,7 +4369,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0bac66c0-eb55-4580-b461-d34e3245f2a9",
+								"id": "b1548448-994a-46c6-b87c-b8b2cd1a8459",
 								"exec": [
 									""
 								],
@@ -4500,7 +4408,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "de950f25-cbae-4e2f-96d7-779b8a2c74e3",
+								"id": "8e17a84a-44dc-4754-a7a8-2da6be21960d",
 								"exec": [
 									""
 								],
@@ -4539,7 +4447,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ab154e02-b72f-4139-8ba2-2be1ea375808",
+								"id": "498bd5f4-8a46-4b4a-a101-b36766b0b966",
 								"exec": [
 									""
 								],
@@ -5078,7 +4986,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ff0f05d9-4435-4106-9a93-decb4029b153",
+						"id": "12489ba6-08f1-4818-bdbc-8ee29b368294",
 						"exec": [
 							"function waitOnTask(retries) {",
 							"    if (!retries) {",
@@ -5160,7 +5068,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f4104df4-4f83-4c03-b26d-cf1468aa7d56",
+						"id": "48ce4acf-f505-4094-a6ae-2752fcfc2263",
 						"exec": [
 							"function waitOnTask(retries) {",
 							"    if (!retries) {",
@@ -5242,7 +5150,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5461a9f5-1425-409c-bd7c-d53b7814d338",
+						"id": "4cabc4ee-d0a1-44b5-9c59-5ac55da6ba43",
 						"exec": [
 							"function waitOnTask(retries) {",
 							"    if (!retries) {",
@@ -5324,7 +5232,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2420994d-bea3-4168-a158-9202bcea39e7",
+						"id": "0a7c0ad2-7dc2-417f-9cea-1902c3c730fe",
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"",
@@ -5372,7 +5280,7 @@
 							"",
 							"postman.setEnvironmentVariable('session',data['session']);"
 						],
-						"id": "f49b12cf-d60f-4ff5-ad47-1c4b84ecf460"
+						"id": "edeaa981-5813-4de5-84cf-3475810ffa3d"
 					}
 				}
 			],
@@ -5407,7 +5315,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "00aa2595-f552-4a68-80f2-b52e153beef1",
+				"id": "b60d9446-5fc5-41fc-bbfc-333d65fbfa6d",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -5417,7 +5325,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "a7dd91c0-8c2e-4c36-b204-3a1dc1d4239e",
+				"id": "2ce7e761-f25e-4020-8798-cc0dbb734622",
 				"type": "text/javascript",
 				"exec": [
 					"pm.test(\"HTTP Status code is 200 OK\", function () {",
