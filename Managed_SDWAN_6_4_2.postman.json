@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b5fc64c2-9313-4423-816f-29d226a5a835",
+		"_postman_id": "e08418cb-cebf-459c-92ad-bd5c03699b69",
 		"name": "Managed Secure SD-WAN 6.4.2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "92dae8da-d7e5-48ef-8b85-3f01a7a2f824",
+								"id": "e40945ec-92f4-4204-84ca-6e859275ebd5",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -66,7 +66,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5c9a7469-fe51-4b97-a4de-c9bb0bddf7f0",
+								"id": "a538a051-e2d2-46be-a41f-0929dd1581af",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -118,7 +118,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e7e3885e-4f4d-49c7-b284-2cca551dde5c",
+								"id": "2890bd30-8832-495b-8ac5-345e022c398e",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -171,7 +171,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "42f6976c-19f5-4952-a751-093641a5db6f",
+								"id": "cce648e8-efda-4333-ab21-e6a8b626bf3a",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"sn = jsonData.result[0].data.device.sn;",
@@ -224,7 +224,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "99cbb6cc-a26d-4544-8c0a-1a4ec6b0daee",
+								"id": "f6f3e673-add4-4d7a-a50e-ffd9e3ed40f6",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -311,7 +311,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "54111065-4907-4419-9e47-88fa8804182d",
+								"id": "16d76650-adb7-4e55-a6c3-6a6f256294f9",
 								"exec": [
 									""
 								],
@@ -357,7 +357,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5a271bd6-0d0c-4ee9-b093-4a21c3c1ce15",
+								"id": "bd7db575-2c5b-4cf8-81e9-dcbdc374236e",
 								"exec": [
 									""
 								],
@@ -403,7 +403,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5cf15c58-9844-4b17-802e-f352bb1b9075",
+								"id": "659256dd-a265-423a-81af-8aed08fec3ee",
 								"exec": [
 									""
 								],
@@ -449,7 +449,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1d7de772-71cb-4b0e-a831-bb8388359af0",
+								"id": "447fb52f-9785-4c3b-841f-8a224c4c871f",
 								"exec": [
 									""
 								],
@@ -495,7 +495,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0550f959-3d88-4a31-be17-57d490cff866",
+								"id": "d8c15d1e-c779-4680-97c9-67300678bbd0",
 								"exec": [
 									""
 								],
@@ -541,7 +541,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ba95f5d2-c1e5-481f-8e1c-2950b9ec0257",
+								"id": "83e6fb53-401a-4a7e-ab8d-3d15eb30a158",
 								"exec": [
 									""
 								],
@@ -587,7 +587,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1a8a2b2a-dd3c-416f-9f58-d7c1af499467",
+								"id": "242bf49c-2535-4816-bc6b-9122e1c353c2",
 								"exec": [
 									""
 								],
@@ -628,7 +628,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f6647f83-e442-4ea1-952c-81bda0abd213",
+								"id": "4d3da593-81b1-4348-89c6-526db19d7fbe",
 								"exec": [
 									""
 								],
@@ -667,7 +667,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "faa0a000-b4db-4f9a-b600-96c2d7507f37",
+								"id": "9d246e30-2c54-4128-89b2-4dfeeb8d67ce",
 								"exec": [
 									""
 								],
@@ -708,7 +708,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "11409e49-8d96-4297-8ac3-bf7b278799b6",
+								"id": "1e03b244-24b1-4a57-b69d-c00c764985da",
 								"exec": [
 									""
 								],
@@ -718,7 +718,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b041a294-0e82-4982-8ff2-09e61647e28e",
+								"id": "277892fe-987e-424f-8501-f6d4f7c12cbe",
 								"exec": [
 									"pm.sendRequest({",
 									"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
@@ -770,7 +770,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "64d3d249-b87e-4843-9b7f-e50cafc1c682",
+								"id": "4811346a-17b3-4275-90da-c2c61282286b",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -852,7 +852,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5eb2a361-6837-4829-82e1-cce8f40d4f11",
+								"id": "8446cba6-2174-45a7-aacc-c3f4a1bd530e",
 								"exec": [
 									""
 								],
@@ -862,7 +862,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "49db1795-653f-467e-8feb-e9dce284e5cf",
+								"id": "72dc51be-ce78-4999-8bfe-e32565ec7232",
 								"exec": [
 									"pm.sendRequest({",
 									"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
@@ -923,7 +923,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "96e20791-d264-48f8-8c02-fd9dff2f2311",
+										"id": "cc0afb24-c63c-484c-b742-ab9e914d7bb6",
 										"exec": [
 											""
 										],
@@ -964,7 +964,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "0f84af84-3a3a-49c5-8b2f-49688344688f",
+										"id": "2dd9ab08-0aa4-43c9-80ce-a30dc961c84b",
 										"exec": [
 											""
 										],
@@ -1010,7 +1010,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f47ea244-ea7f-41a6-9d9b-ca8a7d4bbb91",
+										"id": "868451ca-3a1d-4a3b-a5ce-e6d38e9fc177",
 										"exec": [
 											""
 										],
@@ -1056,7 +1056,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7fcdf628-73a7-4292-b512-d7d825974254",
+										"id": "7a1e9915-581a-4779-aacc-114a806b67cd",
 										"exec": [
 											""
 										],
@@ -1102,7 +1102,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "6eeb7de9-6c99-4b74-a0c2-1a78c41752d4",
+										"id": "f806080c-a355-4610-9a60-aa7808ff46dc",
 										"exec": [
 											""
 										],
@@ -1112,7 +1112,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "96ed474f-a93d-47a5-a08b-734eb9b94442",
+										"id": "b4d5dc3c-fcad-4bd6-912e-fe0d8f9e76f4",
 										"exec": [
 											""
 										],
@@ -1158,7 +1158,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "220e098d-e93c-4748-9a34-389cedb4e01a",
+										"id": "a3eafa25-31de-43e7-9cf2-9a2368889258",
 										"exec": [
 											""
 										],
@@ -1203,7 +1203,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f86945ab-bb62-4217-b1cd-d05466d0f682",
+								"id": "3fa996c0-14ff-4037-a6b0-c9cc6794ee20",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1213,7 +1213,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f6d77266-a547-4faf-99bf-548e1a6decb4",
+								"id": "23ba576b-7e83-4ce0-b5f6-a03e5b0ac569",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1233,7 +1233,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c01dc4c8-daf6-4b8d-87bd-2772475a1725",
+										"id": "58435a09-d5a1-41b3-8b4d-b82f3c610659",
 										"exec": [
 											""
 										],
@@ -1243,7 +1243,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "1d263c36-4a9b-42fc-b896-4783943c8783",
+										"id": "6a2ed8d3-9150-4209-a7b5-eed94bcd4491",
 										"exec": [
 											""
 										],
@@ -1289,7 +1289,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "41d62fa7-767c-499f-852f-eb0922b421f1",
+										"id": "0ab5d242-8801-44c1-a6b0-e50b3874c8aa",
 										"exec": [
 											""
 										],
@@ -1299,7 +1299,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "c355ef7b-ec91-407c-b2c2-91d250299b54",
+										"id": "d595bab0-6c45-4bc2-a293-286b9629cf1a",
 										"exec": [
 											""
 										],
@@ -1345,7 +1345,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "8f51d956-e364-49e0-8927-6070d9dd9fdc",
+										"id": "77b5e5fd-ef36-4830-9a0d-81954b36b7bb",
 										"exec": [
 											""
 										],
@@ -1543,7 +1543,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "50fc1df6-e73f-4fc7-9d2f-4e5d3ba01e47",
+										"id": "4aef57fb-916f-41a8-bd01-28a90d0f6acf",
 										"exec": [
 											""
 										],
@@ -1584,7 +1584,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "96d0b92c-fd19-4691-a19c-581b5a9dd578",
+										"id": "78a1de5f-6e29-434e-8535-d9ac83d363f0",
 										"exec": [
 											""
 										],
@@ -1625,7 +1625,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "52c98d90-002c-4dd6-af2e-4538651aeff1",
+										"id": "a39a0177-695a-426e-a4bb-594a9a847f0e",
 										"exec": [
 											""
 										],
@@ -1635,7 +1635,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "c0b74f22-27bd-4e34-8a6a-2e5066ba883f",
+										"id": "deac6710-205b-43d6-9d0e-fc2eba0b3384",
 										"exec": [
 											""
 										],
@@ -1681,7 +1681,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "a8e3da3e-149e-491b-bfb4-91a4e65657a8",
+										"id": "ae2ac442-3d41-4aa4-8671-dc5736901b68",
 										"exec": [
 											""
 										],
@@ -1734,7 +1734,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ac07c68e-14d6-4b13-be42-0c7524b93343",
+										"id": "5b25a28e-c07a-4d43-955f-f50d64994b9a",
 										"exec": [
 											""
 										],
@@ -1780,7 +1780,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "19332fb7-4ad8-418d-a410-32ec61bf10c9",
+										"id": "db6e2d91-13f3-4e7a-b6d4-8b3adefb96d8",
 										"exec": [
 											"function waitOnTask(retries) {",
 											"    if (!retries) {",
@@ -1863,7 +1863,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "275b95a3-5588-4dfd-9cf7-84875a432eec",
+										"id": "edf51cc4-de29-4993-b49f-66eb288fce06",
 										"exec": [
 											""
 										],
@@ -1909,7 +1909,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "043c28c6-3b5d-42d9-9e4d-d115e003a52b",
+										"id": "c0f7a8fc-b9f0-4afa-a9a9-9907de37ebe2",
 										"exec": [
 											""
 										],
@@ -1950,7 +1950,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "0baf2803-ccd2-4643-9ae7-db8a07558004",
+										"id": "0e40d3cd-cb30-4808-bcc1-041a4e8514a4",
 										"exec": [
 											""
 										],
@@ -1960,7 +1960,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "bb921d70-5242-4426-94c1-f2e367fcb3d8",
+										"id": "c69039ab-96ee-48ee-9dde-31b6f442198c",
 										"exec": [
 											""
 										],
@@ -2006,7 +2006,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "8d6c97f3-2bf0-48a8-a8b5-87aa2bb4bdb3",
+										"id": "496d79ca-cd78-439e-9ebd-bad12df357b2",
 										"exec": [
 											""
 										],
@@ -2056,7 +2056,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e851a0a8-9cf7-4c55-8492-e5e6af21bba4",
+								"id": "d063e8bd-8ea6-4c31-86a5-79ab8893217d",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -2138,7 +2138,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c1f839d1-4aed-4550-9980-76ae6ccdfed0",
+								"id": "b1269a69-3a00-41da-86d4-70ad204c7cb6",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -2229,7 +2229,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "80f71743-77c2-4085-9c84-7ff8445b744a",
+										"id": "c9e067bc-2e1e-4135-9c0f-e92fd239ad64",
 										"exec": [
 											""
 										],
@@ -2270,7 +2270,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "be1253d8-26f4-4728-9e7b-6f4d04b4958d",
+										"id": "d545f069-8009-4fe4-a0c2-06a208ecf9de",
 										"exec": [
 											""
 										],
@@ -2316,7 +2316,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "4417c8c9-1dee-4280-9f27-70d8a54fc14c",
+										"id": "a8c1b0a4-38f9-4fe7-8e3e-91ef864d1866",
 										"exec": [
 											""
 										],
@@ -2362,7 +2362,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "23dcb6d2-4a5b-4143-8fe9-792e6648df7a",
+										"id": "8a711abc-f315-4d52-8f05-6b7e9b3f0b71",
 										"exec": [
 											""
 										],
@@ -2408,7 +2408,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "069dc907-af7a-4c70-a9b1-fbe3752f8bcb",
+										"id": "5d465397-8335-4d82-b41e-53bece714d8b",
 										"exec": [
 											""
 										],
@@ -2418,7 +2418,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "9c6cfd22-a5d3-4cf2-948e-b790f7aacbab",
+										"id": "b226fb4d-eb9b-403f-867c-8ceae45ba9c9",
 										"exec": [
 											""
 										],
@@ -2464,7 +2464,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "711b00ed-1f35-4877-8d81-5ea0a8e6e2ff",
+										"id": "e2f6ea3d-3b58-43f1-8415-e176f86107cb",
 										"exec": [
 											""
 										],
@@ -2509,7 +2509,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b2b56b15-070a-4b47-b7af-3a450d83ad02",
+								"id": "ff280a8e-671f-44d1-8aec-01b543d8d34d",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2519,7 +2519,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c47f8492-d871-449f-a336-39c87cb4f0f9",
+								"id": "e607ec57-719a-4d8e-8cc9-14223a43cf57",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2539,7 +2539,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7743ebb1-6bb6-4c35-aa0e-e917b8b58abf",
+										"id": "afdcc6d4-e698-42a6-9057-532e76d363c7",
 										"exec": [
 											""
 										],
@@ -2549,7 +2549,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "1652b449-e5a5-48df-aec0-9088d97bcb95",
+										"id": "eb3a1bcf-3f5c-4b46-b8d5-9b68e6885871",
 										"exec": [
 											""
 										],
@@ -2595,7 +2595,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d0c23c02-2635-4af4-9916-b66faae4bac3",
+										"id": "890c28b5-24a0-4e5e-b96e-e5b6e6f475ea",
 										"exec": [
 											""
 										],
@@ -2605,7 +2605,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "15ad2ed8-f7fa-4db5-867e-126d93a19e05",
+										"id": "99f236d9-624d-4a7d-8895-75c475134ac7",
 										"exec": [
 											""
 										],
@@ -2651,7 +2651,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "d8ee8b6e-4eba-4736-978a-f374918336ff",
+										"id": "57c78378-991d-4110-8f0f-0a43ae403778",
 										"exec": [
 											""
 										],
@@ -2791,7 +2791,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "51df9b73-b961-4a4c-a901-acd253bf29b3",
+										"id": "45269298-fa4d-4aad-bcc1-bd9fc91ebf75",
 										"exec": [
 											""
 										],
@@ -2832,7 +2832,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "62198da4-e0a4-4d02-9f31-ca16acffad7c",
+										"id": "5e443b6e-c586-42c8-be41-7dad03bec518",
 										"exec": [
 											""
 										],
@@ -2877,7 +2877,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "63e95f27-ba00-40f9-a6a5-d6becaf422f5",
+								"id": "a6c12cc3-d50c-4e5e-9b5a-dc5b06e96ed4",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -2959,7 +2959,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "926b29d2-f044-468c-b485-bdcbd31ba8d3",
+								"id": "66dd552b-13cb-4353-84b1-06f46d3c28e3",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -3047,7 +3047,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bcaab220-2c73-467f-bb7a-672e68b04e5d",
+								"id": "e87b9033-2379-44cd-842d-b4592942b280",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -3108,7 +3108,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"device\": {\n                    \"name\": \"{{name_fgt_ztp}}\",\n                    \"adm_usr\": \"admin\",\n                    \"os_ver\": 6,\n                    \"version\": 600,\n                    \"os_type\": 0,\n                    \"mr\": 4,\n                    \"platform_str\": \"FortiGate-VM64\",\n                    \"mgmt_mode\": 3,\n                    \"flags\": 67371040,\n                    \"prefer_img_ver\": null,\n                    \"sn\": \"FGVM08TM19003267\",\n                    \"faz.perm\": 15,\n                    \"faz.quota\": 0\n                },\n                \"groups\": [\n                    {\n                        \"adom\": \"{{adom}}\",\n                        \"name\": \"Spokes\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"device\": {\n                    \"name\": \"{{name_fgt_ztp}}\",\n                    \"adm_usr\": \"admin\",\n                    \"os_ver\": 6,\n                    \"version\": 600,\n                    \"os_type\": 0,\n                    \"mr\": 4,\n                    \"platform_str\": \"FortiGate-VM64\",\n                    \"mgmt_mode\": 3,\n                    \"flags\": 67371040,\n                    \"prefer_img_ver\": null,\n                    \"sn\": \"{{sn_fgt_ztp}}\",\n                    \"faz.perm\": 15,\n                    \"faz.quota\": 0\n                },\n                \"groups\": [\n                    {\n                        \"adom\": \"{{adom}}\",\n                        \"name\": \"Spokes\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3134,7 +3134,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "fce14449-73d7-4036-a62d-83b68ff0e935",
+								"id": "3e06675f-5a3a-4905-bbcf-e4820b7b67c8",
 								"exec": [
 									""
 								],
@@ -3180,7 +3180,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f93dcc0f-b3f0-4ce7-b0c8-d45280d2f387",
+								"id": "5c876456-6367-46b6-9cbc-c6cf96019528",
 								"exec": [
 									""
 								],
@@ -3200,7 +3200,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/node\",\n            \"data\": [\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"TS_INET\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port1\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"TS_MPLS\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port4\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"OL_INET\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port1\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"OL_MPLS\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port4\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                }\n            ]\n        }\n    ]\n}",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/node\",\n            \"data\": [\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"OL_INET\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port1\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"OL_MPLS\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port4\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                }\n            ]\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3226,7 +3226,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3ed6e926-6912-4332-9488-bd6befea998d",
+								"id": "500b4657-f760-42a7-9b45-6db4730b5214",
 								"exec": [
 									""
 								],
@@ -3246,7 +3246,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"Spoke-Routing-RIA\",\n          \"Spoke-Overlay-TS\",\n          \"Spoke-Routing-TS\"\n        ],\n        \"scope member\": [\n          {\n            \"name\": \"{{name_fgt_1}}\",\n            \"vdom\": \"root\"\n          },\n          {\n            \"name\": \"{{name_fgt_2}}\",\n            \"vdom\": \"root\"\n          },\n          {\n            \"name\": \"{{name_fgt_ztp}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+							"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"Spoke-Routing-RIA\"\n        ],\n        \"scope member\": [\n          {\n            \"name\": \"{{name_fgt_1}}\",\n            \"vdom\": \"root\"\n          },\n          {\n            \"name\": \"{{name_fgt_2}}\",\n            \"vdom\": \"root\"\n          },\n          {\n            \"name\": \"{{name_fgt_ztp}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3272,7 +3272,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b4ca12cc-00e5-4b1a-9369-a55fcaba2fb2",
+								"id": "9eb5fe3b-116b-488c-b05c-8d1076d90ba9",
 								"exec": [
 									""
 								],
@@ -3318,7 +3318,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1df65322-cc50-47f3-b1fd-4eca68e1b294",
+								"id": "fe3155ef-d4d6-4190-96cf-5b9bbe40ad31",
 								"exec": [
 									""
 								],
@@ -3328,7 +3328,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2b13c62d-0662-4f18-9f44-5a20afb500e9",
+								"id": "d132734e-4c5a-4612-996d-a574cdf5bcc1",
 								"exec": [
 									"/*",
 									"pm.sendRequest({",
@@ -3361,7 +3361,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"session\": \"{{session}}\",\n  \"id\": 1,\n  \"method\": \"set\",\n  \"params\": [\n    {\n      \"url\": \"/dvmdb/adom/{{adom}}/script\",\n      \"data\": [\n        {\n          \"script_schedule\": null,\n          \"name\": \"Configure ZTP Interfaces\",\n          \"type\": \"cli\",\n          \"desc\": \"\",\n          \"content\": \"# Interfaces for ZTP device\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set type physical\n    set vdom root\n  next\n  edit port10\n    set mode dhcp\n    set type physical\n    set allowaccess ping http https fgfm ssh\n    set vdom root\n  next\n  edit vl_lan\n    set vdom root\n    set ip 10.0.3.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 3\n    set interface port5\n    set vlanid 1000\n  next  \n  edit vl_lan_ts\n    set vdom root\n    set ip 10.0.103.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 6\n    set interface port5\n    set vlanid 1100\n  next   \nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\",\n                    \"target\": \"device_database\"\n        }\n      ]\n    }\n  ]\n}"
+							"raw": "{\n  \"session\": \"{{session}}\",\n  \"id\": 1,\n  \"method\": \"set\",\n  \"params\": [\n    {\n      \"url\": \"/dvmdb/adom/{{adom}}/script\",\n      \"data\": [\n        {\n          \"script_schedule\": null,\n          \"name\": \"Configure ZTP Interfaces\",\n          \"type\": \"cli\",\n          \"desc\": \"\",\n          \"content\": \"# Interfaces for ZTP device\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set type physical\n    set vdom root\n  next\n  edit port10\n    set mode dhcp\n    set type physical\n    set allowaccess ping http https fgfm ssh\n    set vdom root\n  next\n  edit vl_lan\n    set vdom root\n    set ip 10.0.3.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 3\n    set interface port5\n    set vlanid 1000\n  next  \nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\",\n                    \"target\": \"device_database\"\n        }\n      ]\n    }\n  ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
@@ -3382,7 +3382,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b5725b7e-261e-4a3d-9249-6b653e35bfbe",
+								"id": "81c42fb6-e7dd-4e23-a471-a8a959a5ffce",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -3464,7 +3464,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "05cf8f70-141d-4b70-8e51-82637e8b3939",
+								"id": "ccdfff19-8177-47ec-8825-6e0f4f8f2643",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
@@ -3555,7 +3555,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "fa4a629b-f260-46f3-af80-79df46c24fbb",
+										"id": "8485581a-bbd4-4341-b99d-5c78e515b1d9",
 										"exec": [
 											""
 										],
@@ -3596,7 +3596,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "29a1c078-a22f-49f7-a58d-a012258ed8af",
+										"id": "69e1a8e5-7fad-43b3-91e1-ca775865a0e1",
 										"exec": [
 											""
 										],
@@ -3642,7 +3642,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f3659936-1c78-4486-ad2b-de109c06593f",
+										"id": "9ca0dc45-0e16-432a-bf36-d22041acaee6",
 										"exec": [
 											""
 										],
@@ -3683,7 +3683,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "52e0bd8c-329e-44a6-beca-134da6232506",
+										"id": "6a75a630-80ba-4080-9aef-049a7597219c",
 										"exec": [
 											""
 										],
@@ -3729,7 +3729,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "3921e8b9-19f4-42eb-af6c-219d741aed65",
+										"id": "7ccad034-ecd3-4b90-991e-dfbe81cc02cf",
 										"exec": [
 											"function waitOnTask(retries) {",
 											"    if (!retries) {",
@@ -3812,7 +3812,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "97d4c032-392a-4f41-a165-e0e876266b19",
+										"id": "5a8d3b87-2d26-4409-b1e9-eafd5e47eca6",
 										"exec": [
 											""
 										],
@@ -3858,7 +3858,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "2e82c59a-e40c-494f-8996-d46e4269384d",
+										"id": "83729688-cf05-48d8-88d0-06f9717039ec",
 										"exec": [
 											""
 										],
@@ -3868,7 +3868,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "635708d8-3bee-4322-a961-3df0523435d4",
+										"id": "de83eb52-26b8-4aa4-bcf8-a2948ae36c38",
 										"exec": [
 											""
 										],
@@ -3914,7 +3914,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "cd4ba298-c146-4927-981d-c3c527e03d73",
+										"id": "b8f4c1b3-b9c6-4618-9e3b-c064ac83c81d",
 										"exec": [
 											""
 										],
@@ -3967,7 +3967,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "6025db28-2af3-48cd-bef2-f9617089a6c4",
+										"id": "ff217b4c-6d76-4f9f-98e9-527d9e8de6ca",
 										"exec": [
 											""
 										],
@@ -3977,7 +3977,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "3776a473-73a5-4784-b0dc-82a3b9c7adbd",
+										"id": "141a635b-ceac-44b9-8a33-dfcbebdebfb2",
 										"exec": [
 											""
 										],
@@ -4023,7 +4023,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c2f233f8-3b05-4508-af4a-862672c99337",
+										"id": "7bd70f82-5342-4771-9e38-148acd1f4730",
 										"exec": [
 											""
 										],
@@ -4033,7 +4033,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "1db555b0-9019-4bfc-a473-38978bb55451",
+										"id": "7d65bfbd-5da0-4e49-8508-dcad01a7f113",
 										"exec": [
 											""
 										],
@@ -4079,7 +4079,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "3086209c-1634-44cb-ad8c-b9f86442c7d9",
+										"id": "0820dd44-33a0-424b-a858-6909778a2a4f",
 										"exec": [
 											""
 										],
@@ -4277,7 +4277,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "addd10d7-2410-4e44-803b-f4a11ce1703e",
+										"id": "f12e44cb-e9a1-4758-a763-190260adc6cc",
 										"exec": [
 											""
 										],
@@ -4318,7 +4318,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "e80f62a0-4d79-4388-b0a8-4ae4759dea96",
+										"id": "1e3f31a8-3a98-4dd1-80ab-0caa0df0b09b",
 										"exec": [
 											""
 										],
@@ -4369,7 +4369,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b1548448-994a-46c6-b87c-b8b2cd1a8459",
+								"id": "95ac86f9-7f51-4e21-8ad1-3485ced6bca7",
 								"exec": [
 									""
 								],
@@ -4408,7 +4408,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8e17a84a-44dc-4754-a7a8-2da6be21960d",
+								"id": "64768be8-3d22-4568-82c5-42819ee51975",
 								"exec": [
 									""
 								],
@@ -4447,7 +4447,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "498bd5f4-8a46-4b4a-a101-b36766b0b966",
+								"id": "d7580471-144f-4753-9760-0d636b6c1885",
 								"exec": [
 									""
 								],
@@ -4986,7 +4986,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "12489ba6-08f1-4818-bdbc-8ee29b368294",
+						"id": "929acb5d-de94-45c8-a3b4-9cb60366ef71",
 						"exec": [
 							"function waitOnTask(retries) {",
 							"    if (!retries) {",
@@ -5068,7 +5068,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "48ce4acf-f505-4094-a6ae-2752fcfc2263",
+						"id": "151c73a9-63b3-4b6b-b57e-502c98079068",
 						"exec": [
 							"function waitOnTask(retries) {",
 							"    if (!retries) {",
@@ -5150,7 +5150,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4cabc4ee-d0a1-44b5-9c59-5ac55da6ba43",
+						"id": "44d86445-079d-480d-ba91-4e589253f13d",
 						"exec": [
 							"function waitOnTask(retries) {",
 							"    if (!retries) {",
@@ -5232,7 +5232,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0a7c0ad2-7dc2-417f-9cea-1902c3c730fe",
+						"id": "bb4d4692-ee32-4871-9dd6-b2f24672ee72",
 						"exec": [
 							"var data = JSON.parse(responseBody);",
 							"",
@@ -5280,7 +5280,7 @@
 							"",
 							"postman.setEnvironmentVariable('session',data['session']);"
 						],
-						"id": "edeaa981-5813-4de5-84cf-3475810ffa3d"
+						"id": "0819daee-c301-4168-830b-414e4b8e0e26"
 					}
 				}
 			],
@@ -5315,7 +5315,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "b60d9446-5fc5-41fc-bbfc-333d65fbfa6d",
+				"id": "11c5579d-bc44-4618-953c-805c6dfdae46",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -5325,7 +5325,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "2ce7e761-f25e-4020-8798-cc0dbb734622",
+				"id": "f56bc149-dc5a-4f70-905c-b95c0ac52ba4",
 				"type": "text/javascript",
 				"exec": [
 					"pm.test(\"HTTP Status code is 200 OK\", function () {",
