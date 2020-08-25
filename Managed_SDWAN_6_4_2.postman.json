@@ -2218,6 +2218,511 @@
 			"protocolProfileBehavior": {}
 		},
 		{
+			"name": "Zero Touch Provisioning",
+			"item": [
+				{
+					"name": "1 - Add Device",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e87b9033-2379-44cd-842d-b4592942b280",
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed to add some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.taskid;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"device\": {\n                    \"name\": \"{{name_fgt_ztp}}\",\n                    \"adm_usr\": \"admin\",\n                    \"os_ver\": 6,\n                    \"version\": 600,\n                    \"os_type\": 0,\n                    \"mr\": 4,\n                    \"platform_str\": \"FortiGate-VM64\",\n                    \"mgmt_mode\": 3,\n                    \"flags\": 67371040,\n                    \"prefer_img_ver\": null,\n                    \"sn\": \"{{sn_fgt_ztp}}\",\n                    \"faz.perm\": 15,\n                    \"faz.quota\": 0\n                },\n                \"groups\": [\n                    {\n                        \"adom\": \"{{adom}}\",\n                        \"name\": \"Spokes\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Set Device Properties",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3e06675f-5a3a-4905-bbcf-e4820b7b67c8",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"session\": \"{{session}}\",\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/{{name_fgt_ztp}}\",\n            \"data\": {\n                \"name\": \"{{name_fgt_ztp}}\",\n                \"latitude\": \"40.418852\",\n                \"longitude\": \" -3.693454\",\n                \"meta fields\": {\n                    \"Address\": \"Madrid, Spain\",\n                    \"branch-id\": \"3\",\n                    \"dc-id\": \"\",\n                    \"remote-dc-id\": \"\"\n                },\n                \"flags\": 69468192\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 - Add VPN Spokes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c876456-6367-46b6-9cbc-c6cf96019528",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/node\",\n            \"data\": [\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"OL_INET\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port1\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"OL_MPLS\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port4\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 - Assign CLI Template Group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "500b4657-f760-42a7-9b45-6db4730b5214",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"Spoke-Routing-RIA\"\n        ],\n        \"scope member\": [\n          {\n            \"name\": \"{{name_fgt_1}}\",\n            \"vdom\": \"root\"\n          },\n          {\n            \"name\": \"{{name_fgt_2}}\",\n            \"vdom\": \"root\"\n          },\n          {\n            \"name\": \"{{name_fgt_ztp}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 - Assign SDWAN Template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9eb5fe3b-116b-488c-b05c-8d1076d90ba9",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/wanprof/adom/{{adom}}/sdwan.branches\",\n            \"data\": {\n                \"name\": \"sdwan.branches\",\n                \"description\": \"\",\n                \"scope member\": [\n                    {\n                    \t\"name\": \"{{name_fgt_1}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_fgt_2}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_fgt_ztp}}\",\n                    \t\"vdom\": \"root\"\n                    }\n                ],\n                \"type\": \"wanprof\"\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6 - Add Script - Configure ZTP Interfaces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fe3155ef-d4d6-4190-96cf-5b9bbe40ad31",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d132734e-4c5a-4612-996d-a574cdf5bcc1",
+								"exec": [
+									"/*",
+									"pm.sendRequest({",
+									"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"    method: 'POST',",
+									"    header: \"Content-Type:application/json\",",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/sys/status\"}]})",
+									"    }",
+									"}, function (err, response) {",
+									"    var sn = response.json().result[0].data[\"Serial Number\"];",
+									"    pm.environment.set(\"sn_fmg\", sn)",
+									"});",
+									"*/"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"session\": \"{{session}}\",\n  \"id\": 1,\n  \"method\": \"set\",\n  \"params\": [\n    {\n      \"url\": \"/dvmdb/adom/{{adom}}/script\",\n      \"data\": [\n        {\n          \"script_schedule\": null,\n          \"name\": \"Configure ZTP Interfaces\",\n          \"type\": \"cli\",\n          \"desc\": \"\",\n          \"content\": \"# Interfaces for ZTP device\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set type physical\n    set vdom root\n  next\n  edit port10\n    set mode dhcp\n    set type physical\n    set allowaccess ping http https fgfm ssh\n    set vdom root\n  next\n  edit vl_lan\n    set vdom root\n    set ip 10.0.3.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 3\n    set interface port5\n    set vlanid 1000\n  next  \nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\",\n                    \"target\": \"device_database\"\n        }\n      ]\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7 - Exec Script - Configure ZTP interfaces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81c42fb6-e7dd-4e23-a471-a8a959a5ffce",
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed to add some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"script\": \"Configure ZTP Interfaces\",\n                \"scope\": [\n                    {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8 - Install Policy - Spokes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ccdfff19-8177-47ec-8825-6e0f4f8f2643",
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Spokes\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "Segmentation",
 			"item": [
 				{
@@ -2960,511 +3465,6 @@
 							"listen": "test",
 							"script": {
 								"id": "66dd552b-13cb-4353-84b1-06f46d3c28e3",
-								"exec": [
-									"function waitOnTask(retries) {",
-									"    if (!retries) {",
-									"        pm.test(\"Task completed\", function() {",
-									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
-									"        });",
-									"        postman.setNextRequest(null);",
-									"    }",
-									"    else {",
-									"        pm.sendRequest({",
-									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
-									"            method: 'POST',",
-									"            header: \"Content-Type:application/json\",",
-									"            body: {",
-									"                mode: 'raw',",
-									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
-									"            }",
-									"        }, function(err, response) {",
-									"            var jsonData = response.json();",
-									"            if (jsonData.result[0].data.percent == 100) {",
-									"                // Task completed",
-									"                if (jsonData.result[0].data.num_err) {",
-									"                    postman.setNextRequest(null);",
-									"                }",
-									"                pm.test(\"Task completed\", function() {",
-									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
-									"                });",
-									"            }",
-									"            else {",
-									"                console.log(\"Task is still not complete\");",
-									"                setTimeout(function() {",
-									"                    waitOnTask(--retries);",
-									"                }, 10000);",
-									"            }",
-									"        }); ",
-									"    }",
-									"}",
-									"",
-									"var jsonData = pm.response.json();",
-									"var taskid = jsonData.result[0].data.task;",
-									"",
-									"waitOnTask(10);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Branches-PP\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Spokes\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Zero Touch Provisioning",
-			"item": [
-				{
-					"name": "1 - Add Device",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "e87b9033-2379-44cd-842d-b4592942b280",
-								"exec": [
-									"function waitOnTask(retries) {",
-									"    if (!retries) {",
-									"        pm.test(\"Task completed\", function() {",
-									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
-									"        });",
-									"        postman.setNextRequest(null);",
-									"    }",
-									"    else {",
-									"        pm.sendRequest({",
-									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
-									"            method: 'POST',",
-									"            header: \"Content-Type:application/json\",",
-									"            body: {",
-									"                mode: 'raw',",
-									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
-									"            }",
-									"        }, function(err, response) {",
-									"            var jsonData = response.json();",
-									"            if (jsonData.result[0].data.percent == 100) {",
-									"                // Task completed",
-									"                if (jsonData.result[0].data.num_err) {",
-									"                    postman.setNextRequest(null);",
-									"                }",
-									"                pm.test(\"Task completed\", function() {",
-									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed to add some devices\");     ",
-									"                });",
-									"            }",
-									"            else {",
-									"                console.log(\"Task is still not complete\");",
-									"                setTimeout(function() {",
-									"                    waitOnTask(--retries);",
-									"                }, 10000);",
-									"            }",
-									"        }); ",
-									"    }",
-									"}",
-									"",
-									"var jsonData = pm.response.json();",
-									"var taskid = jsonData.result[0].data.taskid;",
-									"",
-									"waitOnTask(10);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"device\": {\n                    \"name\": \"{{name_fgt_ztp}}\",\n                    \"adm_usr\": \"admin\",\n                    \"os_ver\": 6,\n                    \"version\": 600,\n                    \"os_type\": 0,\n                    \"mr\": 4,\n                    \"platform_str\": \"FortiGate-VM64\",\n                    \"mgmt_mode\": 3,\n                    \"flags\": 67371040,\n                    \"prefer_img_ver\": null,\n                    \"sn\": \"{{sn_fgt_ztp}}\",\n                    \"faz.perm\": 15,\n                    \"faz.quota\": 0\n                },\n                \"groups\": [\n                    {\n                        \"adom\": \"{{adom}}\",\n                        \"name\": \"Spokes\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "2 - Set Device Properties",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "3e06675f-5a3a-4905-bbcf-e4820b7b67c8",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": \"1\",\n    \"session\": \"{{session}}\",\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/{{name_fgt_ztp}}\",\n            \"data\": {\n                \"name\": \"{{name_fgt_ztp}}\",\n                \"latitude\": \"40.418852\",\n                \"longitude\": \" -3.693454\",\n                \"meta fields\": {\n                    \"Address\": \"Madrid, Spain\",\n                    \"branch-id\": \"3\",\n                    \"dc-id\": \"\",\n                    \"remote-dc-id\": \"\"\n                },\n                \"flags\": 69468192\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "3 - Add VPN Spokes",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "5c876456-6367-46b6-9cbc-c6cf96019528",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/vpnmgr/node\",\n            \"data\": [\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"OL_INET\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port1\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                },\n                {\n                    \"protected_subnet\": {\n                        \"addr\": \"all\",\n                        \"seq\": 1\n                    },\n                    \"scope member\": {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    },\n                    \"vpntable\": \"OL_MPLS\",\n                    \"role\": 1,\n                    \"usrgrp\": [],\n                    \"iface\": \"port4\",\n                    \"automatic_routing\": 0,\n                    \"extgwip\": [],\n                    \"extgw_hubip\": [],\n                    \"extgw_p2_per_net\": 0,\n                    \"route-overlap\": 0,\n                    \"vpn-zone\": [],\n                    \"spoke-zone\": [],\n                    \"vpn-interface-priority\": 0,\n                    \"auto-configuration\": 1,\n                    \"ipsec-lease-hold\": 60,\n                    \"add-route\": 0,\n                    \"assign-ip\": 1,\n                    \"assign-ip-from\": 0,\n                    \"exchange-interface-ip\": 0,\n                    \"mode-cfg\": 1,\n                    \"mode-cfg-ip-version\": 0,\n                    \"net-device\": 1,\n                    \"peergrp\": [],\n                    \"peertype\": 8,\n                    \"tunnel-search\": 0,\n                    \"unity-support\": 1,\n                    \"xauthtype\": 1\n                }\n            ]\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "4 - Assign CLI Template Group",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "500b4657-f760-42a7-9b45-6db4730b5214",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"id\": \"1\",\n  \"session\": \"{{session}}\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n      \"data\": {\n        \"name\": \"Spoke-Template\",\n        \"member\": [\n          \"Spoke-Overlay\",\n          \"Spoke-Routing-BGP\",\n          \"Spoke-Routing-RIA\"\n        ],\n        \"scope member\": [\n          {\n            \"name\": \"{{name_fgt_1}}\",\n            \"vdom\": \"root\"\n          },\n          {\n            \"name\": \"{{name_fgt_2}}\",\n            \"vdom\": \"root\"\n          },\n          {\n            \"name\": \"{{name_fgt_ztp}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "5 - Assign SDWAN Template",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "9eb5fe3b-116b-488c-b05c-8d1076d90ba9",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/wanprof/adom/{{adom}}/sdwan.branches\",\n            \"data\": {\n                \"name\": \"sdwan.branches\",\n                \"description\": \"\",\n                \"scope member\": [\n                    {\n                    \t\"name\": \"{{name_fgt_1}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_fgt_2}}\",\n                    \t\"vdom\": \"root\"\n                    },\n                    {\n                    \t\"name\": \"{{name_fgt_ztp}}\",\n                    \t\"vdom\": \"root\"\n                    }\n                ],\n                \"type\": \"wanprof\"\n            }\n        }\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "6 - Add Script - Configure ZTP Interfaces",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "fe3155ef-d4d6-4190-96cf-5b9bbe40ad31",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "d132734e-4c5a-4612-996d-a574cdf5bcc1",
-								"exec": [
-									"/*",
-									"pm.sendRequest({",
-									"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
-									"    method: 'POST',",
-									"    header: \"Content-Type:application/json\",",
-									"    body: {",
-									"        mode: 'raw',",
-									"        raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/sys/status\"}]})",
-									"    }",
-									"}, function (err, response) {",
-									"    var sn = response.json().result[0].data[\"Serial Number\"];",
-									"    pm.environment.set(\"sn_fmg\", sn)",
-									"});",
-									"*/"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"session\": \"{{session}}\",\n  \"id\": 1,\n  \"method\": \"set\",\n  \"params\": [\n    {\n      \"url\": \"/dvmdb/adom/{{adom}}/script\",\n      \"data\": [\n        {\n          \"script_schedule\": null,\n          \"name\": \"Configure ZTP Interfaces\",\n          \"type\": \"cli\",\n          \"desc\": \"\",\n          \"content\": \"# Interfaces for ZTP device\nconfig system interface\n  edit port4\n    set ip 172.16.0.11 255.255.255.248\n    set mode static\n    set type physical\n    set allowaccess ping\n    set vdom root\n  next\n  edit port5\n    set type physical\n    set vdom root\n  next\n  edit port10\n    set mode dhcp\n    set type physical\n    set allowaccess ping http https fgfm ssh\n    set vdom root\n  next\n  edit vl_lan\n    set vdom root\n    set ip 10.0.3.1 255.255.255.0\n    set allowaccess ping ssh\n    set color 3\n    set interface port5\n    set vlanid 1000\n  next  \nend\nconfig router static                                                                  \n  edit 1\n    set dst 172.16.0.0 255.255.0.0\n    set gateway 172.16.0.9\n    set device port4\n  next                                                                                \n  edit 2\n    set gateway 203.0.113.1                                                 \n    set device port1                                                               \n  next                                                                            \nend\",\n                    \"target\": \"device_database\"\n        }\n      ]\n    }\n  ]\n}"
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "7 - Exec Script - Configure ZTP interfaces",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "81c42fb6-e7dd-4e23-a471-a8a959a5ffce",
-								"exec": [
-									"function waitOnTask(retries) {",
-									"    if (!retries) {",
-									"        pm.test(\"Task completed\", function() {",
-									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
-									"        });",
-									"        postman.setNextRequest(null);",
-									"    }",
-									"    else {",
-									"        pm.sendRequest({",
-									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
-									"            method: 'POST',",
-									"            header: \"Content-Type:application/json\",",
-									"            body: {",
-									"                mode: 'raw',",
-									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
-									"            }",
-									"        }, function(err, response) {",
-									"            var jsonData = response.json();",
-									"            if (jsonData.result[0].data.percent == 100) {",
-									"                // Task completed",
-									"                if (jsonData.result[0].data.num_err) {",
-									"                    postman.setNextRequest(null);",
-									"                }",
-									"                pm.test(\"Task completed\", function() {",
-									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed to add some devices\");     ",
-									"                });",
-									"            }",
-									"            else {",
-									"                console.log(\"Task is still not complete\");",
-									"                setTimeout(function() {",
-									"                    waitOnTask(--retries);",
-									"                }, 10000);",
-									"            }",
-									"        }); ",
-									"    }",
-									"}",
-									"",
-									"var jsonData = pm.response.json();",
-									"var taskid = jsonData.result[0].data.task;",
-									"",
-									"waitOnTask(10);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"script\": \"Configure ZTP Interfaces\",\n                \"scope\": [\n                    {\n                        \"name\": \"{{name_fgt_ztp}}\",\n                        \"vdom\": \"root\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
-						},
-						"url": {
-							"raw": "https://{{ip}}/jsonrpc",
-							"protocol": "https",
-							"host": [
-								"{{ip}}"
-							],
-							"path": [
-								"jsonrpc"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "8 - Install Policy - Spokes",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "ccdfff19-8177-47ec-8825-6e0f4f8f2643",
 								"exec": [
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
