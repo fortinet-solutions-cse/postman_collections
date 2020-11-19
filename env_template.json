@@ -1,0 +1,94 @@
+{
+	"id": "719ae2ec-e46f-4ffa-835a-088eef1bcb6c",
+	"name": "FortiManager-SDWAN",
+	"values": [
+		{
+			"key": "ip",
+			"value": "<fpoc_ip>:10414",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "admin",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "<your_password>",
+			"enabled": true
+		},
+		{
+			"key": "adom",
+			"value": "DEMO",
+			"enabled": true
+		},
+		{
+			"key": "name_fgt_1",
+			"value": "branch1_fgt",
+			"enabled": true
+		},
+		{
+			"key": "name_fgt_2",
+			"value": "branch2_fgt",
+			"enabled": true
+		},
+		{
+			"key": "name_fgt_dc",
+			"value": "dc1_fgt",
+			"enabled": true
+		},
+		{
+			"key": "name_fgt_dc_2",
+			"value": "dc2_fgt",
+			"enabled": true
+		},
+		{
+			"key": "name_fgt_ztp",
+			"value": "branch3_fgt",
+			"enabled": true
+		},
+		{
+			"key": "sn_fgt_dc_2",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "session",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "status_code",
+			"value": 0,
+			"enabled": true
+		},
+		{
+			"key": "sn_fgt_1",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "sn_fgt_2",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "sn_fgt_dc",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "sn_fmg",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "sn_fgt_ztp",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-09-02T15:30:06.862Z",
+	"_postman_exported_using": "Postman/7.31.1"
+}
