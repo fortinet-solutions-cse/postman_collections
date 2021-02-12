@@ -28,6 +28,15 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -183,6 +192,30 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.sendRequest({",
+											"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+											"    method: 'POST',",
+											"    header: \"Content-Type:application/json\",",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/dvmdb/adom/\" + pm.environment.get(\"adom\") + \"/device\"}]})",
+											"    }",
+											"}, function(err, response) {",
+											"        var jsonData = response.json();",
+											"        if (jsonData.result[0].data.length >= 4) {",
+											"            console.log(\"Skip adding devices, seems like they are already there...\");",
+											"            postman.setNextRequest(\"6 - Create Device Groups\");",
+											"        }",
+											"});     ",
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -269,6 +302,15 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -284,6 +326,101 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\"create_task\", \"nonblocking\"],\n                \"add-dev-list\": [\n                    {\n\t                    \"adm_pass\": \"{{password}}\",\n\t                    \"adm_usr\": \"{{username}}\",\n                        \"ip\": \"192.168.0.31\",\n                        \"name\": \"{{name_fgt_1}}\",\n                        \"sn\": \"{{sn_fgt_1}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    },\n                    {\n\t                    \"adm_pass\": \"{{password}}\",\n\t                    \"adm_usr\": \"{{username}}\",\n                        \"ip\": \"192.168.0.32\",\n                        \"name\": \"{{name_fgt_2}}\",\n                        \"sn\": \"{{sn_fgt_2}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    },\n                    {\n\t                    \"adm_pass\": \"{{password}}\",\n\t                    \"adm_usr\": \"{{username}}\",\n                        \"ip\": \"192.168.0.41\",\n                        \"name\": \"{{name_fgt_dc}}\",\n                        \"sn\": \"{{sn_fgt_dc}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    },\n                    {\n\t                    \"adm_pass\": \"{{password}}\",\n\t                    \"adm_usr\": \"{{username}}\",\n                        \"ip\": \"192.168.0.42\",\n                        \"name\": \"{{name_fgt_dc_2}}\",\n                        \"sn\": \"{{sn_fgt_dc_2}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    }\n                ]\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5 - Add Devices Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function waitOnTask(retries) {",
+											"    if (!retries) {",
+											"        pm.test(\"Task completed\", function() {",
+											"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+											"        });",
+											"        postman.setNextRequest(null);",
+											"    }",
+											"    else {",
+											"        pm.sendRequest({",
+											"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+											"            method: 'POST',",
+											"            header: \"Content-Type:application/json\",",
+											"            body: {",
+											"                mode: 'raw',",
+											"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+											"            }",
+											"        }, function(err, response) {",
+											"            var jsonData = response.json();",
+											"            if (jsonData.result[0].data.percent == 100) {",
+											"                // Task completed",
+											"                if (jsonData.result[0].data.num_err) {",
+											"                    postman.setNextRequest(null);",
+											"                }",
+											"                pm.test(\"Task completed\", function() {",
+											"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed to add some devices\");     ",
+											"                });",
+											"            }",
+											"            else {",
+											"                console.log(\"Task is still not complete\");",
+											"                setTimeout(function() {",
+											"                    waitOnTask(--retries);",
+											"                }, 10000);",
+											"            }",
+											"        }); ",
+											"    }",
+											"}",
+											"",
+											"var jsonData = pm.response.json();",
+											"var taskid = jsonData.result[0].data.taskid;",
+											"",
+											"waitOnTask(10);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"add-dev-list\": [\n                    {\n                        \"adm_pass\": \"{{password}}\",\n                        \"adm_usr\": \"{{username}}\",\n                        \"ip\": \"192.168.0.41\",\n                        \"name\": \"{{name_fgt_dc}}\",\n                        \"sn\": \"{{sn_fgt_dc}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"faz.quota\": 0\n                    }\n                ]\n            }\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1936,6 +2073,15 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -1983,6 +2129,30 @@
 											"",
 											"pm.environment.set(\"sn_fgt_dc_3\", sn);",
 											"pm.environment.set(\"name_fgt_dc_3\", hostname);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.sendRequest({",
+											"    url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+											"    method: 'POST',",
+											"    header: \"Content-Type:application/json\",",
+											"    body: {",
+											"        mode: 'raw',",
+											"        raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/dvmdb/adom/\" + pm.environment.get(\"adom\") + \"/device\"}]})",
+											"    }",
+											"}, function(err, response) {",
+											"        var jsonData = response.json();",
+											"        if (jsonData.result[0].data.length == 6) {",
+											"            console.log(\"Skip adding devices, seems like they are already there...\");",
+											"            postman.setNextRequest(\"4 - Create Device Groups\");",
+											"        }",
+											"});     ",
 											""
 										],
 										"type": "text/javascript"
