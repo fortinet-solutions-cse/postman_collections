@@ -1,10 +1,12 @@
-# SDWAN automation with FortiManager
+# SD-WAN Automation with FortiManager API
 
 This repository contains automation scripts and Postman collections to automate FortiManager operation for a successful deployment of an SD-WAN configuration. This is achieved using JSON RPC API interface of FortiManager.
 
 ## Files
 
-- `Managed_SDWAN_6_4_2.postman.json` - Postman collection for controlled execution
+Latest version:
+
+- `Managed_SDWAN_6_4_4.postman.json` - Postman collection for controlled execution
   of requests. Postman supports manual step-by-step execution, as well as batch run.
 
 ## Use Cases
@@ -14,11 +16,11 @@ It can also be used as a learning tool, to get familiar with API exposed by Fort
 
 Scenarios covered:
 
-- Base environment setup
-- Dual-Hub Single-Region SD-WAN Topology
+- West Region - Dual-Hub SD-WAN Topology from scratch
+- East Region - Single-Hub SD-WAN Topology from scratch
+- Complete Interregional Connectivity
 - End-to-End Segmentation in SD-WAN Topology
 - Zero-Touch Provisioning in SD-WAN Topology
-- Dual-Region SD-WAN Topology
 
 ## Usage
 
