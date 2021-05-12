@@ -1,0 +1,16 @@
+---
+fmg_user: admin
+fmg_password: fortinet
+adom: Customer1
+
+global:
+  hub-wan1-ip: 100.64.1.1
+  hub-wan2-ip: 172.16.1.5
+
+devices:
+  {# Jinja loop - generating branch1_fgt and branch2_fgt config #}
+  {% for i in range(1, 3) %}
+  branch{{i}}_fgt:
+    vars:
+      site-id: {{i}}
+  {% endfor %}
