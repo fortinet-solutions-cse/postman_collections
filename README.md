@@ -6,7 +6,7 @@ This repository contains automation scripts and Postman collections to automate 
 
 Latest version:
 
-- `Managed_SDWAN_6_4_4.postman.json` - Postman collection for controlled execution
+- `Managed_SDWAN_6_4_6.postman.json` - Postman collection for controlled execution
   of requests. Postman supports manual step-by-step execution, as well as batch run.
 
 ## Use Cases
