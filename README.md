@@ -12,7 +12,7 @@ Latest versions:
 
 ## Usage
 
-To use these collections, simply clone the repository and import the desired JSON file into Postman.
+To use these collections, simply clone the repository and import the desired JSON file into [Postman](https://www.postman.com/downloads/).
 
 These collections can be used for a complete SD-WAN deployment automation, following the steps
 described in the corresponding documents. They can also be used as a learning tool, to get familiar with API
