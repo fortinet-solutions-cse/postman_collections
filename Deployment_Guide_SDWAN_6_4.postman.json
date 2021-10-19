@@ -78,6 +78,51 @@
 						],
 						"body": {
 							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/default/device/profile/setting\",\n            \"data\": {\n                \"enabled-pages\": [\n                    \"dns\",\n                    \"log\"\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 - Configure System Template - FAZ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
 							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/default/device/profile/fortianalyzer\",\n            \"data\": {\n                \"target\": 4,\n                \"target-ip\": \"{{faz_ip}}\",\n                \"target-sn\": [\n                    \"{{faz_sn}}\"\n                ]\n            }\n        }\n    ]\n}",
 							"options": {
 								"raw": {
@@ -99,7 +144,52 @@
 					"response": []
 				},
 				{
-					"name": "3 - Create Certificate Templates",
+					"name": "4 - Configure System Template - DNS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/default/device/template/widget/dns/action-list\",\n            \"data\": {\n                \"action\": \"conf-sys-dns\",\n                \"seq\": 1,\n                \"value\": \"{\\\"primary\\\":\\\"8.8.8.8\\\",\\\"secondary\\\":\\\"8.8.4.4\\\"}\"\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 - Create Certificate Templates",
 					"event": [
 						{
 							"listen": "test",
@@ -144,7 +234,7 @@
 					"response": []
 				},
 				{
-					"name": "4 - Create Normalized Interfaces",
+					"name": "6 - Create Normalized Interfaces",
 					"event": [
 						{
 							"listen": "test",
@@ -189,7 +279,7 @@
 					"response": []
 				},
 				{
-					"name": "5 - Create Address Objects",
+					"name": "7 - Create Address Objects",
 					"event": [
 						{
 							"listen": "test",
@@ -229,7 +319,7 @@
 					"response": []
 				},
 				{
-					"name": "6 - Create Policy Packages",
+					"name": "8 - Create Policy Packages",
 					"event": [
 						{
 							"listen": "test",
@@ -274,7 +364,7 @@
 					"response": []
 				},
 				{
-					"name": "7 - Create CLI Scripts - Underlay",
+					"name": "9 - Create CLI Scripts - Underlay",
 					"event": [
 						{
 							"listen": "test",
@@ -336,7 +426,7 @@
 					"response": []
 				},
 				{
-					"name": "8 - Create Meta Fields",
+					"name": "10 - Create Meta Fields",
 					"event": [
 						{
 							"listen": "test",
@@ -472,7 +562,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"01-Hub-Overlay\",\n                    \"script\": \"\n                    \nconfig vpn ipsec phase1-interface\n  # Local Region (Edges)\n  edit \\\"EDGE_INET\\\"\n    set type dynamic\n    set interface $(inet-intf)\n    set ike-version 2\n    set authmethod signature\n    set peertype any\n    set mode-cfg enable\n    set proposal aes256-sha256\n    set net-device disable\n    set tunnel-search nexthop\n    set add-route disable\n    set auto-discovery-sender enable\n    set network-overlay enable\n    set network-id $(inet-id)\n    set ipv4-start-ip $(inet-tunnel-net: 4,\n                    2)\n    set ipv4-end-ip $(inet-tunnel-net: 4,\n                    253)\n    set ipv4-netmask $tunnel-mask\n    set certificate \\\"Hub\\\"\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set type dynamic\n    set interface $(mpls-intf)\n    set ike-version 2\n    set authmethod signature\n    set peertype any\n    set mode-cfg enable\n    set proposal aes256-sha256\n    set net-device disable\n    set tunnel-search nexthop\n    set add-route disable\n    set auto-discovery-sender enable\n    set network-overlay enable\n    set network-id $(mpls-id)\n    set ipv4-start-ip $(mpls-tunnel-net: 4,\n                    2)\n    set ipv4-end-ip $(mpls-tunnel-net: 4,\n                    253)\n    set ipv4-netmask $tunnel-mask\n    set certificate \\\"Hub\\\"\n  next\nend\nconfig vpn ipsec phase2-interface\n  edit \\\"EDGE_INET\\\"\n    set phase1name \\\"EDGE_INET\\\"\n    set proposal aes256-sha256\n    set keepalive enable\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set phase1name \\\"EDGE_MPLS\\\"\n    set proposal aes256-sha256\n    set keepalive enable\n  next\nend\nconfig system interface\n  edit \\\"EDGE_INET\\\"\n    set vdom \\\"root\\\"\n    set ip $(inet-tunnel-net: 4,\n                    1) 255.255.255.255\n    set allowaccess ping\n    set type tunnel\n    set remote-ip $(inet-tunnel-net: 4,\n                    254) $(tunnel-mask)\n    set interface $(inet-intf)\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set vdom \\\"root\\\"\n    set ip $(mpls-tunnel-net: 4,\n                    1) 255.255.255.255\n    set allowaccess ping\n    set type tunnel\n    set remote-ip $(mpls-tunnel-net: 4,\n                    254) $(tunnel-mask)\n    set interface $(mpls-intf)\n  next\n  edit \\\"lo-HC\\\"\n    set vdom \\\"root\\\"\n    set ip 10.200.99.1 255.255.255.255\n    set allowaccess ping\n    set type loopback\n  next\nend\n\n                    \"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"01-Hub-Overlay\",\n                    \"script\": \"\n                    \nconfig vpn ipsec phase1-interface\n  # Local Region (Edges)\n  edit \\\"EDGE_INET\\\"\n    set type dynamic\n    set interface $(inet-intf)\n    set ike-version 2\n    set authmethod signature\n    set peertype any\n    set mode-cfg enable\n    set proposal aes256-sha256\n    set net-device disable\n    set tunnel-search nexthop\n    set add-route disable\n    set auto-discovery-sender enable\n    set network-overlay enable\n    set network-id $(inet-id)\n    set ipv4-start-ip $(inet-tunnel-net: 4,2)\n    set ipv4-end-ip $(inet-tunnel-net: 4,253)\n    set ipv4-netmask $(tunnel-mask)\n    set certificate \\\"Hub\\\"\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set type dynamic\n    set interface $(mpls-intf)\n    set ike-version 2\n    set authmethod signature\n    set peertype any\n    set mode-cfg enable\n    set proposal aes256-sha256\n    set net-device disable\n    set tunnel-search nexthop\n    set add-route disable\n    set auto-discovery-sender enable\n    set network-overlay enable\n    set network-id $(mpls-id)\n    set ipv4-start-ip $(mpls-tunnel-net: 4,2)\n    set ipv4-end-ip $(mpls-tunnel-net: 4,253)\n    set ipv4-netmask $(tunnel-mask)\n    set certificate \\\"Hub\\\"\n  next\nend\nconfig vpn ipsec phase2-interface\n  edit \\\"EDGE_INET\\\"\n    set phase1name \\\"EDGE_INET\\\"\n    set proposal aes256-sha256\n    set keepalive enable\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set phase1name \\\"EDGE_MPLS\\\"\n    set proposal aes256-sha256\n    set keepalive enable\n  next\nend\nconfig system interface\n  edit \\\"EDGE_INET\\\"\n    set vdom \\\"root\\\"\n    set ip $(inet-tunnel-net: 4,1) 255.255.255.255\n    set allowaccess ping\n    set type tunnel\n    set remote-ip $(inet-tunnel-net: 4,254) $(tunnel-mask)\n    set interface $(inet-intf)\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set vdom \\\"root\\\"\n    set ip $(mpls-tunnel-net: 4,1) 255.255.255.255\n    set allowaccess ping\n    set type tunnel\n    set remote-ip $(mpls-tunnel-net: 4,254) $(tunnel-mask)\n    set interface $(mpls-intf)\n  next\n  edit \\\"lo-HC\\\"\n    set vdom \\\"root\\\"\n    set ip 10.200.99.1 255.255.255.255\n    set allowaccess ping\n    set type loopback\n  next\nend\n\n                    \"\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1690,6 +1780,47 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"function waitOnTask(retries) {",
+											"    if (!retries) {",
+											"        pm.test(\"Task completed\", function() {",
+											"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+											"        });",
+											"        postman.setNextRequest(null);",
+											"    }",
+											"    else {",
+											"        pm.sendRequest({",
+											"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+											"            method: 'POST',",
+											"            header: \"Content-Type:application/json\",",
+											"            body: {",
+											"                mode: 'raw',",
+											"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+											"            }",
+											"        }, function(err, response) {",
+											"            var jsonData = response.json();",
+											"            if (jsonData.result[0].data.percent == 100) {",
+											"                // Task completed",
+											"                if (jsonData.result[0].data.num_err) {",
+											"                    postman.setNextRequest(null);",
+											"                }",
+											"                pm.test(\"Task completed\", function() {",
+											"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+											"                });",
+											"            }",
+											"            else {",
+											"                console.log(\"Task is still not complete\");",
+											"                setTimeout(function() {",
+											"                    waitOnTask(--retries);",
+											"                }, 10000);",
+											"            }",
+											"        }); ",
+											"    }",
+											"}",
+											"",
+											"var jsonData = pm.response.json();",
+											"var taskid = jsonData.result[0].data.task;",
+											"",
+											"waitOnTask(10);",
 											""
 										],
 										"type": "text/javascript"
@@ -1735,6 +1866,47 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"function waitOnTask(retries) {",
+											"    if (!retries) {",
+											"        pm.test(\"Task completed\", function() {",
+											"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+											"        });",
+											"        postman.setNextRequest(null);",
+											"    }",
+											"    else {",
+											"        pm.sendRequest({",
+											"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+											"            method: 'POST',",
+											"            header: \"Content-Type:application/json\",",
+											"            body: {",
+											"                mode: 'raw',",
+											"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+											"            }",
+											"        }, function(err, response) {",
+											"            var jsonData = response.json();",
+											"            if (jsonData.result[0].data.percent == 100) {",
+											"                // Task completed",
+											"                if (jsonData.result[0].data.num_err) {",
+											"                    postman.setNextRequest(null);",
+											"                }",
+											"                pm.test(\"Task completed\", function() {",
+											"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+											"                });",
+											"            }",
+											"            else {",
+											"                console.log(\"Task is still not complete\");",
+											"                setTimeout(function() {",
+											"                    waitOnTask(--retries);",
+											"                }, 10000);",
+											"            }",
+											"        }); ",
+											"    }",
+											"}",
+											"",
+											"var jsonData = pm.response.json();",
+											"var taskid = jsonData.result[0].data.task;",
+											"",
+											"waitOnTask(10);",
 											""
 										],
 										"type": "text/javascript"
@@ -2348,7 +2520,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"01-Hub-Overlay\",\n                    \"script\": \"\n                    \nconfig vpn ipsec phase1-interface\n  # Local Region (Edges)\n  edit \\\"EDGE_INET\\\"\n    set type dynamic\n    set interface $(inet-intf)\n    set ike-version 2\n    set authmethod signature\n    set peertype any\n    set mode-cfg enable\n    set proposal aes256-sha256\n    set net-device disable\n    set tunnel-search nexthop\n    set add-route disable\n    set auto-discovery-sender enable\n    set network-overlay enable\n    set network-id $(inet-id)\n    set ipv4-start-ip $(inet-tunnel-net: 4,\n                    2)\n    set ipv4-end-ip $(inet-tunnel-net: 4,\n                    253)\n    set ipv4-netmask $tunnel-mask\n    set certificate \\\"Hub\\\"\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set type dynamic\n    set interface $(mpls-intf)\n    set ike-version 2\n    set authmethod signature\n    set peertype any\n    set mode-cfg enable\n    set proposal aes256-sha256\n    set net-device disable\n    set tunnel-search nexthop\n    set add-route disable\n    set auto-discovery-sender enable\n    set network-overlay enable\n    set network-id $(mpls-id)\n    set ipv4-start-ip $(mpls-tunnel-net: 4,\n                    2)\n    set ipv4-end-ip $(mpls-tunnel-net: 4,\n                    253)\n    set ipv4-netmask $tunnel-mask\n    set certificate \\\"Hub\\\"\n  next\nend\nconfig vpn ipsec phase2-interface\n  edit \\\"EDGE_INET\\\"\n    set phase1name \\\"EDGE_INET\\\"\n    set proposal aes256-sha256\n    set keepalive enable\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set phase1name \\\"EDGE_MPLS\\\"\n    set proposal aes256-sha256\n    set keepalive enable\n  next\nend\nconfig system interface\n  edit \\\"EDGE_INET\\\"\n    set vdom \\\"root\\\"\n    set ip $(inet-tunnel-net: 4,\n                    1) 255.255.255.255\n    set allowaccess ping\n    set type tunnel\n    set remote-ip $(inet-tunnel-net: 4,\n                    254) $(tunnel-mask)\n    set interface $(inet-intf)\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set vdom \\\"root\\\"\n    set ip $(mpls-tunnel-net: 4,\n                    1) 255.255.255.255\n    set allowaccess ping\n    set type tunnel\n    set remote-ip $(mpls-tunnel-net: 4,\n                    254) $(tunnel-mask)\n    set interface $(mpls-intf)\n  next\n  edit \\\"lo-HC\\\"\n    set vdom \\\"root\\\"\n    set ip 10.200.99.1 255.255.255.255\n    set allowaccess ping\n    set type loopback\n  next\nend\n\n                    \"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"01-Hub-Overlay\",\n                    \"script\": \"\n                    \nconfig vpn ipsec phase1-interface\n  # Local Region (Edges)\n  edit \\\"EDGE_INET\\\"\n    set type dynamic\n    set interface $(inet-intf)\n    set ike-version 2\n    set authmethod signature\n    set peertype any\n    set mode-cfg enable\n    set proposal aes256-sha256\n    set net-device disable\n    set tunnel-search nexthop\n    set add-route disable\n    set auto-discovery-sender enable\n    set network-overlay enable\n    set network-id $(inet-id)\n    set ipv4-start-ip $(inet-tunnel-net: 4,2)\n    set ipv4-end-ip $(inet-tunnel-net: 4,253)\n    set ipv4-netmask $(tunnel-mask)\n    set certificate \\\"Hub\\\"\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set type dynamic\n    set interface $(mpls-intf)\n    set ike-version 2\n    set authmethod signature\n    set peertype any\n    set mode-cfg enable\n    set proposal aes256-sha256\n    set net-device disable\n    set tunnel-search nexthop\n    set add-route disable\n    set auto-discovery-sender enable\n    set network-overlay enable\n    set network-id $(mpls-id)\n    set ipv4-start-ip $(mpls-tunnel-net: 4,2)\n    set ipv4-end-ip $(mpls-tunnel-net: 4,253)\n    set ipv4-netmask $(tunnel-mask)\n    set certificate \\\"Hub\\\"\n  next\nend\nconfig vpn ipsec phase2-interface\n  edit \\\"EDGE_INET\\\"\n    set phase1name \\\"EDGE_INET\\\"\n    set proposal aes256-sha256\n    set keepalive enable\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set phase1name \\\"EDGE_MPLS\\\"\n    set proposal aes256-sha256\n    set keepalive enable\n  next\nend\nconfig system interface\n  edit \\\"EDGE_INET\\\"\n    set vdom \\\"root\\\"\n    set ip $(inet-tunnel-net: 4,1) 255.255.255.255\n    set allowaccess ping\n    set type tunnel\n    set remote-ip $(inet-tunnel-net: 4,254) $(tunnel-mask)\n    set interface $(inet-intf)\n  next\n  edit \\\"EDGE_MPLS\\\"\n    set vdom \\\"root\\\"\n    set ip $(mpls-tunnel-net: 4,1) 255.255.255.255\n    set allowaccess ping\n    set type tunnel\n    set remote-ip $(mpls-tunnel-net: 4,254) $(tunnel-mask)\n    set interface $(mpls-intf)\n  next\n  edit \\\"lo-HC\\\"\n    set vdom \\\"root\\\"\n    set ip 10.200.99.1 255.255.255.255\n    set allowaccess ping\n    set type loopback\n  next\nend\n\n                    \"\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
