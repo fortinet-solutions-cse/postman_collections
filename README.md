@@ -4,26 +4,18 @@ This repository contains automation scripts and Postman collections to automate 
 
 ## Files
 
-Latest version:
+Latest versions:
 
-- `Managed_SDWAN_6_4_4.postman.json` - Postman collection for controlled execution
-  of requests. Postman supports manual step-by-step execution, as well as batch run.
+- `Managed_SDWAN_6_4_6.postman.json` - Postman collection tailored to "Managed Secure SD-WAN Workshop 6.4.6", created by Fortinet CSE Team
 
-## Use Cases
-
-The collection is designed to be used when building SD-WAN demonstrations.
-It can also be used as a learning tool, to get familiar with API exposed by FortiManager.
-
-Scenarios covered:
-
-- West Region - Dual-Hub SD-WAN Topology from scratch
-- East Region - Single-Hub SD-WAN Topology from scratch
-- Complete Interregional Connectivity
-- End-to-End Segmentation in SD-WAN Topology
-- Zero-Touch Provisioning in SD-WAN Topology
+- `Deployment_Guide_SDWAN_6_4.postman.json` - Postman collection tailored to "Configuring Secure SD-WAN, Release 6.4" Deployment Guide, created by Fortinet CSE Team
 
 ## Usage
 
-Clone the repository and import the JSON file into Postman.
+To use these collections, simply clone the repository and import the desired JSON file into [Postman](https://www.postman.com/downloads/).
+
+These collections can be used for a complete SD-WAN deployment automation, following the steps
+described in the corresponding documents. They can also be used as a learning tool, to get familiar with API
+exposed by FortiManager.
 
 Enjoy!
