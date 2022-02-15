@@ -493,7 +493,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/device/profile/fortianalyzer\",\n            \"data\": {\n                \"target\": 2\n            }\n        }\n    ]\n}",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/device/profile/fortianalyzer\",\n            \"data\": {\n                \"target\": 4,\n                \"target-ip\": \"192.168.0.15\",\n                \"target-sn\": \"FMG-VMTM21012613\"\n            }\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1252,6 +1252,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"function failedResponse(str) {",
+									"    return str != \"devaddsuccess\" && str != \"model device with the same PSK exists\" && str != \"devnameused\"",
+									"}",
+									"",
 									"function waitOnTask(retries) {",
 									"    if (!retries) {",
 									"        pm.test(\"Task completed\", function() {",
@@ -1273,12 +1277,23 @@
 									"            if (jsonData.result[0].data.percent == 100) {",
 									"                // Task completed",
 									"                if (jsonData.result[0].data.num_err && ",
-									"                    jsonData.result[0].data.line[0].detail != \"model device with the same PSK exists\" && ",
-									"                    jsonData.result[0].data.line[0].detail != \"devnameused\") {",
+									"                    (",
+									"                        failedResponse(jsonData.result[0].data.line[0].detail) ||",
+									"                        failedResponse(jsonData.result[0].data.line[1].detail) ||",
+									"                        failedResponse(jsonData.result[0].data.line[2].detail) ||",
+									"                        failedResponse(jsonData.result[0].data.line[3].detail) ||",
+									"                        failedResponse(jsonData.result[0].data.line[4].detail) ||",
+									"                        failedResponse(jsonData.result[0].data.line[5].detail)                    ",
+									"                    )) {",
 									"                    postman.setNextRequest(null);",
 									"                }",
 									"                pm.test(\"Task completed\", function() {",
 									"                    pm.expect(jsonData.result[0].data.line[0].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                    pm.expect(jsonData.result[0].data.line[1].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                    pm.expect(jsonData.result[0].data.line[2].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                    pm.expect(jsonData.result[0].data.line[3].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                    pm.expect(jsonData.result[0].data.line[4].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                    pm.expect(jsonData.result[0].data.line[5].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
 									"                });",
 									"            }",
 									"            else {",
