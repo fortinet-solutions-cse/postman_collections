@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b2dd0d25-d6b3-4d2a-8086-de9b96654dce",
+		"_postman_id": "6166f27f-9d00-49e2-a58b-c70c3990e56a",
 		"name": "Managed Secure SD-WAN 7.0.5",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -2081,6 +2081,317 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-2H-Gold/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"SASE\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"port1\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 2,\n                        \"interface\": \"port2\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 3,\n                        \"interface\": \"H1_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 4,\n                        \"interface\": \"H1_ISP2\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 5,\n                        \"interface\": \"H1_MPLS\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 6,\n                        \"interface\": \"H2_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 7,\n                        \"interface\": \"H2_ISP2\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 8,\n                        \"interface\": \"H2_MPLS\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"HUB\",\n                        \"server\": \"10.200.99.1\",\n                        \"protocol\": 1,\n                        \"members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\",\n                            \"6\",\n                            \"7\",\n                            \"8\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 100,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    },\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 250,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    }\n                ],\n                \"service\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"Corporate-H1\",\n                        \"src\": \"CORP_LAN\",\n                        \"dst\": \"CORP_LAN\",\n                        \"protocol\": 0,\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"HUB\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"hold-down-time\": 20,\n                        \"tie-break\": 3,\n                        \"role\": 3,\n                        \"status\": 1\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"Corporate-H2\",\n                        \"src\": \"CORP_LAN\",\n                        \"dst\": \"CORP_LAN\",\n                        \"protocol\": 0,\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"6\",\n                            \"7\",\n                            \"8\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"HUB\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"hold-down-time\": 20,\n                        \"tie-break\": 3,\n                        \"role\": 3,\n                        \"status\": 1\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"Business-Critical-SaaS\",\n                        \"src\": [],\n                        \"internet-service\": 1,\n                        \"internet-service-app-ctrl\": [\n                            16920,\n                            16354\n                        ],\n                        \"protocol\": 0,\n                        \"mode\": 5,\n                        \"priority-members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": [\n                                    \"Internet\"\n                                ],\n                                \"id\": 1\n                            }\n                        ],\n                        \"role\": 3,\n                        \"status\": 1\n                    }\n                ]\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "QoS",
+			"item": [
+				{
+					"name": "Add Address Objects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"data\": [\n                {\n                \"class-id\": 2,\n                \"class-name\": \"Real Time\"\n                },\n                {\n                \"class-id\": 3,\n                \"class-name\": \"Business Critical\"\n                },\n                {\n                \"class-id\": 4,\n                \"class-name\": \"High Bandwidth\"\n                },\n                {\n                \"class-id\": 5,\n                \"class-name\": \"Best Effort\"\n                },\n                {\n                \"class-id\": 6,\n                \"class-name\": \"Network\"\n                }\n            ],\n            \"url\": \"/pm/config/global/obj/firewall/traffic-class\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add SD-WAN rule - Edge-2H-Silver",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-2H-Silver/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"SASE\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"port1\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 3,\n                        \"interface\": \"H1_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 5,\n                        \"interface\": \"H1_MPLS\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 6,\n                        \"interface\": \"H2_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 8,\n                        \"interface\": \"H2_MPLS\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    }\n                ],\n                \"service\": [\n                    {\n                        \"name\": \"QoS_Workshop\",\n                        \"mode\": 1,\n                        \"dst\": [\n                            \"client1-H1\",\n                            \"client1-H2\"\n                        ],\n                        \"priority-members\": [\n                            \"5\",\n                            \"8\"\n                        ]\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"HUB\",\n                        \"server\": \"10.200.99.1\",\n                        \"protocol\": 1,\n                        \"members\": [\n                            \"3\",\n                            \"5\",\n                            \"6\",\n                            \"8\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 100,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    },\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"5\",\n                            \"8\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 250,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Traffic Class",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"data\": [\n                {\n                \"class-id\": 2,\n                \"class-name\": \"Real Time\"\n                },\n                {\n                \"class-id\": 3,\n                \"class-name\": \"Business Critical\"\n                },\n                {\n                \"class-id\": 4,\n                \"class-name\": \"High Bandwidth\"\n                },\n                {\n                \"class-id\": 5,\n                \"class-name\": \"Best Effort\"\n                },\n                {\n                \"class-id\": 6,\n                \"class-name\": \"Network\"\n                }\n            ],\n            \"url\": \"/pm/config/global/obj/firewall/traffic-class\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Shaping Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/DEMO/obj/firewall/shaping-profile\",\n            \"revision note\" : \"Create\",\n            \"data\": {\n                \"comment\": null,\n                \"default-class-id\" : \"5\",\n                \"profile-name\" : \"Edge_Shaping_4\",\n                \"type\" : \"policing\",\n\n                \"shaping-entries\" : [\n                    {\n                        \"class-id\" : \"5\",\n                        \"id\" : -1,\n                        \"guaranteed-bandwidth-percentage\" : 10,\n                        \"maximum-bandwidth-percentage\": 100,\n                        \"priority\" : \"high\",\n                        \"limit\" : 1000,\n                        \"min\" : 83,\n                        \"max\" : 250,\n                        \"burst-in-msec\" : 0,\n                        \"cburst-in-msec\" : 0\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Shaping Policies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/DEMO/obj/firewall/shaping-profile\",\n            \"revision note\" : \"Create\",\n            \"data\": {\n                \"comment\": null,\n                \"default-class-id\" : \"5\",\n                \"profile-name\" : \"Edge_Shaping_4\",\n                \"type\" : \"policing\",\n\n                \"shaping-entries\" : [\n                    {\n                        \"class-id\" : \"5\",\n                        \"id\" : -1,\n                        \"guaranteed-bandwidth-percentage\" : 10,\n                        \"maximum-bandwidth-percentage\": 100,\n                        \"priority\" : \"high\",\n                        \"limit\" : 1000,\n                        \"min\" : 83,\n                        \"max\" : 250,\n                        \"burst-in-msec\" : 0,\n                        \"cburst-in-msec\" : 0\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Install Policy - Edge",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Edge\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Edge\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
 							"raw": "https://{{ip}}/jsonrpc",
