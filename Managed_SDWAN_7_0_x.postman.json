@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "68f58e07-84a3-450e-b2f6-29bd0d0e225f",
+		"_postman_id": "73d9db2a-9cbf-4456-a4a5-64a97ed2fa96",
 		"name": "Managed Secure SD-WAN 7.0.5",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -706,7 +706,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/Underlay-Static/action-list/\",\n            \"data\": [\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"value\": {\n                        \"device\": \"port4\",\n                        \"dst\": [\n                            \"172.16.0.0\",\n                            \"255.255.0.0\"\n                        ],\n                        \"gateway\": \"$(mpls_wan_gateway)\",\n                        \"seq-num\": 5,\n                        \"status\": \"enable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"value\": {\n                        \"dst\": [\n                            \"0.0.0.0\",\n                            \"0.0.0.0\"\n                        ],\n                        \"sdwan\": true,\n                        \"sdwan-zone\": [\n                            \"underlay\"\n                        ],\n                        \"seq-num\": 100,\n                        \"status\": \"enable\"\n                    }\n                }\n            ]\n        }\n    ]\n}",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/Underlay-Static/action-list/\",\n            \"data\": [\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 1,\n                    \"value\": {\n                        \"device\": \"port4\",\n                        \"dst\": [\n                            \"172.16.0.0\",\n                            \"255.255.0.0\"\n                        ],\n                        \"gateway\": \"$(mpls_wan_gateway)\",\n                        \"seq-num\": 5,\n                        \"status\": \"enable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 2,\n                    \"value\": {\n                        \"dst\": [\n                            \"0.0.0.0\",\n                            \"0.0.0.0\"\n                        ],\n                        \"sdwan\": true,\n                        \"sdwan-zone\": [\n                            \"underlay\",\n                            \"overlay\"\n                        ],\n                        \"seq-num\": 100,\n                        \"status\": \"enable\"\n                    }\n                }\n            ]\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
