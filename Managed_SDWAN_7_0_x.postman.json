@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "73d9db2a-9cbf-4456-a4a5-64a97ed2fa96",
-		"name": "Managed Secure SD-WAN 7.0.5",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "fc566794-54b3-42c3-99b2-6a25cfee4eeb",
+		"name": "Managed Secure SD-WAN 7.0.x",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9895935"
 	},
 	"item": [
 		{
