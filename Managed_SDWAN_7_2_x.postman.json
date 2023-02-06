@@ -1070,7 +1070,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-DualISP\",\n                    \"dev-group\": \"Edge-DualISP\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prefer-img-ver\": \"7.2.2-b1255\"\n                },\n                {\n                    \"name\": \"Hubs-DualISP\",\n                    \"dev-group\": \"Hubs-DualISP\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prefer-img-ver\": \"7.2.2-b1255\"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-DualISP\",\n                    \"dev-group\": \"Edge-DualISP\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                },\n                {\n                    \"name\": \"Hubs-DualISP\",\n                    \"dev-group\": \"Hubs-DualISP\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
