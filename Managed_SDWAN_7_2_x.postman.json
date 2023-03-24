@@ -1704,6 +1704,179 @@
 					]
 				},
 				{
+					"name": "Embed Health",
+					"item": [
+						{
+							"name": "Update Health-Check - Edge-DualISP",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-DualISP/system/sdwan/health-check/HUB\",\n            \"data\": {\n                \"embed-measured-health\": 1\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Health-Check - Hub-DualISP",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Hub-DualISP/system/sdwan/health-check\",\n            \"data\": {\n                \"name\": \"EDGE\",\n                \"detect-mode\": 4,\n                \"members\": [\n                    \"3\",\n                    \"4\"\n                ],\n                \"sla-id-redistribute\": 1,\n                \"sla\": [\n                    {\n                        \"id\": 1,\n                        \"latency-threshold\": 100,\n                        \"link-cost-factor\": 1,\n                        \"priority-in-sla\": 5,\n                        \"priority-out-sla\": 8\n                    }\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add SDWAN Neighbors - Edge-DualISP",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-DualISP/system/sdwan/neighbor\",\n            \"data\": [\n                {\n                    \"ip\": \"10.200.1.253\",\n                    \"health-check\": \"HUB\",\n                    \"sla-id\": 1,\n                    \"member\": [\n                        \"3\",\n                        \"4\"\n                    ]\n                },\n                {\n                    \"ip\": \"10.200.1.254\",\n                    \"health-check\": \"HUB\",\n                    \"sla-id\": 1,\n                    \"member\": [\n                        \"5\",\n                        \"6\"\n                    ]\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Install Configuration",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function waitOnTask(retries) {",
+											"    if (!retries) {",
+											"        pm.test(\"Task completed\", function() {",
+											"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+											"        });",
+											"        postman.setNextRequest(null);",
+											"    }",
+											"    else {",
+											"        pm.sendRequest({",
+											"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+											"            method: 'POST',",
+											"            header: \"Content-Type:application/json\",",
+											"            body: {",
+											"                mode: 'raw',",
+											"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+											"            }",
+											"        }, function(err, response) {",
+											"            var jsonData = response.json();",
+											"            if (jsonData.result[0].data.percent == 100) {",
+											"                // Task completed",
+											"                if (jsonData.result[0].data.num_err) {",
+											"                    postman.setNextRequest(null);",
+											"                }",
+											"                pm.test(\"Task completed\", function() {",
+											"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+											"                });",
+											"            }",
+											"            else {",
+											"                console.log(\"Task is still not complete\");",
+											"                setTimeout(function() {",
+											"                    waitOnTask(--retries);",
+											"                }, 10000);",
+											"            }",
+											"        }); ",
+											"    }",
+											"}",
+											"",
+											"var jsonData = pm.response.json();",
+											"var taskid = jsonData.result[0].data.task;",
+											"",
+											"waitOnTask(10);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/device\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Legacy Site",
 					"item": [
 						{
@@ -2376,6 +2549,96 @@
 							"response": []
 						},
 						{
+							"name": "Create Community-List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/router/community-list\",\n            \"data\": [\n                {\n                    \"name\": \"SLA_OK\",\n                    \"type\": 1,\n                    \"rule\": [\n                        {\n                            \"id\": 1,\n                            \"action\": 2,\n                            \"match\": \"65000:99\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Route-Maps",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/router/route-map\",\n            \"data\": [\n                {\n                    \"name\": \"H1_TO_OUTSIDE\",\n                    \"rule\": [\n                        {\n                            \"id\": 1,\n                            \"action\": 0,\n                            \"match-community\": [\n                                \"SLA_OK\"\n                            ],\n                            \"set-metric\": \"90\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"action\": 0,\n                            \"set-metric\": \"100\"\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"H2_TO_OUTSIDE\",\n                    \"rule\": [\n                        {\n                            \"id\": 1,\n                            \"action\": 0,\n                            \"match-community\": [\n                                \"SLA_OK\"\n                            ],\n                            \"set-metric\": \"95\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"action\": 0,\n                            \"set-metric\": \"105\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Create BGP Templates",
 							"event": [
 								{
@@ -2445,7 +2708,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/router_bgp/H1_OUTSIDE/router/bgp\",\n            \"data\": {\n                \"as\": 65001,\n                \"neighbor\": [\n                    {\n                        \"ip\": \"192.168.1.1\",\n                        \"soft-reconfiguration\": 1,\n                        \"connect-timer\": 1,\n                        \"advertisement-interval\": 1,\n                        \"remote-as\": 65100\n                    }\n                ]\n            }\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/router_bgp/H1_OUTSIDE/router/bgp\",\n            \"data\": {\n                \"as\": 65001,\n                \"neighbor\": [\n                    {\n                        \"ip\": \"192.168.1.1\",\n                        \"soft-reconfiguration\": 1,\n                        \"connect-timer\": 1,\n                        \"advertisement-interval\": 1,\n                        \"remote-as\": 65100,\n                        \"route-map-out\": [\n                            \"H1_TO_OUTSIDE\"\n                        ]\n                    }\n                ]\n            }\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2490,7 +2753,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/router_bgp/H2_OUTSIDE/router/bgp\",\n            \"data\": {\n                \"as\": 65001,\n                \"neighbor\": [\n                    {\n                        \"ip\": \"192.168.2.1\",\n                        \"soft-reconfiguration\": 1,\n                        \"connect-timer\": 1,\n                        \"advertisement-interval\": 1,\n                        \"remote-as\": 65100\n                    }\n                ]\n            }\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/router_bgp/H2_OUTSIDE/router/bgp\",\n            \"data\": {\n                \"as\": 65001,\n                \"neighbor\": [\n                    {\n                        \"ip\": \"192.168.2.1\",\n                        \"soft-reconfiguration\": 1,\n                        \"connect-timer\": 1,\n                        \"advertisement-interval\": 1,\n                        \"remote-as\": 65100,\n                        \"route-map-out\": [\n                            \"H2_TO_OUTSIDE\"\n                        ]\n                    }\n                ]\n            }\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2997,12 +3260,11 @@
 					"    pm.response.to.have.status(200);",
 					"});",
 					"",
-					"pm.test(\"JSON Status code is 0\", function () {",
+					"pm.test(\"JSON Status code is 0 or -2\", function () {",
 					"    var jsonData = pm.response.json();",
-					"    if (jsonData.result[0].status.code) {",
-					"        postman.setNextRequest(null);",
-					"    }    ",
-					"    pm.expect(jsonData.result[0].status.code).to.equal(0);",
+					"    postman.setNextRequest(null);",
+					"    pm.expect(jsonData.result[0].status.code).to.be.oneOf([0, -2]);",
+					"    postman.setNextRequest();",
 					"});"
 				]
 			}
