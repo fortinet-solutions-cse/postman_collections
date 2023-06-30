@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9c7f3c69-bd3d-4a13-8d9f-288567ba99e6",
+		"_postman_id": "c5b7378d-a72f-4fdd-93b1-b31bd9ed9d7f",
 		"name": "Managed Secure SD-WAN 7.2.x",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "9895935"
@@ -3115,6 +3115,96 @@
 							"response": []
 						},
 						{
+							"name": "Set Variable Default",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"loopback\",\n                    \"value\": \"10.200.0.0\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add IP Pool",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/CustomerB/obj/firewall/ippool\",\n            \"data\": {\n                \"name\": \"Lo-Pool\",\n                \"type\": 0,\n                \"startip\": \"$(loopback)\",\n                \"endip\": \"$(loopback)\",\n                \"_if_no_default\": 0\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Add Firewall Rules - Edge",
 							"event": [
 								{
@@ -3139,7 +3229,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Corporate\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n                    ],\n                    \"dstintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n                    ],\n                    \"srcaddr\": \"CORP_LAN\",\n                    \"dstaddr\": \"CORP_LAN\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (CE-to-PE)\",\n                    \"policyid\": 2,\n                    \"srcintf\": \"lan_zone\",\n                    \"dstintf\": \"vrfs_leak_zone\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 0,\n                    \"profile-protocol-options\": [],\n                    \"application-list\": [],\n                    \"ssl-ssh-profile\": [\n                        \"no-inspection\"\n                    ],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },                \n                {\n                    \"name\": \"Internet (DIA)\",\n                    \"policyid\": 3,\n                    \"srcintf\": \"pevrf_leak_zone\",\n                    \"dstintf\": \"underlay\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (RIA)\",\n                    \"policyid\": 4,\n                    \"srcintf\": \"pevrf_leak_zone\",\n                    \"dstintf\": \"overlay\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Health-Check\",\n                    \"policyid\": 5,\n                    \"srcintf\": [\n                        \"overlay\"\n                    ],\n                    \"dstintf\": \"Lo\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"PING\",\n                    \"action\": 1,\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 3\n                }\n            ]\n        }\n    ]\n}"
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Corporate\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n                    ],\n                    \"dstintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n                    ],\n                    \"srcaddr\": \"CORP_LAN\",\n                    \"dstaddr\": \"CORP_LAN\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (CE-to-PE)\",\n                    \"policyid\": 2,\n                    \"srcintf\": \"lan_zone\",\n                    \"dstintf\": \"vrfs_leak_zone\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 0,\n                    \"profile-protocol-options\": [],\n                    \"application-list\": [],\n                    \"ssl-ssh-profile\": [\n                        \"no-inspection\"\n                    ],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (DIA)\",\n                    \"policyid\": 3,\n                    \"srcintf\": \"pevrf_leak_zone\",\n                    \"dstintf\": \"underlay\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (RIA)\",\n                    \"policyid\": 4,\n                    \"srcintf\": \"pevrf_leak_zone\",\n                    \"dstintf\": \"overlay\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"ippool\": 1,\n                    \"poolname\": \"Lo-Pool\",\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Health-Check\",\n                    \"policyid\": 5,\n                    \"srcintf\": [\n                        \"overlay\"\n                    ],\n                    \"dstintf\": \"Lo\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"PING\",\n                    \"action\": 1,\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 3\n                }\n            ]\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
