@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "6cbcaf4f-17cd-405c-9276-20c391beb4d2",
+		"_postman_id": "676b43ef-42f7-4fa4-8ad0-7c917bf87bf4",
 		"name": "Managed Secure SD-WAN 7.2.x",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "9895935"
+		"_exporter_id": "29873769"
 	},
 	"item": [
 		{
@@ -3543,6 +3543,56 @@
 				{
 					"name": "CLI Templates Group",
 					"item": [
+						{
+							"name": "- Breakpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"postman.setNextRequest(null);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/sys/status\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
 						{
 							"name": "Create CLI Template Groups",
 							"event": [
