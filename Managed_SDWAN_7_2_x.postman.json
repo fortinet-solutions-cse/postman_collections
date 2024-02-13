@@ -3955,6 +3955,110 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Device Authorisation",
+					"item": [
+						{
+							"name": "Authorise site1-H1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Authorise site1-H2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/device/site1-H2\",\n            \"data\": {\n                \"adm_pass\": [\n                    \"Fortinet123#\"\n                ],\n                \"adm_usr\": \"azureadmin\"\n            }\n        }\n    ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Authorise site1-1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/device/site1-1\",\n            \"data\": {\n                \"adm_pass\": [\n                    \"Fortinet123#\"\n                ],\n                \"adm_usr\": \"azureadmin\"\n            }\n        }\n    ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Authorise site1-2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/device/site1-2\",\n            \"data\": {\n                \"adm_pass\": [\n                    \"Fortinet123#\"\n                ],\n                \"adm_usr\": \"azureadmin\"\n            }\n        }\n    ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
