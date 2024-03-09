@@ -2053,6 +2053,51 @@
 					"name": "CustomerU - Staging",
 					"item": [
 						{
+							"name": "Update Model Devices",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site1-1\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160,\n                \"prefer_img_ver\": \"7.4.3-b2573\"\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site1-2\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160,\n                \"prefer_img_ver\": \"7.4.3-b2573\"\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site2-1\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160,\n                \"prefer_img_ver\": \"7.4.3-b2573\"\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site1-H1\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160,\n                \"prefer_img_ver\": \"7.4.3-b2573\"\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site1-H2\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160,\n                \"prefer_img_ver\": \"7.4.3-b2573\"\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site2-H1\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160,\n                \"prefer_img_ver\": \"7.4.3-b2573\"\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Generate Certificate - Hubs",
 							"event": [
 								{
