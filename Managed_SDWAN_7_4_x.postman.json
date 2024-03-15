@@ -849,46 +849,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Add Firewall Rules - Edge",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Corporate\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n                    ],\n                    \"dstintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n                    ],\n                    \"srcaddr\": \"CORP_LAN\",\n                    \"dstaddr\": \"CORP_LAN\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (DIA)\",\n                    \"policyid\": 2,\n                    \"srcintf\": \"lan_zone\",\n                    \"dstintf\": \"underlay\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (RIA)\",\n                    \"policyid\": 3,\n                    \"srcintf\": \"lan_zone\",\n                    \"dstintf\": \"overlay\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Peering\",\n                    \"policyid\": 4,\n                    \"srcintf\": [\n                        \"overlay\"\n                    ],\n                    \"dstintf\": [\n                        \"Lo\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": [\n                        \"PING\",\n                        \"BGP\"\n                    ],\n                    \"action\": 1,\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 3\n                }\n            ]\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
 						}
 					]
 				},
@@ -1045,651 +1005,622 @@
 			]
 		},
 		{
-			"name": "CustomerS - FSS-friendly",
-			"item": [
-				{
-					"name": "Variables",
-					"item": [
-						{
-							"name": "CustomerS - Create Variables",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"region\"\n                },\n                {\n                    \"name\": \"profile\"\n                },\n                {\n                    \"name\": \"hostname\"\n                },\n                {\n                    \"name\": \"loopback\"\n                },\n                {\n                    \"name\": \"lan_ip\"\n                },\n                {\n                    \"name\": \"dgw_port1\"\n                },\n                {\n                    \"name\": \"dgw_port2\"\n                },\n                {\n                    \"name\": \"h1_isp1\"\n                },\n                {\n                    \"name\": \"h1_isp2\"\n                },\n                {\n                    \"name\": \"h2_isp1\"\n                },\n                {\n                    \"name\": \"h2_isp2\"\n                },\n                {\n                    \"name\": \"lxc_ip\",\n                    \"value\": \"1.1.1.1\"\n                },\n                {\n                    \"name\": \"win_ip\",\n                    \"value\": \"2.2.2.2\"\n                },\n                {\n                    \"name\": \"port1_ip\",\n                    \"value\": \"3.3.3.3\"\n                }\n            ]\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "SD-WAN Templates",
-					"item": [
-						{
-							"name": "Populate SDWAN Template - Edge-DualISP",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-DualISP/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"port1\",\n                        \"gateway\": \"$(dgw_port1)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 2,\n                        \"interface\": \"port2\",\n                        \"gateway\": \"$(dgw_port2)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 3,\n                        \"interface\": \"H1_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 4,\n                        \"interface\": \"H1_ISP2\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 5,\n                        \"interface\": \"H2_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 6,\n                        \"interface\": \"H2_ISP2\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"HUB\",\n                        \"server\": \"10.200.99.1\",\n                        \"protocol\": 1,\n                        \"members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\",\n                            \"6\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 100,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    },\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 250,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    }\n                ],\n                \"service\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"Corporate-H1\",\n                        \"src\": \"CORP_LAN\",\n                        \"dst\": \"CORP_LAN\",\n                        \"protocol\": 0,\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"3\",\n                            \"4\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"HUB\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"hold-down-time\": 20,\n                        \"tie-break\": 3,\n                        \"role\": 3,\n                        \"status\": 1\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"Corporate-H2\",\n                        \"src\": \"CORP_LAN\",\n                        \"dst\": \"CORP_LAN\",\n                        \"protocol\": 0,\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"5\",\n                            \"6\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"HUB\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"hold-down-time\": 20,\n                        \"tie-break\": 3,\n                        \"role\": 3,\n                        \"status\": 1\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"Business-Critical-SaaS\",\n                        \"src\": [],\n                        \"internet-service\": 1,\n                        \"internet-service-app-ctrl\": [\n                            16920,\n                            16354\n                        ],\n                        \"protocol\": 0,\n                        \"mode\": 5,\n                        \"priority-members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": [\n                                    \"Internet\"\n                                ],\n                                \"id\": 1\n                            }\n                        ],\n                        \"role\": 3,\n                        \"status\": 1\n                    }\n                ]\n            }\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Populate SDWAN Template - Hub-DualISP",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Hub-DualISP/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"port1\",\n                        \"gateway\": \"$(dgw_port1)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 2,\n                        \"interface\": \"port2\",\n                        \"gateway\": \"$(dgw_port2)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 3,\n                        \"interface\": \"EDGE_ISP1\",\n                        \"priority\": 10,\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 4,\n                        \"interface\": \"EDGE_ISP2\",\n                        \"priority\": 10,\n                        \"zone\": \"overlay\"\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10\n                    }\n                ]\n            }\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Breakpoint",
-					"item": [
-						{
-							"name": "- Breakpoint",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"postman.setNextRequest(null);",
-											""
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/sys/status\"\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "CLI Templates Group",
-					"item": [
-						{
-							"name": "- Breakpoint",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"postman.setNextRequest(null);",
-											""
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/sys/status\"\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Create CLI Template Groups",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n            \"data\": [\n                {\n                    \"name\": \"Hub-Template\",\n                    \"member\": [\n                        \"01-Hub-Underlay\",\n                        \"02-Hub-Overlay\",\n                        \"03-Hub-Routing\",\n                        \"04-Hub-MultiRegion\"\n                    ],\n                    \"scope member\": [\n                        {\n                            \"is group\": 1,\n                            \"name\": \"Hubs\"\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"Edge-Template\",\n                    \"member\": [\n                        \"01-Edge-Underlay\",\n                        \"02-Edge-Overlay\",\n                        \"03-Edge-Routing\"\n                    ],\n                    \"scope member\": [\n                        {\n                            \"is group\": 1,\n                            \"name\": \"Edge\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Firewall Policy Packages",
-					"item": [
-						{
-							"name": "Add VIPs",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/firewall/vip\",\n            \"data\": [\n                {\n                    \"name\": \"WIN-RDP\",\n                    \"portforward\": \"enable\",\n                    \"portmapping-type\": \"1-to-1\",\n                    \"extintf\": \"any\",\n                    \"extip\": \"$(port1_ip)\",\n                    \"extport\": \"33891\",\n                    \"mappedip\": \"$(win_ip)\",\n                    \"mappedport\": \"3389\"\n                },\n                {\n                    \"name\": \"LXC-SSH\",\n                    \"portforward\": \"enable\",\n                    \"portmapping-type\": \"1-to-1\",\n                    \"extintf\": \"any\",\n                    \"extip\": \"$(port1_ip)\",\n                    \"extport\": \"222\",\n                    \"mappedip\": \"$(lxc_ip)\",\n                    \"mappedport\": \"22\"\n                }\n            ]\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Add Firewall Rules - Edge",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"WIN-RDP\",\n                    \"policyid\": 10,\n                    \"srcintf\": [\n                        \"underlay\"\n                    ],\n                    \"dstintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"WIN-RDP\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"LXC-SSH\",\n                    \"policyid\": 11,\n                    \"srcintf\": [\n                        \"underlay\"\n                    ],\n                    \"dstintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"LXC-SSH\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n            ]\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Add Firewall Rules - Hub",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"WIN-RDP\",\n                    \"policyid\": 10,\n                    \"srcintf\": [\n                        \"underlay\"\n                    ],\n                    \"dstintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"WIN-RDP\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"LXC-SSH\",\n                    \"policyid\": 11,\n                    \"srcintf\": [\n                        \"underlay\"\n                    ],\n                    \"dstintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"LXC-SSH\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n            ]\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Device Blueprints",
-					"item": [
-						{
-							"name": "Create Device Blueprints",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-DualISP\",\n                    \"dev-group\": \"Edge-DualISP\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-Azure\"\n                },\n                {\n                    \"name\": \"Hubs-DualISP\",\n                    \"dev-group\": \"Hubs-DualISP\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-Azure\"\n                }\n            ]\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Cleanup Unauthorized Devices",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"function waitOnTask(retries) {",
-											"    if (!retries) {",
-											"        pm.test(\"Task completed\", function() {",
-											"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
-											"        });",
-											"        postman.setNextRequest(null);",
-											"    }",
-											"    else {",
-											"        pm.sendRequest({",
-											"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
-											"            method: 'POST',",
-											"            header: \"Content-Type:application/json\",",
-											"            body: {",
-											"                mode: 'raw',",
-											"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
-											"            }",
-											"        }, function(err, response) {",
-											"            var jsonData = response.json();",
-											"            if (jsonData.result[0].data.percent == 100) {",
-											"                // Task completed",
-											"                if (jsonData.result[0].data.num_err) {",
-											"                    postman.setNextRequest(null);",
-											"                }",
-											"                pm.test(\"Task completed\", function() {",
-											"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
-											"                });",
-											"            }",
-											"            else {",
-											"                console.log(\"Task is still not complete\");",
-											"                setTimeout(function() {",
-											"                    waitOnTask(--retries);",
-											"                }, 10000);",
-											"            }",
-											"        }); ",
-											"    }",
-											"}",
-											"",
-											"var jsonData = pm.response.json();",
-											"var taskid = jsonData.result[0].data.taskid;",
-											"",
-											"waitOnTask(10);",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/del/dev-list\",\n            \"data\": {\n                \"adom\": \"root\",\n                \"del-dev-member-list\": [\n                    {\n                        \"name\": \"bc1-fgtvm\",\n                        \"vdom\": \"root\"\n                    },\n                    {\n                        \"name\": \"bc2-fgtvm\",\n                        \"vdom\": \"root\"\n                    },\n                    {\n                        \"name\": \"dc1-fgtvm\",\n                        \"vdom\": \"root\"\n                    },\n                    {\n                        \"name\": \"dc2-fgtvm\",\n                        \"vdom\": \"root\"\n                    }\n                ],\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ]\n            }\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Device Authorisation",
-					"item": [
-						{
-							"name": "Authorise site1-H1",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Authorise site1-H2",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/device/site1-H2\",\n            \"data\": {\n                \"adm_pass\": [\n                    \"Fortinet123#\"\n                ],\n                \"adm_usr\": \"azureadmin\"\n            }\n        }\n    ]\n}\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Authorise site1-1",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/device/site1-1\",\n            \"data\": {\n                \"adm_pass\": [\n                    \"Fortinet123#\"\n                ],\n                \"adm_usr\": \"azureadmin\"\n            }\n        }\n    ]\n}\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Authorise site1-2",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/device/site1-2\",\n            \"data\": {\n                \"adm_pass\": [\n                    \"Fortinet123#\"\n                ],\n                \"adm_usr\": \"azureadmin\"\n            }\n        }\n    ]\n}\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		},
-		{
 			"name": "CustomerU - Uni-SASE",
 			"item": [
 				{
-					"name": "CustomerU - SD-WAN",
+					"name": "Finalize Foundation",
 					"item": [
 						{
-							"name": "Finalize Foundation",
+							"name": "Uni-SASE",
+							"item": [
+								{
+									"name": "Firewall Objects",
+									"item": [
+										{
+											"name": "add addr objects",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/address\",\n            \"data\": {\n                \"subnet\": \"10.0.101.101 255.255.255.255\",\n                \"associated-interface\": [\n                    \"any\"\n                ],\n                \"wildcard\": \"0.0.0.0/0.0.0.0\",\n                \"allow-routing\": 0,\n                \"cache-ttl\": 0,\n                \"clearpass-spt\": 0,\n                \"color\": 0,\n                \"dirty\": 1,\n                \"end-ip\": \"0.0.0.0\",\n                \"fabric-object\": 0,\n                \"node-ip-only\": 0,\n                \"obj-type\": 9,\n                \"sdn-addr-type\": 0,\n                \"start-ip\": \"0.0.0.0\",\n                \"sub-type\": 0,\n                \"type\": 0,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"site1-1-win\",\n                \"interface\": null,\n                \"dynamic_mapping\": []\n            },\n            \"revision note\": \"Windows Endpoint object creation\"\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "add fqdn objects",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/wildcard-fqdn/custom\",\n            \"data\": {\n                \"color\": 2,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"FortiClient\",\n                \"wildcard-fqdn\": \"*.forticlient-emsproxy.forticloud.com\"\n            },\n            \"revision note\": \"EMS Proxy Address Object\"\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Security Profiles",
+									"item": [
+										{
+											"name": "Web-Filter",
+											"item": [
+												{
+													"name": "set webfilter content",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"let jsonData = pm.response.json();",
+																	"pm.environment.set(\"url_content_id\", jsonData[\"result\"][0][\"data\"][\"id\"]);"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/content\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"lang\": 0,\n                        \"pattern-type\": 0,\n                        \"score\": 10,\n                        \"name\": \"X11\"\n                    }\n                ],\n                \"name\": \"outbound_content\"\n            }\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "set webfilter urlfilter",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"let jsonData = pm.response.json();",
+																	"pm.environment.set(\"url_filter_id\", jsonData[\"result\"][0][\"data\"][\"id\"]);"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/urlfilter\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"antiphish-action\": 0,\n                        \"dns-address-family\": 7,\n                        \"exempt\": 831,\n                        \"type\": 2,\n                        \"url\": \"thesun.co.uk\"\n                    }\n                ],\n                \"name\": \"outbound_urlfilter\"\n            }\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "set webfilter profile",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/profile\",\n            \"data\": {\n                \"name\": \"outbound\",\n                \"feature-set\": 0,\n                \"ftgd-wf\": {\n                    \"options\": 0,\n                    \"filters\": [\n                        {\n                            \"category\": \"11\",\n                            \"action\": 0,\n                            \"log\": 1\n                        },\n                        {\n                            \"category\": \"7\",\n                            \"action\": 0,\n                            \"log\": 1\n                        },\n                        {\n                            \"category\": \"8\",\n                            \"action\": 0,\n                            \"log\": 1\n                        },\n                        {\n                            \"category\": \"13\",\n                            \"action\": 0,\n                            \"log\": 1\n                        },\n                        {\n                            \"category\": \"14\",\n                            \"action\": 0,\n                            \"log\": 1\n                        }\n                    ]\n                },\n                \"web\": {\n                    \"bword-table\": {{url_content_id}},\n                    \"urlfilter-table\": {{url_filter_id}},\n                    \"content-header-list\": null,\n                    \"log-search\": 0,\n                    \"allowlist\": 0,\n                    \"bword-threshold\": 10,\n                    \"keyword-match\": [],\n                    \"safe-search\": null,\n                    \"youtube-restrict\": 25\n                }\n            }\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
+														}
+													},
+													"response": []
+												}
+											]
+										},
+										{
+											"name": "DNS-Filter",
+											"item": [
+												{
+													"name": "set dns domain-filter",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"let jsonData = pm.response.json();",
+																	"pm.environment.set(\"domain_filter_id\", jsonData[\"result\"][0][\"data\"][\"id\"]);"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dnsfilter/domain-filter\",\n            \"data\": {\n                \"id\": 0,\n                \"name\": \"outbound-filter\",\n                \"entries\": [\n                    {\n                        \"domain\": \"*.unisase.lab\",\n                        \"type\": 2,\n                        \"action\": 2,\n                        \"status\": 1,\n                        \"id\": -1\n                    }\n                ]\n            }\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "update dnsfilter profile",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"let jsonData = pm.response.json();",
+																	"pm.environment.set(\"domain_filter_id\", jsonData[\"result\"][0][\"data\"][\"id\"]);"
+																],
+																"type": "text/javascript"
+															}
+														}
+													],
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dnsfilter/profile/default\",\n            \"data\": {\n                \"domain-filter\": {\n                    \"domain-filter-table\": {{domain_filter_id}}\n                }\n            },\n            \"revision note\": \"Add exception to local domain\"\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
+														}
+													},
+													"response": []
+												}
+											]
+										},
+										{
+											"name": "DLP-Profile",
+											"item": [
+												{
+													"name": "set dlp dictionary",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/dictionary\",\n            \"data\": {\n                \"match-around\": 0,\n                \"match-type\": 2,\n                \"name\": \"def-ssn-dict\",\n                \"entries\": [\n                    {\n                        \"ignore-case\": 0,\n                        \"repeat\": 0,\n                        \"status\": 1,\n                        \"id\": 0,\n                        \"type\": [\n                            \"ssn-us\"\n                        ],\n                        \"pattern\": null\n                    }\n                ]\n            },\n            \"revision note\": \"SSN Dictionary\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/dictionary\",\n            \"data\": {\n                \"match-around\": 0,\n                \"match-type\": 2,\n                \"name\": \"def-cc-dict\",\n                \"entries\": [\n                    {\n                        \"ignore-case\": 0,\n                        \"repeat\": 0,\n                        \"status\": 1,\n                        \"id\": 0,\n                        \"type\": [\n                            \"credit-card\"\n                        ],\n                        \"pattern\": null\n                    }\n                ]\n            },\n            \"revision note\": \"CC Dictionary\"\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "set dlp sensor",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/sensor\",\n            \"data\": {\n                \"match-type\": 2,\n                \"name\": \"def-cc-sensor\",\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"count\": 1,\n                        \"id\": 1,\n                        \"dictionary\": [\n                            \"def-cc-dict\"\n                        ]\n                    }\n                ]\n            },\n            \"revision note\": \"aaa\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/sensor/\",\n            \"data\": {\n                \"match-type\": 2,\n                \"name\": \"def-ssn-sensor\",\n                \"entries\": [\n                    {\n                        \"count\": 1,\n                        \"dictionary\": [\n                            \"def-ssn-dict\"\n                        ],\n                        \"id\": 1,\n                        \"status\": 1\n                    }\n                ]\n            },\n            \"revision note\": \"Adding DLP Sensor for SSN\"\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "set dlp profile",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/profile\",\n            \"data\": {\n                \"dlp-log\": 1,\n                \"extended-log\": 0,\n                \"feature-set\": 2,\n                \"nac-quar-log\": 0,\n                \"name\": \"outbound\",\n                \"rule\": [\n                    {\n                        \"sensor\": [\n                            \"def-cc-sensor\"\n                        ],\n                        \"file-type\": [\n                            1\n                        ],\n                        \"action\": 1,\n                        \"archive\": 0,\n                        \"expiry\": \"5m\",\n                        \"file-size\": 0,\n                        \"filter-by\": 6,\n                        \"id\": 1,\n                        \"match-percentage\": 10,\n                        \"name\": \"cc\",\n                        \"proto\": 535,\n                        \"severity\": 3,\n                        \"type\": 1\n                    },\n                    {\n                        \"sensor\": [\n                            \"def-ssn-sensor\"\n                        ],\n                        \"file-type\": [\n                            1\n                        ],\n                        \"action\": 1,\n                        \"archive\": 0,\n                        \"expiry\": \"5m\",\n                        \"file-size\": 0,\n                        \"filter-by\": 6,\n                        \"id\": 2,\n                        \"match-percentage\": 10,\n                        \"name\": \"ssn\",\n                        \"proto\": 535,\n                        \"severity\": 3,\n                        \"type\": 1\n                    }\n                ]\n            },\n            \"revision note\": \"adding DLP profile\"\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
+														}
+													},
+													"response": []
+												}
+											]
+										},
+										{
+											"name": "set av profile",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/antivirus/profile\",\n            \"data\": {\n                \"av-virus-log\": 1,\n                \"mobile-malware-db\": 1,\n                \"analytics-db\": 0,\n                \"external-blocklist-enable-all\": 1,\n                \"ems-threat-feed\": 0,\n                \"extended-log\": 0,\n                \"feature-set\": 0,\n                \"fortindr-error-action\": 1,\n                \"fortindr-timeout-action\": 1,\n                \"fortisandbox-error-action\": 1,\n                \"fortisandbox-max-upload\": 10,\n                \"fortisandbox-mode\": 3,\n                \"fortisandbox-timeout-action\": 1,\n                \"outbreak-prevention-archive-scan\": 1,\n                \"scan-mode\": 5,\n                \"name\": \"outbound\",\n                \"content-disarm\": {\n                    \"original-file-destination\": 2\n                },\n                \"http\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"external-blocklist\": [],\n                \"smtp\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"pop3\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"imap\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"mapi\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"ftp\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"cifs\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"nntp\": {\n                    \"options\": 0,\n                    \"av-scan\": 0,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0\n                },\n                \"ssh\": {\n                    \"options\": 16,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                }\n            },\n            \"revision note\": \"AV profile\"\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "update protocol-options profile",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-protocol-options/default\",\n            \"data\": {\n                \"comment\": \"All default services.\",\n                \"name\": \"default\",\n                \"replacemsg-group\": null,\n                \"http\": {\n                    \"ports\": [\n                        80\n                    ],\n                    \"inspect-all\": 1,\n                    \"status\": 1,\n                    \"scan-bzip2\": 1,\n                    \"address-ip-rating\": 1,\n                    \"block-page-status-code\": 403,\n                    \"comfort-amount\": 1,\n                    \"comfort-interval\": 10,\n                    \"h2c\": 0,\n                    \"options\": 0,\n                    \"oversize-limit\": 10,\n                    \"post-lang\": 0,\n                    \"proxy-after-tcp-handshake\": 0,\n                    \"range-block\": 0,\n                    \"retry-count\": 0,\n                    \"ssl-offloaded\": 0,\n                    \"stream-based-uncompressed-limit\": 0,\n                    \"streaming-content-bypass\": 1,\n                    \"strip-x-forwarded-for\": 0,\n                    \"switching-protocols\": 0,\n                    \"tcp-window-maximum\": 8388608,\n                    \"tcp-window-minimum\": 131072,\n                    \"tcp-window-size\": 262144,\n                    \"tcp-window-type\": 3,\n                    \"tunnel-non-http\": 1,\n                    \"uncompressed-nest-limit\": 12,\n                    \"uncompressed-oversize-limit\": 10,\n                    \"unknown-content-encoding\": 1,\n                    \"unknown-http-version\": 2,\n                    \"verify-dns-for-policy-matching\": 1\n                }\n            },\n            \"revision note\": \"Allow HTTP non-standard ports\"\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "set ssl-ssh profile",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/ssl-ssh-profile/deep-inspection\",\n            \"data\": {\n                \"https\": {\n                    \"ports\": [\n                        443\n                    ],\n                    \"status\": 0\n                },\n                \"ssl-exempt\": [\n                    {\n                        \"type\": 3,\n                        \"wildcard-fqdn\": \"FortiClient\"\n                    },\n                    {\n                        \"type\": 0,\n                        \"fortiguard-category\": \"31\"\n                    },\n                    {\n                        \"type\": 0,\n                        \"fortiguard-category\": \"33\"\n                    }\n                ]\n            },\n            \"revision note\": \"Update\"\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "set ips profile",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/ips/sensor\",\n            \"data\": {\n                \"block-malicious-url\": 1,\n                \"extended-log\": 0,\n                \"scan-botnet-connections\": 1,\n                \"name\": \"outbound\"\n            },\n            \"revision note\": \"IPS profile\"\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "set application profile",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"outbound\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            38569,\n                            40503\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            33\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 2,\n                        \"log\": 1,\n                        \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"non-compliant\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            27210,\n                            35766,\n                            33182,\n                            16920,\n                            43292\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            33\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "set Profile group",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Creation of the Security profile-group\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"deep-inspection\"\n                ],\n                \"name\": \"outbound\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"webfilter-profile\": [\n                    \"outbound\"\n                ],\n                \"dnsfilter-profile\": [\n                    \"default\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"outbound\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"default\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"deep-inspection\"\n                ],\n                \"name\": \"non-compliant\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"webfilter-profile\": [\n                    \"outbound\"\n                ],\n                \"dnsfilter-profile\": [\n                    \"default\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"non-compliant\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"default\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        },\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Firewall Policies",
+									"item": [
+										{
+											"name": "set policy - SIA",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Security Policy created for SIA\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Block-Unsafe-SIA\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": \"CORP_LAN\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"internet-service\": 1,\n                    \"inspection-mode\": 1,\n                    \"action\": 0,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"internet-service-name\": [\n                        \"GitHub-GitHub\",\n                        \"Microsoft-Office365\"\n                    ],\n                    \"status\": 0,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Block-Unsafe-App\",\n                    \"policyid\": 2,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": \"CORP_LAN\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"inspection-mode\": 0,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"profile-group\": [\n                        \"non-compliant\"\n                    ],\n                    \"status\": 0,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Allow_Users-SIA\",\n                    \"policyid\": 3,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP_LAN\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"profile-group\": [\n                        \"outbound\"\n                    ],\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n            ]\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "set policy - SPA",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Security Policy created for SPA\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Allow_users - SPA\",\n                    \"policyid\": 4,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP_LAN\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"CORP_LAN\"\n                    ],\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"profile-group\": [\n                        \"outbound\"\n                    ],\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n            ]\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "set policy - Peering",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Peering\",\n                    \"policyid\": 5,\n                    \"srcintf\": [\n                        \"overlay\"\n                    ],\n                    \"dstintf\": [\n                        \"Lo\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": [\n                        \"PING\",\n                        \"BGP\"\n                    ],\n                    \"action\": 1,\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 3\n                }\n            ]\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "SD-WAN",
 							"item": [
 								{
 									"name": "Set Variable Defaults",
@@ -2007,40 +1938,40 @@
 									"response": []
 								}
 							]
-						},
+						}
+					]
+				},
+				{
+					"name": "Fine-tune",
+					"item": [
 						{
-							"name": "Fine-tune",
-							"item": [
-								{
-									"name": "Populate SDWAN Template - Edge",
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"$(isp1_intf)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 2,\n                        \"interface\": \"$(isp2_intf)\",\n                        \"zone\": \"underlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-RegionalHQ\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 3,\n                        \"interface\": \"H1_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 4,\n                        \"interface\": \"H1_ISP2\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-RegionalHQ\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 5,\n                        \"interface\": \"H1_MPLS\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 6,\n                        \"interface\": \"H2_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 7,\n                        \"interface\": \"H2_ISP2\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-RegionalHQ\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 8,\n                        \"interface\": \"H2_MPLS\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West\"\n                            }\n                        ]\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"HUB\",\n                        \"server\": \"10.200.99.1\",\n                        \"protocol\": 1,\n                        \"embed-measured-health\": 1,\n                        \"members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\",\n                            \"6\",\n                            \"7\",\n                            \"8\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 100,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    },\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"update-cascade-interface\": 0,\n                        \"update-static-route\": 0,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 250,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    }\n                ],\n                \"service\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"Corporate-H1\",\n                        \"src\": \"CORP_LAN\",\n                        \"dst\": \"CORP_LAN\",\n                        \"protocol\": 0,\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"HUB\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"tie-break\": 3,\n                        \"role\": 3,\n                        \"status\": 1\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"Corporate-H2\",\n                        \"src\": \"CORP_LAN\",\n                        \"dst\": \"CORP_LAN\",\n                        \"protocol\": 0,\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"6\",\n                            \"7\",\n                            \"8\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"HUB\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"tie-break\": 3,\n                        \"role\": 3,\n                        \"status\": 1,\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        }\n    ]\n}"
-										},
-										"url": {
-											"raw": "https://{{ip}}/jsonrpc",
-											"protocol": "https",
-											"host": [
-												"{{ip}}"
-											],
-											"path": [
-												"jsonrpc"
-											]
-										}
-									},
-									"response": []
+							"name": "Populate SDWAN Template - Edge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"$(isp1_intf)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 2,\n                        \"interface\": \"$(isp2_intf)\",\n                        \"zone\": \"underlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-RegionalHQ\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 3,\n                        \"interface\": \"H1_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 4,\n                        \"interface\": \"H1_ISP2\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-RegionalHQ\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 5,\n                        \"interface\": \"H1_MPLS\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 6,\n                        \"interface\": \"H2_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 7,\n                        \"interface\": \"H2_ISP2\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-RegionalHQ\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 8,\n                        \"interface\": \"H2_MPLS\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West\"\n                            }\n                        ]\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"HUB\",\n                        \"server\": \"10.200.99.1\",\n                        \"protocol\": 1,\n                        \"embed-measured-health\": 1,\n                        \"members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\",\n                            \"6\",\n                            \"7\",\n                            \"8\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 100,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    },\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"update-cascade-interface\": 0,\n                        \"update-static-route\": 0,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 250,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    }\n                ],\n                \"service\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"Corporate-H1\",\n                        \"src\": \"CORP_LAN\",\n                        \"dst\": \"CORP_LAN\",\n                        \"protocol\": 0,\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"HUB\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"tie-break\": 3,\n                        \"role\": 3,\n                        \"status\": 1\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"Corporate-H2\",\n                        \"src\": \"CORP_LAN\",\n                        \"dst\": \"CORP_LAN\",\n                        \"protocol\": 0,\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"6\",\n                            \"7\",\n                            \"8\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"HUB\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"tie-break\": 3,\n                        \"role\": 3,\n                        \"status\": 1,\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
 								}
-							]
+							},
+							"response": []
 						}
 					]
 				},
@@ -2592,35 +2523,6 @@
 				}
 			},
 			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					"pm.test(\"HTTP Status code is 200 OK\", function () {",
-					"    pm.response.to.have.status(200);",
-					"});",
-					"",
-					"(pm.variables.get('skipTest') ? pm.test.skip : pm.test)(\"JSON Status code is 0 or -2\", function () {",
-					"    var jsonData = pm.response.json();",
-					"    postman.setNextRequest(null);",
-					"    pm.expect(jsonData.result[0].status.code).to.be.oneOf([0, -2]);",
-					"    postman.setNextRequest();",
-					"});"
-				]
-			}
 		}
 	]
 }
