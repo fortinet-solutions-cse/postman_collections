@@ -1487,7 +1487,8 @@
 																	"let jsonData = pm.response.json();",
 																	"pm.environment.set(\"url_content_id\", jsonData[\"result\"][0][\"data\"][\"id\"]);"
 																],
-																"type": "text/javascript"
+																"type": "text/javascript",
+																"packages": {}
 															}
 														}
 													],
@@ -1496,7 +1497,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/content\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"lang\": 0,\n                        \"pattern-type\": 0,\n                        \"score\": 10,\n                        \"name\": \"Tesla\"\n                    }\n                ],\n                \"name\": \"outbound_content_1\"\n            }\n        }\n    ]\n}",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/content\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"lang\": 0,\n                        \"pattern-type\": 0,\n                        \"score\": 10,\n                        \"name\": \"Tesla\"\n                    }\n                ],\n                \"name\": \"outbound_content_3\"\n            }\n        }\n    ]\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
@@ -1526,7 +1527,8 @@
 																	"let jsonData = pm.response.json();",
 																	"pm.environment.set(\"url_filter_id\", jsonData[\"result\"][0][\"data\"][\"id\"]);"
 																],
-																"type": "text/javascript"
+																"type": "text/javascript",
+																"packages": {}
 															}
 														}
 													],
@@ -1535,7 +1537,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/urlfilter\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"antiphish-action\": 0,\n                        \"dns-address-family\": 7,\n                        \"exempt\": 831,\n                        \"type\": 2,\n                        \"url\": \"thesun.co.uk\"\n                    }\n                ],\n                \"name\": \"outbound_urlfilter\"\n            }\n        }\n    ]\n}",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/urlfilter\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"antiphish-action\": 0,\n                        \"dns-address-family\": 7,\n                        \"exempt\": 831,\n                        \"type\": 2,\n                        \"url\": \"thesun.co.uk\"\n                    }\n                ],\n                \"name\": \"outbound_urlfilter_3\"\n            }\n        }\n    ]\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
