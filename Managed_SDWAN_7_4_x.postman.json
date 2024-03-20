@@ -1419,26 +1419,7 @@
 											"name": "add addr objects",
 											"request": {
 												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/address\",\n            \"data\": {\n                \"subnet\": \"10.0.101.101 255.255.255.255\",\n                \"associated-interface\": [\n                    \"any\"\n                ],\n                \"wildcard\": \"0.0.0.0/0.0.0.0\",\n                \"allow-routing\": 0,\n                \"cache-ttl\": 0,\n                \"clearpass-spt\": 0,\n                \"color\": 0,\n                \"dirty\": 1,\n                \"end-ip\": \"0.0.0.0\",\n                \"fabric-object\": 0,\n                \"node-ip-only\": 0,\n                \"obj-type\": 9,\n                \"sdn-addr-type\": 0,\n                \"start-ip\": \"0.0.0.0\",\n                \"sub-type\": 0,\n                \"type\": 0,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"site1-1-win\",\n                \"interface\": null,\n                \"dynamic_mapping\": []\n            },\n            \"revision note\": \"Windows Endpoint object creation\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/address\",\n            \"data\": {\n                \"subnet\": \"10.1.0.7 255.255.255.255\",\n                \"associated-interface\": [\n                    \"any\"\n                ],\n                \"wildcard\": \"0.0.0.0/0.0.0.0\",\n                \"allow-routing\": 0,\n                \"cache-ttl\": 0,\n                \"clearpass-spt\": 0,\n                \"color\": 0,\n                \"dirty\": 1,\n                \"end-ip\": \"0.0.0.0\",\n                \"fabric-object\": 0,\n                \"node-ip-only\": 0,\n                \"obj-type\": 9,\n                \"sdn-addr-type\": 0,\n                \"start-ip\": \"0.0.0.0\",\n                \"sub-type\": 0,\n                \"type\": 0,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"DC1APP-Server\",\n                \"interface\": null,\n                \"dynamic_mapping\": []\n            },\n            \"revision note\": \"dc1app server\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/address\",\n            \"data\": {\n                \"subnet\": \"10.0.1.101 255.255.255.255\",\n                \"associated-interface\": [\n                    \"any\"\n                ],\n                \"wildcard\": \"0.0.0.0/0.0.0.0\",\n                \"allow-routing\": 0,\n                \"cache-ttl\": 0,\n                \"clearpass-spt\": 0,\n                \"color\": 0,\n                \"dirty\": 1,\n                \"end-ip\": \"0.0.0.0\",\n                \"fabric-object\": 0,\n                \"node-ip-only\": 0,\n                \"obj-type\": 9,\n                \"sdn-addr-type\": 0,\n                \"start-ip\": \"0.0.0.0\",\n                \"sub-type\": 0,\n                \"type\": 0,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"BC1APP-Server\",\n                \"interface\": null,\n                \"dynamic_mapping\": []\n            },\n            \"revision note\": \"bc1app server\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
-												}
+												"header": []
 											},
 											"response": []
 										},
@@ -1446,26 +1427,7 @@
 											"name": "add fqdn objects",
 											"request": {
 												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/wildcard-fqdn/custom\",\n            \"data\": {\n                \"color\": 2,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"FortiClient\",\n                \"wildcard-fqdn\": \"*.forticlient-emsproxy.forticloud.com\"\n            },\n            \"revision note\": \"EMS Proxy Address Object\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
-												}
+												"header": []
 											},
 											"response": []
 										}
@@ -1496,7 +1458,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/content\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"lang\": 0,\n                        \"pattern-type\": 0,\n                        \"score\": 10,\n                        \"name\": \"Tesla\"\n                    }\n                ],\n                \"name\": \"outbound_content\"\n            }\n        }\n    ]\n}",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/content\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"lang\": 0,\n                        \"pattern-type\": 0,\n                        \"score\": 10,\n                        \"name\": \"Tesla\"\n                    }\n                ],\n                \"name\": \"outbound_content_1\"\n            }\n        }\n    ]\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
@@ -1518,40 +1480,9 @@
 												},
 												{
 													"name": "set webfilter urlfilter",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"exec": [
-																	"let jsonData = pm.response.json();",
-																	"pm.environment.set(\"url_filter_id\", jsonData[\"result\"][0][\"data\"][\"id\"]);"
-																],
-																"type": "text/javascript"
-															}
-														}
-													],
 													"request": {
 														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/urlfilter\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"antiphish-action\": 0,\n                        \"dns-address-family\": 7,\n                        \"exempt\": 831,\n                        \"type\": 2,\n                        \"url\": \"thesun.co.uk\"\n                    }\n                ],\n                \"name\": \"outbound_urlfilter\"\n            }\n        }\n    ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "https://{{ip}}/jsonrpc",
-															"protocol": "https",
-															"host": [
-																"{{ip}}"
-															],
-															"path": [
-																"jsonrpc"
-															]
-														}
+														"header": []
 													},
 													"response": []
 												},
@@ -1559,26 +1490,7 @@
 													"name": "set webfilter profile",
 													"request": {
 														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/profile\",\n            \"data\": {\n                \"name\": \"outbound\",\n                \"feature-set\": 0,\n                \"ftgd-wf\": {\n                    \"options\": 0,\n                    \"filters\": [\n                        {\n                            \"category\": \"11\",\n                            \"action\": 0,\n                            \"log\": 1\n                        },\n                        {\n                            \"category\": \"7\",\n                            \"action\": 0,\n                            \"log\": 1\n                        },\n                        {\n                            \"category\": \"8\",\n                            \"action\": 0,\n                            \"log\": 1\n                        },\n                        {\n                            \"category\": \"13\",\n                            \"action\": 0,\n                            \"log\": 1\n                        },\n                        {\n                            \"category\": \"14\",\n                            \"action\": 0,\n                            \"log\": 1\n                        }\n                    ]\n                },\n                \"web\": {\n                    \"bword-table\": {{url_content_id}},\n                    \"urlfilter-table\": {{url_filter_id}},\n                    \"content-header-list\": null,\n                    \"log-search\": 0,\n                    \"allowlist\": 0,\n                    \"bword-threshold\": 10,\n                    \"keyword-match\": [],\n                    \"safe-search\": null,\n                    \"youtube-restrict\": 25\n                }\n            }\n        }\n    ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "https://{{ip}}/jsonrpc",
-															"protocol": "https",
-															"host": [
-																"{{ip}}"
-															],
-															"path": [
-																"jsonrpc"
-															]
-														}
+														"header": []
 													},
 													"response": []
 												}
@@ -1589,79 +1501,17 @@
 											"item": [
 												{
 													"name": "set dns domain-filter",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"exec": [
-																	"let jsonData = pm.response.json();",
-																	"pm.environment.set(\"domain_filter_id\", jsonData[\"result\"][0][\"data\"][\"id\"]);"
-																],
-																"type": "text/javascript"
-															}
-														}
-													],
 													"request": {
 														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dnsfilter/domain-filter\",\n            \"data\": {\n                \"id\": 0,\n                \"name\": \"outbound-filter\",\n                \"entries\": [\n                    {\n                        \"domain\": \"*.unisase.lab\",\n                        \"type\": 2,\n                        \"action\": 2,\n                        \"status\": 1,\n                        \"id\": -1\n                    }\n                ]\n            }\n        }\n    ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "https://{{ip}}/jsonrpc",
-															"protocol": "https",
-															"host": [
-																"{{ip}}"
-															],
-															"path": [
-																"jsonrpc"
-															]
-														}
+														"header": []
 													},
 													"response": []
 												},
 												{
 													"name": "update dnsfilter profile",
-													"event": [
-														{
-															"listen": "test",
-															"script": {
-																"exec": [
-																	"let jsonData = pm.response.json();",
-																	"pm.environment.set(\"domain_filter_id\", jsonData[\"result\"][0][\"data\"][\"id\"]);"
-																],
-																"type": "text/javascript"
-															}
-														}
-													],
 													"request": {
 														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dnsfilter/profile/default\",\n            \"data\": {\n                \"domain-filter\": {\n                    \"domain-filter-table\": {{domain_filter_id}}\n                },\n            \"ftgd-dns\": { \"filters\": [], \"options\": 1024 }\n            },\n            \"revision note\": \"Add exception to local domain\"\n        }\n    ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "https://{{ip}}/jsonrpc",
-															"protocol": "https",
-															"host": [
-																"{{ip}}"
-															],
-															"path": [
-																"jsonrpc"
-															]
-														}
+														"header": []
 													},
 													"response": []
 												}
@@ -1674,26 +1524,7 @@
 													"name": "set dlp dictionary",
 													"request": {
 														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/dictionary\",\n            \"data\": {\n                \"match-around\": 0,\n                \"match-type\": 2,\n                \"name\": \"def-ssn-dict\",\n                \"entries\": [\n                    {\n                        \"ignore-case\": 0,\n                        \"repeat\": 0,\n                        \"status\": 1,\n                        \"id\": 0,\n                        \"type\": [\n                            \"ssn-us\"\n                        ],\n                        \"pattern\": null\n                    }\n                ]\n            },\n            \"revision note\": \"SSN Dictionary\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/dictionary\",\n            \"data\": {\n                \"match-around\": 0,\n                \"match-type\": 2,\n                \"name\": \"def-cc-dict\",\n                \"entries\": [\n                    {\n                        \"ignore-case\": 0,\n                        \"repeat\": 0,\n                        \"status\": 1,\n                        \"id\": 0,\n                        \"type\": [\n                            \"credit-card\"\n                        ],\n                        \"pattern\": null\n                    }\n                ]\n            },\n            \"revision note\": \"CC Dictionary\"\n        }\n    ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "https://{{ip}}/jsonrpc",
-															"protocol": "https",
-															"host": [
-																"{{ip}}"
-															],
-															"path": [
-																"jsonrpc"
-															]
-														}
+														"header": []
 													},
 													"response": []
 												},
@@ -1704,7 +1535,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/sensor\",\n            \"data\": {\n                \"match-type\": 2,\n                \"name\": \"def-cc-sensor\",\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"count\": 1,\n                        \"id\": 1,\n                        \"dictionary\": [\n                            \"def-cc-dict\"\n                        ]\n                    }\n                ]\n            },\n            \"revision note\": \"aaa\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/sensor/\",\n            \"data\": {\n                \"match-type\": 2,\n                \"name\": \"def-ssn-sensor\",\n                \"entries\": [\n                    {\n                        \"count\": 1,\n                        \"dictionary\": [\n                            \"def-ssn-dict\"\n                        ],\n                        \"id\": 1,\n                        \"status\": 1\n                    }\n                ]\n            },\n            \"revision note\": \"Adding DLP Sensor for SSN\"\n        }\n    ]\n}",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/sensor\",\n            \"data\": {\n                \"match-type\": 2,\n                \"name\": \"def-cc-sensor\",\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"count\": 1,\n                        \"id\": 1,\n                        \"dictionary\": [\n                            \"def-cc-dict\"\n                        ]\n                    }\n                ]\n            },\n            \"revision note\": \"20mar\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/dlp/sensor/\",\n            \"data\": {\n                \"match-type\": 2,\n                \"name\": \"def-ssn-sensor\",\n                \"entries\": [\n                    {\n                        \"count\": 1,\n                        \"dictionary\": [\n                            \"def-ssn-dict\"\n                        ],\n                        \"id\": 1,\n                        \"status\": 1\n                    }\n                ]\n            },\n            \"revision note\": \"Adding DLP Sensor for SSN\"\n        }\n    ]\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
@@ -1743,7 +1574,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\":\n\n[\n  {\n    \"url\": \"pm/config/adom/{{adom}}/obj/dlp/filepattern\",\n    \"data\": {\n      \"id\": 0,\n      \"name\": \"file-pattern\",\n      \"entries\": [\n        {\n          \"file-type\": 0,\n          \"filter-type\": 0,\n          \"pattern\": \"*.xls\"\n        },\n        {\n          \"file-type\": 0,\n          \"filter-type\": 0,\n          \"pattern\": \"*.xlsx\"\n        },\n        {\n          \"file-type\": 0,\n          \"filter-type\": 0,\n          \"pattern\": \"*.pdf\"\n        },\n        {\n          \"file-type\": 0,\n          \"filter-type\": 0,\n          \"pattern\": \"*.txt\"\n        },\n        {\n          \"file-type\": 0,\n          \"filter-type\": 0,\n          \"pattern\": \"*.log\"\n        },\n        {\n          \"file-type\": 0,\n          \"filter-type\": 0,\n          \"pattern\": \"*.zip\"\n        },\n        {\n          \"file-type\": 0,\n          \"filter-type\": 0,\n          \"pattern\": \"*.tgz\"\n        },\n        {\n          \"file-type\": 0,\n          \"filter-type\": 0,\n          \"pattern\": \"*.doc\"\n        },\n        {\n          \"file-type\": 0,\n          \"filter-type\": 0,\n          \"pattern\": \"*.docx\"\n        }\n      ]\n    },\n    \"revision note\": \"new file pattern\"\n  }\n\n]\n}",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\":\n\n[\n  {\n    \"url\": \"pm/config/adom/{{adom}}/obj/dlp/filepattern\",\n    \"data\": {\n      \"id\": 0,\n      \"name\": \"custom-files\",\n      \"entries\": [\n        {\n          \"file-type\": 10,\n          \"filter-type\": 1,\n          \"pattern\": \"msoffice\"\n        },\n        {\n          \"file-type\": 50,\n          \"filter-type\": 1,\n          \"pattern\": \"pdf\"\n        },\n        {\n          \"file-type\": 16,\n          \"filter-type\": 1,\n          \"pattern\": \"zip\"\n        },\n        {\n          \"file-type\": 0,\n          \"filter-type\": 0,\n          \"pattern\": \"*.txt\"\n        }\n      ]\n    },\n    \"revision note\": \"custom file types and patterns\"\n  }\n\n]\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
@@ -1770,7 +1601,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n  {\n    \"url\": \"pm/config/adom/{{adom}}/obj/dlp/profile\",\n    \"data\": {\n      \"dlp-log\": 1,\n      \"extended-log\": 0,\n      \"feature-set\": 2,\n      \"nac-quar-log\": 0,\n      \"name\": \"outbound\",\n      \"rule\": [\n        {\n          \"action\": 1,\n          \"archive\": 0,\n          \"expiry\": \"5m\",\n          \"file-size\": 0,\n          \"filter-by\": 8,\n          \"id\": 1,\n          \"match-percentage\": 10,\n          \"severity\": 3,\n          \"type\": 0,\n          \"name\": \"file-type\",\n          \"sensor\": [\n            \"def-ssn-sensor\",\n            \"def-cc-sensor\"\n          ],\n          \"proto\": 26038239863,\n          \"file-type\": [\n            {{dlp_pattern_id}}\n          ]\n        },\n        {\n          \"action\": 1,\n          \"archive\": 0,\n          \"expiry\": \"5m\",\n          \"file-size\": 0,\n          \"filter-by\": 8,\n          \"id\": 2,\n          \"match-percentage\": 10,\n          \"severity\": 3,\n          \"type\": 1,\n          \"name\": \"message\",\n          \"sensor\": [\n            \"def-ssn-sensor\",\n            \"def-cc-sensor\"\n          ],\n          \"file-type\": [\n            {{dlp_pattern_id}}\n          ],\n          \"proto\": 268435991\n        }\n      ],\n      \"full-archive-proto\": 26038239863\n    },\n    \"revision note\": \"dlp-profile\"\n  }\n]\n}",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n  {\n    \"url\": \"pm/config/adom/{{adom}}/obj/dlp/profile\",\n    \"data\": {\n      \"dlp-log\": 1,\n      \"extended-log\": 0,\n      \"feature-set\": 2,\n      \"full-archive-proto\": 26038239863,\n      \"nac-quar-log\": 0,\n      \"name\": \"outbound\",\n      \"rule\": [\n        {\n          \"sensor\": [\n            \"def-ssn-sensor\",\n            \"def-cc-sensor\"\n          ],\n          \"file-type\": [\n            {{dlp_pattern_id}}\n          ],\n          \"action\": 1,\n          \"archive\": 0,\n          \"expiry\": \"5m\",\n          \"file-size\": 0,\n          \"filter-by\": 8,\n          \"id\": 1,\n          \"match-percentage\": 10,\n          \"name\": \"file-type\",\n          \"proto\": 32,\n          \"sensitivity\": [],\n          \"severity\": 3,\n          \"type\": 0\n        },\n        {\n          \"sensor\": [\n            \"def-ssn-sensor\",\n            \"def-cc-sensor\"\n          ],\n          \"file-type\": [\n            {{dlp_pattern_id}}\n          ],\n          \"action\": 1,\n          \"archive\": 0,\n          \"expiry\": \"5m\",\n          \"file-size\": 0,\n          \"filter-by\": 8,\n          \"id\": 2,\n          \"label\": null,\n          \"match-percentage\": 10,\n          \"name\": \"message\",\n          \"proto\": 16,\n          \"sensitivity\": [],\n          \"severity\": 3,\n          \"type\": 1\n        }\n      ]\n    },\n    \"revision note\": \"adjusted dlp-profile\"\n  }\n]\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
@@ -1796,26 +1627,7 @@
 											"name": "set av profile",
 											"request": {
 												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/antivirus/profile\",\n            \"data\": {\n                \"av-virus-log\": 1,\n                \"mobile-malware-db\": 1,\n                \"analytics-db\": 0,\n                \"external-blocklist-enable-all\": 1,\n                \"ems-threat-feed\": 0,\n                \"extended-log\": 0,\n                \"feature-set\": 0,\n                \"fortindr-error-action\": 1,\n                \"fortindr-timeout-action\": 1,\n                \"fortisandbox-error-action\": 1,\n                \"fortisandbox-max-upload\": 10,\n                \"fortisandbox-mode\": 3,\n                \"fortisandbox-timeout-action\": 1,\n                \"outbreak-prevention-archive-scan\": 1,\n                \"scan-mode\": 5,\n                \"name\": \"outbound\",\n                \"content-disarm\": {\n                    \"original-file-destination\": 2\n                },\n                \"http\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"external-blocklist\": [],\n                \"smtp\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"pop3\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"imap\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"mapi\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"ftp\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"cifs\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"nntp\": {\n                    \"options\": 0,\n                    \"av-scan\": 0,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0\n                },\n                \"ssh\": {\n                    \"options\": 16,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                }\n            },\n            \"revision note\": \"AV profile\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
-												}
+												"header": []
 											},
 											"response": []
 										},
@@ -1823,26 +1635,7 @@
 											"name": "update protocol-options profile",
 											"request": {
 												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-protocol-options/default\",\n            \"data\": {\n                \"comment\": \"All default services.\",\n                \"name\": \"default\",\n                \"replacemsg-group\": null,\n                \"http\": {\n                    \"ports\": [\n                        80\n                    ],\n                    \"inspect-all\": 1,\n                    \"status\": 1,\n                    \"scan-bzip2\": 1,\n                    \"address-ip-rating\": 1,\n                    \"block-page-status-code\": 403,\n                    \"comfort-amount\": 1,\n                    \"comfort-interval\": 10,\n                    \"h2c\": 0,\n                    \"options\": 0,\n                    \"oversize-limit\": 10,\n                    \"post-lang\": 0,\n                    \"proxy-after-tcp-handshake\": 0,\n                    \"range-block\": 0,\n                    \"retry-count\": 0,\n                    \"ssl-offloaded\": 0,\n                    \"stream-based-uncompressed-limit\": 0,\n                    \"streaming-content-bypass\": 1,\n                    \"strip-x-forwarded-for\": 0,\n                    \"switching-protocols\": 0,\n                    \"tcp-window-maximum\": 8388608,\n                    \"tcp-window-minimum\": 131072,\n                    \"tcp-window-size\": 262144,\n                    \"tcp-window-type\": 3,\n                    \"tunnel-non-http\": 1,\n                    \"uncompressed-nest-limit\": 12,\n                    \"uncompressed-oversize-limit\": 10,\n                    \"unknown-content-encoding\": 1,\n                    \"unknown-http-version\": 2,\n                    \"verify-dns-for-policy-matching\": 1\n                }\n            },\n            \"revision note\": \"Allow HTTP non-standard ports\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
-												}
+												"header": []
 											},
 											"response": []
 										},
@@ -1850,26 +1643,7 @@
 											"name": "set ssl-ssh profile",
 											"request": {
 												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/ssl-ssh-profile/deep-inspection\",\n            \"data\": {\n                \"https\": {\n                    \"ports\": [\n                        443\n                    ],\n                    \"status\": 0\n                },\n                \"ssl-exempt\": [\n                    {\n                        \"type\": 3,\n                        \"wildcard-fqdn\": \"FortiClient\"\n                    },\n                    {\n                        \"type\": 0,\n                        \"fortiguard-category\": \"31\"\n                    },\n                    {\n                        \"type\": 0,\n                        \"fortiguard-category\": \"33\"\n                    }\n                ]\n            },\n            \"revision note\": \"Update\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
-												}
+												"header": []
 											},
 											"response": []
 										},
@@ -1877,26 +1651,7 @@
 											"name": "set ips profile",
 											"request": {
 												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/ips/sensor\",\n            \"data\": {\n                \"block-malicious-url\": 1,\n                \"extended-log\": 0,\n                \"scan-botnet-connections\": 1,\n                \"name\": \"outbound\"\n            },\n            \"revision note\": \"IPS profile\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
-												}
+												"header": []
 											},
 											"response": []
 										},
@@ -1904,26 +1659,7 @@
 											"name": "set application profile",
 											"request": {
 												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"outbound\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            38569,\n                            40503,\n                            16009,\n                            41469\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            33,\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"non-compliant\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            27210,\n                            35766,\n                            33182,\n                            16920,\n                            43292\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            33,\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
-												}
+												"header": []
 											},
 											"response": []
 										},
@@ -1931,26 +1667,7 @@
 											"name": "set Profile group",
 											"request": {
 												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Creation of the Security profile-group\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"deep-inspection\"\n                ],\n                \"name\": \"outbound\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"webfilter-profile\": [\n                    \"outbound\"\n                ],\n                \"dnsfilter-profile\": [\n                    \"default\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"outbound\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"deep-inspection\"\n                ],\n                \"name\": \"non-compliant\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"webfilter-profile\": [\n                    \"outbound\"\n                ],\n                \"dnsfilter-profile\": [\n                    \"default\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"non-compliant\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
-												}
+												"header": []
 											},
 											"response": []
 										}
