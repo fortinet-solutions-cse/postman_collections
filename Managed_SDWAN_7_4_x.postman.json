@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "5547a069-e7f4-43c6-a3da-61dbe25a52ea",
+		"_postman_id": "bbf5a50e-6c1c-4e16-bc21-2e3f61606e61",
 		"name": "Managed Secure SD-WAN 7.4.x",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "29873769"
+		"_exporter_id": "34555259"
 	},
 	"item": [
 		{
@@ -30,8 +30,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -75,8 +73,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -120,8 +116,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -170,8 +164,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -215,8 +207,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -260,8 +250,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -305,8 +293,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -373,8 +359,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -418,8 +402,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -468,8 +450,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -518,8 +498,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -547,8 +525,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -576,8 +552,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -605,8 +579,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -650,8 +622,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -695,8 +665,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -783,9 +751,7 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"value": "application/json"
 									}
 								],
 								"body": {
@@ -828,8 +794,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -868,8 +832,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -923,8 +885,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -963,8 +923,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -1020,8 +978,6 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
 								"value": "application/json"
 							}
 						],
@@ -1071,8 +1027,6 @@
 										"header": [
 											{
 												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
 												"value": "application/json"
 											}
 										],
@@ -1116,8 +1070,6 @@
 										"header": [
 											{
 												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
 												"value": "application/json"
 											}
 										],
@@ -1161,8 +1113,6 @@
 										"header": [
 											{
 												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
 												"value": "application/json"
 											}
 										],
@@ -1206,8 +1156,6 @@
 										"header": [
 											{
 												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
 												"value": "application/json"
 											}
 										],
@@ -1251,8 +1199,6 @@
 										"header": [
 											{
 												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
 												"value": "application/json"
 											}
 										],
@@ -1296,8 +1242,6 @@
 										"header": [
 											{
 												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
 												"value": "application/json"
 											}
 										],
@@ -1341,8 +1285,6 @@
 										"header": [
 											{
 												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
 												"value": "application/json"
 											}
 										],
@@ -1376,7 +1318,7 @@
 					"name": "Fine-tune",
 					"item": [
 						{
-							"name": "SD-WAN",
+							"name": "Fine-tune SD-WAN",
 							"item": [
 								{
 									"name": "Populate SDWAN Template - Edge",
@@ -1385,8 +1327,6 @@
 										"header": [
 											{
 												"key": "Content-Type",
-												"name": "Content-Type",
-												"type": "text",
 												"value": "application/json"
 											}
 										],
@@ -1406,11 +1346,38 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "Enable ADVPN 2.0 - Edge",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge/system/sdwan/zone/overlay\",\n            \"data\": {\n                \"advpn-select\": 1,\n                \"advpn-health-check\": [\n                    \"HUB\"\n                ]\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge/system/sdwan/members/5\",\n            \"data\": {\n                \"transport-group\": 2\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge/system/sdwan/members/8\",\n            \"data\": {\n                \"transport-group\": 2\n            }\n        }\n    ]\n}"
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
 						{
-							"name": "Uni-SASE",
+							"name": "Fine-tune Uni-SASE",
 							"item": [
 								{
 									"name": "Firewall Objects",
@@ -2060,8 +2027,6 @@
 												"header": [
 													{
 														"key": "Content-Type",
-														"name": "Content-Type",
-														"type": "text",
 														"value": "application/json"
 													}
 												],
@@ -2109,8 +2074,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -2195,9 +2158,7 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"value": "application/json"
 									}
 								],
 								"body": {
@@ -2281,9 +2242,7 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
+										"value": "application/json"
 									}
 								],
 								"body": {
@@ -2367,8 +2326,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -2448,8 +2405,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
@@ -2529,8 +2484,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
 										"value": "application/json"
 									}
 								],
