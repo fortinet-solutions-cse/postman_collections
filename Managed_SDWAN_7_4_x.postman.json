@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "bbf5a50e-6c1c-4e16-bc21-2e3f61606e61",
+		"_postman_id": "664942a4-10ee-4819-9d55-4514aef7c9bc",
 		"name": "Managed Secure SD-WAN 7.4.x",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34555259"
+		"_exporter_id": "35013783"
 	},
 	"item": [
 		{
@@ -1739,7 +1739,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n  {\n    \"url\": \"pm/config/adom/{{adom}}/obj/dlp/profile\",\n    \"data\": {\n      \"dlp-log\": 1,\n      \"extended-log\": 0,\n      \"feature-set\": 2,\n      \"full-archive-proto\": 26038239863,\n      \"nac-quar-log\": 0,\n      \"name\": \"outbound\",\n      \"rule\": [\n        {\n          \"sensor\": [\n            \"def-ssn-sensor\",\n            \"def-cc-sensor\"\n          ],\n          \"file-type\": [\n            {{dlp_pattern_id}}\n          ],\n          \"action\": 1,\n          \"archive\": 0,\n          \"expiry\": \"5m\",\n          \"file-size\": 0,\n          \"filter-by\": 8,\n          \"id\": 1,\n          \"match-percentage\": 10,\n          \"name\": \"file-type\",\n          \"proto\": 32,\n          \"sensitivity\": [],\n          \"severity\": 3,\n          \"type\": 0\n        },\n        {\n          \"sensor\": [\n            \"def-ssn-sensor\",\n            \"def-cc-sensor\"\n          ],\n          \"file-type\": [\n            {{dlp_pattern_id}}\n          ],\n          \"action\": 1,\n          \"archive\": 0,\n          \"expiry\": \"5m\",\n          \"file-size\": 0,\n          \"filter-by\": 8,\n          \"id\": 2,\n          \"label\": null,\n          \"match-percentage\": 10,\n          \"name\": \"message\",\n          \"proto\": 16,\n          \"sensitivity\": [],\n          \"severity\": 3,\n          \"type\": 1\n        }\n      ]\n    },\n    \"revision note\": \"adjusted dlp-profile\"\n  }\n]\n}",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n  {\n    \"url\": \"pm/config/adom/{{adom}}/obj/dlp/profile\",\n    \"data\": {\n      \"dlp-log\": 1,\n      \"extended-log\": 0,\n      \"feature-set\": 2,\n      \"full-archive-proto\": 26038239863,\n      \"nac-quar-log\": 0,\n      \"name\": \"outbound\",\n      \"rule\": [\n        {\n          \"sensor\": [\n            \"def-ssn-sensor\",\n            \"def-cc-sensor\"\n          ],\n          \"file-type\": [\n            {{dlp_pattern_id}}\n          ],\n          \"action\": 1,\n          \"archive\": 0,\n          \"expiry\": \"5m\",\n          \"file-size\": 0,\n          \"filter-by\": 8,\n          \"id\": 1,\n          \"match-percentage\": 10,\n          \"name\": \"file-type\",\n          \"proto\": 32,\n          \"sensitivity\": [],\n          \"severity\": 3,\n          \"type\": 0\n        },\n        {\n          \"sensor\": [\n            \"def-ssn-sensor\",\n            \"def-cc-sensor\"\n          ],\n          \"file-type\": [\n            {{dlp_pattern_id}}\n          ],\n          \"action\": 1,\n          \"archive\": 0,\n          \"expiry\": \"5m\",\n          \"file-size\": 0,\n          \"filter-by\": 6,\n          \"id\": 2,\n          \"label\": null,\n          \"match-percentage\": 10,\n          \"name\": \"message\",\n          \"proto\": 16,\n          \"sensitivity\": [],\n          \"severity\": 3,\n          \"type\": 1\n        }\n      ]\n    },\n    \"revision note\": \"adjusted dlp-profile\"\n  }\n]\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
