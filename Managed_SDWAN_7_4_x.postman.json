@@ -1276,7 +1276,8 @@
 												"exec": [
 													""
 												],
-												"type": "text/javascript"
+												"type": "text/javascript",
+												"packages": {}
 											}
 										}
 									],
@@ -1291,6 +1292,101 @@
 										"body": {
 											"mode": "raw",
 											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-West-RegionalHQ\",\n                    \"dev-group\": \"Edge-West-RegionalHQ\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                },\n                {\n                    \"name\": \"Edge-West-BranchOffice\",\n                    \"dev-group\": \"Edge-West-BranchOffice\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                },\n                {\n                    \"name\": \"Edge-East-BranchOffice\",\n                    \"dev-group\": \"Edge-East-BranchOffice\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                },                                \n                {\n                    \"name\": \"Hubs-East\",\n                    \"dev-group\": \"Hubs-East\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                },\n                {\n                    \"name\": \"Hubs-West\",\n                    \"dev-group\": \"Hubs-West\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                }                \n            ]\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Final Touches 1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"packages": {},
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"device\": {\n                    \"name\": \"dummy\",\n                    \"device action\": \"add_model\",\n                    \"mgmt_mode\": \"fmg\",\n                    \"platform_str\": \"FortiGate-VM64-KVM\",\n                    \"os_type\": \"fos\",\n                    \"os_ver\": 7,\n                    \"mr\": 4,\n                    \"psk\": \"dummy\"\n                }\n            }\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Final Touches 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/del/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"device\": \"dummy\"\n            }\n        }        \n    ]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
