@@ -2164,8 +2164,11 @@
 												{
 													"listen": "prerequest",
 													"script": {
-														"packages": {},
-														"type": "text/javascript"
+														"exec": [
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
 													}
 												}
 											],
@@ -2179,7 +2182,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"session\": \"{{session}}\",\n  \"id\": \"1\",\n  \"method\": \"update\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/obj/endpoint-control/fctems\",\n      \"data\": {\n        \"status\": 1,\n        \"fortinetone-cloud-authentication\": 1,\n        \"multi-site\": false,\n        \"pull-malware-hash\": 1,\n        \"pull-tags\": 1,\n        \"ca-cn-info\": null,\n        \"call-timeout\": 30,\n        \"certificate-fingerprint\": null,\n        \"cloud-server-type\": 0,\n        \"dirty-reason\": 0,\n        \"ems-id\": 1,\n        \"https-port\": 443,\n        \"interface\": null,\n        \"interface-select-method\": 0,\n        \"name\": \"FortiSASE-EMS\",\n        \"out-of-sync-threshold\": 180,\n        \"preserve-ssl-session\": 0,\n        \"pull-avatars\": 1,\n        \"pull-sysinfo\": 1,\n        \"pull-vulnerabilities\": 1,\n        \"server\": null,\n        \"source-ip\": \"0.0.0.0\",\n        \"trust-ca-cn\": 1,\n        \"websocket-override\": 0,\n        \"username\": null,\n        \"password\": null\n      }\n    }\n  ]\n}"
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": \"1\",\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/endpoint-control/fctems\",\n            \"data\": {\n                \"status\": 1,\n                \"fortinetone-cloud-authentication\": 1,\n                \"multi-site\": false,\n                \"pull-malware-hash\": 1,\n                \"pull-tags\": 1,\n                \"call-timeout\": 30,\n                \"certificate-fingerprint\": null,\n                \"cloud-authentication-access-key\": null,\n                \"dirty-reason\": 0,\n                \"ems-id\": 1,\n                \"https-port\": 443,\n                \"interface\": null,\n                \"interface-select-method\": 0,\n                \"name\": \"FortiSASE-EMS\",\n                \"out-of-sync-threshold\": 180,\n                \"preserve-ssl-session\": 0,\n                \"pull-avatars\": 1,\n                \"pull-sysinfo\": 1,\n                \"pull-vulnerabilities\": 1,\n                \"send-tags-to-all-vdoms\": 0,\n                \"server\": null,\n                \"source-ip\": \"0.0.0.0\",\n                \"trust-ca-cn\": 1,\n                \"websocket-override\": 0,\n                \"username\": null,\n                \"password\": null\n            }\n        }\n    ]\n}"
 												},
 												"url": {
 													"raw": "https://{{ip}}/jsonrpc",
