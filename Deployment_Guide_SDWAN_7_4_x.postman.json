@@ -1,0 +1,2059 @@
+{
+	"info": {
+		"_postman_id": "6a7a551e-6f76-48a9-9051-ac82349eafd7",
+		"name": "Deployment Guide SD-WAN 7.4.x",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35013783"
+	},
+	"item": [
+		{
+			"name": "Foundation",
+			"item": [
+				{
+					"name": "Base",
+					"item": [
+						{
+							"name": "Create ADOM",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom\",\n            \"current_adom\": 3,\n            \"data\": {\n                \"name\": \"{{adom}}\",\n                \"flags\": [\n                    \"no_vpn_console\"\n                ],\n                \"log_db_retention_hours\": 1440,\n                \"log_disk_quota\": 0,\n                \"log_disk_quota_alert_thres\": 90,\n                \"log_disk_quota_split_ratio\": 70,\n                \"log_file_retention_hours\": 8760,\n                \"mode\": 1,\n                \"mr\": 4,\n                \"os_ver\": 7,\n                \"restricted_prds\": 1,\n                \"state\": 1,\n                \"workspace_mode\": 0\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Variables",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"region\"\n                },\n                {\n                    \"name\": \"profile\"\n                },\n                {\n                    \"name\": \"hostname\"\n                },\n                {\n                    \"name\": \"loopback\"\n                },\n                {\n                    \"name\": \"lan_ip\"\n                },\n                {\n                    \"name\": \"mpls_wan_ip\"\n                },\n                {\n                    \"name\": \"mpls_wan_gateway\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Device Groups",
+					"item": [
+						{
+							"name": "Create Device Groups",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group\",\n            \"data\": [\n                {\n                    \"name\": \"Edge\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Edge-East\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Edge-East-Silver\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Edge-West\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Edge-West-Silver\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Edge-West-Gold\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Hubs\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Hubs-East\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Hubs-West\",\n                    \"os_type\": 1\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Nest Device Groups - Hubs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group/Hubs/object member\",\n            \"data\": [\n                {\n                    \"name\": \"Hubs-East\"\n                },\n                {\n                    \"name\": \"Hubs-West\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Nest Device Groups - Edge",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group/Edge/object member\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-East\"\n                },\n                {\n                    \"name\": \"Edge-West\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Nest Device Groups - Edge-East",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group/Edge-East/object member\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-East-Silver\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Nest Device Groups - Edge-West",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group/Edge-West/object member\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-West-Silver\"\n                },\n                {\n                    \"name\": \"Edge-West-Gold\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "System Templates",
+					"item": [
+						{
+							"name": "Create System Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/devprof/adom/{{adom}}/\",\n            \"data\": [\n                {\n                    \"name\": \"Basic-Settings\",\n                    \"type\": \"devprof\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Configure System Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/device/profile/setting\",\n            \"data\": {\n                \"enabled-pages\": [\n                    \"dns\",\n                    \"log\",\n                    \"admin\"\n                ]\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Configure System Template - Admin Settings",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/system/global\",\n            \"data\": {\n                \"admintimeout\": 480,\n                \"admin-scp\": 1\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Configure System Template - DNS",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/device/template/widget/dns/action-list\",\n            \"data\": {\n                \"action\": \"conf-sys-dns\",\n                \"model\": \"all\",\n                \"seq\": 1,\n                \"value\": {\n                    \"primary\": \"8.8.8.8\",\n                    \"secondary\": \"8.8.4.4\",\n                    \"protocol\": null\n                }\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Configure System Template - FAZ",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Get FMG Serial Number",
+											"pm.sendRequest({",
+											"        url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+											"        method: 'POST',",
+											"        header: \"Content-Type:application/json\",",
+											"        body: {",
+											"            mode: 'raw',",
+											"            raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/sys/status\"}]})",
+											"        }",
+											"    }, function(err, response) {",
+											"        var jsonData = response.json();",
+											"        postman.setEnvironmentVariable('fmg_sn', jsonData.result[0].data[\"Serial Number\"]);",
+											"    }",
+											"); ",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/device/profile/fortianalyzer\",\n            \"data\": {\n                \"target\": 4,\n                \"target-ip\": \"192.168.0.15\",\n                \"target-sn\": \"{{fmg_sn}}\"\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Configure System Template - FAZ Setting",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/log/fortianalyzer/setting\",\n            \"data\": {\n                \"upload-option\": 1\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Certificate Templates",
+					"item": [
+						{
+							"name": "Create Certificate Templates",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/certificate/template\",\n            \"data\": [\n                {\n                    \"name\": \"Edge\",\n                    \"type\": \"local\",\n                    \"key-type\": \"RSA\",\n                    \"key-size\": \"2048\",\n                    \"digest-type\": \"sha256\"    \n                },\n                {\n                    \"name\": \"Hub\",\n                    \"type\": \"local\",\n                    \"key-type\": \"RSA\",\n                    \"key-size\": \"2048\",\n                    \"digest-type\": \"sha256\"    \n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SD-WAN Templates",
+					"item": [
+						{
+							"name": "Add Address Objects",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/firewall/address\",\n            \"data\": [\n                {\n                    \"name\": \"CORP_LAN\",\n                    \"subnet\": [\n                        \"10.0.0.0\",\n                        \"255.0.0.0\"\n                    ],\n                    \"type\": 0,\n                    \"associated-interface\": \"any\",\n                    \"color\": 22\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create SDWAN Templates",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/wanprof/adom/{{adom}}/\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-SDWAN\",\n                    \"type\": \"wanprof\"\n                },\n                {\n                    \"name\": \"Hub-SDWAN\",\n                    \"type\": \"wanprof\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Populate SDWAN Template - Edge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"port1\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 2,\n                        \"interface\": \"port2\",\n                        \"zone\": \"underlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-Gold\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 3,\n                        \"interface\": \"H1_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 4,\n                        \"interface\": \"H1_ISP2\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-Gold\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 5,\n                        \"interface\": \"H1_MPLS\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 6,\n                        \"interface\": \"H2_ISP1\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 7,\n                        \"interface\": \"H2_ISP2\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-Gold\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 8,\n                        \"interface\": \"H2_MPLS\",\n                        \"priority\": 10,\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West\"\n                            }\n                        ]\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"HUB\",\n                        \"server\": \"10.200.99.1\",\n                        \"protocol\": 1,\n                        \"embed-measured-health\": 1,\n                        \"members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\",\n                            \"6\",\n                            \"7\",\n                            \"8\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 100,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    },\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"update-cascade-interface\": 0,\n                        \"update-static-route\": 0,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 250,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    }\n                ],\n                \"service\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"Corporate\",\n                        \"src\": \"CORP_LAN\",\n                        \"dst\": \"CORP_LAN\",\n                        \"protocol\": 0,\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\",\n                            \"6\",\n                            \"7\",\n                            \"8\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"HUB\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"tie-break\": 3,\n                        \"role\": 3,\n                        \"status\": 1\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"SaaS-Hybrid\",\n                        \"internet-service\": 1,\n                        \"internet-service-app-ctrl\": [\n                            16354,\n                            16920\n                        ],\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"1\",\n                            \"5\",\n                            \"8\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"Internet\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"role\": 3,\n                        \"status\": 1,\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-Silver\"\n                            },\n                            {\n                                \"name\": \"Edge-East-Silver\"\n                            }\n                        ]\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"SaaS-DIA\",\n                        \"internet-service\": 1,\n                        \"internet-service-app-ctrl\": [\n                            16354,\n                            16920\n                        ],\n                        \"mode\": 4,\n                        \"load-balance\": 1,\n                        \"priority-members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"Internet\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"role\": 3,\n                        \"status\": 1,\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-West-Gold\"\n                            }\n                        ]\n                    }\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enable ADVPN 2.0 - Edge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/zone/overlay\",\n            \"data\": {\n                \"advpn-select\": 1,\n                \"advpn-health-check\": [\n                    \"HUB\"\n                ]\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/5\",\n            \"data\": {\n                \"transport-group\": 2\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/8\",\n            \"data\": {\n                \"transport-group\": 2\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Populate SDWAN Template - Hub",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Hub-SDWAN/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"port1\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 2,\n                        \"interface\": \"port2\",\n                        \"zone\": \"underlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Hubs-West\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 3,\n                        \"interface\": \"EDGE_ISP1\",\n                        \"priority\": 10,\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 4,\n                        \"interface\": \"EDGE_ISP2\",\n                        \"priority\": 10,\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Hubs-West\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 5,\n                        \"interface\": \"EDGE_MPLS\",\n                        \"priority\": 10,\n                        \"zone\": \"overlay\"\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"EDGE\",\n                        \"detect-mode\": 4,\n                        \"members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\"\n                        ],\n                        \"sla-id-redistribute\": 1,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 100,\n                                \"link-cost-factor\": 1,\n                                \"priority-in-sla\": 5,\n                                \"priority-out-sla\": 8\n                            }\n                        ]\n                    },\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"update-cascade-interface\": 0,\n                        \"update-static-route\": 0\n                    }\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Static Route Templates",
+					"item": [
+						{
+							"name": "Create Variables",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                                {\n                    \"name\": \"mpls_wan_gateway\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Static Route Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/_router_static/adom/{{adom}}/\",\n            \"data\": [\n                {\n                    \"name\": \"Underlay-Static\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"_router_static\",\n                        \"widgets\": [\n                            \"_router_static\"\n                        ]\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Populate Static Route Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/Underlay-Static/action-list/\",\n            \"data\": [\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 2,\n                    \"value\": {\n                        \"dst\": [\n                            \"0.0.0.0\",\n                            \"0.0.0.0\"\n                        ],\n                        \"sdwan\": true,\n                        \"sdwan-zone\": [\n                            \"underlay\",\n                            \"overlay\"\n                        ],\n                        \"seq-num\": 100,\n                        \"status\": \"enable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 1,\n                    \"value\": {\n                        \"device\": \"port4\",\n                        \"dst\": [\n                            \"172.16.0.0\",\n                            \"255.255.0.0\"\n                        ],\n                        \"gateway\": \"$(mpls_wan_gateway)\",\n                        \"seq-num\": 5,\n                        \"status\": \"enable\"\n                    }\n                },\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Firewall Policy Packages",
+					"item": [
+						{
+							"name": "Add Normalized Interfaces",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/interface/\",\n            \"data\": [\n                {\n                    \"name\": \"lan_zone\",\n                    \"description\": \"LAN\",\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"lan_zone\",\n                    \"color\": 2\n                },\n                {\n                    \"name\": \"Lo-HC\",\n                    \"description\": \"Health-Check\",\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"Lo-HC\",\n                    \"color\": 2\n                },\n                {\n                    \"name\": \"Lo\",\n                    \"description\": \"Main Loopback\",\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"Lo\",\n                    \"color\": 2\n                },\n                {\n                    \"name\": \"hub2hub_overlay\",\n                    \"description\": \"Hub-to-Hub Overlay\",\n                    \"single-intf\": 1,\n                    \"default-mapping\": 1,\n                    \"defmap-intf\": \"hub2hub_overlay\",\n                    \"color\": 2\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Address Objects",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/firewall/address\",\n            \"data\": [\n                {\n                    \"name\": \"CORP_LAN\",\n                    \"subnet\": [\n                        \"10.0.0.0\",\n                        \"255.0.0.0\"\n                    ],\n                    \"type\": 0,\n                    \"associated-interface\": \"any\",\n                    \"color\": 22\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Firewall Policy Packages",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"Edge\",\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": {\n                        \"name\": \"Edge\"\n                    },\n                    \"type\": \"pkg\"\n                },\n                {\n                    \"name\": \"Hub\",\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": {\n                        \"name\": \"Hubs\"\n                    },\n                    \"type\": \"pkg\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Firewall Rules - Hubs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-Edge\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"overlay\",\n                        \"hub2hub_overlay\"\n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"hub2hub_overlay\"\n                    ],\n                    \"srcaddr\": \"CORP_LAN\",\n                    \"dstaddr\": \"CORP_LAN\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"anti-replay\": 0,\n                    \"tcp-session-without-syn\": 0,\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Edge-Hub\",\n                    \"policyid\": 2,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\",\n                        \"hub2hub_overlay\"\n                    ],\n                    \"dstintf\": [\n                        \"lan_zone\",\n                        \"overlay\",\n                        \"hub2hub_overlay\"\n                    ],\n                    \"srcaddr\": \"CORP_LAN\",\n                    \"dstaddr\": \"CORP_LAN\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (DIA)\",\n                    \"policyid\": 3,\n                    \"srcintf\": \"lan_zone\",\n                    \"dstintf\": \"underlay\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (RIA)\",\n                    \"policyid\": 4,\n                    \"srcintf\": \"overlay\",\n                    \"dstintf\": \"underlay\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Health-Check\",\n                    \"policyid\": 5,\n                    \"srcintf\": [\n                        \"overlay\"\n                    ],\n                    \"dstintf\": \"Lo-HC\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"PING\",\n                    \"action\": 1,\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 3\n                },\n                {\n                    \"name\": \"Peering\",\n                    \"policyid\": 6,\n                    \"srcintf\": [\n                        \"overlay\",\n                        \"hub2hub_overlay\"\n                    ],\n                    \"dstintf\": [\n                        \"Lo\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": [\n                        \"PING\",\n                        \"BGP\"\n                    ],\n                    \"action\": 1,\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 3\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Firewall Rules - Edge",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Corporate\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n                    ],\n                    \"dstintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n                    ],\n                    \"srcaddr\": \"CORP_LAN\",\n                    \"dstaddr\": \"CORP_LAN\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (DIA)\",\n                    \"policyid\": 2,\n                    \"srcintf\": \"lan_zone\",\n                    \"dstintf\": \"underlay\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Internet (RIA)\",\n                    \"policyid\": 3,\n                    \"srcintf\": \"lan_zone\",\n                    \"dstintf\": \"overlay\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"utm-status\": 1,\n                    \"application-list\": [\n                        \"default\"\n                    ],\n                    \"ssl-ssh-profile\": [\n                        \"certificate-inspection\"\n                    ],\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Peering\",\n                    \"policyid\": 4,\n                    \"srcintf\": [\n                        \"overlay\"\n                    ],\n                    \"dstintf\": \"Lo\",\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": [\n                        \"PING\",\n                        \"BGP\"\n                    ],\n                    \"action\": 1,\n                    \"profile-protocol-options\": [],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 3\n                }                \n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CLI Templates",
+					"item": [
+						{
+							"name": "- Breakpoint -",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"postman.setNextRequest(null);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/sys/status\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create CLI Template Groups",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group\",\n            \"data\": [\n                {\n                    \"name\": \"Hub-Jinja\",\n                    \"member\": [\n                        \"01-Hub-Underlay\",\n                        \"02-Hub-Overlay\",\n                        \"03-Hub-Routing\",\n                        \"04-Hub-MultiRegion\",\n                        \"05-Hub-IntraRegion\",\n                        \"06-Hub-InterVRF\",\n                        \"07-Hub-Services\"\n                    ]\n                },\n                {\n                    \"name\": \"Edge-Jinja\",\n                    \"member\": [\n                        \"01-Edge-Underlay\",\n                        \"02-Edge-Overlay\",\n                        \"03-Edge-Routing\",\n                        \"04-Edge-InterVRF\"\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Template Groups",
+					"item": [
+						{
+							"name": "Create Template Groups",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/tmplgrp/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"Hub-Templates\",\n                    \"template group setting\": {\n                        \"cliprofs\": [\n                            \"Hub-Jinja\"\n                        ],\n                        \"templates\": [\n                            \"1__Basic-Settings\",\n                            \"4-2__Underlay-Static\",\n                            \"5__Hub-SDWAN\"\n                        ]\n                    },\n                    \"type\": \"tmplgrp\"\n                },\n                {\n                    \"name\": \"Edge-Templates\",\n                    \"template group setting\": {\n                        \"cliprofs\": [\n                            \"Edge-Jinja\"\n                        ],\n                        \"description\": \"\",\n                        \"templates\": [\n                            \"1__Basic-Settings\",\n                            \"4-2__Underlay-Static\",\n                            \"5__Edge-SDWAN\"\n                        ]\n                    },\n                    \"type\": \"tmplgrp\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Device Blueprints",
+					"item": [
+						{
+							"name": "Create Device Blueprints",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-West-Silver\",\n                    \"dev-group\": \"Edge-West-Silver\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Edge-Templates\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"port-provisioning\": 10\n                },\n                {\n                    \"name\": \"Edge-West-Gold\",\n                    \"dev-group\": \"Edge-West-Gold\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Edge-Templates\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"port-provisioning\": 10\n                },\n                {\n                    \"name\": \"Edge-East-Silver\",\n                    \"dev-group\": \"Edge-East-Silver\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Edge-Templates\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"port-provisioning\": 10\n                },\n                {\n                    \"name\": \"Hub-East\",\n                    \"dev-group\": \"Hubs-East\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Hub-Templates\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"port-provisioning\": 10\n                },\n                {\n                    \"name\": \"Hub-West\",\n                    \"dev-group\": \"Hubs-West\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Hub-Templates\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"port-provisioning\": 10\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "- Breakpoint -",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setNextRequest(null);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/sys/status\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Staging",
+			"item": [
+				{
+					"name": "Add Model Devices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"function failedResponse(str) {",
+									"    return str != \"devaddsuccess\" && str != \"model device with the same PSK exists\" && str != \"devnameused\"",
+									"}",
+									"",
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err && ",
+									"                    (",
+									"                        failedResponse(jsonData.result[0].data.line[0].detail) ||",
+									"                        failedResponse(jsonData.result[0].data.line[1].detail) ||",
+									"                        failedResponse(jsonData.result[0].data.line[2].detail) ||",
+									"                        failedResponse(jsonData.result[0].data.line[3].detail) ||",
+									"                        failedResponse(jsonData.result[0].data.line[4].detail) ||",
+									"                        failedResponse(jsonData.result[0].data.line[5].detail)                    ",
+									"                    )) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.line[0].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                    pm.expect(jsonData.result[0].data.line[1].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                    pm.expect(jsonData.result[0].data.line[2].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                    pm.expect(jsonData.result[0].data.line[3].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                    pm.expect(jsonData.result[0].data.line[4].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                    pm.expect(jsonData.result[0].data.line[5].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.taskid;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"add-dev-list\": [\n                    {\n                        \"name\": \"site1-H1\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Hub-West\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": 7,\n                        \"mr\": 4,\n                        \"psk\": \"secret1-H1\",\n                        \"latitude\": \"48.856614\",\n                        \"longitude\": \"2.3522219\",\n                        \"meta fields\": {\n                            \"Address\": \"Paris, France\"\n                        }\n                    },\n                    {\n                        \"name\": \"site1-H2\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Hub-West\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": 7,\n                        \"mr\": 4,                        \n                        \"psk\": \"secret1-H2\",\n                        \"latitude\": \"52.3675734\",\n                        \"longitude\": \"4.9041389\",\n                        \"meta fields\": {\n                            \"Address\": \"Amsterdam, The Netherlands\"\n                        }\n                    },\n                    {\n                        \"name\": \"site2-H1\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Hub-East\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": 7,\n                        \"mr\": 4,                        \n                        \"psk\": \"secret2-H1\",\n                        \"latitude\": \"52.2296756\",\n                        \"longitude\": \"21.0122287\",\n                        \"meta fields\": {\n                            \"Address\": \"Warsaw, Poland\"\n                        }\n                    },\n                    {\n                        \"name\": \"site1-1\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Edge-West-Silver\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": 7,\n                        \"mr\": 4,                        \n                        \"psk\": \"secret1-1\",\n                        \"latitude\": \"44.837789\",\n                        \"longitude\": \"-0.57918\",\n                        \"meta fields\": {\n                            \"Address\": \"Bordeaux, France\"\n                        }\n                    },\n                    {\n                        \"name\": \"site1-2\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Edge-West-Gold\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": 7,\n                        \"mr\": 4,                        \n                        \"psk\": \"secret1-2\",\n                        \"latitude\": \"44.494887\",\n                        \"longitude\": \"11.3426163\",\n                        \"meta fields\": {\n                            \"Address\": \"Bologna, Italy\"\n                        }\n                    },\n                    {\n                        \"name\": \"site2-1\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Edge-East-Silver\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": 7,\n                        \"mr\": 4,                        \n                        \"psk\": \"secret2-1\",\n                        \"latitude\": \"44.8125449\",\n                        \"longitude\": \"20.46123\",\n                        \"meta fields\": {\n                            \"Address\": \"Belgrade, Serbia\"\n                        }\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Variables",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/loopback/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.200.1.253\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.200.1.254\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.200.2.253\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.200.1.1\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.200.1.2\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.200.2.1\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/hostname/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"site1-H1\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"site1-H2\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"site2-H1\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"site1-1\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"site1-2\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"site2-1\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/region/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"West\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"West\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"East\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"West\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"West\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"East\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/profile/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"Gold\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"Gold\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"Silver\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"Silver\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"Gold\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"Silver\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/lan_ip/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.1.0.1/24\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.2.0.1/24\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.4.0.1/24\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.0.1.1/24\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.0.2.1/24\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.4.1.1/24\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/mpls_wan_ip/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.1.5/24\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.2.5/24\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.4.5/24\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.0.1/29\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.0.9/29\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.0.17/29\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/mpls_wan_gateway/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.1.6\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.2.6\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.4.6\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.0.2\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.0.10\"\n                },\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site2-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"172.16.0.18\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate Certificate - Hubs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/sign/certificate/template\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"template\": \"Hub\",\n                \"scope\": [\n                    {\n                        \"name\": \"site1-H1\"\n                    },\n                    {\n                        \"name\": \"site1-H2\"\n                    },\n                    {\n                        \"name\": \"site2-H1\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate Certificate - Edge",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/sign/certificate/template\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"template\": \"Edge\",\n                \"scope\": [\n                    {\n                        \"name\": \"site1-1\"\n                    },\n                    {\n                        \"name\": \"site1-2\"\n                    },\n                    {\n                        \"name\": \"site2-1\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Install Configuration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/device\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"root\"\n                        },                        \n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site2-1\",\n                            \"vdom\": \"root\"\n                        }                        \n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Install Policy - Hubs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Hub\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Hubs\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Install Policy - Edge",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"function waitOnTask(retries) {",
+									"    if (!retries) {",
+									"        pm.test(\"Task completed\", function() {",
+									"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+									"        });",
+									"        postman.setNextRequest(null);",
+									"    }",
+									"    else {",
+									"        pm.sendRequest({",
+									"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+									"            method: 'POST',",
+									"            header: \"Content-Type:application/json\",",
+									"            body: {",
+									"                mode: 'raw',",
+									"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+									"            }",
+									"        }, function(err, response) {",
+									"            var jsonData = response.json();",
+									"            if (jsonData.result[0].data.percent == 100) {",
+									"                // Task completed",
+									"                if (jsonData.result[0].data.num_err) {",
+									"                    postman.setNextRequest(null);",
+									"                }",
+									"                pm.test(\"Task completed\", function() {",
+									"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed for some devices\");     ",
+									"                });",
+									"            }",
+									"            else {",
+									"                console.log(\"Task is still not complete\");",
+									"                setTimeout(function() {",
+									"                    waitOnTask(--retries);",
+									"                }, 10000);",
+									"            }",
+									"        }); ",
+									"    }",
+									"}",
+									"",
+									"var jsonData = pm.response.json();",
+									"var taskid = jsonData.result[0].data.task;",
+									"",
+									"waitOnTask(10);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Edge\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Edge\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://{{ip}}/jsonrpc",
+							"protocol": "https",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"jsonrpc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('session',data['session']);",
+							"postman.setEnvironmentVariable('status_code',data['result'][0]['status']['code']);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"session\" : 1,\r\n\t\"id\" : 1,\r\n\t\"method\" : \"exec\",\r\n\t\"params\" : [\r\n\t\t{\r\n\t\t\t\"url\" : \"sys/login/user\",\r\n\t\t\t\"data\" : [\r\n\t\t\t\t{\r\n\t\t\t\t\t\"user\" : \"{{username}}\",\r\n\t\t\t\t\t\"passwd\" : \"{{password}}\"\r\n\t\t\t\t}\r\n\t\t\t]\r\n\t\t}\r\n\t]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"",
+							"postman.setEnvironmentVariable('session',data['session']);",
+							"postman.setEnvironmentVariable('status_code',data['result'][0]['status']['code']);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session\": \"{{session}}\",\r\n    \"id\": 1,\r\n    \"method\": \"exec\",\r\n    \"params\": [\r\n        {\r\n            \"url\": \"/sys/logout\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"HTTP Status code is 200 OK\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test(\"JSON Status code is 0 or -2\", function () {",
+					"    var jsonData = pm.response.json();",
+					"    postman.setNextRequest(null);",
+					"    pm.expect(jsonData.result[0].status.code).to.be.oneOf([0, -2]);",
+					"    postman.setNextRequest();",
+					"});"
+				]
+			}
+		}
+	]
+}
