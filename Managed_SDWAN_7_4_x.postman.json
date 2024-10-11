@@ -64,7 +64,8 @@
 										"exec": [
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -78,7 +79,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"region\"\n                },\n                {\n                    \"name\": \"profile\"\n                },\n                {\n                    \"name\": \"hostname\"\n                },\n                {\n                    \"name\": \"loopback\"\n                },\n                {\n                    \"name\": \"isp1_intf\"\n                },\n                {\n                    \"name\": \"isp2_intf\"\n                },\n                {\n                    \"name\": \"mpls_intf\"\n                },\n                {\n                    \"name\": \"lan_intf\"\n                },\n                {\n                    \"name\": \"lan_ip\"\n                },\n                {\n                    \"name\": \"lan2_intf\"\n                },\n                {\n                    \"name\": \"lan2_ip\"\n                },                \n                {\n                    \"name\": \"west_h1_isp1\"\n                },\n                {\n                    \"name\": \"west_h1_isp2\"\n                },\n                {\n                    \"name\": \"west_h1_mpls\"\n                },\n                {\n                    \"name\": \"west_h2_isp1\"\n                },\n                {\n                    \"name\": \"west_h2_isp2\"\n                },\n                {\n                    \"name\": \"west_h2_mpls\"\n                },\n                {\n                    \"name\": \"east_h1_isp1\"\n                },\n                {\n                    \"name\": \"east_h1_isp2\"\n                },\n                {\n                    \"name\": \"east_h1_mpls\"\n                },\n                {\n                    \"name\": \"vm_interface_number\",\n                    \"value\": \"10\"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"region\"\n                },\n                {\n                    \"name\": \"profile\"\n                },\n                {\n                    \"name\": \"hostname\"\n                },\n                {\n                    \"name\": \"loopback\"\n                },\n                {\n                    \"name\": \"isp1_intf\"\n                },\n                {\n                    \"name\": \"isp2_intf\"\n                },\n                {\n                    \"name\": \"mpls_intf\"\n                },\n                {\n                    \"name\": \"lan_intf\"\n                },\n                {\n                    \"name\": \"lan_ip\"\n                },\n                {\n                    \"name\": \"lan2_intf\"\n                },\n                {\n                    \"name\": \"lan2_ip\"\n                },                \n                {\n                    \"name\": \"west_h1_isp1\"\n                },\n                {\n                    \"name\": \"west_h1_isp2\"\n                },\n                {\n                    \"name\": \"west_h1_mpls\"\n                },\n                {\n                    \"name\": \"west_h2_isp1\"\n                },\n                {\n                    \"name\": \"west_h2_isp2\"\n                },\n                {\n                    \"name\": \"west_h2_mpls\"\n                },\n                {\n                    \"name\": \"east_h1_isp1\"\n                },\n                {\n                    \"name\": \"east_h1_isp2\"\n                },\n                {\n                    \"name\": \"east_h1_mpls\"\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1291,102 +1292,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-West-RegionalHQ\",\n                    \"dev-group\": \"Edge-West-RegionalHQ\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                },\n                {\n                    \"name\": \"Edge-West-BranchOffice\",\n                    \"dev-group\": \"Edge-West-BranchOffice\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                },\n                {\n                    \"name\": \"Edge-East-BranchOffice\",\n                    \"dev-group\": \"Edge-East-BranchOffice\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                },                                \n                {\n                    \"name\": \"Hubs-East\",\n                    \"dev-group\": \"Hubs-East\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                },\n                {\n                    \"name\": \"Hubs-West\",\n                    \"dev-group\": \"Hubs-West\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\"\n                }                \n            ]\n        }\n    ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://{{ip}}/jsonrpc",
-											"protocol": "https",
-											"host": [
-												"{{ip}}"
-											],
-											"path": [
-												"jsonrpc"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Final Touches 1",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										},
-										{
-											"listen": "prerequest",
-											"script": {
-												"packages": {},
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"device\": {\n                    \"name\": \"dummy\",\n                    \"device action\": \"add_model\",\n                    \"mgmt_mode\": \"fmg\",\n                    \"platform_str\": \"FortiGate-VM64-KVM\",\n                    \"os_type\": \"fos\",\n                    \"os_ver\": 7,\n                    \"mr\": 4,\n                    \"psk\": \"dummy\"\n                }\n            }\n        }\n    ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "https://{{ip}}/jsonrpc",
-											"protocol": "https",
-											"host": [
-												"{{ip}}"
-											],
-											"path": [
-												"jsonrpc"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Final Touches 2",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/del/device\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"device\": \"dummy\"\n            }\n        }        \n    ]\n}",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-West-RegionalHQ\",\n                    \"dev-group\": \"Edge-West-RegionalHQ\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"port-provisioning\": 10\n                },\n                {\n                    \"name\": \"Edge-West-BranchOffice\",\n                    \"dev-group\": \"Edge-West-BranchOffice\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"port-provisioning\": 10\n                },\n                {\n                    \"name\": \"Edge-East-BranchOffice\",\n                    \"dev-group\": \"Edge-East-BranchOffice\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"port-provisioning\": 10\n                },                                \n                {\n                    \"name\": \"Hubs-East\",\n                    \"dev-group\": \"Hubs-East\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"port-provisioning\": 10\n                },\n                {\n                    \"name\": \"Hubs-West\",\n                    \"dev-group\": \"Hubs-West\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"port-provisioning\": 10\n                }                \n            ]\n        }\n    ]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2186,49 +2092,6 @@
 					"name": "CustomerU - Staging",
 					"item": [
 						{
-							"name": "Update Model Devices",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site1-1\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site1-2\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site2-1\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site1-H1\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site1-H2\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/device/site2-H1\",\n            \"data\": {\n                \"adm_usr\": \"admin\",\n                \"desc\": \"Model device\",\n                \"flags\": 69468160\n            }\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Generate Certificate - Hubs",
 							"event": [
 								{
@@ -2740,10 +2603,14 @@
 					"});",
 					"",
 					"(pm.variables.get('skipTest') ? pm.test.skip : pm.test)(\"JSON Status code is 0 or -2\", function () {",
-					"    var jsonData = pm.response.json();",
-					"    postman.setNextRequest(null);",
-					"    pm.expect(jsonData.result[0].status.code).to.be.oneOf([0, -2]);",
-					"    postman.setNextRequest();",
+					"        var jsonData = pm.response.json();",
+					"        var code = jsonData.result[0].status.code;",
+					"        var message = jsonData.result[0].status.message;",
+					"        pm.execution.setNextRequest(null);",
+					"        pm.expect(",
+					"            code, ",
+					"            message + \", code \" + code).to.be.oneOf([0, -2]);",
+					"        pm.execution.setNextRequest()",
 					"});"
 				]
 			}

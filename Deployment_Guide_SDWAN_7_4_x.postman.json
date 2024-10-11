@@ -2048,9 +2048,13 @@
 					"",
 					"pm.test(\"JSON Status code is 0 or -2\", function () {",
 					"    var jsonData = pm.response.json();",
-					"    postman.setNextRequest(null);",
-					"    pm.expect(jsonData.result[0].status.code).to.be.oneOf([0, -2]);",
-					"    postman.setNextRequest();",
+					"    var code = jsonData.result[0].status.code;",
+					"    var message = jsonData.result[0].status.message;",
+					"    pm.execution.setNextRequest(null);",
+					"    pm.expect(",
+					"        code, ",
+					"        message + \", code \" + code).to.be.oneOf([0, -2]);",
+					"    pm.execution.setNextRequest()",
 					"});"
 				]
 			}
