@@ -1,0 +1,79 @@
+---
+fmg_host: 192.168.0.15
+fmg_user: admin
+fmg_password: fortinet
+fmg_adom: CustomerU
+
+postman_collection: tenants/shared/Managed_SDWAN_7_4_x.postman.json
+default_skip_tags: lab,post-deploy
+
+fgfm_ip: 192.168.0.15
+fgt_user: admin
+fgt_password: fortinet
+
+sites:
+  site1-1:
+    ip: 192.168.0.31
+  site1-2:
+    ip: 192.168.0.32
+  site2-1:
+    ip: 192.168.0.33
+  site1-H1:
+    ip: 192.168.0.41
+  site1-H2:
+    ip: 192.168.0.42
+  site2-H1:
+    ip: 192.168.0.43
+
+tasks:
+  - name: Create Foundation
+    type: postman
+    folder: Foundation
+    tag: foundation
+  - name: Import Project Template (dyn_bgp only)
+    type: cli_templates
+    src: tenants/CustomerU/Project.dyn_bgp.j2
+    rename: Project
+    tag: lab
+  - name: Import Project Template (mixed)
+    type: cli_templates
+    src: tenants/CustomerU/Project.mixed.j2
+    rename: Project
+    tag: mixed
+  - name: Import Jinja CLI Templates
+    type: cli_templates
+    src: tenants/shared/sdwan-advpn-reference-hol-2.0/dynamic-bgp-on-lo/*.j2
+    tag: foundation
+  - name: Create CLI Template Groups
+    type: postman
+    folder: Create CLI Template Groups
+    tag: foundation
+  - name: Finalize Foundation
+    type: postman
+    folder: Finalize Foundation
+    vars: tenants/CustomerU/postman.vars.yaml
+    tag: foundation
+  - name: Fine-tune SD-WAN
+    type: postman
+    folder: Fine-tune SD-WAN
+    tag: fine-tune-sdwan
+  - name: Fine-tune for Uni-SASE
+    type: postman
+    folder: Fine-tune Uni-SASE
+    tag: fine-tune-sase
+  - name: Additional Post-Deployment Tasks (optional)
+    type: postman
+    folder: Post-Deployment
+    tag: post-deploy
+  - name: Create Model Devices
+    type: model_devices
+    src: tenants/CustomerU/inventory.CustomerU.csv
+    tag: model_devices
+  - name: Install Model Devices (Staging)
+    type: postman
+    folder: CustomerU - Staging
+    tag: staging
+  - name: Onboard Devices
+    type: onboard
+    src: tenants/CustomerU/inventory.CustomerU.csv
+    tag: onboard

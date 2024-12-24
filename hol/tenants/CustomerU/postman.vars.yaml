@@ -1,0 +1,10 @@
+---
+west_h1_isp1: 100.64.1.1
+west_h1_isp2: 100.64.1.9
+west_h1_mpls: 172.16.1.5
+west_h2_isp1: 100.64.2.1
+west_h2_isp2: 100.64.2.9
+west_h2_mpls: 172.16.2.5
+east_h1_isp1: 100.64.4.1
+east_h1_isp2: 100.64.4.9
+east_h1_mpls: 172.16.4.5

@@ -1,0 +1,112 @@
+config firewall vip
+    edit "site1-H1-isp1"
+        set extip {{port1}}
+        set mappedip "100.64.1.1"
+        set extintf "port1"
+        set nat-source-vip enable
+    next
+    edit "site1-H1-isp2"
+        set extip {{port2}}
+        set mappedip "100.64.1.9"
+        set extintf "port2"
+        set nat-source-vip enable
+    next
+    edit "site1-1-isp1"
+        set extip {{port3}}
+        set mappedip "192.2.0.1"
+        set extintf "port3"
+        set nat-source-vip enable
+    next
+    edit "site1-1-isp2"
+        set extip {{port4}}
+        set mappedip "192.2.0.9"
+        set extintf "port4"
+        set nat-source-vip enable
+    next
+    edit "site1-2-isp1"
+        set extip {{port5}}
+        set mappedip "203.0.113.1"
+        set extintf "port5"
+        set nat-source-vip enable
+    next
+end
+config router static
+    edit 1
+        set gateway {{port1_gw}}
+        set distance 1
+        set priority 10
+        set device "port1"
+    next
+    edit 2
+        set gateway {{port2_gw}}
+        set distance 1
+        set priority 10
+        set device "port2"
+    next
+    edit 3
+        set gateway {{port3_gw}}
+        set distance 1
+        set priority 10
+        set device "port3"
+    next
+    edit 4
+        set gateway {{port4_gw}}
+        set distance 1
+        set priority 10
+        set device "port4"
+    next
+    edit 5
+        set gateway {{port5_gw}}
+        set distance 1
+        set priority 10
+        set device "port5"
+    next
+    edit 11
+        set dst 192.2.0.0 255.255.255.224
+        set gateway 128.66.0.192
+        set device "port9"
+    next
+    edit 12
+        set dst 203.0.113.0 255.255.255.0
+        set gateway 128.66.0.203
+        set device "port9"
+    next
+    edit 13
+        set dst 100.64.0.0 255.255.0.0
+        set gateway 128.66.0.100
+        set device "port9"
+    next
+    edit 100
+        set gateway 192.168.0.254
+        set distance 1
+        set device "port10"
+        set comment "Internet for all"
+    next
+end
+config router policy
+    edit 1
+        set input-device "port9"
+        set src "100.64.1.1/255.255.255.255"
+        set output-device "port1"
+    next
+    edit 2
+        set input-device "port9"
+        set src "100.64.1.9/255.255.255.255"
+        set output-device "port2"
+    next
+    edit 3
+        set input-device "port9"
+        set src "192.2.0.1/255.255.255.255"
+        set output-device "port3"
+    next
+    edit 4
+        set input-device "port9"
+        set src "192.2.0.9/255.255.255.255"
+        set output-device "port4"
+    next
+    edit 5
+        set input-device "port9"
+        set src "203.0.113.1/255.255.255.255"
+        set output-device "port5"
+    next
+end

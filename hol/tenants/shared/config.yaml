@@ -1,0 +1,18 @@
+---
+fgt_user: admin
+fgt_password: fortinet
+sites:
+  site1-1:
+    ip: 192.168.0.31
+  site1-2:
+    ip: 192.168.0.32
+  site1-H1:
+    ip: 192.168.0.41
+  site1-H2:
+    ip: 192.168.0.42
+  site2-1:
+    ip: 192.168.0.33
+  site2-H1:
+    ip: 192.168.0.43
+  zz_ext:
+    ip: 192.168.0.49

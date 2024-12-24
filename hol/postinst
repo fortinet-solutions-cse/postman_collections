@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Enable logging
+exec 3>&1 4>&2 >/tmp/postinst.log 2>&1
+
+echo Running postinst... 
+status_fail=0
+
+apt update
+apt install nodejs npm python3-paramiko python3-jinja2 nano -y
+npm install -g newman
+pip3 install paramiko-expect --break-system-packages
+
+# Unpack the Deployer
+cd /fortipoc
+tar xfz /fortipoc/solution-deployer.tgz
+solution-deployer/install.sh autodeploy
+tar xfz tenants.tgz -C autodeploy
+tar xfz lab_scripts.tgz -C autodeploy
+rm -rf solution-deployer
+
+# Check boot status and license of FGTs
+retries=19
+cd /fortipoc/autodeploy
+until ./check_devices.py || [ $retries -le 0 ]
+do
+    echo "Some devices didn't finish booting (retries left = $retries)"
+    sleep 30
+    ((retries--))
+done
+
+if [ $retries -gt 0 ];
+then
+
+  # Finalize instance configuration
+  ./configure_instance.sh || status_fail=1
+
+  [ $status_fail -eq 0 ] || echo -e "\n\033[0;31mFATAL:\033[0m Some instance configuration tasks failed!"
+
+else
+  echo -e "\n\033[0;31mFATAL:\033[0m Some devices didn't finish booting or do not have valid licenses!"
+  status_fail=1
+fi
+
+if [ $status_fail -eq 0 ];
+then
+  echo "This instance has been successfully configured."
+else
+  echo "Please check the above logs, fix the problem(s) and then manually run './configure_instance.sh' to complete instance configuration!"
+fi
+
+# Restore stdin/stderr
+exec 1>&3 2>&4
+
+exit $status_fail
