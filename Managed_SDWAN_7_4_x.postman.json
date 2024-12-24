@@ -1813,166 +1813,223 @@
 											]
 										},
 										{
-											"name": "set av profile",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/antivirus/profile\",\n            \"data\": {\n                \"av-virus-log\": 1,\n                \"mobile-malware-db\": 1,\n                \"analytics-db\": 0,\n                \"external-blocklist-enable-all\": 1,\n                \"ems-threat-feed\": 0,\n                \"extended-log\": 0,\n                \"feature-set\": 0,\n                \"fortindr-error-action\": 1,\n                \"fortindr-timeout-action\": 1,\n                \"fortisandbox-error-action\": 1,\n                \"fortisandbox-max-upload\": 10,\n                \"fortisandbox-mode\": 3,\n                \"fortisandbox-timeout-action\": 1,\n                \"outbreak-prevention-archive-scan\": 1,\n                \"scan-mode\": 5,\n                \"name\": \"outbound\",\n                \"content-disarm\": {\n                    \"original-file-destination\": 2\n                },\n                \"http\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"external-blocklist\": [],\n                \"smtp\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"pop3\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"imap\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"mapi\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"ftp\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"cifs\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"nntp\": {\n                    \"options\": 0,\n                    \"av-scan\": 0,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0\n                },\n                \"ssh\": {\n                    \"options\": 16,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                }\n            },\n            \"revision note\": \"AV profile\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
+											"name": "AV-Profile",
+											"item": [
+												{
+													"name": "set av profile",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/antivirus/profile\",\n            \"data\": {\n                \"av-virus-log\": 1,\n                \"mobile-malware-db\": 1,\n                \"analytics-db\": 0,\n                \"external-blocklist-enable-all\": 1,\n                \"ems-threat-feed\": 0,\n                \"extended-log\": 0,\n                \"feature-set\": 0,\n                \"fortindr-error-action\": 1,\n                \"fortindr-timeout-action\": 1,\n                \"fortisandbox-error-action\": 1,\n                \"fortisandbox-max-upload\": 10,\n                \"fortisandbox-mode\": 3,\n                \"fortisandbox-timeout-action\": 1,\n                \"outbreak-prevention-archive-scan\": 1,\n                \"scan-mode\": 5,\n                \"name\": \"outbound\",\n                \"content-disarm\": {\n                    \"original-file-destination\": 2\n                },\n                \"http\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"external-blocklist\": [],\n                \"smtp\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"pop3\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"imap\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"content-disarm\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"mapi\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"executables\": 1,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"ftp\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"cifs\": {\n                    \"options\": 1,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                },\n                \"nntp\": {\n                    \"options\": 0,\n                    \"av-scan\": 0,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0\n                },\n                \"ssh\": {\n                    \"options\": 16,\n                    \"fortisandbox\": 0,\n                    \"av-scan\": 56,\n                    \"outbreak-prevention\": 3,\n                    \"external-blocklist\": 0,\n                    \"quarantine\": 0,\n                    \"fortindr\": 0\n                }\n            },\n            \"revision note\": \"AV profile\"\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
 														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
+													},
+													"response": []
 												}
-											},
-											"response": []
+											]
 										},
 										{
-											"name": "update protocol-options profile",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-protocol-options/default\",\n            \"data\": {\n                \"comment\": \"All default services.\",\n                \"name\": \"default\",\n                \"replacemsg-group\": null,\n                \"http\": {\n                    \"ports\": [\n                        80\n                    ],\n                    \"inspect-all\": 1,\n                    \"status\": 1,\n                    \"scan-bzip2\": 1,\n                    \"address-ip-rating\": 1,\n                    \"block-page-status-code\": 403,\n                    \"comfort-amount\": 1,\n                    \"comfort-interval\": 10,\n                    \"h2c\": 0,\n                    \"options\": 0,\n                    \"oversize-limit\": 10,\n                    \"post-lang\": 0,\n                    \"proxy-after-tcp-handshake\": 0,\n                    \"range-block\": 0,\n                    \"retry-count\": 0,\n                    \"ssl-offloaded\": 0,\n                    \"stream-based-uncompressed-limit\": 0,\n                    \"streaming-content-bypass\": 1,\n                    \"strip-x-forwarded-for\": 0,\n                    \"switching-protocols\": 0,\n                    \"tcp-window-maximum\": 8388608,\n                    \"tcp-window-minimum\": 131072,\n                    \"tcp-window-size\": 262144,\n                    \"tcp-window-type\": 3,\n                    \"tunnel-non-http\": 1,\n                    \"uncompressed-nest-limit\": 12,\n                    \"uncompressed-oversize-limit\": 10,\n                    \"unknown-content-encoding\": 1,\n                    \"unknown-http-version\": 2,\n                    \"verify-dns-for-policy-matching\": 1\n                }\n            },\n            \"revision note\": \"Allow HTTP non-standard ports\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
+											"name": "Protocol Options",
+											"item": [
+												{
+													"name": "update protocol-options profile",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-protocol-options/default\",\n            \"data\": {\n                \"comment\": \"All default services.\",\n                \"name\": \"default\",\n                \"replacemsg-group\": null,\n                \"http\": {\n                    \"ports\": [\n                        80\n                    ],\n                    \"inspect-all\": 1,\n                    \"status\": 1,\n                    \"scan-bzip2\": 1,\n                    \"address-ip-rating\": 1,\n                    \"block-page-status-code\": 403,\n                    \"comfort-amount\": 1,\n                    \"comfort-interval\": 10,\n                    \"h2c\": 0,\n                    \"options\": 0,\n                    \"oversize-limit\": 10,\n                    \"post-lang\": 0,\n                    \"proxy-after-tcp-handshake\": 0,\n                    \"range-block\": 0,\n                    \"retry-count\": 0,\n                    \"ssl-offloaded\": 0,\n                    \"stream-based-uncompressed-limit\": 0,\n                    \"streaming-content-bypass\": 1,\n                    \"strip-x-forwarded-for\": 0,\n                    \"switching-protocols\": 0,\n                    \"tcp-window-maximum\": 8388608,\n                    \"tcp-window-minimum\": 131072,\n                    \"tcp-window-size\": 262144,\n                    \"tcp-window-type\": 3,\n                    \"tunnel-non-http\": 1,\n                    \"uncompressed-nest-limit\": 12,\n                    \"uncompressed-oversize-limit\": 10,\n                    \"unknown-content-encoding\": 1,\n                    \"unknown-http-version\": 2,\n                    \"verify-dns-for-policy-matching\": 1\n                }\n            },\n            \"revision note\": \"Allow HTTP non-standard ports\"\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
 														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
+													},
+													"response": []
 												}
-											},
-											"response": []
+											]
 										},
 										{
-											"name": "set ssl-ssh profile",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/ssl-ssh-profile/custom-deep-inspection\",\n            \"data\": {\n                \"ssl\": {\n                    \"inspect-all\": 2\n          },\n                  \"ssl-exempt\": [\n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiClient\"\n          },\n          \n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiSASE\"\n          },       \n\n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"31\"\n          },\n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"33\"\n          }\n        ]\n\n        }\n     }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
+											"name": "SSL TLS Profiles",
+											"item": [
+												{
+													"name": "set-cert-dyn-mapping",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/certificate/local\",\n            \"data\": {\n                \"name\": \"ssl_decryption\",\n                   \"dynamic_mapping\": [\n{\n                            \"_scope\": [\n                                {\n                                    \"name\": \"site1-1\",\n                                    \"vdom\": \"root\"\n                                }\n                            ],\n                            \"local-cert\": \"SSL_Decryption_Sub_CA\"\n                        }\n                    ]\n        }\n     }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
 														}
-													}
+													},
+													"response": []
 												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
+												{
+													"name": "set ssl-ssh profile",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/ssl-ssh-profile/custom-deep-inspection\",\n            \"data\": {\n                \"ssl\": {\n                    \"inspect-all\": 2\n          },\n                  \"ssl-exempt\": [\n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiClient\"\n          },\n          \n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiSASE\"\n          },       \n \n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"31\"\n          },\n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"33\"\n          }\n        ],\n        \"caname\": [\n                    \"ssl_decryption\"\n                ]\n \n        }\n     }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
+														}
+													},
+													"response": []
 												}
-											},
-											"response": []
+											]
 										},
 										{
-											"name": "set ips profile",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/ips/sensor\",\n            \"data\": {\n                \"block-malicious-url\": 1,\n                \"extended-log\": 0,\n                \"scan-botnet-connections\": 1,\n                \"name\": \"outbound\"\n            },\n            \"revision note\": \"IPS profile\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
+											"name": "IPS profile",
+											"item": [
+												{
+													"name": "set ips profile",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/ips/sensor\",\n            \"data\": {\n                \"block-malicious-url\": 1,\n                \"extended-log\": 0,\n                \"scan-botnet-connections\": 1,\n                \"name\": \"outbound\"\n            },\n            \"revision note\": \"IPS profile\"\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
 														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
+													},
+													"response": []
 												}
-											},
-											"response": []
+											]
 										},
 										{
-											"name": "set application profile",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"outbound\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            38569,\n                            40503,\n                            16009,\n                            41469\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    },\n                    {\n                    \"category\": [\n                        23\n                    ],\n                    \"quarantine-expiry\": null,\n                    \"action\": 2,\n                    \"log\": 1,\n                    \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"non-compliant\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            27210,\n                            35766,\n                            33182,\n                            16920,\n                            43292\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    },\n                    {\n                    \"category\": [\n                        23\n                    ],\n                    \"quarantine-expiry\": null,\n                    \"action\": 2,\n                    \"log\": 1,\n                    \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
+											"name": "Application Profile",
+											"item": [
+												{
+													"name": "set application profile",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"outbound\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            38569,\n                            40503,\n                            16009,\n                            41469\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    },\n                    {\n                    \"category\": [\n                        23\n                    ],\n                    \"quarantine-expiry\": null,\n                    \"action\": 2,\n                    \"log\": 1,\n                    \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"non-compliant\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            27210,\n                            35766,\n                            33182,\n                            16920,\n                            43292\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    },\n                    {\n                    \"category\": [\n                        23\n                    ],\n                    \"quarantine-expiry\": null,\n                    \"action\": 2,\n                    \"log\": 1,\n                    \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
 														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
+													},
+													"response": []
 												}
-											},
-											"response": []
+											]
 										},
 										{
-											"name": "set Profile group",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Creation of the Security profile-group\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"custom-deep-inspection\"\n                ],\n                \"name\": \"outbound-sia\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"webfilter-profile\": [\n                    \"outbound\"\n                ],\n                \"dnsfilter-profile\": [\n                    \"default\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"outbound\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"custom-deep-inspection\"\n                ],\n                \"name\": \"outbound-spa\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"outbound\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"custom-deep-inspection\"\n                ],\n                \"name\": \"non-compliant\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"webfilter-profile\": [\n                    \"outbound\"\n                ],\n                \"dnsfilter-profile\": [\n                    \"default\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"non-compliant\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        }\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
+											"name": "Profile Group",
+											"item": [
+												{
+													"name": "set Profile group",
+													"request": {
+														"method": "POST",
+														"header": [],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Creation of the Security profile-group\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"custom-deep-inspection\"\n                ],\n                \"name\": \"outbound-sia\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"webfilter-profile\": [\n                    \"outbound\"\n                ],\n                \"dnsfilter-profile\": [\n                    \"default\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"outbound\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"custom-deep-inspection\"\n                ],\n                \"name\": \"outbound-spa\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"outbound\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"custom-deep-inspection\"\n                ],\n                \"name\": \"non-compliant\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"webfilter-profile\": [\n                    \"outbound\"\n                ],\n                \"dnsfilter-profile\": [\n                    \"default\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"non-compliant\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        }\n    ]\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "https://{{ip}}/jsonrpc",
+															"protocol": "https",
+															"host": [
+																"{{ip}}"
+															],
+															"path": [
+																"jsonrpc"
+															]
 														}
-													}
-												},
-												"url": {
-													"raw": "https://{{ip}}/jsonrpc",
-													"protocol": "https",
-													"host": [
-														"{{ip}}"
-													],
-													"path": [
-														"jsonrpc"
-													]
+													},
+													"response": []
 												}
-											},
-											"response": []
+											]
 										}
 									]
 								},
