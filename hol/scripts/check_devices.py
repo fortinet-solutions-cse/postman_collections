@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 # check_devices.py                                                           #
-# Solution Deployer, Version 7.4.x b110                                      #
+# Uni-SASE HoL, Version 3.0 b100                                             #
 # -------------------------------------------------------------------------- #
-# Maintainers: CSE Telco/MSSP EMEA, Fortinet (internal use only)             #
+# Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
 
 from orch_base import runCLICommandTask, getSystemStatus

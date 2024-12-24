@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# configure_instance.sh                                                      #
+# Uni-SASE HoL, Version 3.0 b100                                             #
+# -------------------------------------------------------------------------- #
+# Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
+# -------------------------------------------------------------------------- #
+
 status_fail=0
 
 # Configure external NAT
