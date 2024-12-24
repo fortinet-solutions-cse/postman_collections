@@ -45,6 +45,10 @@ done
 if [ $retries -gt 0 ];
 then
 
+  echo "--------------------------------"
+  echo "Calling configure_instance.sh..."
+  echo "--------------------------------"  
+
   # Finalize instance configuration
   ./configure_instance.sh || status_fail=1
 
