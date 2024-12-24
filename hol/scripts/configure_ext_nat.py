@@ -36,14 +36,14 @@ def main():
         # group(1) = intf IP, group(2) = intf name
         ip_match = re.search('.*IP=(.*)->.*devname=(\w*)', str)
         if ip_match:
-          vars[ip_match.group(2)] = ip_match.group(1)
-          if not got_default:
-            # Derive next-hop gw from static routes received from DHCP (e.g. GCP)
-            for route in static_routes:
-                # group(1) = next-hop gw
-                route_match = re.search('via (.*), '+ip_match.group(2)+',', route)
-                if route_match:
-                vars[ip_match.group(2)+'_gw'] = route_match.group(1)
+            vars[ip_match.group(2)] = ip_match.group(1)
+            if not got_default:
+                # Derive next-hop gw from static routes received from DHCP (e.g. GCP)
+                for route in static_routes:
+                    # group(1) = next-hop gw
+                    route_match = re.search('via (.*), '+ip_match.group(2)+',', route)
+                    if route_match:
+                        vars[ip_match.group(2)+'_gw'] = route_match.group(1)
    
     task = {
         'src': 'tenants/shared/zz_ext.j2',
