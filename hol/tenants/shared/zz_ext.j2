@@ -1,3 +1,5 @@
+execute batch start
+
 config firewall vip
     edit "site1-H1-isp1"
         set extip {{port1}}
@@ -32,38 +34,38 @@ config firewall vip
 end
 config router static
     purge
-    {% if not dhcp_defaultgw|default(true) %}
+    {%- if not dhcp_defaultgw|default(true) %}
     edit 1
         set gateway {{port1_gw}}
-        set distance 1
+        set distance 5
         set priority 10
         set device "port1"
     next
     edit 2
         set gateway {{port2_gw}}
-        set distance 1
+        set distance 5
         set priority 10
         set device "port2"
     next
     edit 3
         set gateway {{port3_gw}}
-        set distance 1
+        set distance 5
         set priority 10
         set device "port3"
     next
     edit 4
         set gateway {{port4_gw}}
-        set distance 1
+        set distance 5
         set priority 10
         set device "port4"
     next
     edit 5
         set gateway {{port5_gw}}
-        set distance 1
+        set distance 5
         set priority 10
         set device "port5"
     next
-    {% endif %}
+    {%- endif %}
     edit 10
         set gateway 192.168.0.254
         set distance 5
@@ -113,3 +115,5 @@ config router policy
         set output-device "port5"
     next
 end
+
+execute batch end
