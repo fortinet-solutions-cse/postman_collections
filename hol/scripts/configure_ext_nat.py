@@ -27,17 +27,23 @@ def main():
     }
     static_routes = runCLICommandTask(cfg, task)
 
-    vars = {}
+    # Check if got default route from DHCP (e.g. FortiStack)
+    r = re.compile(r'0.0.0.0/0 \[5/0\] via .*, port[1-5]')
+    got_default = list(filter(r.search, static_routes))
+
+    vars = { 'dhcp_defaultgw': got_default }
     for str in ip_list:
         # group(1) = intf IP, group(2) = intf name
         ip_match = re.search('.*IP=(.*)->.*devname=(\w*)', str)
         if ip_match:
           vars[ip_match.group(2)] = ip_match.group(1)
-          for route in static_routes:
-            # group(1) = next-hop gw
-            route_match = re.search('via (.*), '+ip_match.group(2)+',', route)
-            if route_match:
-              vars[ip_match.group(2)+'_gw'] = route_match.group(1)
+          if not got_default:
+            # Derive next-hop gw from static routes received from DHCP (e.g. GCP)
+            for route in static_routes:
+                # group(1) = next-hop gw
+                route_match = re.search('via (.*), '+ip_match.group(2)+',', route)
+                if route_match:
+                vars[ip_match.group(2)+'_gw'] = route_match.group(1)
    
     task = {
         'src': 'tenants/shared/zz_ext.j2',

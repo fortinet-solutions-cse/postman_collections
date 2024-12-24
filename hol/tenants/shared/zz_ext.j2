@@ -31,6 +31,8 @@ config firewall vip
     next
 end
 config router static
+    purge
+    {% if not dhcp_defaultgw|default(true) %}
     edit 1
         set gateway {{port1_gw}}
         set distance 1
@@ -61,6 +63,13 @@ config router static
         set priority 10
         set device "port5"
     next
+    {% endif %}
+    edit 10
+        set gateway 192.168.0.254
+        set distance 5
+        set device "port10"
+        set comment "Internet for all"
+    next
     edit 11
         set dst 192.2.0.0 255.255.255.224
         set gateway 128.66.0.192
@@ -75,12 +84,6 @@ config router static
         set dst 100.64.0.0 255.255.0.0
         set gateway 128.66.0.100
         set device "port9"
-    next
-    edit 100
-        set gateway 192.168.0.254
-        set distance 1
-        set device "port10"
-        set comment "Internet for all"
     next
 end
 config router policy
