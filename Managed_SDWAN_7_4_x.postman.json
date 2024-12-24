@@ -1382,6 +1382,55 @@
 							"name": "Fine-tune Uni-SASE",
 							"item": [
 								{
+									"name": "CLI Template Groups",
+									"item": [
+										{
+											"name": "Add SSL Cert Template",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group/Edge-Template/member\",\n            \"data\": [\n                \"05-Edge-Cert\"\n            ]\n        }\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://{{ip}}/jsonrpc",
+													"protocol": "https",
+													"host": [
+														"{{ip}}"
+													],
+													"path": [
+														"jsonrpc"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
 									"name": "Firewall Objects",
 									"item": [
 										{

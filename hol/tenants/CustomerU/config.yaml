@@ -57,6 +57,10 @@ tasks:
     type: postman
     folder: Fine-tune SD-WAN
     tag: fine-tune-sdwan
+  - name: Import SSL Decryption Certificate
+    type: cli_templates
+    src: tenants/CustomerU/05-Edge-Cert.j2
+    tag: fine-tune-sase
   - name: Fine-tune for Uni-SASE
     type: postman
     folder: Fine-tune Uni-SASE
