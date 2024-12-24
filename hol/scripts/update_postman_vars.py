@@ -26,11 +26,11 @@ def main():
         cfg = safe_load(cfgfile)
 
     print("--> ISP1")
-    isp1_ip = get_public_ip(cfg, "site1-H1", "port1")
+    isp1_ip = get_public_ip(cfg, "zz_ext", "port1")
     print("Public IP: " + isp1_ip)
     print()
     print("--> ISP2")
-    isp2_ip = get_public_ip(cfg, "site1-H1", "port2")
+    isp2_ip = get_public_ip(cfg, "zz_ext", "port2")
     print("Public IP: " + isp2_ip)
     print()
 
