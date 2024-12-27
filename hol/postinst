@@ -15,22 +15,8 @@ echo "----------------------------------"
 echo "Starting instance configuration..."
 echo "----------------------------------"
 
-# Download HoL tenants and scripts
-cd /fortipoc
-wget -O hol-3.0.zip https://github.com/fortinet-solutions-cse/postman_collections/archive/refs/tags/hol-3.0.zip
-
-# Unpack the Deployer
-shopt -s dotglob
-tar xfz solution-deployer.tgz
-solution-deployer/install.sh autodeploy
-unzip -o hol-3.0.zip 'postman_collections-hol-3.0/hol/scripts/*' 
-unzip -o hol-3.0.zip 'postman_collections-hol-3.0/hol/tenants/*'
-mv postman_collections-hol-3.0/hol/scripts/* autodeploy
-mv postman_collections-hol-3.0/hol/tenants/* autodeploy/tenants
-tar xfz hol_files.tgz -C autodeploy
-rm -rf solution-deployer
-rm -rf postman_collections-hol-3.0
-rm hol-3.0.zip
+# Download HoL files and unpack the Deployer
+./setup_deployer.sh
 
 # Check boot status and license of FGTs
 retries=19
