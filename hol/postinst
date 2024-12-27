@@ -16,6 +16,7 @@ echo "Starting instance configuration..."
 echo "----------------------------------"
 
 # Download HoL files and unpack the Deployer
+cd /fortipoc
 ./setup_deployer.sh
 
 # Check boot status and license of FGTs
