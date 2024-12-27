@@ -1877,65 +1877,6 @@
 											]
 										},
 										{
-											"name": "SSL TLS Profiles",
-											"item": [
-												{
-													"name": "set-cert-dyn-mapping",
-													"request": {
-														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/certificate/local\",\n            \"data\": {\n                \"name\": \"ssl_decryption\",\n                   \"dynamic_mapping\": [\n{\n                            \"_scope\": [\n                                {\n                                    \"name\": \"site1-1\",\n                                    \"vdom\": \"root\"\n                                }\n                            ],\n                            \"local-cert\": \"SSL_Decryption_Sub_CA\"\n                        }\n                    ]\n        }\n     }\n    ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "https://{{ip}}/jsonrpc",
-															"protocol": "https",
-															"host": [
-																"{{ip}}"
-															],
-															"path": [
-																"jsonrpc"
-															]
-														}
-													},
-													"response": []
-												},
-												{
-													"name": "set ssl-ssh profile",
-													"request": {
-														"method": "POST",
-														"header": [],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/ssl-ssh-profile/custom-deep-inspection\",\n            \"data\": {\n                \"ssl\": {\n                    \"inspect-all\": 2\n          },\n                  \"ssl-exempt\": [\n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiClient\"\n          },\n          \n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiSASE\"\n          },       \n \n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"31\"\n          },\n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"33\"\n          }\n        ],\n        \"caname\": [\n                    \"ssl_decryption\"\n                ]\n \n        }\n     }\n    ]\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "https://{{ip}}/jsonrpc",
-															"protocol": "https",
-															"host": [
-																"{{ip}}"
-															],
-															"path": [
-																"jsonrpc"
-															]
-														}
-													},
-													"response": []
-												}
-											]
-										},
-										{
 											"name": "IPS profile",
 											"item": [
 												{
@@ -2189,6 +2130,70 @@
 											"response": []
 										}
 									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Post-Deployment",
+					"item": [
+						{
+							"name": "SSL TLS Profiles",
+							"item": [
+								{
+									"name": "set-cert-dyn-mapping",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/dynamic/certificate/local\",\n            \"data\": {\n                \"name\": \"ssl_decryption\",\n                   \"dynamic_mapping\": [\n{\n                            \"_scope\": [\n                                {\n                                    \"name\": \"site1-1\",\n                                    \"vdom\": \"root\"\n                                }\n                            ],\n                            \"local-cert\": \"SSL_Decryption_Sub_CA\"\n                        }\n                    ]\n        }\n     }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update-ssl-ssh profile",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/ssl-ssh-profile/custom-deep-inspection\",\n            \"data\": {\n                \"ssl\": {\n                    \"inspect-all\": 2\n          },\n                  \"ssl-exempt\": [\n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiClient\"\n          },\n          \n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiSASE\"\n          },       \n \n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"31\"\n          },\n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"33\"\n          }\n        ],\n        \"caname\": [\n                    \"ssl_decryption\"\n                ]\n \n        }\n     }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://{{ip}}/jsonrpc",
+											"protocol": "https",
+											"host": [
+												"{{ip}}"
+											],
+											"path": [
+												"jsonrpc"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						}
