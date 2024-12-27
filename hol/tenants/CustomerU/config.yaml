@@ -5,7 +5,7 @@ fmg_password: fortinet
 fmg_adom: CustomerU
 
 postman_collection: tenants/shared/Managed_SDWAN_7_4_x.postman.json
-default_skip_tags: lab,post-deploy
+default_skip_tags: lab
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
@@ -69,7 +69,7 @@ tasks:
     type: model_devices
     src: tenants/CustomerU/inventory.CustomerU.csv
     tag: model_devices
-  - name: Additional Post-Deployment Tasks (optional)
+  - name: Additional Post-Deployment Tasks
     type: postman
     folder: Post-Deployment
     tag: post-deploy    
