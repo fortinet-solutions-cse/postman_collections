@@ -42,7 +42,7 @@ tasks:
     tag: mixed
   - name: Import Jinja CLI Templates
     type: cli_templates
-    src: tenants/shared/sdwan-advpn-reference-hol-2.0/dynamic-bgp-on-lo/*.j2
+    src: tenants/shared/sdwan-advpn-reference-hol-3.0/dynamic-bgp-on-lo/*.j2
     tag: foundation
   - name: Create CLI Template Groups
     type: postman
