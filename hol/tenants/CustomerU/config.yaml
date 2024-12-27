@@ -65,14 +65,14 @@ tasks:
     type: postman
     folder: Fine-tune Uni-SASE
     tag: fine-tune-sase
-  - name: Additional Post-Deployment Tasks (optional)
-    type: postman
-    folder: Post-Deployment
-    tag: post-deploy
   - name: Create Model Devices
     type: model_devices
     src: tenants/CustomerU/inventory.CustomerU.csv
     tag: model_devices
+  - name: Additional Post-Deployment Tasks (optional)
+    type: postman
+    folder: Post-Deployment
+    tag: post-deploy    
   - name: Install Model Devices (Staging)
     type: postman
     folder: CustomerU - Staging
