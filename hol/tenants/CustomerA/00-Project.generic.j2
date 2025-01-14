@@ -1,0 +1,127 @@
+{#                            Project Template                                #}
+{# -------------------------------------------------------------------------- #}
+{# This file describes the project: its Regions, Hubs and Device Profiles     #}
+{# Normally, this is the only file that needs to be edited between            #}
+{# different projects                                                         #}
+{# -------------------------------------------------------------------------- #}
+{# Design flavor: "Dynamic BGP on Loopback"                                   #}
+{# Please contact your Fortinet representatives for more details              #}
+
+{#
+  Per-device variables used:
+  - Required:
+    - hostname
+    - loopback
+    - profile
+    - region
+    - h1_isp1
+    - h2_isp1
+  - Depending on topology:
+    - isp1_intf
+    - isp2_intf
+    - lte_intf
+    - lan_intf
+    - lan_ip
+#}
+
+{# Optional settings #}
+{% set cert_auth = false %}
+{% set dhcp_server_startip = 101 %}
+{% set regex_as = "6500." %}
+
+{# Optional defaults (can be overriden by profiles) #}
+{% set advpn2 = true %}
+{% set dynamic_bgp = true %}
+
+{#  Mandatory Global Definitions #}
+{% set lo_summary = '10.200.0.0/14' %}
+
+{# Regions #}
+{% set regions = {
+    'SuperWAN': {
+      'as': '65001',
+      'hubs': [ 'site1-H1', 'site1-H2' ]
+    }
+  }
+%}
+
+{# Device Profiles #}
+{% set profiles = {
+
+    'JustBranch': {
+      'interfaces': [
+        {
+          'name': isp1_intf,
+          'role': 'wan',
+          'ul_name': 'ISP1',
+          'ol_type': 'INET',
+          'ip': 'dhcp'
+        },
+        {
+          'name': isp2_intf,
+          'role': 'wan',
+          'ul_name': 'ISP2',
+          'ol_type': 'INET',
+          'ip': 'dhcp'
+        },
+        {
+          'name': lte_intf,
+          'role': 'wan',
+          'ul_name': 'LTE',
+          'ol_type': 'INET',
+          'backup': true,
+          'ip': 'dhcp'
+        },
+        {
+          'name': lan_intf,
+          'role': 'lan',
+          'ip': lan_ip
+        }
+      ]
+    },
+
+ 
+    'DC': {
+      'interfaces': [
+        {
+          'name': isp1_intf,
+          'role': 'wan',
+          'ol_type': 'INET',
+          'ip': 'dhcp'
+        },
+        {
+          'name': lan_intf,
+          'role': 'lan',
+          'ip': lan_ip
+        }
+      ]
+    }   
+
+  }
+%}
+
+{# Hubs #}
+{% set hubs = {
+
+    'site1-H1': {
+      'lo_bgp': '10.200.1.253',
+      'hub_name': 'DC1',
+      'overlays': {
+        'INET': {
+          'wan_ip': h1_isp1
+        }
+      }
+    },
+
+    'site1-H2': {
+      'lo_bgp': '10.200.1.254',    
+      'hub_name': 'DC2',
+      'overlays': {
+        'INET': {
+          'wan_ip': h2_isp1
+        }
+      }
+    }
+
+  }
+%}
