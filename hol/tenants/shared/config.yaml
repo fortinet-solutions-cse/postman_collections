@@ -16,3 +16,4 @@ sites:
     ip: 192.168.0.43
   zz_ext:
     ip: 192.168.0.49
+    sase_only: true

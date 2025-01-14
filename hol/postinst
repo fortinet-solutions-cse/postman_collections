@@ -15,6 +15,13 @@ echo "----------------------------------"
 echo "Starting instance configuration..."
 echo "----------------------------------"
 
+if [ -f /fortipoc/.hol_sdwan ]
+then
+  echo This is an SDWAN-only instance.
+  export HOL_SDWAN=1
+  echo export HOL_SDWAN=1 >> ~/.bashrc
+fi
+
 # Download HoL files and unpack the Deployer
 cd /fortipoc
 ./setup_deployer.sh
