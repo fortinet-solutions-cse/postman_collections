@@ -28,7 +28,7 @@ echo
 echo ------------------------------
 echo Generating device inventory...
 echo ------------------------------
-./generate_inventory.py | grep -A 9 "inventory.CustomerU.csv" | tail -n +3 > tenants/CustomerU/inventory.CustomerU.csv
+ORCH_TENANT=CustomerU ./generate_inventory.py | tail -n +4 > tenants/CustomerU/inventory.CustomerU.csv
 cat tenants/CustomerU/inventory.CustomerU.csv
 
 echo
