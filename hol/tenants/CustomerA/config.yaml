@@ -50,6 +50,7 @@ tasks:
   - name: Create Model Devices
     type: model_devices
     src: tenants/CustomerA/inventory.CustomerA.csv
+    fos: 7.6
     tag: model_devices
   - name: Deploy Legacy Site
     type: postman
