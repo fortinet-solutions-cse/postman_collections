@@ -29,7 +29,7 @@ echo ------------------------------
 echo Generating device inventory...
 echo ------------------------------
 ORCH_TENANT=CustomerA ./generate_inventory.py | tail -n +4 > tenants/CustomerA/inventory.CustomerA.csv
-cat tenants/CustomerU/inventory.CustomerU.csv
+cat tenants/CustomerA/inventory.CustomerA.csv
 
 echo
 echo ---------------------------------
