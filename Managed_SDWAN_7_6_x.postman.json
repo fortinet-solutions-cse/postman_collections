@@ -1136,7 +1136,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-DualISP\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Edge-ISP-LTE\",\n                    \"os_type\": 1\n                }                \n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-DualISP\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Edge-ISP-LTE\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Edge-LargeOffice\",\n                    \"os_type\": 1\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3078,6 +3078,108 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"session\": \"{{session}}\",\r\n    \"id\": 1,\r\n    \"method\": \"exec\",\r\n    \"params\": [\r\n        {\r\n            \"url\": \"/sys/logout\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Model Devices Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"function failedResponse(str) {",
+							"    return str != \"devaddsuccess\" && str != \"model device with the same PSK exists\" && str != \"devnameused\"",
+							"}",
+							"",
+							"function waitOnTask(retries) {",
+							"    if (!retries) {",
+							"        pm.test(\"Task completed\", function() {",
+							"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+							"        });",
+							"        postman.setNextRequest(null);",
+							"    }",
+							"    else {",
+							"        pm.sendRequest({",
+							"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+							"            method: 'POST',",
+							"            header: \"Content-Type:application/json\",",
+							"            body: {",
+							"                mode: 'raw',",
+							"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+							"            }",
+							"        }, function(err, response) {",
+							"            var jsonData = response.json();",
+							"            if (jsonData.result[0].data.percent == 100) {",
+							"                // Task completed",
+							"                if (jsonData.result[0].data.num_err && ",
+							"                    (",
+							"                        failedResponse(jsonData.result[0].data.line[0].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[1].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[2].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[3].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[4].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[5].detail)                    ",
+							"                    )) {",
+							"                    postman.setNextRequest(null);",
+							"                }",
+							"                pm.test(\"Task completed\", function() {",
+							"                    pm.expect(jsonData.result[0].data.line[0].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[1].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[2].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[3].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[4].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[5].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                });",
+							"            }",
+							"            else {",
+							"                console.log(\"Task is still not complete\");",
+							"                setTimeout(function() {",
+							"                    waitOnTask(--retries);",
+							"                }, 10000);",
+							"            }",
+							"        }); ",
+							"    }",
+							"}",
+							"",
+							"var jsonData = pm.response.json();",
+							"var taskid = jsonData.result[0].data.taskid;",
+							"",
+							"waitOnTask(10);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"add-dev-list\": [\n                    {\n                        \"name\": \"site1-1\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Edge-DualISP\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": \"7\",\n                        \"mr\": \"6\",\n                        \"psk\": \"secret1-1\",\n                        \"latitude\": \"44.837789\",\n                        \"longitude\": \"-0.57918\",\n                        \"meta fields\": {\n                            \"Address\": \"Bordeaux, France\"\n                        }\n                    }\n                ]\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "https://{{ip}}/jsonrpc",

@@ -80,6 +80,35 @@
       ]
     },
 
+    'LargeOffice': {
+      'interfaces': [
+        {
+          'name': isp1_intf,
+          'role': 'wan',
+          'ul_name': 'ISP1',
+          'ol_type': 'INET',
+          'ip': 'dhcp'
+        },
+        {
+          'name': isp2_intf,
+          'role': 'wan',
+          'ul_name': 'ISP2',
+          'ol_type': 'INET',
+          'ip': 'dhcp'
+        },
+        {
+          'name': lan_intf,
+          'role': 'sd_branch'
+        },
+        {
+          'name': 'vl_users',
+          'role': 'lan',
+          'vlanid': 10,
+          'parent': 'fortilink',
+          'ip': lan_ip
+        }
+      ]
+    },    
  
     'DC': {
       'interfaces': [
