@@ -60,6 +60,14 @@ tasks:
     type: postman
     folder: CustomerA - Hubs-to-Legacy
     tag: legacy_site
+  - name: Remote Health Signaling
+    type: postman
+    folder: CustomerA - Remote Health Signaling
+    tag: lab    
+  - name: SD-Branch Templates
+    type: postman
+    folder: CustomerA - SD-Branch
+    tag: lab
   - name: Install Model Devices (Staging)
     type: postman
     folder: CustomerA - Staging

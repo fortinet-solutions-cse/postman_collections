@@ -1393,7 +1393,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-DualISP\",\n                    \"dev-group\": \"Edge-DualISP\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Edge-Templates\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                },\n                {\n                    \"name\": \"Edge-ISP-LTE\",\n                    \"dev-group\": \"Edge-ISP-LTE\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Edge-Templates\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                },                \n                {\n                    \"name\": \"Hub\",\n                    \"dev-group\": \"Hubs\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Hub-Templates\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-DualISP\",\n                    \"dev-group\": \"Edge-DualISP\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Edge-Templates\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                },\n                {\n                    \"name\": \"Edge-ISP-LTE\",\n                    \"dev-group\": \"Edge-ISP-LTE\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Edge-Templates\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                },                \n                {\n                    \"name\": \"Hub\",\n                    \"dev-group\": \"Hubs\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Hub-Templates\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2947,6 +2947,327 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Hub-SDWAN/system/sdwan/health-check/EDGE\",\n            \"data\": {\n                \"sla\": [\n                    {\n                        \"id\": 1,\n                        \"link-cost-factor\": \"remote\",\n                        \"priority-in-sla\": 5,\n                        \"priority-out-sla\": 995\n                    }\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "- Breakpoint -",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"postman.setNextRequest(null);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/sys/status\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CustomerA - SD-Branch",
+					"item": [
+						{
+							"name": "CustomerA - FSW VLAN",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fsp/vlan\",\n            \"data\": [\n                {\n                    \"name\": \"vl_users\",\n                    \"vlanid\": 10\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerA - FSW Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/switch-controller/managed-switch\",\n            \"data\": [\n                {\n                    \"_platform\": \"FortiSwitch-108D-VM\",\n                    \"custom-command\": null,\n                    \"dhcp-server-access-list\": 50,\n                    \"dhcp-snooping-static-client\": null,\n                    \"firmware-provision\": 0,\n                    \"firmware-provision-latest\": 0,\n                    \"l3-discovered\": 0,\n                    \"mclag-igmp-snooping-aware\": 1,\n                    \"mgmt-mode\": 0,\n                    \"override-snmp-community\": 0,\n                    \"override-snmp-sysinfo\": 0,\n                    \"override-snmp-trap-threshold\": 0,\n                    \"override-snmp-user\": 0,\n                    \"poe-detection-type\": 0,\n                    \"ports\": [\n                        {\n                            \"access-mode\": 3,\n                            \"acl-group\": [],\n                            \"allow-arp-monitor\": 0,\n                            \"allowed-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"allowed-vlans-all\": 0,\n                            \"arp-inspection-trust\": 0,\n                            \"authenticated-port\": 0,\n                            \"description\": null,\n                            \"dhcp-snoop-option82-override\": null,\n                            \"dhcp-snoop-option82-trust\": 0,\n                            \"dhcp-snooping\": 1,\n                            \"discard-mode\": 0,\n                            \"dsl-profile\": [\n                                \"default\"\n                            ],\n                            \"edge-port\": 1,\n                            \"encrypted-port\": 0,\n                            \"fallback-port\": null,\n                            \"fec-capable\": 0,\n                            \"fec-state\": 3,\n                            \"flap-duration\": 30,\n                            \"flap-rate\": 5,\n                            \"flap-timeout\": 0,\n                            \"flapguard\": 0,\n                            \"flow-control\": 0,\n                            \"fortiswitch-acls\": [],\n                            \"igmp-snooping-flood-reports\": 0,\n                            \"interface-tags\": [],\n                            \"ip-source-guard\": 0,\n                            \"isl-peer-device-sn\": null,\n                            \"lacp-speed\": 0,\n                            \"learning-limit\": 0,\n                            \"lldp-profile\": [\n                                \"default-auto-isl\"\n                            ],\n                            \"lldp-status\": 3,\n                            \"log-mac-event\": 0,\n                            \"loop-guard\": 0,\n                            \"loop-guard-timeout\": 45,\n                            \"mcast-snooping-flood-traffic\": 0,\n                            \"mclag-icl-port\": 0,\n                            \"media-type\": null,\n                            \"member-withdrawal-behavior\": 1,\n                            \"p2p-port\": 0,\n                            \"packet-sampler\": 0,\n                            \"pd-capable\": 0,\n                            \"poe-max-power\": null,\n                            \"poe-mode-bt-cabable\": 0,\n                            \"poe-port-mode\": 2,\n                            \"poe-port-power\": 1,\n                            \"poe-port-priority\": 3,\n                            \"poe-standard\": null,\n                            \"port-name\": \"port1\",\n                            \"port-owner\": null,\n                            \"port-security-policy\": [],\n                            \"ptp-status\": 1,\n                            \"qnq\": [],\n                            \"qos-policy\": [\n                                \"default\"\n                            ],\n                            \"restricted-auth-port\": 0,\n                            \"rpvst-port\": 0,\n                            \"sflow-counter-interval\": 0,\n                            \"status\": 1,\n                            \"sticky-mac\": 0,\n                            \"stp-bpdu-guard\": 0,\n                            \"stp-root-guard\": 0,\n                            \"stp-state\": 1,\n                            \"trunk-member\": 0,\n                            \"type\": 0,\n                            \"untagged-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"vlan\": [\n                                \"vl_users\"\n                            ]\n                        },\n                        {\n                            \"access-mode\": 3,\n                            \"acl-group\": [],\n                            \"allow-arp-monitor\": 0,\n                            \"allowed-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"allowed-vlans-all\": 0,\n                            \"arp-inspection-trust\": 0,\n                            \"authenticated-port\": 0,\n                            \"description\": null,\n                            \"dhcp-snoop-option82-override\": null,\n                            \"dhcp-snoop-option82-trust\": 0,\n                            \"dhcp-snooping\": 1,\n                            \"discard-mode\": 0,\n                            \"dsl-profile\": [\n                                \"default\"\n                            ],\n                            \"edge-port\": 1,\n                            \"encrypted-port\": 0,\n                            \"fallback-port\": null,\n                            \"fec-capable\": 0,\n                            \"fec-state\": 3,\n                            \"flap-duration\": 30,\n                            \"flap-rate\": 5,\n                            \"flap-timeout\": 0,\n                            \"flapguard\": 0,\n                            \"flow-control\": 0,\n                            \"fortiswitch-acls\": [],\n                            \"igmp-snooping-flood-reports\": 0,\n                            \"interface-tags\": [],\n                            \"ip-source-guard\": 0,\n                            \"isl-peer-device-sn\": null,\n                            \"lacp-speed\": 0,\n                            \"learning-limit\": 0,\n                            \"lldp-profile\": [\n                                \"default-auto-isl\"\n                            ],\n                            \"lldp-status\": 3,\n                            \"log-mac-event\": 0,\n                            \"loop-guard\": 0,\n                            \"loop-guard-timeout\": 45,\n                            \"mcast-snooping-flood-traffic\": 0,\n                            \"mclag-icl-port\": 0,\n                            \"media-type\": null,\n                            \"member-withdrawal-behavior\": 1,\n                            \"p2p-port\": 0,\n                            \"packet-sampler\": 0,\n                            \"pd-capable\": 0,\n                            \"poe-max-power\": null,\n                            \"poe-mode-bt-cabable\": 0,\n                            \"poe-port-mode\": 2,\n                            \"poe-port-power\": 1,\n                            \"poe-port-priority\": 3,\n                            \"poe-standard\": null,\n                            \"port-name\": \"port2\",\n                            \"port-owner\": null,\n                            \"port-security-policy\": [],\n                            \"ptp-status\": 1,\n                            \"qnq\": [],\n                            \"qos-policy\": [\n                                \"default\"\n                            ],\n                            \"restricted-auth-port\": 0,\n                            \"rpvst-port\": 0,\n                            \"sflow-counter-interval\": 0,\n                            \"status\": 1,\n                            \"sticky-mac\": 0,\n                            \"stp-bpdu-guard\": 0,\n                            \"stp-root-guard\": 0,\n                            \"stp-state\": 1,\n                            \"trunk-member\": 0,\n                            \"type\": 0,\n                            \"untagged-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"vlan\": [\n                                \"default\"\n                            ]\n                        },\n                        {\n                            \"access-mode\": 3,\n                            \"acl-group\": [],\n                            \"allow-arp-monitor\": 0,\n                            \"allowed-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"allowed-vlans-all\": 0,\n                            \"arp-inspection-trust\": 0,\n                            \"authenticated-port\": 0,\n                            \"description\": null,\n                            \"dhcp-snoop-option82-override\": null,\n                            \"dhcp-snoop-option82-trust\": 0,\n                            \"dhcp-snooping\": 1,\n                            \"discard-mode\": 0,\n                            \"dsl-profile\": [\n                                \"default\"\n                            ],\n                            \"edge-port\": 1,\n                            \"encrypted-port\": 0,\n                            \"fallback-port\": null,\n                            \"fec-capable\": 0,\n                            \"fec-state\": 3,\n                            \"flap-duration\": 30,\n                            \"flap-rate\": 5,\n                            \"flap-timeout\": 0,\n                            \"flapguard\": 0,\n                            \"flow-control\": 0,\n                            \"fortiswitch-acls\": [],\n                            \"igmp-snooping-flood-reports\": 0,\n                            \"interface-tags\": [],\n                            \"ip-source-guard\": 0,\n                            \"isl-peer-device-sn\": null,\n                            \"lacp-speed\": 0,\n                            \"learning-limit\": 0,\n                            \"lldp-profile\": [\n                                \"default-auto-isl\"\n                            ],\n                            \"lldp-status\": 3,\n                            \"log-mac-event\": 0,\n                            \"loop-guard\": 0,\n                            \"loop-guard-timeout\": 45,\n                            \"mcast-snooping-flood-traffic\": 0,\n                            \"mclag-icl-port\": 0,\n                            \"media-type\": null,\n                            \"member-withdrawal-behavior\": 1,\n                            \"p2p-port\": 0,\n                            \"packet-sampler\": 0,\n                            \"pd-capable\": 0,\n                            \"poe-max-power\": null,\n                            \"poe-mode-bt-cabable\": 0,\n                            \"poe-port-mode\": 2,\n                            \"poe-port-power\": 1,\n                            \"poe-port-priority\": 3,\n                            \"poe-standard\": null,\n                            \"port-name\": \"port3\",\n                            \"port-owner\": null,\n                            \"port-security-policy\": [],\n                            \"ptp-status\": 1,\n                            \"qnq\": [],\n                            \"qos-policy\": [\n                                \"default\"\n                            ],\n                            \"restricted-auth-port\": 0,\n                            \"rpvst-port\": 0,\n                            \"sflow-counter-interval\": 0,\n                            \"status\": 1,\n                            \"sticky-mac\": 0,\n                            \"stp-bpdu-guard\": 0,\n                            \"stp-root-guard\": 0,\n                            \"stp-state\": 1,\n                            \"trunk-member\": 0,\n                            \"type\": 0,\n                            \"untagged-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"vlan\": [\n                                \"default\"\n                            ]\n                        },\n                        {\n                            \"access-mode\": 3,\n                            \"acl-group\": [],\n                            \"allow-arp-monitor\": 0,\n                            \"allowed-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"allowed-vlans-all\": 0,\n                            \"arp-inspection-trust\": 0,\n                            \"authenticated-port\": 0,\n                            \"description\": null,\n                            \"dhcp-snoop-option82-override\": null,\n                            \"dhcp-snoop-option82-trust\": 0,\n                            \"dhcp-snooping\": 1,\n                            \"discard-mode\": 0,\n                            \"dsl-profile\": [\n                                \"default\"\n                            ],\n                            \"edge-port\": 1,\n                            \"encrypted-port\": 0,\n                            \"fallback-port\": null,\n                            \"fec-capable\": 0,\n                            \"fec-state\": 3,\n                            \"flap-duration\": 30,\n                            \"flap-rate\": 5,\n                            \"flap-timeout\": 0,\n                            \"flapguard\": 0,\n                            \"flow-control\": 0,\n                            \"fortiswitch-acls\": [],\n                            \"igmp-snooping-flood-reports\": 0,\n                            \"interface-tags\": [],\n                            \"ip-source-guard\": 0,\n                            \"isl-peer-device-sn\": null,\n                            \"lacp-speed\": 0,\n                            \"learning-limit\": 0,\n                            \"lldp-profile\": [\n                                \"default-auto-isl\"\n                            ],\n                            \"lldp-status\": 3,\n                            \"log-mac-event\": 0,\n                            \"loop-guard\": 0,\n                            \"loop-guard-timeout\": 45,\n                            \"mcast-snooping-flood-traffic\": 0,\n                            \"mclag-icl-port\": 0,\n                            \"media-type\": null,\n                            \"member-withdrawal-behavior\": 1,\n                            \"p2p-port\": 0,\n                            \"packet-sampler\": 0,\n                            \"pd-capable\": 0,\n                            \"poe-max-power\": null,\n                            \"poe-mode-bt-cabable\": 0,\n                            \"poe-port-mode\": 2,\n                            \"poe-port-power\": 1,\n                            \"poe-port-priority\": 3,\n                            \"poe-standard\": null,\n                            \"port-name\": \"port4\",\n                            \"port-owner\": null,\n                            \"port-security-policy\": [],\n                            \"ptp-status\": 1,\n                            \"qnq\": [],\n                            \"qos-policy\": [\n                                \"default\"\n                            ],\n                            \"restricted-auth-port\": 0,\n                            \"rpvst-port\": 0,\n                            \"sflow-counter-interval\": 0,\n                            \"status\": 1,\n                            \"sticky-mac\": 0,\n                            \"stp-bpdu-guard\": 0,\n                            \"stp-root-guard\": 0,\n                            \"stp-state\": 1,\n                            \"trunk-member\": 0,\n                            \"type\": 0,\n                            \"untagged-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"vlan\": [\n                                \"default\"\n                            ]\n                        },\n                        {\n                            \"access-mode\": 3,\n                            \"acl-group\": [],\n                            \"allow-arp-monitor\": 0,\n                            \"allowed-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"allowed-vlans-all\": 0,\n                            \"arp-inspection-trust\": 0,\n                            \"authenticated-port\": 0,\n                            \"description\": null,\n                            \"dhcp-snoop-option82-override\": null,\n                            \"dhcp-snoop-option82-trust\": 0,\n                            \"dhcp-snooping\": 1,\n                            \"discard-mode\": 0,\n                            \"dsl-profile\": [\n                                \"default\"\n                            ],\n                            \"edge-port\": 1,\n                            \"encrypted-port\": 0,\n                            \"fallback-port\": null,\n                            \"fec-capable\": 0,\n                            \"fec-state\": 3,\n                            \"flap-duration\": 30,\n                            \"flap-rate\": 5,\n                            \"flap-timeout\": 0,\n                            \"flapguard\": 0,\n                            \"flow-control\": 0,\n                            \"fortiswitch-acls\": [],\n                            \"igmp-snooping-flood-reports\": 0,\n                            \"interface-tags\": [],\n                            \"ip-source-guard\": 0,\n                            \"isl-peer-device-sn\": null,\n                            \"lacp-speed\": 0,\n                            \"learning-limit\": 0,\n                            \"lldp-profile\": [\n                                \"default-auto-isl\"\n                            ],\n                            \"lldp-status\": 3,\n                            \"log-mac-event\": 0,\n                            \"loop-guard\": 0,\n                            \"loop-guard-timeout\": 45,\n                            \"mcast-snooping-flood-traffic\": 0,\n                            \"mclag-icl-port\": 0,\n                            \"media-type\": null,\n                            \"member-withdrawal-behavior\": 1,\n                            \"p2p-port\": 0,\n                            \"packet-sampler\": 0,\n                            \"pd-capable\": 0,\n                            \"poe-max-power\": null,\n                            \"poe-mode-bt-cabable\": 0,\n                            \"poe-port-mode\": 2,\n                            \"poe-port-power\": 1,\n                            \"poe-port-priority\": 3,\n                            \"poe-standard\": null,\n                            \"port-name\": \"port5\",\n                            \"port-owner\": null,\n                            \"port-security-policy\": [],\n                            \"ptp-status\": 1,\n                            \"qnq\": [],\n                            \"qos-policy\": [\n                                \"default\"\n                            ],\n                            \"restricted-auth-port\": 0,\n                            \"rpvst-port\": 0,\n                            \"sflow-counter-interval\": 0,\n                            \"status\": 1,\n                            \"sticky-mac\": 0,\n                            \"stp-bpdu-guard\": 0,\n                            \"stp-root-guard\": 0,\n                            \"stp-state\": 1,\n                            \"trunk-member\": 0,\n                            \"type\": 0,\n                            \"untagged-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"vlan\": [\n                                \"default\"\n                            ]\n                        },\n                        {\n                            \"access-mode\": 3,\n                            \"acl-group\": [],\n                            \"allow-arp-monitor\": 0,\n                            \"allowed-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"allowed-vlans-all\": 0,\n                            \"arp-inspection-trust\": 0,\n                            \"authenticated-port\": 0,\n                            \"description\": null,\n                            \"dhcp-snoop-option82-override\": null,\n                            \"dhcp-snoop-option82-trust\": 0,\n                            \"dhcp-snooping\": 1,\n                            \"discard-mode\": 0,\n                            \"dsl-profile\": [\n                                \"default\"\n                            ],\n                            \"edge-port\": 1,\n                            \"encrypted-port\": 0,\n                            \"fallback-port\": null,\n                            \"fec-capable\": 0,\n                            \"fec-state\": 3,\n                            \"flap-duration\": 30,\n                            \"flap-rate\": 5,\n                            \"flap-timeout\": 0,\n                            \"flapguard\": 0,\n                            \"flow-control\": 0,\n                            \"fortiswitch-acls\": [],\n                            \"igmp-snooping-flood-reports\": 0,\n                            \"interface-tags\": [],\n                            \"ip-source-guard\": 0,\n                            \"isl-peer-device-sn\": null,\n                            \"lacp-speed\": 0,\n                            \"learning-limit\": 0,\n                            \"lldp-profile\": [\n                                \"default-auto-isl\"\n                            ],\n                            \"lldp-status\": 3,\n                            \"log-mac-event\": 0,\n                            \"loop-guard\": 0,\n                            \"loop-guard-timeout\": 45,\n                            \"mcast-snooping-flood-traffic\": 0,\n                            \"mclag-icl-port\": 0,\n                            \"media-type\": null,\n                            \"member-withdrawal-behavior\": 1,\n                            \"p2p-port\": 0,\n                            \"packet-sampler\": 0,\n                            \"pd-capable\": 0,\n                            \"poe-max-power\": null,\n                            \"poe-mode-bt-cabable\": 0,\n                            \"poe-port-mode\": 2,\n                            \"poe-port-power\": 1,\n                            \"poe-port-priority\": 3,\n                            \"poe-standard\": null,\n                            \"port-name\": \"port6\",\n                            \"port-owner\": null,\n                            \"port-security-policy\": [],\n                            \"ptp-status\": 1,\n                            \"qnq\": [],\n                            \"qos-policy\": [\n                                \"default\"\n                            ],\n                            \"restricted-auth-port\": 0,\n                            \"rpvst-port\": 0,\n                            \"sflow-counter-interval\": 0,\n                            \"status\": 1,\n                            \"sticky-mac\": 0,\n                            \"stp-bpdu-guard\": 0,\n                            \"stp-root-guard\": 0,\n                            \"stp-state\": 1,\n                            \"trunk-member\": 0,\n                            \"type\": 0,\n                            \"untagged-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"vlan\": [\n                                \"default\"\n                            ]\n                        },\n                        {\n                            \"access-mode\": 3,\n                            \"acl-group\": [],\n                            \"allow-arp-monitor\": 0,\n                            \"allowed-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"allowed-vlans-all\": 0,\n                            \"arp-inspection-trust\": 0,\n                            \"authenticated-port\": 0,\n                            \"description\": null,\n                            \"dhcp-snoop-option82-override\": null,\n                            \"dhcp-snoop-option82-trust\": 0,\n                            \"dhcp-snooping\": 1,\n                            \"discard-mode\": 0,\n                            \"dsl-profile\": [\n                                \"default\"\n                            ],\n                            \"edge-port\": 1,\n                            \"encrypted-port\": 0,\n                            \"fallback-port\": null,\n                            \"fec-capable\": 0,\n                            \"fec-state\": 3,\n                            \"flap-duration\": 30,\n                            \"flap-rate\": 5,\n                            \"flap-timeout\": 0,\n                            \"flapguard\": 0,\n                            \"flow-control\": 0,\n                            \"fortiswitch-acls\": [],\n                            \"igmp-snooping-flood-reports\": 0,\n                            \"interface-tags\": [],\n                            \"ip-source-guard\": 0,\n                            \"isl-peer-device-sn\": null,\n                            \"lacp-speed\": 0,\n                            \"learning-limit\": 0,\n                            \"lldp-profile\": [\n                                \"default-auto-isl\"\n                            ],\n                            \"lldp-status\": 3,\n                            \"log-mac-event\": 0,\n                            \"loop-guard\": 0,\n                            \"loop-guard-timeout\": 45,\n                            \"mcast-snooping-flood-traffic\": 0,\n                            \"mclag-icl-port\": 0,\n                            \"media-type\": null,\n                            \"member-withdrawal-behavior\": 1,\n                            \"p2p-port\": 0,\n                            \"packet-sampler\": 0,\n                            \"pd-capable\": 0,\n                            \"poe-max-power\": null,\n                            \"poe-mode-bt-cabable\": 0,\n                            \"poe-port-mode\": 2,\n                            \"poe-port-power\": 1,\n                            \"poe-port-priority\": 3,\n                            \"poe-standard\": null,\n                            \"port-name\": \"port7\",\n                            \"port-owner\": null,\n                            \"port-security-policy\": [],\n                            \"ptp-status\": 1,\n                            \"qnq\": [],\n                            \"qos-policy\": [\n                                \"default\"\n                            ],\n                            \"restricted-auth-port\": 0,\n                            \"rpvst-port\": 0,\n                            \"sflow-counter-interval\": 0,\n                            \"status\": 1,\n                            \"sticky-mac\": 0,\n                            \"stp-bpdu-guard\": 0,\n                            \"stp-root-guard\": 0,\n                            \"stp-state\": 1,\n                            \"trunk-member\": 0,\n                            \"type\": 0,\n                            \"untagged-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"vlan\": [\n                                \"default\"\n                            ]\n                        },\n                        {\n                            \"access-mode\": 3,\n                            \"acl-group\": [],\n                            \"allow-arp-monitor\": 0,\n                            \"allowed-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"allowed-vlans-all\": 0,\n                            \"arp-inspection-trust\": 0,\n                            \"authenticated-port\": 0,\n                            \"description\": null,\n                            \"dhcp-snoop-option82-override\": null,\n                            \"dhcp-snoop-option82-trust\": 0,\n                            \"dhcp-snooping\": 1,\n                            \"discard-mode\": 0,\n                            \"dsl-profile\": [\n                                \"default\"\n                            ],\n                            \"edge-port\": 1,\n                            \"encrypted-port\": 0,\n                            \"fallback-port\": null,\n                            \"fec-capable\": 0,\n                            \"fec-state\": 3,\n                            \"flap-duration\": 30,\n                            \"flap-rate\": 5,\n                            \"flap-timeout\": 0,\n                            \"flapguard\": 0,\n                            \"flow-control\": 0,\n                            \"fortiswitch-acls\": [],\n                            \"igmp-snooping-flood-reports\": 0,\n                            \"interface-tags\": [],\n                            \"ip-source-guard\": 0,\n                            \"isl-peer-device-sn\": null,\n                            \"lacp-speed\": 0,\n                            \"learning-limit\": 0,\n                            \"lldp-profile\": [\n                                \"default-auto-isl\"\n                            ],\n                            \"lldp-status\": 3,\n                            \"log-mac-event\": 0,\n                            \"loop-guard\": 0,\n                            \"loop-guard-timeout\": 45,\n                            \"mcast-snooping-flood-traffic\": 0,\n                            \"mclag-icl-port\": 0,\n                            \"media-type\": null,\n                            \"member-withdrawal-behavior\": 1,\n                            \"p2p-port\": 0,\n                            \"packet-sampler\": 0,\n                            \"pd-capable\": 0,\n                            \"poe-max-power\": null,\n                            \"poe-mode-bt-cabable\": 0,\n                            \"poe-port-mode\": 2,\n                            \"poe-port-power\": 1,\n                            \"poe-port-priority\": 3,\n                            \"poe-standard\": null,\n                            \"port-name\": \"port8\",\n                            \"port-owner\": null,\n                            \"port-security-policy\": [],\n                            \"ptp-status\": 1,\n                            \"qnq\": [],\n                            \"qos-policy\": [\n                                \"default\"\n                            ],\n                            \"restricted-auth-port\": 0,\n                            \"rpvst-port\": 0,\n                            \"sflow-counter-interval\": 0,\n                            \"status\": 1,\n                            \"sticky-mac\": 0,\n                            \"stp-bpdu-guard\": 0,\n                            \"stp-root-guard\": 0,\n                            \"stp-state\": 1,\n                            \"trunk-member\": 0,\n                            \"type\": 0,\n                            \"untagged-vlans\": [\n                                \"quarantine\"\n                            ],\n                            \"vlan\": [\n                                \"default\"\n                            ]\n                        }\n                    ],\n                    \"ptp-profile\": [\n                        \"default\"\n                    ],\n                    \"ptp-status\": 0,\n                    \"purdue-level\": 3,\n                    \"qos-drop-policy\": 0,\n                    \"qos-red-probability\": 12,\n                    \"radius-nas-ip-override\": 0,\n                    \"route-offload\": 0,\n                    \"route-offload-mclag\": 0,\n                    \"route-offload-router\": null,\n                    \"switch-id\": \"LargeOffice-Switch\",\n                    \"tunnel-discovered\": 0,\n                    \"vlan\": null\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerA - Fabric Authorization Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/fabric/authorization/template\",\n            \"data\": [\n                {\n                    \"name\": \"LargeOffice-Fabric\",\n                    \"switch-controller\": 1,\n                    \"platforms\": [\n                        {\n                            \"count\": \"5\",\n                            \"fortilink\": \"fortilink\",\n                            \"prefix\": \"S108DV\",\n                            \"type\": 3\n                        }\n                    ],\n                    \"wireless-controller\": 0,\n                    \"extender-controller\": 0\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerA - LargeOffice Template Group",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/tmplgrp/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"LargeOffice-Templates\",\n                    \"template group setting\": {\n                        \"cliprofs\": [\n                            \"Edge-Jinja\"\n                        ],\n                        \"fspprofs\": [\n                            \"LargeOffice-Switch\"\n                        ],\n                        \"templates\": [\n                            \"1__Basic-Settings\",\n                            \"4-2__Underlay-Static\",\n                            \"5__Edge-SDWAN\"\n                        ]\n                    },\n                    \"type\": \"tmplgrp\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerA - LargeOffice Device Blueprint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-LargeOffice\",\n                    \"dev-group\": \"Edge-LargeOffice\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"LargeOffice-Templates\",\n                    \"auth-template\": \"LargeOffice-Fabric\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "- Breakpoint -",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"postman.setNextRequest(null);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/sys/status\"\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
