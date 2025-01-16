@@ -7,13 +7,16 @@ echo Running postinst...
 status_fail=0
 
 apt update
-apt install nodejs npm python3-paramiko python3-jinja2 nano -y
+apt install nodejs npm python3-paramiko python3-jinja2 python3-netaddr nano sshpass -y
 npm install -g newman
-pip3 install paramiko-expect --break-system-packages
+pip3 install paramiko-expect ansible --break-system-packages
 
 echo "----------------------------------"
 echo "Starting instance configuration..."
 echo "----------------------------------"
+
+# Install .bashrc
+cp /fortipoc/.bashrc ~
 
 if [ -f /fortipoc/.hol_sdwan ]
 then
@@ -52,6 +55,11 @@ else
   echo -e "\n\033[0;31mFATAL:\033[0m Some devices didn't finish booting or do not have valid licenses!"
   status_fail=1
 fi
+
+# Install ssh_config
+cp /fortipoc/ssh_config ~/.ssh/config
+echo UserKnownHostsFile /dev/null >> /etc/ssh/ssh_config
+echo StrictHostKeyChecking no >> /etc/ssh/ssh_config
 
 if [ $status_fail -eq 0 ];
 then
