@@ -11,12 +11,12 @@ start=`date +%s`
 api_ver=${API_VER:-hol-4.0}
 jinja_ver=${JINJA_VER:-hol-4.0}
 
-# echo -----------------------------------------------------------------------
-# echo Downloading the latest version of the Jinja Orchestrator for $jinja_ver...
-# echo -----------------------------------------------------------------------
-# mkdir -p tenants/shared
-# wget -O tenants/shared/jinja.zip https://github.com/fortinet-solutions-cse/sdwan-advpn-reference/archive/refs/tags/$jinja_ver.zip
-# unzip -o tenants/shared/jinja.zip "sdwan-advpn-reference-$jinja_ver/dynamic-bgp-on-lo/*.j2" -d tenants/shared/
+echo -----------------------------------------------------------------------
+echo Downloading the latest version of the Jinja Orchestrator for $jinja_ver...
+echo -----------------------------------------------------------------------
+mkdir -p tenants/shared
+wget -O tenants/shared/jinja.zip https://github.com/fortinet-solutions-cse/sdwan-advpn-reference/archive/refs/tags/$jinja_ver.zip
+unzip -o tenants/shared/jinja.zip "sdwan-advpn-reference-$jinja_ver/dynamic-bgp-on-lo/*.j2" -d tenants/shared/
 
 echo
 echo -----------------------------------------------------------------------
