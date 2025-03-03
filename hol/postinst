@@ -16,8 +16,8 @@ echo "Starting instance configuration..."
 echo "----------------------------------"
 
 # Install .bashrc
+echo Updating .bashrc...
 cp /fortipoc/.bashrc ~
-
 if [ -f /fortipoc/.hol_sdwan ]
 then
   echo This is an SDWAN-only instance.
@@ -25,7 +25,14 @@ then
   echo export HOL_SDWAN=1 >> ~/.bashrc
 fi
 
+# Install ssh_config
+echo Updating ssh_config...
+cp /fortipoc/ssh_config ~/.ssh/config
+echo UserKnownHostsFile /dev/null >> /etc/ssh/ssh_config
+echo StrictHostKeyChecking no >> /etc/ssh/ssh_config
+
 # Download HoL files and unpack the Deployer
+echo Downloading HoL files and installing the Deployer...
 cd /fortipoc
 ./setup_deployer.sh
 
@@ -55,11 +62,6 @@ else
   echo -e "\n\033[0;31mFATAL:\033[0m Some devices didn't finish booting or do not have valid licenses!"
   status_fail=1
 fi
-
-# Install ssh_config
-cp /fortipoc/ssh_config ~/.ssh/config
-echo UserKnownHostsFile /dev/null >> /etc/ssh/ssh_config
-echo StrictHostKeyChecking no >> /etc/ssh/ssh_config
 
 if [ $status_fail -eq 0 ];
 then
