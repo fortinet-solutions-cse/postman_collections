@@ -8,4 +8,4 @@
 
 # $1 : optional Deployer args (e.g. '--verbose')
 
-ORCH_TENANT=CustomerA ./hol_autodeploy.sh $1
+ORCH_TENANT=CustomerB ./hol_autodeploy.sh $1
