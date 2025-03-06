@@ -4,7 +4,7 @@ fmg_user: admin
 fmg_password: fortinet
 fmg_adom: CustomerU
 
-postman_collection: tenants/shared/Managed_SDWAN_7_4_x.postman.json
+postman_collection: tenants/shared/Managed_SDWAN_7_6_x.postman.json
 default_skip_tags: lab
 
 fgfm_ip: 192.168.0.15
@@ -33,16 +33,16 @@ tasks:
   - name: Import Project Template (dyn_bgp only)
     type: cli_templates
     src: tenants/CustomerU/Project.dyn_bgp.j2
-    rename: Project
+    rename: 00-Project
     tag: lab
   - name: Import Project Template (mixed)
     type: cli_templates
     src: tenants/CustomerU/Project.mixed.j2
-    rename: Project
+    rename: 00-Project
     tag: mixed
   - name: Import Jinja CLI Templates
     type: cli_templates
-    src: tenants/shared/sdwan-advpn-reference-hol-3.0/dynamic-bgp-on-lo/*.j2
+    src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/*.j2
     tag: foundation
   - name: Create CLI Template Groups
     type: postman
