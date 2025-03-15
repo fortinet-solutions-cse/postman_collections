@@ -64,6 +64,7 @@ tasks:
   - name: Create Model Devices
     type: model_devices
     src: tenants/CustomerU/inventory.CustomerU.csv
+    fos: 7.6
     tag: model_devices
   - name: Install Model Devices (Staging)
     type: postman
