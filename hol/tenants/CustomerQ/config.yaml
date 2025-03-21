@@ -1,0 +1,71 @@
+---
+fmg_host: 192.168.0.15
+fmg_user: admin
+fmg_password: fortinet
+fmg_adom: CustomerQ
+
+postman_collection: tenants/shared/Managed_SDWAN_7_6_x.postman.json
+default_skip_tags: lab
+
+fgfm_ip: 192.168.0.15
+fgt_user: admin
+fgt_password: fortinet
+
+sites:
+  site1-1:
+    ip: 192.168.0.31
+  site1-2:
+    ip: 192.168.0.32
+  site2-1:
+    ip: 192.168.0.33
+  site1-H1:
+    ip: 192.168.0.41
+  site1-H2:
+    ip: 192.168.0.42
+  site2-H1:
+    ip: 192.168.0.43
+
+tasks:
+  - name: Create Foundation
+    type: postman
+    folder: Foundation
+    tag: foundation
+  - name: Create Variables
+    type: postman
+    folder: CustomerQ - Variables
+    tag: foundation    
+  - name: Import Project Template (mixed)
+    type: cli_templates
+    src: tenants/CustomerQ/Project.mixed.j2
+    rename: 00-Project
+    tag: mixed
+  - name: Import Jinja CLI Templates
+    type: cli_templates
+    src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/*.j2
+    tag: foundation
+  - name: Create CLI Template Groups
+    type: postman
+    folder: Create CLI Template Groups
+    tag: foundation
+  - name: Finalize Foundation
+    type: postman
+    folder: CustomerQ - Finalize
+    vars: tenants/CustomerQ/postman.vars.yaml
+    tag: foundation
+  - name: Fine-tune SD-WAN
+    type: postman
+    folder: CustomerQ - Fine-tune SD-WAN
+    tag: fine-tune-sdwan
+  - name: Create Model Devices
+    type: model_devices
+    src: tenants/CustomerQ/inventory.CustomerQ.csv
+    fos: 7.6
+    tag: model_devices
+  - name: Install Model Devices (Staging)
+    type: postman
+    folder: CustomerQ - Staging
+    tag: staging
+  - name: Onboard Devices
+    type: onboard
+    src: tenants/CustomerQ/inventory.CustomerQ.csv
+    tag: onboard
