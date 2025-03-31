@@ -6,7 +6,7 @@
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
 
-# $1 : optional Deployer args (e.g. '--verbose')
+# $@ : optional Deployer args (e.g. '--verbose')
 
 start=`date +%s`
 
@@ -37,7 +37,7 @@ echo
 echo ---------------------------------
 echo Starting the Solution Deployer...
 echo ---------------------------------
-./autodeploy.py $1
+./autodeploy.py "$@"
 
 end=`date +%s`
 min=$((($end-$start)/60))

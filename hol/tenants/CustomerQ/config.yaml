@@ -38,7 +38,7 @@ tasks:
     type: cli_templates
     src: tenants/CustomerQ/Project.mixed.j2
     rename: 00-Project
-    tag: mixed
+    tag: foundation
   - name: Import Jinja CLI Templates
     type: cli_templates
     src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/*.j2

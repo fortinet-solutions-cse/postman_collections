@@ -6,6 +6,6 @@
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
 
-# $1 : optional Deployer args (e.g. '--verbose')
+# $@ : optional Deployer args (e.g. '--verbose')
 
-ORCH_TENANT=CustomerA ./hol_autodeploy.sh $1
+ORCH_TENANT=CustomerA ./hol_autodeploy.sh "$@"
