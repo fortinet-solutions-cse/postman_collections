@@ -4490,6 +4490,50 @@
 					"name": "CustomerU - Staging",
 					"item": [
 						{
+							"name": "Set Location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/site1-1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.837789\",\n                \"gui-device-longitude\": \"-0.57918\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-2/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.494887\",\n                \"gui-device-longitude\": \"11.3426163\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site2-1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.8125449\",\n                \"gui-device-longitude\": \"20.46123\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-H1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"48.856614\",\n                \"gui-device-longitude\": \"2.3522219\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-H2/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"52.3675734\",\n                \"gui-device-longitude\": \"4.9041389\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site2-H1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"52.2296756\",\n                \"gui-device-longitude\": \"21.0122287\"\n            }\n        }                                        \n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Generate Certificate - Hubs",
 							"event": [
 								{
@@ -5317,6 +5361,50 @@
 					"name": "CustomerQ - Staging",
 					"item": [
 						{
+							"name": "Set Location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/site1-1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.837789\",\n                \"gui-device-longitude\": \"-0.57918\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-2/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.494887\",\n                \"gui-device-longitude\": \"11.3426163\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site2-1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.8125449\",\n                \"gui-device-longitude\": \"20.46123\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-H1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"48.856614\",\n                \"gui-device-longitude\": \"2.3522219\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-H2/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"52.3675734\",\n                \"gui-device-longitude\": \"4.9041389\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site2-H1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"52.2296756\",\n                \"gui-device-longitude\": \"21.0122287\"\n            }\n        }                                        \n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Generate Certificate - Hubs",
 							"event": [
 								{
@@ -5524,6 +5612,308 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Add Model Devices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"function failedResponse(str) {",
+							"    return str != \"devaddsuccess\" && str != \"model device with the same PSK exists\" && str != \"devnameused\"",
+							"}",
+							"",
+							"function waitOnTask(retries) {",
+							"    if (!retries) {",
+							"        pm.test(\"Task completed\", function() {",
+							"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+							"        });",
+							"        postman.setNextRequest(null);",
+							"    }",
+							"    else {",
+							"        pm.sendRequest({",
+							"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+							"            method: 'POST',",
+							"            header: \"Content-Type:application/json\",",
+							"            body: {",
+							"                mode: 'raw',",
+							"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+							"            }",
+							"        }, function(err, response) {",
+							"            var jsonData = response.json();",
+							"            if (jsonData.result[0].data.percent == 100) {",
+							"                // Task completed",
+							"                if (jsonData.result[0].data.num_err && ",
+							"                    (",
+							"                        failedResponse(jsonData.result[0].data.line[0].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[1].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[2].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[3].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[4].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[5].detail)                    ",
+							"                    )) {",
+							"                    postman.setNextRequest(null);",
+							"                }",
+							"                pm.test(\"Task completed\", function() {",
+							"                    pm.expect(jsonData.result[0].data.line[0].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[1].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[2].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[3].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[4].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[5].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                });",
+							"            }",
+							"            else {",
+							"                console.log(\"Task is still not complete\");",
+							"                setTimeout(function() {",
+							"                    waitOnTask(--retries);",
+							"                }, 10000);",
+							"            }",
+							"        }); ",
+							"    }",
+							"}",
+							"",
+							"var jsonData = pm.response.json();",
+							"var taskid = jsonData.result[0].data.taskid;",
+							"",
+							"waitOnTask(10);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"add-dev-list\": [\n                    {\n                        \"name\": \"site1-1\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Edge-West-RegionalHQ\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": 7,\n                        \"mr\": 6,                        \n                        \"sn\": \"FGVMMLTM25000805\",\n                        \"latitude\": \"44.837789\",\n                        \"longitude\": \"-0.57918\",\n                        \"meta fields\": {\n                            \"Address\": \"Bordeaux, France\"\n                        }\n                    }\n                ]\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Model Devices NoLoc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"function failedResponse(str) {",
+							"    return str != \"devaddsuccess\" && str != \"model device with the same PSK exists\" && str != \"devnameused\"",
+							"}",
+							"",
+							"function waitOnTask(retries) {",
+							"    if (!retries) {",
+							"        pm.test(\"Task completed\", function() {",
+							"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
+							"        });",
+							"        postman.setNextRequest(null);",
+							"    }",
+							"    else {",
+							"        pm.sendRequest({",
+							"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
+							"            method: 'POST',",
+							"            header: \"Content-Type:application/json\",",
+							"            body: {",
+							"                mode: 'raw',",
+							"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
+							"            }",
+							"        }, function(err, response) {",
+							"            var jsonData = response.json();",
+							"            if (jsonData.result[0].data.percent == 100) {",
+							"                // Task completed",
+							"                if (jsonData.result[0].data.num_err && ",
+							"                    (",
+							"                        failedResponse(jsonData.result[0].data.line[0].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[1].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[2].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[3].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[4].detail) ||",
+							"                        failedResponse(jsonData.result[0].data.line[5].detail)                    ",
+							"                    )) {",
+							"                    postman.setNextRequest(null);",
+							"                }",
+							"                pm.test(\"Task completed\", function() {",
+							"                    pm.expect(jsonData.result[0].data.line[0].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[1].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[2].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[3].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[4].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                    pm.expect(jsonData.result[0].data.line[5].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
+							"                });",
+							"            }",
+							"            else {",
+							"                console.log(\"Task is still not complete\");",
+							"                setTimeout(function() {",
+							"                    waitOnTask(--retries);",
+							"                }, 10000);",
+							"            }",
+							"        }); ",
+							"    }",
+							"}",
+							"",
+							"var jsonData = pm.response.json();",
+							"var taskid = jsonData.result[0].data.taskid;",
+							"",
+							"waitOnTask(10);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"add-dev-list\": [\n                    {\n                        \"name\": \"site1-1\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Edge-West-RegionalHQ\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": 7,\n                        \"mr\": 6,                        \n                        \"sn\": \"FGVMMLTM25000805\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Variables",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/hostname/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"site1-1\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/loopback/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.200.1.1\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/profile/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"OneSizeFitsAll\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/region/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"West\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/isp1_intf/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"port1\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/isp2_intf/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"port2\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/mpls_intf/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"port4\"\n                }\n            ]\n        },   \n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/lan_intf/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"port5\"\n                }\n            ]\n        }, \n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/lan_ip/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.0.1.1/24\"\n                }\n            ]\n        }, \n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/lan2_intf/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"port6\"\n                }\n            ]\n        },   \n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/lan2_ip/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.0.101.1/24\"\n                }\n            ]\n        }                                                                           \n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Device",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/device\",\n            \"fields\": [\n                \"name\",\n                \"location_from\",\n                \"latitude\",\n                \"longitude\"\n            ],\n            \"loadsub\": 0\n        }\n    ],\n    \"session\": \"{{session}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{ip}}/jsonrpc",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"jsonrpc"
+					]
+				}
+			},
+			"response": []
 		},
 		{
 			"name": "Login",
