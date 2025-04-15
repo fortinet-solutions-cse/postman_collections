@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # update_postman_vars.py                                                     #
-# Uni-SASE HoL, Version 3.0 b100                                             #
+# Uni-SASE HoL, Version 4.0 b100                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
