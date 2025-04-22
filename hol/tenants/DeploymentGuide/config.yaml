@@ -1,14 +1,12 @@
 ---
 fmg_host: 192.168.0.15
 fmg_user: admin
-fmg_password: fortinet
 fmg_adom: CustomerC
 
 postman_collection: tenants/shared/Deployment_Guide_SDWAN_7_4_x.postman.json
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
-fgt_password: fortinet
 
 sites:
   site1-1:

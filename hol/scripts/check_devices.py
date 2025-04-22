@@ -7,13 +7,12 @@
 # -------------------------------------------------------------------------- #
 
 import os
-from orch_base import runCLICommandTask, getSystemStatus
+from orch_base import readConfig, runCLICommandTask, getSystemStatus
 from yaml import safe_load
 
 def main():
     
-    with open('tenants/shared/config.yaml', 'r') as cfgfile:
-        cfg = safe_load(cfgfile)
+    cfg = readConfig(shared=True, silent=True)
 
     fail = 0
     sdwan_only = os.environ.get("HOL_SDWAN")

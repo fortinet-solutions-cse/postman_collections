@@ -1,7 +1,6 @@
 ---
 fmg_host: 192.168.0.15
 fmg_user: admin
-fmg_password: fortinet
 fmg_adom: CustomerQ
 
 postman_collection: tenants/shared/Managed_SDWAN_7_6_x.postman.json
@@ -9,7 +8,6 @@ default_skip_tags: lab
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
-fgt_password: fortinet
 
 sites:
   site1-1:

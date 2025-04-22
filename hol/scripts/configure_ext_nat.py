@@ -7,13 +7,12 @@
 # -------------------------------------------------------------------------- #
 
 import re
-from orch_base import runCLICommandTask, applyCLIConfigTask
+from orch_base import readConfig, runCLICommandTask, applyCLIConfigTask
 from yaml import safe_load
 
 def main():
     
-    with open('tenants/shared/config.yaml', 'r') as cfgfile:
-        cfg = safe_load(cfgfile)
+    cfg = readConfig(shared=True, silent=True)
 
     task = {
         'site': 'zz_ext',

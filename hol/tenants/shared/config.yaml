@@ -1,6 +1,5 @@
 ---
 fgt_user: admin
-fgt_password: fortinet
 sites:
   site1-1:
     ip: 192.168.0.31
