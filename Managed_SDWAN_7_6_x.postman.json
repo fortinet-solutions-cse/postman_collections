@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8ee57fc7-5572-4f8a-b53f-e0b15d4c278c",
+		"_postman_id": "4b3226d8-137e-4473-8689-8cd1317a28ee",
 		"name": "Managed Secure SD-WAN 7.6.x",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "35013783"
@@ -3470,6 +3470,45 @@
 							"response": []
 						},
 						{
+							"name": "Finalize Firewall Rules - Hubs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/1\",\n            \"data\": {\n                \"srcintf\": [\n                    \"overlay\",\n                    \"hub2hub_overlay\"\n                ],\n                \"dstintf\": [\n                    \"overlay\",\n                    \"hub2hub_overlay\"\n                ]\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/2\",\n            \"data\": {\n                \"srcintf\": [\n                    \"lan_zone\",\n                    \"overlay\",\n                    \"hub2hub_overlay\"\n                ],\n                \"dstintf\": [\n                    \"lan_zone\",\n                    \"overlay\",\n                    \"hub2hub_overlay\"\n                ]\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/6\",\n            \"data\": {\n                \"srcintf\": [\n                    \"overlay\",\n                    \"hub2hub_overlay\"\n                ],\n                \"dstintf\": [\n                    \"Lo\"\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Create Template Groups",
 							"event": [
 								{
@@ -5145,6 +5184,45 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Hub-SDWAN/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"$(isp1_intf)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 2,\n                        \"interface\": \"$(isp2_intf)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 3,\n                        \"interface\": \"EDGE_ISP1\",\n                        \"priority\": 10,\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 4,\n                        \"interface\": \"EDGE_ISP2\",\n                        \"priority\": 10,\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 5,\n                        \"interface\": \"EDGE_MPLS\",\n                        \"priority\": 10,\n                        \"zone\": \"overlay\"\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"EDGE\",\n                        \"detect-mode\": 4,\n                        \"members\": [\n                            \"3\",\n                            \"4\",\n                            \"5\"\n                        ],\n                        \"sla-id-redistribute\": 1,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 100,\n                                \"link-cost-factor\": 1,\n                                \"priority-in-sla\": 5,\n                                \"priority-out-sla\": 8\n                            }\n                        ]\n                    },\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"update-cascade-interface\": 0,\n                        \"update-static-route\": 0\n                    }\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Finalize Firewall Rules - Hubs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/1\",\n            \"data\": {\n                \"srcintf\": [\n                    \"overlay\",\n                    \"hub2hub_overlay\"\n                ],\n                \"dstintf\": [\n                    \"overlay\",\n                    \"hub2hub_overlay\"\n                ]\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/2\",\n            \"data\": {\n                \"srcintf\": [\n                    \"lan_zone\",\n                    \"overlay\",\n                    \"hub2hub_overlay\"\n                ],\n                \"dstintf\": [\n                    \"lan_zone\",\n                    \"overlay\",\n                    \"hub2hub_overlay\"\n                ]\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/6\",\n            \"data\": {\n                \"srcintf\": [\n                    \"overlay\",\n                    \"hub2hub_overlay\"\n                ],\n                \"dstintf\": [\n                    \"Lo\"\n                ]\n            }\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
