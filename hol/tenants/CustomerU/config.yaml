@@ -71,4 +71,5 @@ tasks:
   - name: Onboard Devices
     type: onboard
     src: tenants/CustomerU/inventory.CustomerU.csv
+    monitor: yes
     tag: onboard
