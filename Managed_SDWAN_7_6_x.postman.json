@@ -2413,6 +2413,50 @@
 					"name": "CustomerA - Staging",
 					"item": [
 						{
+							"name": "Set Location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/site1-1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.837789\",\n                \"gui-device-longitude\": \"-0.57918\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-2/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.494887\",\n                \"gui-device-longitude\": \"11.3426163\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-H1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"48.856614\",\n                \"gui-device-longitude\": \"2.3522219\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-H2/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"52.3675734\",\n                \"gui-device-longitude\": \"4.9041389\"\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Generate Certificate - Hubs",
 							"event": [
 								{
