@@ -28,14 +28,15 @@ echo
 echo ------------------------------
 echo Generating device inventory...
 echo ------------------------------
-./generate_inventory.py | grep -A 9 "inventory.CustomerU.csv" | tail -n +3 > tenants/CustomerU/inventory.CustomerU.csv
+./generate_inventory.py | grep -A 8 "inventory.CustomerU.csv" | tail -n +3 > tenants/CustomerU/inventory.CustomerU.csv
+./generate_inventory.py | grep -A 6 "inventory.CustomerU.csv" | tail -n +3 > tenants/CustomerU/inventory.CustomerU_West.csv
 cat tenants/CustomerU/inventory.CustomerU.csv
 
 echo
 echo ---------------------------------
 echo Starting the Solution Deployer...
 echo ---------------------------------
-ORCH_TENANT=CustomerU ./autodeploy.py
+ORCH_TENANT=CustomerU ./autodeploy.py "$@"
 
 end=`date +%s`
 min=$((($end-$start)/60))
