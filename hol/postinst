@@ -7,15 +7,32 @@ echo Running postinst...
 status_fail=0
 
 apt update
-apt install nodejs npm python3-paramiko python3-jinja2 nano -y
+apt install nodejs npm python3-paramiko python3-jinja2 python3-netaddr nano sshpass -y
 npm install -g newman
-pip3 install paramiko-expect --break-system-packages
+pip3 install paramiko-expect ansible --break-system-packages
 
 echo "----------------------------------"
 echo "Starting instance configuration..."
 echo "----------------------------------"
 
+# Install .bashrc
+echo Updating .bashrc...
+cp /fortipoc/.bashrc ~
+if [ -f /fortipoc/.hol_sdwan ]
+then
+  echo This is an SDWAN-only instance.
+  export HOL_SDWAN=1
+  echo export HOL_SDWAN=1 >> ~/.bashrc
+fi
+
+# Install ssh_config
+echo Updating ssh_config...
+cp /fortipoc/ssh_config ~/.ssh/config
+echo UserKnownHostsFile /dev/null >> /etc/ssh/ssh_config
+echo StrictHostKeyChecking no >> /etc/ssh/ssh_config
+
 # Download HoL files and unpack the Deployer
+echo Downloading HoL files and installing the Deployer...
 cd /fortipoc
 ./setup_deployer.sh
 

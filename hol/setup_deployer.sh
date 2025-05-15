@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # setup_deployer.sh                                                          #
-# Uni-SASE HoL, Version 3.0 b100                                             #
+# Uni-SASE HoL, Version 3.5 b110                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
@@ -13,7 +13,7 @@
 cd /fortipoc
 rm -rf autodeploy 
 
-hol_ver=${HOL_VER:-hol-3.0}
+hol_ver=${HOL_VER:-hol-3.5}
 
 wget -O $hol_ver.zip https://github.com/fortinet-solutions-cse/postman_collections/archive/refs/tags/$hol_ver.zip
 

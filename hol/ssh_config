@@ -1,0 +1,80 @@
+Host C11
+  Hostname 192.168.0.36
+  User root
+
+Host C12
+  Hostname 192.168.0.37
+  User root
+
+Host C1H1
+  Hostname 192.168.0.46
+  User root
+
+Host C1H2
+  Hostname 192.168.0.47
+  User root
+
+Host C21
+  Hostname 192.168.0.38
+  User root
+
+Host C2H1
+  Hostname 192.168.0.48
+  User root
+
+Host FMG
+  Hostname 192.168.0.15
+  User admin
+
+Host FGT11
+  Hostname 192.168.0.31
+  User admin
+
+Host FGT12
+  Hostname 192.168.0.32
+  User admin
+
+Host FGT1H1
+  Hostname 192.168.0.41
+  User admin
+
+Host FGT1H2
+  Hostname 192.168.0.42
+  User admin
+
+Host FGT21
+  Hostname 192.168.0.33
+  User admin
+
+Host FGT2H1
+  Hostname 192.168.0.43
+  User admin
+
+Host VYOS11
+  Hostname 192.168.0.51
+  User vyos
+  HostKeyAlgorithms +ssh-rsa
+
+Host VYOS12
+  Hostname 192.168.0.52
+  User vyos
+  HostKeyAlgorithms +ssh-rsa
+
+Host VYOS21
+  Hostname 192.168.0.53
+  User vyos
+  HostKeyAlgorithms +ssh-rsa
+
+Host VYOSH
+  Hostname 192.168.0.55
+  User vyos
+  HostKeyAlgorithms +ssh-rsa
+
+Host VYOSM
+  Hostname 192.168.0.56
+  User vyos
+  HostKeyAlgorithms +ssh-rsa
+
+Host ZZEXT
+  Hostname 192.168.0.49
+  User admin
