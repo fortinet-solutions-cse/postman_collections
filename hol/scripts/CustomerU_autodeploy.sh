@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # CustomerU_autodeploy.sh                                                    #
-# Uni-SASE HoL, Version 3.0 b100                                             #
+# Uni-SASE HoL, Version 3.5 b110                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
 
 start=`date +%s`
 
-api_ver=${API_VER:-hol-3.0}
+api_ver=${API_VER:-hol-3.5}
 jinja_ver=${JINJA_VER:-hol-3.0}
 
 echo -----------------------------------------------------------------------
