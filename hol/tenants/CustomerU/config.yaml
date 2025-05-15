@@ -4,7 +4,7 @@ fmg_user: admin
 fmg_adom: CustomerU
 
 postman_collection: tenants/shared/Managed_SDWAN_7_6_x.postman.json
-default_skip_tags: lab
+default_skip_tags: lab_only
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
@@ -36,7 +36,7 @@ tasks:
     type: cli_templates
     src: tenants/CustomerU/Project.dyn_bgp.j2
     rename: 00-Project
-    tag: lab
+    tag: lab_only
   - name: Import Project Template (mixed)
     type: cli_templates
     src: tenants/CustomerU/Project.mixed.j2
