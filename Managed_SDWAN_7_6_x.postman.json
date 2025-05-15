@@ -1329,50 +1329,6 @@
 							"response": []
 						},
 						{
-							"name": "TMP - Create CLI Template - NaughtyFMG",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"prerun-NaughtyFMG\",\n                    \"type\": \"cli\",\n                    \"provision\": 1,\n                    \"script\": \"config system health-check-fortiguard\\n    edit \\\"8X8\\\"\\n        set server \\\"www.8x8.com\\\"\\n    next\\n    edit \\\"ADP\\\"\\n        set server \\\"www.adp.com\\\"\\n    next\\n    edit \\\"AOL\\\"\\n        set server \\\"www.aol.com\\\"\\n    next\\n    edit \\\"AWS dynamodb\\\"\\n        set server \\\"dynamodb.us-east-1.amazonaws.com\\\"\\n    next\\n    edit \\\"AWS ec2\\\"\\n        set server \\\"ec2.us-east-1.amazonaws.com\\\"\\n    next\\n    edit \\\"AWS ecs\\\"\\n        set server \\\"ecs.us-east-1.amazonaws.com\\\"\\n    next\\n    edit \\\"AWS es\\\"\\n        set server \\\"es.us-east-1.amazonaws.com\\\"\\n    next\\n    edit \\\"AWS lambda\\\"\\n        set server \\\"lambda.us-east-1.amazonaws.com\\\"\\n    next\\n    edit \\\"AWS route53\\\"\\n        set server \\\"route53.amazonaws.com\\\"\\n    next\\n    edit \\\"AWS s3\\\"\\n        set server \\\"s3.us-east-1.amazonaws.com\\\"\\n    next\\n    edit \\\"Acronis\\\"\\n        set server \\\"www.acronis.com\\\"\\n    next\\n    edit \\\"Act-on\\\"\\n        set server \\\"www.act-on.com\\\"\\n    next\\n    edit \\\"AdGuard DNS\\\"\\n        set server \\\"adguard-dns.io\\\"\\n    next\\n    edit \\\"AdRoll\\\"\\n        set server \\\"www.adroll.com\\\"\\n    next\\n    edit \\\"Adobe\\\"\\n        set server \\\"www.adobe.com\\\"\\n    next\\n    edit \\\"Aerohive\\\"\\n        set server \\\"www.aerohive.com\\\"\\n    next\\n    edit \\\"Akamai\\\"\\n        set server \\\"www.akamai.com\\\"\\n    next\\n    edit \\\"Alcatel\\\"\\n        set server \\\"www.alcatelmobile.com\\\"\\n    next\\n    edit \\\"Alcatel.Lucent\\\"\\n        set server \\\"www.al-enterprise.com\\\"\\n    next\\n    edit \\\"Alibaba\\\"\\n        set server \\\"www.alibaba.com\\\"\\n    next\\n    edit \\\"Alternate DNS\\\"\\n        set server \\\"alternate-dns.com\\\"\\n    next\\n    edit \\\"Amazon\\\"\\n        set server \\\"www.amazon.com\\\"\\n    next\\n    edit \\\"Anaplan\\\"\\n        set server \\\"www.anaplan.com\\\"\\n    next\\n    edit \\\"AnyDesk\\\"\\n        set server \\\"www.anydesk.com\\\"\\n    next\\n    edit \\\"Apple\\\"\\n        set server \\\"www.apple.com\\\"\\n    next\\n    edit \\\"Apptio\\\"\\n        set server \\\"www.apptio.com\\\"\\n    next\\n    edit \\\"ArcticWolf\\\"\\n        set server \\\"www.arcticwolf.com\\\"\\n    next\\n    edit \\\"Aruba\\\"\\n        set server \\\"www.microsys.it\\\"\\n    next\\n    edit \\\"Aruba.it\\\"\\n        set server \\\"www.aruba.it\\\"\\n    next\\n    edit \\\"Ask\\\"\\n        set server \\\"www.ask.com\\\"\\n    next\\n    edit \\\"Atlassian\\\"\\n        set server \\\"www.atlassian.com\\\"\\n    next\\n    edit \\\"Avast\\\"\\n        set server \\\"www.avg.com\\\"\\n    next\\n    edit \\\"Axon\\\"\\n        set server \\\"www.taser.com\\\"\\n    next\\n    edit \\\"Azion\\\"\\n        set server \\\"www.azion.com\\\"\\n    next\\n    edit \\\"Backblaze\\\"\\n        set server \\\"www.backblaze.com\\\"\\n    next\\n    edit \\\"Baidu\\\"\\n        set server \\\"www.baidu.com\\\"\\n    next\\n    edit \\\"Barracuda\\\"\\n        set server \\\"www.barracuda.com\\\"\\n    next\\n    edit \\\"Bill\\\"\\n        set server \\\"www.bill.com\\\"\\n    next\\n    edit \\\"BinaryEdge\\\"\\n        set server \\\"www.binaryedge.io\\\"\\n    next\\n    edit \\\"Bitdefender\\\"\\n        set server \\\"www.bitdefender.com\\\"\\n    next\\n    edit \\\"BlackBerry\\\"\\n        set server \\\"www.blackberry.com\\\"\\n    next\\n    edit \\\"Blackbaud\\\"\\n        set server \\\"www.blackbaud.com\\\"\\n    next\\n    edit \\\"Blackboard\\\"\\n        set server \\\"www.blackboard.com\\\"\\n    next\\n    edit \\\"Blizzard\\\"\\n        set server \\\"www.blizzard.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Blockchain - Crypto mining pools ar\\\"\\n        set server \\\"www.blockchain.com\\\"\\n    next\\n    edit \\\"Bloomberg\\\"\\n        set server \\\"www.bloomberg.com\\\"\\n    next\\n    edit \\\"Bluejeans\\\"\\n        set server \\\"www.bluejeans.com\\\"\\n    next\\n    edit \\\"Box\\\"\\n        set server \\\"www.box.com\\\"\\n    next\\n    edit \\\"Bunny.net\\\"\\n        set server \\\"www.bunny.net\\\"\\n    next\\n    edit \\\"CDN77\\\"\\n        set server \\\"www.cdn77.com\\\"\\n    next\\n    edit \\\"CNN\\\"\\n        set server \\\"www.cnn.com\\\"\\n    next\\n    edit \\\"CacheFly\\\"\\n        set server \\\"www.cachefly.com\\\"\\n    next\\n    edit \\\"CatoNetworks\\\"\\n        set server \\\"www.catonetworks.com\\\"\\n    next\\n    edit \\\"Censys\\\"\\n        set server \\\"www.censys.io\\\"\\n    next\\n    edit \\\"Cisco\\\"\\n        set server \\\"www.cisco.com\\\"\\n    next\\n    edit \\\"Citrix\\\"\\n        set server \\\"www.gotomeeting.com\\\"\\n    next\\n    edit \\\"CleanBrowsing\\\"\\n        set server \\\"cleanbrowsing.org\\\"\\n    next\\n    edit \\\"ClickMeeting\\\"\\n        set server \\\"www.clickmeeting.com\\\"\\n    next\\n    edit \\\"Cloud4Wi\\\"\\n        set server \\\"www.cloud4wi.com\\\"\\n    next\\n    edit \\\"Cloudflare\\\"\\n        set server \\\"www.cloudflare.com\\\"\\n    next\\n    edit \\\"CoffeeBean\\\"\\n        set server \\\"www.coffeebeantech.com\\\"\\n    next\\n    edit \\\"Controld\\\"\\n        set server \\\"76.76.2.0\\\"\\n    next\\n    edit \\\"Cornerstone\\\"\\n        set server \\\"www.cornerstoneondemand.com\\\"\\n    next\\n    edit \\\"CounterPath\\\"\\n        set server \\\"www.counterpath.com\\\"\\n    next\\n    edit \\\"Coupa\\\"\\n        set server \\\"www.coupa.com\\\"\\n    next\\n    edit \\\"CriminalIP\\\"\\n        set server \\\"www.criminalip.io\\\"\\n    next\\n    edit \\\"CrowdStrike\\\"\\n        set server \\\"www.crowdstrike.com\\\"\\n    next\\n    edit \\\"Cvent\\\"\\n        set server \\\"www.cvent.com\\\"\\n    next\\n    edit \\\"Cybozu\\\"\\n        set server \\\"www.cybozu.com\\\"\\n    next\\n    edit \\\"Dailymotion\\\"\\n        set server \\\"www.dailymotion.com\\\"\\n    next\\n    edit \\\"Datadog\\\"\\n        set server \\\"www.datadoghq.com\\\"\\n    next\\n    edit \\\"Datto\\\"\\n        set server \\\"www.datto.com\\\"\\n    next\\n    edit \\\"Dell\\\"\\n        set server \\\"www.dell.com\\\"\\n    next\\n    edit \\\"DigiCert\\\"\\n        set server \\\"www.digicert.com\\\"\\n    next\\n    edit \\\"DigitalOcean\\\"\\n        set server \\\"status.digitalocean.com\\\"\\n    next\\n    edit \\\"Disney\\\"\\n        set server \\\"www.disney.com\\\"\\n    next\\n    edit \\\"DocuSign\\\"\\n        set server \\\"www.docusign.com\\\"\\n    next\\n    edit \\\"Domo\\\"\\n        set server \\\"www.domo.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Dropbox\\\"\\n        set server \\\"www.dropbox.com\\\"\\n    next\\n    edit \\\"Druva\\\"\\n        set server \\\"www.druva.com\\\"\\n    next\\n    edit \\\"ESET\\\"\\n        set server \\\"www.eset.com\\\"\\n    next\\n    edit \\\"Edgio\\\"\\n        set server \\\"www.edg.io\\\"\\n    next\\n    edit \\\"Egnyte\\\"\\n        set server \\\"www.egnyte.com\\\"\\n    next\\n    edit \\\"Eventbrite\\\"\\n        set server \\\"www.eventbrite.com\\\"\\n    next\\n    edit \\\"Ewon\\\"\\n        set server \\\"www.ewon.biz\\\"\\n    next\\n    edit \\\"Extreme\\\"\\n        set server \\\"www.extremenetworks.com\\\"\\n    next\\n    edit \\\"FSecure\\\"\\n        set server \\\"www.f-secure.com\\\"\\n    next\\n    edit \\\"Facebook\\\"\\n        set server \\\"www.facebook.com\\\"\\n    next\\n    edit \\\"FactSet\\\"\\n        set server \\\"www.factset.com\\\"\\n    next\\n    edit \\\"Fastly\\\"\\n        set server \\\"www.fastly.com\\\"\\n    next\\n    edit \\\"Fintech\\\"\\n        set server \\\"www.fisglobal.com\\\"\\n    next\\n    edit \\\"Five9\\\"\\n        set server \\\"www.five9.com\\\"\\n    next\\n    edit \\\"Forcepoint\\\"\\n        set server \\\"www.forcepoint.com\\\"\\n    next\\n    edit \\\"Fortinet\\\"\\n        set server \\\"www.fortinet.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"FreshBooks\\\"\\n        set server \\\"www.freshbooks.com\\\"\\n    next\\n    edit \\\"FrontlinEeducation\\\"\\n        set server \\\"www.frontlineeducation.com\\\"\\n    next\\n    edit \\\"Frontline\\\"\\n        set server \\\"www.frontlineeducation.com\\\"\\n    next\\n    edit \\\"Fuze\\\"\\n        set server \\\"www.fuze.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"GCP Cloud Service\\\"\\n        set server \\\"abusiveexperiencereport.googleapis.com\\\"\\n    next\\n    edit \\\"GCore.Labs\\\"\\n        set server \\\"www.gcorelabs.com\\\"\\n    next\\n    edit \\\"GTHost\\\"\\n        set server \\\"www.gthost.com\\\"\\n    next\\n    edit \\\"GcoreLabs\\\"\\n        set server \\\"www.gcorelabs.com\\\"\\n    next\\n    edit \\\"Genesys\\\"\\n        set server \\\"www.genesys.com\\\"\\n    next\\n    edit \\\"Gigas\\\"\\n        set server \\\"www.gigas.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"GitHub\\\"\\n        set server \\\"www.github.com\\\"\\n    next\\n    edit \\\"GlobalSign\\\"\\n        set server \\\"www.globalsign.com\\\"\\n    next\\n    edit \\\"GoDaddy\\\"\\n        set server \\\"www.godaddy.com\\\"\\n    next\\n    edit \\\"GoodData\\\"\\n        set server \\\"www.gooddata.com\\\"\\n    next\\n    edit \\\"Google\\\"\\n        set server \\\"www.google.com\\\"\\n    next\\n    edit \\\"HP\\\"\\n        set server \\\"www.hp.com\\\"\\n    next\\n    edit \\\"Hetzner\\\"\\n        set server \\\"www.hetzner.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Hopin\\\"\\n        set server \\\"www.hopin.to\\\"\\n    next\\n    edit \\\"HubSpot\\\"\\n        set server \\\"www.hubspot.com\\\"\\n    next\\n    edit \\\"Hulu\\\"\\n        set server \\\"www.hulu.com\\\"\\n    next\\n    edit \\\"Hurricane.Electric\\\"\\n        set server \\\"www.he.net\\\"\\n    next\\n    edit \\\"IBM\\\"\\n        set server \\\"www.ibm.com\\\"\\n    next\\n    edit \\\"INAP\\\"\\n        set server \\\"www.inap.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"IPFS\\\"\\n        set server \\\"www.ipfs.tech\\\"\\n    next\\n    edit \\\"ISLOnline\\\"\\n        set server \\\"www.islonline.com\\\"\\n    next\\n    edit \\\"Imperva\\\"\\n        set server \\\"www.incapsula.com\\\"\\n    next\\n    edit \\\"Infoblox\\\"\\n        set server \\\"www.infoblox.com\\\"\\n    next\\n    edit \\\"Infomaniak\\\"\\n        set server \\\"www.keliweb.it\\\"\\n    next\\n    edit \\\"InsideSales\\\"\\n        set server \\\"www.insidesales.com\\\"\\n    next\\n    edit \\\"Internet.Census.Group\\\"\\n        set server \\\"www.icgnews.com\\\"\\n    next\\n    edit \\\"Intuit\\\"\\n        set server \\\"www.intuit.com\\\"\\n    next\\n    edit \\\"Jamf\\\"\\n        set server \\\"www.jamf.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Kakao\\\"\\n        set server \\\"www.kakaocorp.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Kaseya\\\"\\n        set server \\\"www.kaseya.com\\\"\\n    next\\n    edit \\\"Kaspersky\\\"\\n        set server \\\"www.kaspersky.com\\\"\\n    next\\n    edit \\\"LaunchDarkly\\\"\\n        set server \\\"www.launchdarkly.com\\\"\\n    next\\n    edit \\\"Lifesize\\\"\\n        set server \\\"www.lifesize.com\\\"\\n    next\\n    edit \\\"LinkedIn\\\"\\n        set server \\\"www.linkedin.com\\\"\\n    next\\n    edit \\\"LogMeIn\\\"\\n        set server \\\"www.logmein.com\\\"\\n    next\\n    edit \\\"Marketo\\\"\\n        set server \\\"www.marketo.com\\\"\\n    next\\n    edit \\\"Matrix42\\\"\\n        set server \\\"www.matrix42.com\\\"\\n    next\\n    edit \\\"McAfee\\\"\\n        set server \\\"www.mcafee.com\\\"\\n    next\\n    edit \\\"MediaFire\\\"\\n        set server \\\"www.mediafire.com\\\"\\n    next\\n    edit \\\"Medianova\\\"\\n        set server \\\"www.netd.com\\\"\\n    next\\n    edit \\\"MicroSoft Azure Cloud Service\\\"\\n        set server \\\"dev.azure.com\\\"\\n    next\\n    edit \\\"Microsoft\\\"\\n        set server \\\"www.microsoft.com\\\"\\n    next\\n    edit \\\"Mimecast\\\"\\n        set server \\\"www.mimecast.com\\\"\\n    next\\n    edit \\\"Mozilla\\\"\\n        set server \\\"www.mozilla.org\\\"\\n    next\\n    edit \\\"MuleSoft\\\"\\n        set server \\\"www.mulesoft.com\\\"\\n    next\\n    edit \\\"Myspace\\\"\\n        set server \\\"www.myspace.com\\\"\\n    next\\n    edit \\\"NIST\\\"\\n        set server \\\"www.nist.gov\\\"\\n        set protocol https\\n    next\\n    edit \\\"Naver\\\"\\n        set server \\\"www.naver.com\\\"\\n    next\\n    edit \\\"NetDocuments\\\"\\n        set server \\\"www.netdocuments.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"NetScout\\\"\\n        set server \\\"www.arbornetworks.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Netflix\\\"\\n        set server \\\"www.netflix.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Netskope\\\"\\n        set server \\\"www.netskope.com\\\"\\n    next\\n    edit \\\"Neustar\\\"\\n        set server \\\"www.home.neustar\\\"\\n    next\\n    edit \\\"NewRelic\\\"\\n        set server \\\"www.newrelic.com\\\"\\n    next\\n    edit \\\"NextDNS\\\"\\n        set server \\\"www.nextdns.io\\\"\\n    next\\n    edit \\\"Nice\\\"\\n        set server \\\"www.nice.com\\\"\\n    next\\n    edit \\\"NodePing\\\"\\n        set server \\\"www.nodeping.com\\\"\\n    next\\n    edit \\\"Nutanix\\\"\\n        set server \\\"www.nutanix.com\\\"\\n    next\\n    edit \\\"OVHcloud\\\"\\n        set server \\\"www.ovhcloud.com\\\"\\n    next\\n    edit \\\"Okko\\\"\\n        set server \\\"www.kinopoisk.ru\\\"\\n    next\\n    edit \\\"Okta\\\"\\n        set server \\\"www.okta.com\\\"\\n    next\\n    edit \\\"OneLogin\\\"\\n        set server \\\"www.onelogin.com\\\"\\n    next\\n    edit \\\"OpenNIC\\\"\\n        set server \\\"www.opennic.org\\\"\\n        set protocol https\\n    next\\n    edit \\\"Oracle\\\"\\n        set server \\\"www.oraclecloud.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Panda\\\"\\n        set server \\\"www.pandasecurity.com\\\"\\n    next\\n    edit \\\"PandaSecurity\\\"\\n        set server \\\"www.pandasecurity.com\\\"\\n    next\\n    edit \\\"Pandora\\\"\\n        set server \\\"www.pandora.com\\\"\\n    next\\n    edit \\\"PayPal\\\"\\n        set server \\\"www.paypal.com\\\"\\n    next\\n    edit \\\"Paychex\\\"\\n        set server \\\"www.paychex.com\\\"\\n    next\\n    edit \\\"Paylocity\\\"\\n        set server \\\"www.paylocity.com\\\"\\n    next\\n    edit \\\"Performive\\\"\\n        set server \\\"www.performive.com\\\"\\n    next\\n    edit \\\"Pexip\\\"\\n        set server \\\"www.pexip.com\\\"\\n    next\\n    edit \\\"Phishing - Malicious servers used f\\\"\\n        set server \\\"www.phishing.com\\\"\\n    next\\n    edit \\\"Pingdom\\\"\\n        set server \\\"www.pingdom.com\\\"\\n    next\\n    edit \\\"Pinterest\\\"\\n        set server \\\"www.pinterest.com\\\"\\n    next\\n    edit \\\"Pitney.Bowes\\\"\\n        set server \\\"www.pitneybowes.com\\\"\\n    next\\n    edit \\\"PitneyBowes\\\"\\n        set server \\\"www.pitneybowes.com\\\"\\n    next\\n    edit \\\"Poly\\\"\\n        set server \\\"www.poly.com\\\"\\n    next\\n    edit \\\"Quad9\\\"\\n        set server \\\"9.9.9.9\\\"\\n    next\\n    edit \\\"Qualys\\\"\\n        set server \\\"www.qualys.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Quovadisglobal\\\"\\n        set server \\\"www.quovadisglobal.com\\\"\\n    next\\n    edit \\\"Rackspace\\\"\\n        set server \\\"www.mailgun.com\\\"\\n    next\\n    edit \\\"Rapid7\\\"\\n        set server \\\"www.rapid7.com\\\"\\n    next\\n    edit \\\"RealNetworks\\\"\\n        set server \\\"www.real.com\\\"\\n    next\\n    edit \\\"Recyber\\\"\\n        set server \\\"www.recyber.net\\\"\\n    next\\n    edit \\\"RedShield\\\"\\n        set server \\\"www.redshield.co\\\"\\n    next\\n    edit \\\"Redhat\\\"\\n        set server \\\"www.redhat.com\\\"\\n    next\\n    edit \\\"Restream\\\"\\n        set server \\\"www.restream.io\\\"\\n        set protocol https\\n    next\\n    edit \\\"RingCentral\\\"\\n        set server \\\"www.ringcentral.com\\\"\\n    next\\n    edit \\\"SAP\\\"\\n        set server \\\"www.sap.com\\\"\\n    next\\n    edit \\\"Salesforce\\\"\\n        set server \\\"www.salesforce.com\\\"\\n    next\\n    edit \\\"Sectigo\\\"\\n        set server \\\"www.instantssl.com\\\"\\n    next\\n    edit \\\"Sendgrid\\\"\\n        set server \\\"www.sendgrid.com\\\"\\n    next\\n    edit \\\"SentinelOne\\\"\\n        set server \\\"www.sentinelone.com\\\"\\n    next\\n    edit \\\"ServiceMax\\\"\\n        set server \\\"www.servicemax.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"ServiceNow\\\"\\n        set server \\\"www.servicenow.com\\\"\\n    next\\n    edit \\\"Shadowserver\\\"\\n        set server \\\"www.shadowserver.org\\\"\\n    next\\n    edit \\\"Shodan\\\"\\n        set server \\\"exploits.shodan.io\\\"\\n    next\\n    edit \\\"Shopify\\\"\\n        set server \\\"www.shopify.com\\\"\\n    next\\n    edit \\\"SiriusXM\\\"\\n        set server \\\"www.siriusxm.com\\\"\\n    next\\n    edit \\\"Skyfii\\\"\\n        set server \\\"www.skyfii.io\\\"\\n    next\\n    edit \\\"Slack\\\"\\n        set server \\\"www.slack.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Snap\\\"\\n        set server \\\"www.snap.com\\\"\\n    next\\n    edit \\\"SolarWinds\\\"\\n        set server \\\"www.solarwinds.com\\\"\\n    next\\n    edit \\\"Sony\\\"\\n        set server \\\"www.sony.com\\\"\\n    next\\n    edit \\\"Sophos\\\"\\n        set server \\\"www.sophos.com\\\"\\n    next\\n    edit \\\"Splashtop\\\"\\n        set server \\\"www.splashtop.com\\\"\\n    next\\n    edit \\\"Splunk\\\"\\n        set server \\\"www.splunk.com\\\"\\n    next\\n    edit \\\"Spotify\\\"\\n        set server \\\"www.spotify.com\\\"\\n    next\\n    edit \\\"StackPath\\\"\\n        set server \\\"www.stackpath.com\\\"\\n    next\\n    edit \\\"Stretchoid\\\"\\n        set server \\\"www.stretchoid.com\\\"\\n    next\\n    edit \\\"Stripe\\\"\\n        set server \\\"www.stripe.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"SurveyMonkey\\\"\\n        set server \\\"www.surveymonkey.com\\\"\\n    next\\n    edit \\\"Symantec\\\"\\n        set server \\\"www.symantec.com\\\"\\n    next\\n    edit \\\"Tableau\\\"\\n        set server \\\"public.tableau.com\\\"\\n    next\\n    edit \\\"Tally\\\"\\n        set server \\\"www.tallysolutions.com\\\"\\n    next\\n    edit \\\"TeamViewer\\\"\\n        set server \\\"www.teamviewer.com\\\"\\n    next\\n    edit \\\"Telegram\\\"\\n        set server \\\"www.telegram.org\\\"\\n        set protocol https\\n    next\\n    edit \\\"Tenable\\\"\\n        set server \\\"www.nessus.org\\\"\\n    next\\n    edit \\\"Tencent\\\"\\n        set server \\\"www.tencent.com\\\"\\n    next\\n    edit \\\"ThreatLocker\\\"\\n        set server \\\"www.threatlocker.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Tor\\\"\\n        set server \\\"www.torproject.org\\\"\\n    next\\n    edit \\\"TrendMicro\\\"\\n        set server \\\"www.trendmicro.com\\\"\\n    next\\n    edit \\\"Truecaller\\\"\\n        set server \\\"www.truecaller.com\\\"\\n    next\\n    edit \\\"Turkcell\\\"\\n        set server \\\"turkcell.com.tr\\\"\\n    next\\n    edit \\\"Twilio\\\"\\n        set server \\\"www.twilio.com\\\"\\n    next\\n    edit \\\"Twitter\\\"\\n        set server \\\"www.twitter.com\\\"\\n    next\\n    edit \\\"UK.NCSC\\\"\\n        set server \\\"www.ncsc.gov.uk\\\"\\n    next\\n    edit \\\"Ubiquiti\\\"\\n        set server \\\"www.ubnt.com\\\"\\n    next\\n    edit \\\"UptimeRobot\\\"\\n        set server \\\"www.uptimerobot.com\\\"\\n    next\\n    edit \\\"VK\\\"\\n        set server \\\"www.vk.com\\\"\\n    next\\n    edit \\\"VMware\\\"\\n        set server \\\"www.vmware.com\\\"\\n    next\\n    edit \\\"VNC\\\"\\n        set server \\\"www.realvnc.com\\\"\\n    next\\n    edit \\\"VPN - Servers providing Anonymizing\\\"\\n        set server \\\"www.nordvpn.com\\\"\\n    next\\n    edit \\\"VadeSecure\\\"\\n        set server \\\"www.vadesecure.com\\\"\\n    next\\n    edit \\\"ValveSoftware\\\"\\n        set server \\\"www.valvesoftware.com\\\"\\n    next\\n    edit \\\"Veracode\\\"\\n        set server \\\"www.veracode.com\\\"\\n    next\\n    edit \\\"VeriSign\\\"\\n        set server \\\"www.verisign.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Veritas\\\"\\n        set server \\\"www.netbackup.com\\\"\\n    next\\n    edit \\\"Vidyo\\\"\\n        set server \\\"www.vidyo.com\\\"\\n    next\\n    edit \\\"Vimeo\\\"\\n        set server \\\"www.vimeo.com\\\"\\n    next\\n    edit \\\"Vonage\\\"\\n        set server \\\"www.vonage.com\\\"\\n    next\\n    edit \\\"Voximplant\\\"\\n        set server \\\"www.voximplant.com\\\"\\n    next\\n    edit \\\"Webroot\\\"\\n        set server \\\"www.webroot.com\\\"\\n    next\\n    edit \\\"Wetransfer\\\"\\n        set server \\\"www.wetransfer.com\\\"\\n    next\\n    edit \\\"Workday\\\"\\n        set server \\\"community.workday.com\\\"\\n    next\\n    edit \\\"XING\\\"\\n        set server \\\"www.xing.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Xactly\\\"\\n        set server \\\"www.xactlycorp.com\\\"\\n    next\\n    edit \\\"Xero\\\"\\n        set server \\\"www.xero.com\\\"\\n    next\\n    edit \\\"Yahoo\\\"\\n        set server \\\"www.flickr.com\\\"\\n    next\\n    edit \\\"Yandex\\\"\\n        set server \\\"www.yandex.ru\\\"\\n    next\\n    edit \\\"YouSeeU\\\"\\n        set server \\\"www.youseeu.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Zattoo\\\"\\n        set server \\\"www.zattoo.com\\\"\\n    next\\n    edit \\\"Zendesk\\\"\\n        set server \\\"www.zendesk.com\\\"\\n    next\\n    edit \\\"Zoho\\\"\\n        set server \\\"www.zoho.com\\\"\\n    next\\n    edit \\\"Zoom\\\"\\n        set server \\\"www.zoom.us\\\"\\n    next\\n    edit \\\"Zoox\\\"\\n        set server \\\"www.zoox.com\\\"\\n        set protocol https\\n    next\\n    edit \\\"Zooxsmart\\\"\\n        set server \\\"www.zooxsmart.com\\\"\\n        set protocol https\\n    next \\n    edit \\\"Zscaler\\\"\\n        set server \\\"www.zscaler.com\\\"\\n    next\\n    edit \\\"Zuora\\\"\\n        set server \\\"connect.zuora.com\\\"\\n    next\\n    edit \\\"eBay\\\"\\n        set server \\\"www.ebay.com\\\"\\n    next\\n    edit \\\"fisglobal\\\"\\n        set server \\\"www.fisglobal.com\\\"\\n    next\\n    edit \\\"ivi\\\"\\n        set server \\\"www.ivi.ru\\\"\\n        set protocol https\\n    next\\n    edit \\\"mail.ru\\\"\\n        set server \\\"www.mail.ru\\\"\\n    next\\n    edit \\\"ntp.org\\\"\\n        set server \\\"ntp.org\\\"\\n    next\\n    edit \\\"xMatters\\\"\\n        set server \\\"www.xmatters.com\\\"\\n    next\\n    edit \\\"Ingenuity\\\"\\n        set server \\\"thgingenuity.com\\\"\\n    next\\n    edit \\\"Meta\\\"\\n        set server \\\"www.facebook.com\\\"\\n    next\\n    edit \\\"Sinch\\\"\\n        set server \\\"www.sinch.com\\\"\\n    next\\n    edit \\\"Skyhigh.Security\\\"\\n        set server \\\"skyhighsecurity.com\\\"\\n    next\\n    edit \\\"SpaceX\\\"\\n        set server \\\"www.spacex.com\\\"\\n    next\\n    edit \\\"Valve\\\"\\n        set server \\\"www.valvesoftware.com\\\"\\n    next\\n    edit \\\"Zoom.us\\\"\\n        set server \\\"www.zoom.us\\\"\\n    next\\n    edit \\\"Cato\\\"\\n        set server \\\"www.catonetworks.com\\\"\\n    next\\n    edit \\\"ColoCrossing\\\"\\n        set server \\\"www.colocrossing.com\\\"\\n    next\\n    edit \\\"Stark.Industries\\\"\\n        set server \\\"stark-industries.solutions\\\"\\n    next\\n    edit \\\"SERVERD\\\"\\n        set server \\\"serverd.io\\\"\\n    next\\n    edit \\\"NFON\\\"\\n        set server \\\"nfoncloud.com\\\"\\n    next\\n    edit \\\"Elastic\\\"\\n        set server \\\"elastic.co\\\"\\n    next\\n    edit \\\"LeakIX\\\"\\n        set server \\\"leakix.net\\\"\\n    next\\n    edit \\\"StatusCake\\\"\\n        set server \\\"statuscake.com\\\"\\n    next\\n    edit \\\"InterneTTL\\\"\\n        set server \\\"internettl.org\\\"\\n    next\\n    edit \\\"ZPE\\\"\\n        set server \\\"www.zpesystems.com\\\"\\n    next\\n    move \\\"Fortinet\\\" after \\\"Forcepoint\\\"\\nend\"\n                }\n            ]\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "CustomerA - Create Device Blueprints",
 							"event": [
 								{
@@ -3029,6 +2985,724 @@
 											"language": "json"
 										}
 									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "- Breakpoint -",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.execution.setNextRequest(null);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/sys/status\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "CustomerB - Multi-VRF",
+			"item": [
+				{
+					"name": "CustomerB - Variables",
+					"item": [
+						{
+							"name": "CustomerB - Create Variables",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"h1_isp1\",\n                    \"value\": \"100.64.1.1\"\n                },\n                {\n                    \"name\": \"h1_isp2\",\n                    \"value\": \"100.64.1.9\"\n                },\n                {\n                    \"name\": \"h2_isp1\",\n                    \"value\": \"100.64.2.1\"\n                },\n                {\n                    \"name\": \"h2_isp2\",\n                    \"value\": \"100.64.2.9\"\n                },\n                {\n                    \"name\": \"region\"\n                },\n                {\n                    \"name\": \"profile\"\n                },\n                {\n                    \"name\": \"hostname\"\n                },\n                {\n                    \"name\": \"loopback\"\n                },\n                {\n                    \"name\": \"isp1_intf\"\n                },\n                {\n                    \"name\": \"isp2_intf\"\n                },\n                {\n                    \"name\": \"lte_intf\"\n                },\n                {\n                    \"name\": \"lan_intf_fin\"\n                },\n                {\n                    \"name\": \"lan_ip_fin\"\n                },\n                {\n                    \"name\": \"lan_intf_edu\"\n                },\n                {\n                    \"name\": \"lan_ip_edu\"\n                }                \n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "- Breakpoint -",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.execution.setNextRequest(null);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/sys/status\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CustomerB - Finalize",
+					"item": [
+						{
+							"name": "CustomerB - Create Device Groups",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-DualISP\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Edge-ISP-LTE\",\n                    \"os_type\": 1\n                },\n                {\n                    \"name\": \"Edge-LargeOffice\",\n                    \"os_type\": 1\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerB - Nest Device Groups - Edge",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group/Edge/object member\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-DualISP\"\n                },\n                {\n                    \"name\": \"Edge-ISP-LTE\"\n                },\n                {\n                    \"name\": \"Edge-LargeOffice\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerB - Populate SDWAN Template - Edge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"$(isp1_intf)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 2,\n                        \"interface\": \"$(isp2_intf)\",\n                        \"zone\": \"underlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-DualISP\"\n                            },\n                            {\n                                \"name\": \"Edge-LargeOffice\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 3,\n                        \"interface\": \"$(lte_intf)\",\n                        \"zone\": \"underlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-ISP-LTE\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 4,\n                        \"interface\": \"DC1_ISP1\",\n                        \"priority\": 10,\n                        \"preferred-source\": \"$(loopback)\",\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 5,\n                        \"interface\": \"DC1_ISP2\",\n                        \"priority\": 10,\n                        \"preferred-source\": \"$(loopback)\",\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-DualISP\"\n                            },\n                            {\n                                \"name\": \"Edge-LargeOffice\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 6,\n                        \"interface\": \"DC1_ISP2\",\n                        \"priority\": 10,\n                        \"preferred-source\": \"$(loopback)\",\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-ISP-LTE\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 7,\n                        \"interface\": \"DC2_ISP1\",\n                        \"priority\": 10,\n                        \"preferred-source\": \"$(loopback)\",\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 8,\n                        \"interface\": \"DC2_ISP2\",\n                        \"priority\": 10,\n                        \"preferred-source\": \"$(loopback)\",\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-DualISP\"\n                            },\n                            {\n                                \"name\": \"Edge-LargeOffice\"\n                            }\n                        ]\n                    },\n                    {\n                        \"seq-num\": 9,\n                        \"interface\": \"DC2_ISP2\",\n                        \"priority\": 10,\n                        \"preferred-source\": \"$(loopback)\",\n                        \"source\": \"$(loopback)\",\n                        \"zone\": \"overlay\",\n                        \"scope member\": [\n                            {\n                                \"name\": \"Edge-ISP-LTE\"\n                            }\n                        ]\n                    }\n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"HUB\",\n                        \"server\": \"10.200.99.1\",\n                        \"protocol\": 1,\n                        \"embed-measured-health\": 1,\n                        \"members\": [\n                            \"4\",\n                            \"5\",\n                            \"6\",\n                            \"7\",\n                            \"8\",\n                            \"9\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 100,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    },\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"update-cascade-interface\": 0,\n                        \"update-static-route\": 0,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 250,\n                                \"link-cost-factor\": 1\n                            }\n                        ]\n                    }\n                ],\n                \"service\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"Corporate\",\n                        \"src\": \"CORP_LAN\",\n                        \"dst\": \"CORP_LAN\",\n                        \"protocol\": 0,\n                        \"mode\": 4,\n                        \"priority-members\": [\n                            \"4\",\n                            \"5\",\n                            \"6\",\n                            \"7\",\n                            \"8\",\n                            \"9\"\n                        ],\n                        \"sla\": [\n                            {\n                                \"health-check\": \"HUB\",\n                                \"id\": 1\n                            }\n                        ],\n                        \"tie-break\": 3,\n                        \"role\": 3,\n                        \"status\": 1\n                    }\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerB - Enable ADVPN 2.0 - Edge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/zone/overlay\",\n            \"data\": {\n                \"advpn-select\": 1,\n                \"advpn-health-check\": [\n                    \"HUB\"\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerB - Populate SDWAN Template - Hub",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"replace\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Hub-SDWAN/system/sdwan\",\n            \"data\": {\n                \"status\": 1,\n                \"load-balance-mode\": 2,\n                \"zone\": [\n                    {\n                        \"name\": \"virtual-wan-link\"\n                    },\n                    {\n                        \"name\": \"underlay\"\n                    },\n                    {\n                        \"name\": \"overlay\"\n                    }\n                ],\n                \"members\": [\n                    {\n                        \"seq-num\": 1,\n                        \"interface\": \"$(isp1_intf)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 2,\n                        \"interface\": \"$(isp2_intf)\",\n                        \"zone\": \"underlay\"\n                    },\n                    {\n                        \"seq-num\": 4,\n                        \"interface\": \"EDGE_ISP1\",\n                        \"priority\": 10,\n                        \"zone\": \"overlay\"\n                    },\n                    {\n                        \"seq-num\": 5,\n                        \"interface\": \"EDGE_ISP2\",\n                        \"priority\": 10,\n                        \"zone\": \"overlay\"\n                    }                    \n                ],\n                \"health-check\": [\n                    {\n                        \"name\": \"EDGE\",\n                        \"detect-mode\": 4,\n                        \"probe-timeout\": 400,\n                        \"members\": [\n                            \"4\",\n                            \"5\"\n                        ],\n                        \"sla-id-redistribute\": 1,\n                        \"sla\": [\n                            {\n                                \"id\": 1,\n                                \"latency-threshold\": 100,\n                                \"link-cost-factor\": 1,\n                                \"priority-in-sla\": 5,\n                                \"priority-out-sla\": 995\n                            }\n                        ]\n                    },\n                    {\n                        \"name\": \"Internet\",\n                        \"server\": \"8.8.8.8\",\n                        \"protocol\": 64,\n                        \"members\": [\n                            \"1\",\n                            \"2\"\n                        ],\n                        \"sla-fail-log-period\": 10,\n                        \"sla-pass-log-period\": 10,\n                        \"update-cascade-interface\": 0,\n                        \"update-static-route\": 0\n                    }\n                ]\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerB - Create Template Groups",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/tmplgrp/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"Hub-Templates\",\n                    \"template group setting\": {\n                        \"cliprofs\": [\n                            \"Hub-Jinja\"\n                        ],\n                        \"templates\": [\n                            \"1__Basic-Settings\",\n                            \"4-2__Underlay-Static\",\n                            \"5__Hub-SDWAN\"\n                        ]\n                    },\n                    \"type\": \"tmplgrp\"\n                },\n                {\n                    \"name\": \"Edge-Templates\",\n                    \"template group setting\": {\n                        \"cliprofs\": [\n                            \"Edge-Jinja\"\n                        ],\n                        \"description\": \"\",\n                        \"templates\": [\n                            \"1__Basic-Settings\",\n                            \"4-2__Underlay-Static\",\n                            \"5__Edge-SDWAN\"\n                        ]\n                    },\n                    \"type\": \"tmplgrp\"\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerB - Create Device Blueprints",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-DualISP\",\n                    \"dev-group\": \"Edge-DualISP\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Edge-Templates\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                },\n                {\n                    \"name\": \"Edge-ISP-LTE\",\n                    \"dev-group\": \"Edge-ISP-LTE\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Edge-Templates\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                },                \n                {\n                    \"name\": \"Hub\",\n                    \"dev-group\": \"Hubs\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"Hub-Templates\",\n                    \"pkg\": \"Hub\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "- Breakpoint -",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.execution.setNextRequest(null);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/sys/status\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CustomerB - Staging",
+					"item": [
+						{
+							"name": "Set Location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/site1-1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.837789\",\n                \"gui-device-longitude\": \"-0.57918\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-2/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.494887\",\n                \"gui-device-longitude\": \"11.3426163\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-H1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"48.856614\",\n                \"gui-device-longitude\": \"2.3522219\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-H2/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"52.3675734\",\n                \"gui-device-longitude\": \"4.9041389\"\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate Certificate - Hubs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/sign/certificate/template\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"template\": \"Hub\",\n                \"scope\": [\n                    {\n                        \"name\": \"site1-H1\"\n                    },\n                    {\n                        \"name\": \"site1-H2\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate Certificate - Edge",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/sign/certificate/template\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"template\": \"Edge\",\n                \"scope\": [\n                    {\n                        \"name\": \"site1-1\"\n                    },\n                    {\n                        \"name\": \"site1-2\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Install Configuration",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/device\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Install Policy - Hubs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Hub\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Hubs\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Install Policy - Edge",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Edge\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Edge\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
@@ -5734,308 +6408,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "Add Model Devices",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"function failedResponse(str) {",
-							"    return str != \"devaddsuccess\" && str != \"model device with the same PSK exists\" && str != \"devnameused\"",
-							"}",
-							"",
-							"function waitOnTask(retries) {",
-							"    if (!retries) {",
-							"        pm.test(\"Task completed\", function() {",
-							"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
-							"        });",
-							"        postman.setNextRequest(null);",
-							"    }",
-							"    else {",
-							"        pm.sendRequest({",
-							"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
-							"            method: 'POST',",
-							"            header: \"Content-Type:application/json\",",
-							"            body: {",
-							"                mode: 'raw',",
-							"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
-							"            }",
-							"        }, function(err, response) {",
-							"            var jsonData = response.json();",
-							"            if (jsonData.result[0].data.percent == 100) {",
-							"                // Task completed",
-							"                if (jsonData.result[0].data.num_err && ",
-							"                    (",
-							"                        failedResponse(jsonData.result[0].data.line[0].detail) ||",
-							"                        failedResponse(jsonData.result[0].data.line[1].detail) ||",
-							"                        failedResponse(jsonData.result[0].data.line[2].detail) ||",
-							"                        failedResponse(jsonData.result[0].data.line[3].detail) ||",
-							"                        failedResponse(jsonData.result[0].data.line[4].detail) ||",
-							"                        failedResponse(jsonData.result[0].data.line[5].detail)                    ",
-							"                    )) {",
-							"                    postman.setNextRequest(null);",
-							"                }",
-							"                pm.test(\"Task completed\", function() {",
-							"                    pm.expect(jsonData.result[0].data.line[0].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                    pm.expect(jsonData.result[0].data.line[1].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                    pm.expect(jsonData.result[0].data.line[2].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                    pm.expect(jsonData.result[0].data.line[3].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                    pm.expect(jsonData.result[0].data.line[4].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                    pm.expect(jsonData.result[0].data.line[5].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                });",
-							"            }",
-							"            else {",
-							"                console.log(\"Task is still not complete\");",
-							"                setTimeout(function() {",
-							"                    waitOnTask(--retries);",
-							"                }, 10000);",
-							"            }",
-							"        }); ",
-							"    }",
-							"}",
-							"",
-							"var jsonData = pm.response.json();",
-							"var taskid = jsonData.result[0].data.taskid;",
-							"",
-							"waitOnTask(10);",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"add-dev-list\": [\n                    {\n                        \"name\": \"site1-1\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Edge-West-RegionalHQ\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": 7,\n                        \"mr\": 6,                        \n                        \"sn\": \"FGVMMLTM25000805\",\n                        \"latitude\": \"44.837789\",\n                        \"longitude\": \"-0.57918\",\n                        \"meta fields\": {\n                            \"Address\": \"Bordeaux, France\"\n                        }\n                    }\n                ]\n            }\n        }\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://{{ip}}/jsonrpc",
-					"protocol": "https",
-					"host": [
-						"{{ip}}"
-					],
-					"path": [
-						"jsonrpc"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add Model Devices NoLoc",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"function failedResponse(str) {",
-							"    return str != \"devaddsuccess\" && str != \"model device with the same PSK exists\" && str != \"devnameused\"",
-							"}",
-							"",
-							"function waitOnTask(retries) {",
-							"    if (!retries) {",
-							"        pm.test(\"Task completed\", function() {",
-							"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
-							"        });",
-							"        postman.setNextRequest(null);",
-							"    }",
-							"    else {",
-							"        pm.sendRequest({",
-							"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
-							"            method: 'POST',",
-							"            header: \"Content-Type:application/json\",",
-							"            body: {",
-							"                mode: 'raw',",
-							"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
-							"            }",
-							"        }, function(err, response) {",
-							"            var jsonData = response.json();",
-							"            if (jsonData.result[0].data.percent == 100) {",
-							"                // Task completed",
-							"                if (jsonData.result[0].data.num_err && ",
-							"                    (",
-							"                        failedResponse(jsonData.result[0].data.line[0].detail) ||",
-							"                        failedResponse(jsonData.result[0].data.line[1].detail) ||",
-							"                        failedResponse(jsonData.result[0].data.line[2].detail) ||",
-							"                        failedResponse(jsonData.result[0].data.line[3].detail) ||",
-							"                        failedResponse(jsonData.result[0].data.line[4].detail) ||",
-							"                        failedResponse(jsonData.result[0].data.line[5].detail)                    ",
-							"                    )) {",
-							"                    postman.setNextRequest(null);",
-							"                }",
-							"                pm.test(\"Task completed\", function() {",
-							"                    pm.expect(jsonData.result[0].data.line[0].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                    pm.expect(jsonData.result[0].data.line[1].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                    pm.expect(jsonData.result[0].data.line[2].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                    pm.expect(jsonData.result[0].data.line[3].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                    pm.expect(jsonData.result[0].data.line[4].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                    pm.expect(jsonData.result[0].data.line[5].detail).to.be.oneOf([\"devaddsuccess\", \"devnameused\", \"model device with the same PSK exists\"], \"Failed to add some devices\")",
-							"                });",
-							"            }",
-							"            else {",
-							"                console.log(\"Task is still not complete\");",
-							"                setTimeout(function() {",
-							"                    waitOnTask(--retries);",
-							"                }, 10000);",
-							"            }",
-							"        }); ",
-							"    }",
-							"}",
-							"",
-							"var jsonData = pm.response.json();",
-							"var taskid = jsonData.result[0].data.taskid;",
-							"",
-							"waitOnTask(10);",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"add-dev-list\": [\n                    {\n                        \"name\": \"site1-1\",\n                        \"device action\": \"add_model\",\n                        \"device blueprint\": \"Edge-West-RegionalHQ\",\n                        \"mgmt_mode\": 3,\n                        \"adm_usr\": \"admin\",\n                        \"os_type\": 0,\n                        \"os_ver\": 7,\n                        \"mr\": 6,                        \n                        \"sn\": \"FGVMMLTM25000805\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://{{ip}}/jsonrpc",
-					"protocol": "https",
-					"host": [
-						"{{ip}}"
-					],
-					"path": [
-						"jsonrpc"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Set Variables",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/hostname/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"site1-1\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/loopback/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.200.1.1\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/profile/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"OneSizeFitsAll\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/region/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"West\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/isp1_intf/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"port1\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/isp2_intf/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"port2\"\n                }\n            ]\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/mpls_intf/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"port4\"\n                }\n            ]\n        },   \n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/lan_intf/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"port5\"\n                }\n            ]\n        }, \n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/lan_ip/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.0.1.1/24\"\n                }\n            ]\n        }, \n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/lan2_intf/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"port6\"\n                }\n            ]\n        },   \n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable/lan2_ip/dynamic_mapping\",\n            \"data\": [\n                {\n                    \"_scope\": [\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"global\"\n                        }\n                    ],\n                    \"value\": \"10.0.101.1/24\"\n                }\n            ]\n        }                                                                           \n    ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://{{ip}}/jsonrpc",
-					"protocol": "https",
-					"host": [
-						"{{ip}}"
-					],
-					"path": [
-						"jsonrpc"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Device",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"id\": 1,\n    \"method\": \"get\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/device\",\n            \"fields\": [\n                \"name\",\n                \"location_from\",\n                \"latitude\",\n                \"longitude\"\n            ],\n            \"loadsub\": 0\n        }\n    ],\n    \"session\": \"{{session}}\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://{{ip}}/jsonrpc",
-					"protocol": "https",
-					"host": [
-						"{{ip}}"
-					],
-					"path": [
-						"jsonrpc"
-					]
-				}
-			},
-			"response": []
 		},
 		{
 			"name": "Login",
