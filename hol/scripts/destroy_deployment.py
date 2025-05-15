@@ -8,6 +8,7 @@
 
 from orch_base import readConfig, getApiSession
 
+
 def main():
 
    # Config from config.yaml
@@ -16,10 +17,14 @@ def main():
 
    print("Destroying deployment...")
 
-   session.deleteDevices(
-      session.getDevices()
-   )
-   session.deleteAdom()   
+   # Destroy tenant ADOM + any extra ADOMs it uses, as per config
+   todo = cfg.get('extra_adom', []) + [cfg['fmg_adom']]
+   for adom in todo:
+      session.deleteDevices(
+         session.getDevices(adom=adom),
+         adom=adom
+      )
+      session.deleteAdom(adom=adom)   
 
 
 if __name__ == "__main__":
