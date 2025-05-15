@@ -88,8 +88,10 @@ tasks:
   - name: Onboard Devices - West-East
     type: onboard
     src: tenants/CustomerU/inventory.CustomerU.csv
+    monitor: yes
     tag: onboard,west_east
   - name: Onboard Devices - West-only
     type: onboard
     src: tenants/CustomerU/inventory.CustomerU_West.csv
+    monitor: yes
     tag: onboard,west_only
