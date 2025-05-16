@@ -5,7 +5,7 @@ fmg_password: fortinet
 fmg_adom: CustomerU
 
 postman_collection: tenants/shared/Managed_SDWAN_7_4_x.postman.json
-default_skip_tags: lab,west-only
+default_skip_tags: lab,west-east
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
