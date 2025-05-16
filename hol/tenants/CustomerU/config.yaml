@@ -5,7 +5,7 @@ fmg_password: fortinet
 fmg_adom: CustomerU
 
 postman_collection: tenants/shared/Managed_SDWAN_7_4_x.postman.json
-default_skip_tags: lab,west_only
+default_skip_tags: lab,west-only
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
@@ -69,12 +69,12 @@ tasks:
     type: model_devices
     src: tenants/CustomerU/inventory.CustomerU.csv
     fos: 7.4
-    tag: model_devices,west_east
+    tag: model-devices,west-east
   - name: Create Model Devices - West-only
     type: model_devices
     src: tenants/CustomerU/inventory.CustomerU_West.csv
     fos: 7.4
-    tag: model_devices,west_only
+    tag: model-devices,west-only
   - name: Additional Post-Deployment Tasks
     type: postman
     folder: Post-Deployment
@@ -82,18 +82,18 @@ tasks:
   - name: Install Model Devices (Staging) - West-East
     type: postman
     folder: CustomerU - Staging
-    tag: staging,west_east
+    tag: staging,west-east
   - name: Install Model Devices (Staging) - West-only
     type: postman
     folder: CustomerU - Staging West
-    tag: staging,west_only
+    tag: staging,west-only
   - name: Onboard Devices - West-East
     type: onboard
     src: tenants/CustomerU/inventory.CustomerU.csv
     monitor: yes
-    tag: onboard,west_east
+    tag: onboard,west-east
   - name: Onboard Devices - West-only
     type: onboard
     src: tenants/CustomerU/inventory.CustomerU_West.csv
     monitor: yes
-    tag: onboard,west_only
+    tag: onboard,west-only
