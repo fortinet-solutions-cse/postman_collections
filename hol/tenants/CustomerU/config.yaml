@@ -68,10 +68,12 @@ tasks:
   - name: Create Model Devices - West-East
     type: model_devices
     src: tenants/CustomerU/inventory.CustomerU.csv
+    fos: 7.4
     tag: model_devices,west_east
   - name: Create Model Devices - West-only
     type: model_devices
     src: tenants/CustomerU/inventory.CustomerU_West.csv
+    fos: 7.4
     tag: model_devices,west_only
   - name: Additional Post-Deployment Tasks
     type: postman
