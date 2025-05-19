@@ -44,6 +44,10 @@ tasks:
     type: postman
     folder: CustomerB - Finalize
     tag: foundation
+  - name: Fine-tune 
+    type: postman
+    folder: CustomerB - Fine-tune
+    tag: fine-tune
   - name: Create Model Devices
     type: model_devices
     src: tenants/CustomerB/inventory.CustomerB.csv
@@ -57,4 +61,5 @@ tasks:
     type: onboard
     src: tenants/CustomerB/inventory.CustomerB.csv
     monitor: yes
+    retry: yes
     tag: onboard
