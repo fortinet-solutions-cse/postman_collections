@@ -96,4 +96,5 @@ tasks:
     type: onboard
     src: tenants/CustomerU/inventory.CustomerU_West.csv
     monitor: yes
+    retry: yes
     tag: onboard,west-only
