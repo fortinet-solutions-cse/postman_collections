@@ -75,4 +75,5 @@ tasks:
     type: onboard
     src: tenants/CustomerA/inventory.CustomerA.csv
     monitor: yes
+    retry: yes
     tag: onboard
