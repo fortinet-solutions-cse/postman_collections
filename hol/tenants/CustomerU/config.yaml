@@ -79,7 +79,7 @@ tasks:
   - name: Additional Post-Deployment Tasks
     type: postman
     folder: CustomerU - Post-Deployment
-    tag: post-deploy    
+    tag: post-deploy,fine-tune-sase    
   - name: Install Model Devices (Staging) - West-East
     type: postman
     folder: CustomerU - Staging
