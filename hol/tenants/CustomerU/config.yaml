@@ -78,7 +78,7 @@ tasks:
     tag: west-only    
   - name: Additional Post-Deployment Tasks
     type: postman
-    folder: Post-Deployment
+    folder: CustomerU - Post-Deployment
     tag: post-deploy    
   - name: Install Model Devices (Staging) - West-East
     type: postman
