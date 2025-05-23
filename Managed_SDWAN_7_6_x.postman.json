@@ -264,7 +264,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/device/template/widget/dns/action-list\",\n            \"data\": {\n                \"action\": \"conf-sys-dns\",\n                \"model\": \"all\",\n                \"seq\": 1,\n                \"value\": {\n                    \"primary\": \"8.8.8.8\"\n                }\n            }\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/device/template/widget/dns/action-list\",\n            \"data\": {\n                \"action\": \"conf-sys-dns\",\n                \"model\": \"all\",\n                \"seq\": 1,\n                \"value\": {\n                    \"primary\": \"8.8.8.8\",\n                    \"secondary\": \"8.8.4.4\",\n                    \"protocol\": null                    \n                }\n            }\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5579,6 +5579,260 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/device\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"root\"\n                        },                        \n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site2-1\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Install Policy - Hubs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Hub\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Hubs\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Install Policy - Edge",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"Edge\",\n                    \"scope\": [\n                        {\n                            \"name\": \"Edge\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CustomerU - Staging West",
+					"item": [
+						{
+							"name": "Set Location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/device/site1-1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.837789\",\n                \"gui-device-longitude\": \"-0.57918\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-2/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"44.494887\",\n                \"gui-device-longitude\": \"11.3426163\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-H1/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"48.856614\",\n                \"gui-device-longitude\": \"2.3522219\"\n            }\n        },\n        {\n            \"url\": \"/pm/config/device/site1-H2/global/system/global\",\n            \"data\": {\n                \"gui-device-latitude\": \"52.3675734\",\n                \"gui-device-longitude\": \"4.9041389\"\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate Certificate - Hubs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/sign/certificate/template\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"template\": \"Hub\",\n                \"scope\": [\n                    {\n                        \"name\": \"site1-H1\"\n                    },\n                    {\n                        \"name\": \"site1-H2\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate Certificate - Edge",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 1,\n    \"session\": \"{{session}}\",\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/sign/certificate/template\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"template\": \"Edge\",\n                \"scope\": [\n                    {\n                        \"name\": \"site1-1\"\n                    },\n                    {\n                        \"name\": \"site1-2\"\n                    }\n                ]\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Install Configuration",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/device\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"scope\": [\n                        {\n                            \"name\": \"site1-H1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-H2\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-1\",\n                            \"vdom\": \"root\"\n                        },\n                        {\n                            \"name\": \"site1-2\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",

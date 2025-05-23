@@ -6,7 +6,7 @@
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
 
-import csv, io, sys
+import csv, io, sys, os, glob
 from orch_base import *
 
 
@@ -40,13 +40,15 @@ def printInventory(cfg, in_file, out_file=''):
 def main():
 
     cfg = readConfig(silent=True)
-    invFile = "inventory." + cfg['fmg_adom']
-    outFile = cfg['tenantdir']+'/'+invFile+'.csv' if '-w' in sys.argv else ''
 
-    print()
-    print(invFile+'.csv')
-    print(f"{'':=>{len(invFile+'.csv')}}")
-    printInventory(cfg, cfg['tenantdir']+'/'+invFile+'.j2', outFile)
+    for invFile in glob.glob(cfg['tenantdir']+'/'+'inventory.*.j2'):
+        invName = os.path.splitext(os.path.basename(invFile))[0] + '.csv'
+        outFile = cfg['tenantdir']+'/'+invName if '-w' in sys.argv else ''
+
+        print()
+        print(invName)
+        print(f"{'':=>{len(invName)}}")
+        printInventory(cfg, invFile, outFile)
 
 
 if __name__ == "__main__":
