@@ -36,11 +36,11 @@ tasks:
     type: cli_templates
     src: tenants/CustomerU/Project.dyn_bgp.j2
     rename: 00-Project
-    tag: lab_only
   - name: Import Project Template (mixed)
     type: cli_templates
     src: tenants/CustomerU/Project.mixed.j2
     rename: 00-Project
+    tag: mixed,fine-tune-sase
   - name: Import Jinja CLI Templates
     type: cli_templates
     src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/*.j2
