@@ -2981,7 +2981,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-LargeOffice\",\n                    \"dev-group\": \"Edge-LargeOffice\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"LargeOffice-Templates\",\n                    \"auth-template\": \"LargeOffice-Fabric\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"prerun-cliprof\": \"prerun-NaughtyFMG\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-LargeOffice\",\n                    \"dev-group\": \"Edge-LargeOffice\",\n                    \"prov-type\": \"template-group\",\n                    \"template-group\": \"LargeOffice-Templates\",\n                    \"auth-template\": \"LargeOffice-Fabric\",\n                    \"pkg\": \"Edge\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
