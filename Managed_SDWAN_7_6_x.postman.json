@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4b3226d8-137e-4473-8689-8cd1317a28ee",
+		"_postman_id": "cd560bc8-409a-437c-98e6-4fd8d6628570",
 		"name": "Managed Secure SD-WAN 7.6.x",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "35013783"
+		"_exporter_id": "9895935"
 	},
 	"item": [
 		{
@@ -860,6 +860,84 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "TMP - CLI Script for PP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": {\n                \"name\": \"dummy_isdb\",\n                \"target\": \"adom_database\",\n                \"type\": \"cli\",\n                \"content\": \"config firewall internet-service-custom\\n    edit \\\"BuiltIn-Brightree-Brightree\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\\n    edit \\\"BuiltIn-PagerDuty-PagerDuty\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\\n    edit \\\"BuiltIn-JFrog-JFrog\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\"\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TMP - Run CLI Script on PP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"package\": \"Edge\",\n                \"script\": \"dummy_isdb\"\n            }\n        },\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script/execute\",\n            \"data\": {\n                \"adom\": \"{{adom}}\",\n                \"package\": \"Hub\",\n                \"script\": \"dummy_isdb\"\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -1679,6 +1757,84 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/OUTSIDE/pkg/default/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Permit-ANY\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"any\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TMP - CLI Script for PP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/OUTSIDE/script\",\n            \"data\": {\n                \"name\": \"dummy_isdb\",\n                \"target\": \"adom_database\",\n                \"type\": \"cli\",\n                \"content\": \"config firewall internet-service-custom\\n    edit \\\"BuiltIn-Brightree-Brightree\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\\n    edit \\\"BuiltIn-PagerDuty-PagerDuty\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\\n    edit \\\"BuiltIn-JFrog-JFrog\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\"\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TMP - Run CLI Script on PP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/OUTSIDE/script/execute\",\n            \"data\": {\n                \"adom\": \"OUTSIDE\",\n                \"package\": \"default\",\n                \"script\": \"dummy_isdb\"\n            }\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
