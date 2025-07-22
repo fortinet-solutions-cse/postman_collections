@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # destroy_deployment.py                                                      #
-# Uni-SASE HoL, Version 4.0 b100                                             #
+# Uni-SASE HoL, Version 4.0 b105                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
@@ -20,11 +20,14 @@ def main():
    # Destroy tenant ADOM + any extra ADOMs it uses, as per config
    todo = cfg.get('extra_adom', []) + [cfg['fmg_adom']]
    for adom in todo:
-      session.deleteDevices(
-         session.getDevices(adom=adom),
-         adom=adom
-      )
-      session.deleteAdom(adom=adom)   
+      try:
+         session.deleteDevices(
+            session.getDevices(adom=adom),
+            adom=adom
+         )
+         session.deleteAdom(adom=adom)
+      except:
+         pass
 
 
 if __name__ == "__main__":
