@@ -73,7 +73,7 @@ tasks:
     tag: west-east
   - name: Create Model Devices - West-only
     type: model_devices
-    src: tenants/CustomerU/inventory.CustomerU.csv
+    src: tenants/CustomerU/inventory.CustomerU_West.csv
     fos: 7.6
     tag: west-only    
   - name: Additional Post-Deployment Tasks
