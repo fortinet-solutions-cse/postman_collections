@@ -873,6 +873,59 @@
 										"type": "text/javascript",
 										"packages": {}
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"script_content\", JSON.stringify(    ",
+											"`config firewall internet-service-custom",
+											"    edit \"BuiltIn-Brightree-Brightree\"",
+											"        set comment \"BuiltIn ffdb-fqdn entry\"",
+											"        config entry",
+											"            edit 4",
+											"            next",
+											"            edit 6",
+											"                set addr-mode ipv6",
+											"            next",
+											"        end",
+											"    next",
+											"    edit \"BuiltIn-PagerDuty-PagerDuty\"",
+											"        set comment \"BuiltIn ffdb-fqdn entry\"",
+											"        config entry",
+											"            edit 4",
+											"            next",
+											"            edit 6",
+											"                set addr-mode ipv6",
+											"            next",
+											"        end",
+											"    next",
+											"    edit \"BuiltIn-JFrog-JFrog\"",
+											"        set comment \"BuiltIn ffdb-fqdn entry\"",
+											"        config entry",
+											"            edit 4",
+											"            next",
+											"            edit 6",
+											"                set addr-mode ipv6",
+											"            next",
+											"        end",
+											"    next",
+											"    edit \"BuiltIn-Amazon-AWS.Bedrock\"",
+											"        set comment \"BuiltIn ffdb-fqdn entry\"",
+											"        config entry",
+											"            edit 4",
+											"            next",
+											"            edit 6",
+											"                set addr-mode ipv6",
+											"            next",
+											"        end",
+											"    next",
+											"end`",
+											"));"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
 								}
 							],
 							"request": {
@@ -885,7 +938,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": {\n                \"name\": \"dummy_isdb\",\n                \"target\": \"adom_database\",\n                \"type\": \"cli\",\n                \"content\": \"config firewall internet-service-custom\\n    edit \\\"BuiltIn-Brightree-Brightree\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\\n    edit \\\"BuiltIn-PagerDuty-PagerDuty\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\\n    edit \\\"BuiltIn-JFrog-JFrog\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\"\n            }\n        }\n    ]\n}"
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/script\",\n            \"data\": {\n                \"name\": \"dummy_isdb\",\n                \"target\": \"adom_database\",\n                \"type\": \"cli\",\n                \"content\": {{script_content}}\n            }\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
@@ -1783,6 +1836,59 @@
 										"type": "text/javascript",
 										"packages": {}
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"script_content\", JSON.stringify(    ",
+											"`config firewall internet-service-custom",
+											"    edit \"BuiltIn-Brightree-Brightree\"",
+											"        set comment \"BuiltIn ffdb-fqdn entry\"",
+											"        config entry",
+											"            edit 4",
+											"            next",
+											"            edit 6",
+											"                set addr-mode ipv6",
+											"            next",
+											"        end",
+											"    next",
+											"    edit \"BuiltIn-PagerDuty-PagerDuty\"",
+											"        set comment \"BuiltIn ffdb-fqdn entry\"",
+											"        config entry",
+											"            edit 4",
+											"            next",
+											"            edit 6",
+											"                set addr-mode ipv6",
+											"            next",
+											"        end",
+											"    next",
+											"    edit \"BuiltIn-JFrog-JFrog\"",
+											"        set comment \"BuiltIn ffdb-fqdn entry\"",
+											"        config entry",
+											"            edit 4",
+											"            next",
+											"            edit 6",
+											"                set addr-mode ipv6",
+											"            next",
+											"        end",
+											"    next",
+											"    edit \"BuiltIn-Amazon-AWS.Bedrock\"",
+											"        set comment \"BuiltIn ffdb-fqdn entry\"",
+											"        config entry",
+											"            edit 4",
+											"            next",
+											"            edit 6",
+											"                set addr-mode ipv6",
+											"            next",
+											"        end",
+											"    next",
+											"end`",
+											"));"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
 								}
 							],
 							"request": {
@@ -1795,7 +1901,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/OUTSIDE/script\",\n            \"data\": {\n                \"name\": \"dummy_isdb\",\n                \"target\": \"adom_database\",\n                \"type\": \"cli\",\n                \"content\": \"config firewall internet-service-custom\\n    edit \\\"BuiltIn-Brightree-Brightree\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\\n    edit \\\"BuiltIn-PagerDuty-PagerDuty\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\\n    edit \\\"BuiltIn-JFrog-JFrog\\\"\\n        set comment \\\"BuiltIn ffdb-fqdn entry\\\"\\n        config entry\\n            edit 4\\n            next\\n            edit 6\\n                set addr-mode ipv6\\n            next\\n        end\\n    next\"\n            }\n        }\n    ]\n}"
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/OUTSIDE/script\",\n            \"data\": {\n                \"name\": \"dummy_isdb\",\n                \"target\": \"adom_database\",\n                \"type\": \"cli\",\n                \"content\": {{script_content}}\n            }\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
