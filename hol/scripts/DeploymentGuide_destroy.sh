@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# DeploymentGuide_autodeploy.sh                                              #
+# DeploymentGuide_destroy.sh                                                       #
 # Uni-SASE HoL, Version 4.0 b100                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
 
-ORCH_TENANT=DeploymentGuide ./hol_autodeploy.sh "$@"
+# $@ : optional Deployer args (e.g. '--verbose')
+
+ORCH_TENANT=DeploymentGuide ./destroy_deployment.py

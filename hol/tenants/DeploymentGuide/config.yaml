@@ -3,7 +3,7 @@ fmg_host: 192.168.0.15
 fmg_user: admin
 fmg_adom: CustomerC
 
-postman_collection: tenants/shared/Deployment_Guide_SDWAN_7_4_x.postman.json
+postman_collection: tenants/shared/Deployment_Guide_SDWAN_7_6_x.postman.json
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
@@ -29,10 +29,10 @@ tasks:
   - name: Import Project Template
     type: cli_templates
     rename: Project
-    src: tenants/DeploymentGuide/Project.dualreg.j2
+    src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/projects/Project.dualreg.cert.j2
   - name: Import Jinja CLI Templates
     type: cli_templates
-    src: tenants/shared/sdwan-advpn-reference-hol-3.0/dynamic-bgp-on-lo/*.j2
+    src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/*.j2
   - name: Create CLI Template Groups
     type: postman
     folder: Create CLI Template Groups
