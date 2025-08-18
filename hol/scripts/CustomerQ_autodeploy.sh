@@ -8,4 +8,4 @@
 
 # $@ : optional Deployer args (e.g. '--verbose')
 
-ORCH_TENANT=CustomerQ ./hol_autodeploy.sh "$@"
+API_VER=staging-4.0 ORCH_TENANT=CustomerQ ./hol_autodeploy.sh "$@"
