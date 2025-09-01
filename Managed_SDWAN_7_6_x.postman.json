@@ -1487,7 +1487,8 @@
 											"pm.environment.set(\"sn_fgt_legacy\", sn);",
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								},
 								{
@@ -1496,7 +1497,8 @@
 										"exec": [
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -1511,7 +1513,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"{{password}}\",\n                    \"adm_usr\": \"{{username}}\",\n                    \"ip\": \"192.168.0.43\"\n                }\n            }\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.43\"\n                }\n            }\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1581,7 +1583,8 @@
 											"waitOnTask(10);",
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -1596,7 +1599,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"OUTSIDE\",\n                \"flags\": [\"create_task\", \"nonblocking\"],\n                \"add-dev-list\": [\n                    {\n\t                    \"adm_pass\": \"{{password}}\",\n\t                    \"adm_usr\": \"{{username}}\",\n                        \"ip\": \"192.168.0.43\",\n                        \"name\": \"site2-H1\",\n                        \"sn\": \"{{sn_fgt_legacy}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    }\n                ]\n            }\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"OUTSIDE\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"add-dev-list\": [\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.43\",\n                        \"name\": \"site2-H1\",\n                        \"sn\": \"{{sn_fgt_legacy}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    }\n                ]\n            }\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
