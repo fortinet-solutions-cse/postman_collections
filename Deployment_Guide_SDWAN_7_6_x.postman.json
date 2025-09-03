@@ -907,7 +907,8 @@
 										"exec": [
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {}
 									}
 								}
 							],
@@ -921,7 +922,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/Underlay-Static/action-list/\",\n            \"data\": [\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 2,\n                    \"value\": {\n                        \"dst\": [\n                            \"0.0.0.0\",\n                            \"0.0.0.0\"\n                        ],\n                        \"sdwan\": true,\n                        \"sdwan-zone\": [\n                            \"underlay\",\n                            \"overlay\"\n                        ],\n                        \"seq-num\": 100,\n                        \"status\": \"enable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 1,\n                    \"value\": {\n                        \"device\": \"port4\",\n                        \"dst\": [\n                            \"172.16.0.0\",\n                            \"255.255.0.0\"\n                        ],\n                        \"gateway\": \"$(mpls_wan_gateway)\",\n                        \"seq-num\": 5,\n                        \"status\": \"enable\"\n                    }\n                },\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/Underlay-Static/router/static/\",\n            \"data\": [\n                {\n                    \"seq-num\": 100,\n                    \"_seq-num\": 100,\n                    \"status\": \"enable\",\n                    \"dst\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"sdwan-zone\": [\n                        \"underlay\",\n                        \"overlay\"\n                    ]\n                },\n                {\n                    \"seq-num\": 1,\n                    \"_seq-num\": 1,\n                    \"status\": \"enable\",\n                    \"device\": \"port4\",\n                    \"dst\": [\n                        \"172.16.0.0\",\n                        \"255.255.0.0\"\n                    ],\n                    \"gateway\": \"$(mpls_wan_gateway)\"\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
