@@ -2005,7 +2005,7 @@
 														"header": [],
 														"body": {
 															"mode": "raw",
-															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"outbound\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            38569,\n                            40503,\n                            16009,\n                            41469\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    },\n                    {\n                    \"category\": [\n                        23\n                    ],\n                    \"quarantine-expiry\": null,\n                    \"action\": 2,\n                    \"log\": 1,\n                    \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"non-compliant\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            27210,\n                            35766,\n                            33182,\n                            16920,\n                            43292\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    },\n                    {\n                    \"category\": [\n                        23\n                    ],\n                    \"quarantine-expiry\": null,\n                    \"action\": 2,\n                    \"log\": 1,\n                    \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        }\n    ]\n}",
+															"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"outbound\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            38569,\n                            40503,\n                            16009,\n                            41469\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    },\n                    {\n                    \"category\": [\n                        23\n                    ],\n                    \"quarantine-expiry\": null,\n                    \"action\": 2,\n                    \"log\": 1,\n                    \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/application/list\",\n            \"data\": {\n                \"unknown-application-log\": 1,\n                \"control-default-network-services\": 0,\n                \"app-replacemsg\": 1,\n                \"deep-app-inspection\": 1,\n                \"enforce-default-app-port\": 0,\n                \"extended-log\": 0,\n                \"force-inclusion-ssl-di-sigs\": 0,\n                \"options\": 1,\n                \"other-application-action\": 1,\n                \"other-application-log\": 1,\n                \"unknown-application-action\": 1,\n                \"name\": \"non-compliant\",\n                \"entries\": [\n                    {\n                        \"category\": null,\n                        \"application\": [\n                            27210,\n                            35766,\n                            33182,\n                            16920,\n                            43292\n                        ],\n                        \"log\": 1,\n                        \"log-packet\": 0,\n                        \"protocols\": [\n                            \"all\"\n                        ],\n                        \"vendor\": [\n                            \"all\"\n                        ],\n                        \"technology\": [\n                            \"all\"\n                        ],\n                        \"behavior\": [\n                            \"all\"\n                        ],\n                        \"action\": 2,\n                        \"quarantine\": 0,\n                        \"quarantine-expiry\": \"5m\",\n                        \"quarantine-log\": 1,\n                        \"rate-count\": 0,\n                        \"rate-duration\": 60,\n                        \"rate-mode\": 9,\n                        \"rate-track\": 0,\n                        \"session-ttl\": 0,\n                        \"parameters\": []\n                    },\n                    {\n                        \"category\": [\n                            2,\n                            3,\n                            5,\n                            6,\n                            7,\n                            8,\n                            12,\n                            15,\n                            17,\n                            21,\n                            22,\n                            25,\n                            26,\n                            28,\n                            29,\n                            30,\n                            31,\n                            23\n                        ],\n                        \"quarantine-expiry\": null,\n                        \"action\": 1,\n                        \"log\": 1,\n                        \"parameters\": []\n                    },\n                    {\n                    \"category\": [\n                        23\n                    ],\n                    \"quarantine-expiry\": null,\n                    \"action\": 2,\n                    \"log\": 1,\n                    \"parameters\": []\n                    }\n                ],\n                \"default-network-services\": []\n            },\n            \"revision note\": \"Application profile\"\n        }\n    ]\n}",
 															"options": {
 																"raw": {
 																	"language": "json"
@@ -3193,7 +3193,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3207,7 +3208,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group\",\n            \"data\": [\n                {\n                    \"name\": \"SDWOR\"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group\",\n            \"data\": [\n                {\n                    \"name\": \"BOR\"\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3237,7 +3238,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3251,7 +3253,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"SDWOR\",\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": {\n                        \"name\": \"SDWOR\"\n                    },\n                    \"type\": \"pkg\"\n                }\n            ]\n        }\n    ]\n}"
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"BOR\",\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": {\n                        \"name\": \"BOR\"\n                    },\n                    \"type\": \"pkg\"\n                }\n            ]\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
@@ -3276,7 +3278,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3290,7 +3293,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}/SDWOR/scope member\",\n            \"data\": [\n                {\n                    \"name\": \"SDWOR\"\n                }\n            ]\n        }\n    ]\n}"
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}/BOR/scope member\",\n            \"data\": [\n                {\n                    \"name\": \"BOR\"\n                }\n            ]\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
@@ -3315,7 +3318,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3330,7 +3334,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/SDWOR/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Permit-ANY\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"any\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n            ]\n        }\n    ]\n}"
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/BOR/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Permit-ANY\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"any\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n            ]\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
@@ -3355,7 +3359,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3369,7 +3374,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/_router_static/adom/{{adom}}/\",\n            \"data\": [\n                {\n                    \"name\": \"sdwor\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"_router_static\",\n                        \"widgets\": [\n                            \"_router_static\"\n                        ]\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"SDWOR\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/_router_static/adom/{{adom}}/\",\n            \"data\": [\n                {\n                    \"name\": \"bor\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"_router_static\",\n                        \"widgets\": [\n                            \"_router_static\"\n                        ]\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"BOR\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3399,7 +3404,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3413,7 +3419,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/sdwor/action-list\",\n            \"data\": [\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 1,\n                    \"value\": {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"port10\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"192.168.0.254\",\n                        \"status\": \"disable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 2,\n                    \"value\": {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 3,\n                    \"value\": {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"fss_onramp\"\n                        ],\n                        \"distance\": 3,\n                        \"status\": \"enable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 4,\n                    \"value\": {\n                        \"dst\": \"$(remote_gw) 255.255.255.255\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/bor/action-list\",\n            \"data\": [\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 1,\n                    \"value\": {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"port10\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"192.168.0.254\",\n                        \"status\": \"disable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 2,\n                    \"value\": {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 3,\n                    \"value\": {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"fss_onramp\"\n                        ],\n                        \"distance\": 3,\n                        \"status\": \"enable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 4,\n                    \"value\": {\n                        \"dst\": \"$(remote_gw) 255.255.255.255\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                    }\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3440,7 +3446,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"method\": \"add\",\n  \"session\": \"{{session}}\",\n  \"id\": 1,\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n      \"data\": [\n        {\n          \"name\": \"sdwor\",\n          \"type\": \"cli\",\n          \"description\": \"SDWOR template\"\n        }\n      ]\n    }\n  ]\n}\n",
+									"raw": "{\n  \"method\": \"add\",\n  \"session\": \"{{session}}\",\n  \"id\": 1,\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template\",\n      \"data\": [\n        {\n          \"name\": \"bor\",\n          \"type\": \"cli\",\n          \"description\": \"BOR template\"\n        }\n      ]\n    }\n  ]\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3467,7 +3473,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"method\": \"update\",\n  \"session\": \"{{session}}\",\n  \"id\": 2,\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template/sdwor\",\n      \"data\": {\n        \"scope member\": [\n          {\n            \"name\": \"SDWOR\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
+									"raw": "{\n  \"method\": \"update\",\n  \"session\": \"{{session}}\",\n  \"id\": 2,\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template/bor\",\n      \"data\": {\n        \"scope member\": [\n          {\n            \"name\": \"BOR\"\n          }\n        ]\n      }\n    }\n  ]\n}\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3494,7 +3500,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"method\": \"update\",\n  \"session\": \"{{session}}\",\n  \"id\": 3,\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template/sdwor\",\n      \"data\": {\n        \"script\": \"config system interface\\n    edit \\\"port5\\\"\\n        set ip 10.$(lan_id).1.1 255.255.255.0\\n        set allowaccess ping\\n        set type physical\\n    next\\n    edit \\\"port6\\\"\\n        set ip 10.$(lan_id).101.1 255.255.255.0\\n        set allowaccess ping\\n        set type physical\\n    next\\n    edit \\\"port10\\\"\\n        set ip 192.168.0.33 255.255.255.0\\n        set allowaccess ping https ssh http fgfm\\n        set type physical\\n    next\\n    edit \\\"fss_onramp\\\"\\n        set vdom \\\"root\\\"\\n        set type tunnel\\n        set interface \\\"port1\\\"\\n    next\\nend\\nconfig system dhcp server\\n    edit 10\\n        set dns-service local\\n        set default-gateway 10.$(lan_id).1.1\\n        set netmask 255.255.255.0\\n        set interface \\\"port5\\\"\\n        config ip-range\\n            edit 1\\n                set start-ip 10.$(lan_id).1.101\\n                set end-ip 10.$(lan_id).1.105\\n            next\\n        end\\n    next\\n    edit 3\\n        set dns-service local\\n        set default-gateway 10.$(lan_id).101.1\\n        set netmask 255.255.255.0\\n        set interface \\\"port6\\\"\\n        config ip-range\\n            edit 1\\n                set start-ip 10.$(lan_id).101.101\\n                set end-ip 10.$(lan_id).101.105\\n            next\\n        end\\n    next\\nend\\nconfig system dns-database\\n    edit \\\"unisase\\\"\\n        set domain \\\"unisase.lab\\\"\\n        set authoritative disable\\n        set forwarder \\\"10.1.0.7\\\" \\n    next\\nend\\nconfig system dns-server\\n    edit \\\"port6\\\"\\n    next\\n    edit \\\"port5\\\"\\n    next\\nend\"\n      }\n    }\n  ]\n}",
+									"raw": "{\n  \"method\": \"update\",\n  \"session\": \"{{session}}\",\n  \"id\": 3,\n  \"params\": [\n    {\n      \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template/bor\",\n      \"data\": {\n        \"script\": \"config system interface\\n    edit \\\"port5\\\"\\n        set ip 10.$(lan_id).1.1 255.255.255.0\\n        set allowaccess ping\\n        set type physical\\n    next\\n    edit \\\"port6\\\"\\n        set ip 10.$(lan_id).101.1 255.255.255.0\\n        set allowaccess ping\\n        set type physical\\n    next\\n    edit \\\"port10\\\"\\n        set ip 192.168.0.33 255.255.255.0\\n        set allowaccess ping https ssh http fgfm\\n        set type physical\\n    next\\n    edit \\\"fss_onramp\\\"\\n        set vdom \\\"root\\\"\\n        set type tunnel\\n        set interface \\\"port1\\\"\\n    next\\nend\\nconfig system dhcp server\\n    edit 10\\n        set dns-service local\\n        set default-gateway 10.$(lan_id).1.1\\n        set netmask 255.255.255.0\\n        set interface \\\"port5\\\"\\n        config ip-range\\n            edit 1\\n                set start-ip 10.$(lan_id).1.101\\n                set end-ip 10.$(lan_id).1.105\\n            next\\n        end\\n    next\\n    edit 3\\n        set dns-service local\\n        set default-gateway 10.$(lan_id).101.1\\n        set netmask 255.255.255.0\\n        set interface \\\"port6\\\"\\n        config ip-range\\n            edit 1\\n                set start-ip 10.$(lan_id).101.101\\n                set end-ip 10.$(lan_id).101.105\\n            next\\n        end\\n    next\\nend\\nconfig system dns-database\\n    edit \\\"unisase\\\"\\n        set domain \\\"unisase.lab\\\"\\n        set authoritative disable\\n        set forwarder \\\"10.1.0.7\\\" \\n    next\\nend\\nconfig system dns-server\\n    edit \\\"port6\\\"\\n    next\\n    edit \\\"port5\\\"\\n    next\\nend\"\n      }\n    }\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3524,7 +3530,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3539,7 +3546,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/_ipsec/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"fss_onramp\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"_ipsec\",\n                        \"widgets\": [\n                            \"_ipsec\"\n                        ]\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"SDWOR\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/_ipsec/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"fss_onramp\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"_ipsec\",\n                        \"widgets\": [\n                            \"_ipsec\"\n                        ]\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"BOR\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3614,7 +3621,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3629,7 +3637,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/router_bgp/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"fss_onramp\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"router_bgp\",\n                        \"widgets\": [\n                            \"_bgp\"\n                        ]\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"SDWOR\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/router_bgp/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"fss_onramp\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"router_bgp\",\n                        \"widgets\": [\n                            \"_bgp\"\n                        ]\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"BOR\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3850,7 +3858,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3864,7 +3873,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group/SDWOR/object member\",\n            \"data\": [\n                { \n                    \"name\": \"site2-1\",\n                    \"vdom\": \"root\"\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom/{{adom}}/group/BOR/object member\",\n            \"data\": [\n                { \n                    \"name\": \"site2-1\",\n                    \"vdom\": \"root\"\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3935,7 +3944,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -3950,7 +3960,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"SDWOR\",\n                    \"scope\": [\n                        {\n                            \"name\": \"SDWOR\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"BOR\",\n                    \"scope\": [\n                        {\n                            \"name\": \"BOR\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
