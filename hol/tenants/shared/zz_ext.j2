@@ -1,5 +1,8 @@
 execute batch start
 
+config system fortiguard
+    unset update-server-location
+end
 config firewall vip
     edit "site1-H1-isp1"
         set extip {{port1}}

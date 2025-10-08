@@ -17,7 +17,7 @@ def get_public_ip(cfg, fgt, intf):
     }
     output = runCLICommandTask(cfg, task)
     
-    str = [s for s in output if 'Public/WAN IP:' in s or 'my public IP:' in s][0]
+    str = [ s for s in output if 'Public/WAN IP:' in s ][0]
     return str.split(':')[-1].strip()
 
 def main():
