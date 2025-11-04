@@ -1,0 +1,128 @@
+#!/bin/sh
+
+if [ -f /fabric.env ]; then
+    . /fabric.env
+fi
+
+install() {
+    # This script is executed once after the device is installed.
+
+    # This is where you would download and install additional
+    # packages.
+
+    apt update
+    apt install nodejs npm python3-paramiko python3-jinja2 python3-netaddr nano sshpass -y
+    npm install -g newman
+    pip3 install paramiko-expect ansible --break-system-packages
+
+    # Perform configuration restore
+    restore
+    # or execute a script
+    script
+}
+
+script() {
+    if [ ! -f /fabric.script ]; then
+	return 0
+    fi
+    chmod +x /fabric.script
+    /fabric.script
+}
+
+prepare() {
+    # This script is executed every time before Fabric Studio backup
+    # /fabric directory.
+
+    # This is where you'd stop your services and copy the files you
+    # want to backup from your system to /fabric directory.
+
+    # Example:
+    # service ldap stop
+    # cp /etc/ldap/db /fabric/
+    # service ldap start
+    true
+}
+
+restore() {
+    # This script is executed every time after Fabric Studio will
+    # restore /fabric directory.
+
+    # This is where you'd copy the files you want to restore from
+    # /fabric directory to the system and restart your services.
+
+    status_fail=0
+
+    echo "----------------------------------"
+    echo "Starting instance configuration..."
+    echo "----------------------------------"
+
+    # Install .bashrc
+    echo Updating .bashrc...
+    cp /fabric/.bashrc ~
+    if [ -f /fabric/.hol_sdwan ]
+    then
+        echo This is an SDWAN-only instance.
+        export HOL_SDWAN=1
+        echo HOL_SDWAN=1 > /fabric.env
+        echo export HOL_SDWAN=1 >> ~/.bashrc
+    fi    
+
+    # Install ssh_config
+    echo Updating ssh_config...
+    cp /fabric/ssh_config ~/.ssh/config
+    echo UserKnownHostsFile /dev/null >> /etc/ssh/ssh_config
+    echo StrictHostKeyChecking no >> /etc/ssh/ssh_config
+
+    # Download HoL files and unpack the Deployer
+    echo Downloading HoL files and installing the Deployer...
+    cd /fabric
+    ./setup_deployer.sh
+
+    # Check boot status and license of FGTs
+    retries=19
+    cd /fabric/autodeploy
+    until ./check_devices.py || [ $retries -le 0 ]
+    do
+        echo "Some devices didn't finish booting (retries left = $retries)"
+        sleep 30
+        ((retries--))
+    done
+
+    if [ $retries -gt 0 ];
+    then
+
+        echo "--------------------------------"
+        echo "Calling configure_instance.sh..."
+        echo "--------------------------------"  
+
+        # Finalize instance configuration
+        ./configure_instance.sh || status_fail=1
+
+        [ $status_fail -eq 0 ] || echo -e "\n\033[0;31mFATAL:\033[0m Some instance configuration tasks failed!"
+
+    else
+        echo -e "\n\033[0;31mFATAL:\033[0m Some devices didn't finish booting or do not have valid licenses!"
+        status_fail=1
+    fi
+
+    if [ $status_fail -eq 0 ];
+    then
+        echo "This instance has been successfully configured."
+    else
+        echo "Please check the above logs, fix the problem(s) and then manually run './configure_instance.sh' to complete instance configuration!"
+    fi
+
+    exit $status_fail
+
+}
+
+COMMAND="$1"
+shift
+
+case ${COMMAND} in
+    (install|script|prepare|restore)
+	"${COMMAND}" "$@";;
+    *)
+	echo "ERROR: invalid command ${COMMAND}" >& 2
+	exit 254;;
+esac

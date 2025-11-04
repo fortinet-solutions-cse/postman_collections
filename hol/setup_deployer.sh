@@ -1,34 +1,36 @@
 #!/bin/bash
 
 # setup_deployer.sh                                                          #
-# Uni-SASE HoL, Version 4.0 b100                                             #
+# Uni-SASE HoL, Version 4.5 b100                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
 
-# Local: solution_deployer.tgz (core Deployer files)
-# Remote: tenants and scripts stored on GitHub
+# Remote: the Deployer core files, tenants and scripts stored on GitHub
 # Local: hol_files.tgz (additional files not stored on remote repo)
 
-cd /fortipoc
+cd /fabric
 rm -rf autodeploy 
 
-hol_ver=${HOL_VER:-hol-4.0}
+deployer_ver=${DEPLOYER_VER:-7.6.x}
+hol_ver=${HOL_VER:-hol-4.5}
 
-wget -O $hol_ver.zip https://github.com/fortinet-solutions-cse/postman_collections/archive/refs/tags/$hol_ver.zip
+wget -O solution_deployer.tgz https://github.com/fortinet-solutions-cse/solution-deployer/archive/refs/tags/$deployer_ver.tar.gz
+wget -O $hol_ver.tgz https://github.com/fortinet-solutions-cse/postman_collections/archive/refs/tags/$hol_ver.tar.gz
 
 shopt -s dotglob
-tar xfz solution-deployer.tgz
-solution-deployer/install.sh autodeploy
+tar --overwrite -xzvf solution_deployer.tgz
+solution-deployer-$deployer_ver/install.sh autodeploy
 
-unzip -o $hol_ver.zip "postman_collections-$hol_ver/hol/scripts/*"
-unzip -o $hol_ver.zip "postman_collections-$hol_ver/hol/tenants/*"
+tar --overwrite --wildcards -xzvf $hol_ver.tgz "postman_collections-$hol_ver/hol/scripts/*" 
+tar --overwrite --wildcards -xzvf $hol_ver.tgz "postman_collections-$hol_ver/hol/tenants/*"
 mv postman_collections-$hol_ver/hol/scripts/* autodeploy
 mv postman_collections-$hol_ver/hol/tenants/* autodeploy/tenants
 
-tar xfz hol_files.tgz -C autodeploy
+tar --overwrite -xzvf hol_files.tgz -C autodeploy
 
 # Cleanup
-rm -rf solution-deployer
+rm -rf solution-deployer-$deployer_ver
 rm -rf postman_collections-$hol_ver
-rm $hol_ver.zip
+rm $hol_ver.tgz
+rm solution_deployer.tgz
