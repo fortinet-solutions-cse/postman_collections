@@ -17,10 +17,14 @@
 # alias cp='cp -i'
 # alias mv='mv -i'
 
+if [ -f /fabric.env ]; then
+    . /fabric.env
+fi
+
 fpoc_ver() {
   for d in FGT11 FGT12 FGT21 FGT1H1 FGT1H2 FGT2H1
   do
-    sshpass -p fortinet ssh $d 'get system status' 2>/dev/null | grep -E "Version:|Status:"
+    sshpass -p Fortinet123! ssh $d 'get system status' 2>/dev/null | grep -E "Version:|Status:"
     echo
   done
 }
@@ -28,7 +32,7 @@ fpoc_ver() {
 fpoc_upgrade() {
   for d in FGT11 FGT12 FGT21 FGT1H1 FGT1H2 FGT2H1
   do
-    sshpass -p fortinet scp -O $1 ${d}:fgt-image &
+    sshpass -p Fortinet123! scp -O $1 ${d}:fgt-image &
   done
 }
 
@@ -37,7 +41,7 @@ fpoc_deploy() {
   do
     [[ -z $1 ]] && dir=. || dir=$1
     file=$dir/site${d:3:1}-${d:4}
-    [[ -f $file ]] && sshpass -p fortinet ssh $d < $file
+    [[ -f $file ]] && sshpass -p Fortinet123! ssh $d < $file
   done
 }
 
@@ -46,7 +50,7 @@ fpoc_backup() {
   do
     [[ -z $1 ]] && dir=. || dir=$1
     file=$dir/site${d:3:1}-${d:4}
-    sshpass -p fortinet scp -O ${d}:fgt-config $file
+    sshpass -p Fortinet123! scp -O ${d}:fgt-config $file
   done
 }
 
@@ -55,14 +59,14 @@ fpoc_restore() {
   do
     [[ -z $1 ]] && dir=. || dir=$1
     file=$dir/site${d:3:1}-${d:4}
-    [[ -f $file ]] && sshpass -p fortinet scp -O $file ${d}:fgt-restore-config
+    [[ -f $file ]] && sshpass -p Fortinet123! scp -O $file ${d}:fgt-restore-config
   done
 }
 
 fpoc_exec() {
   for d in FGT11 FGT12 FGT21 FGT1H1 FGT1H2 FGT2H1
   do
-    sshpass -p fortinet ssh $d < $1
+    sshpass -p Fortinet123! ssh $d < $1
   done
 }
 

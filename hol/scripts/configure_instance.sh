@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # configure_instance.sh                                                      #
-# Uni-SASE HoL, Version 4.0 b100                                             #
+# Uni-SASE HoL, Version 4.5 b100                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
@@ -17,7 +17,7 @@ then
     retries=5 
     until ./update_postman_vars.py || [ $retries -le 0 ]
     do
-        echo -e "\n\033[0;33mWARNING:\033[0m No Internet access for the lab FGTs yet (retries left = $retries)"
+        echo -e "\nWARNING: No Internet access for the lab FGTs yet (retries left = $retries)"
         sleep 5
         ((retries--))
     done
@@ -26,7 +26,7 @@ then
 fi
 
 # Finalize FGT configuration
-./configure_devices.py || status_fail=1
+#./configure_devices.py || status_fail=1
 
 exit $status_fail
 

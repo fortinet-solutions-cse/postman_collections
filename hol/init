@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ -f /fabric.env ]; then
     . /fabric.env
@@ -14,6 +14,13 @@ install() {
     apt install nodejs npm python3-paramiko python3-jinja2 python3-netaddr nano sshpass -y
     npm install -g newman
     pip3 install paramiko-expect ansible --break-system-packages
+
+    if [ -f /fabric/.hol_sdwan ]
+    then
+        echo --- This is an SDWAN-only instance.
+        export HOL_SDWAN=1
+        echo HOL_SDWAN=1 >> /fabric.env
+    fi     
 
     # Perform configuration restore
     restore
@@ -56,30 +63,21 @@ restore() {
     echo "Starting instance configuration..."
     echo "----------------------------------"
 
-    # Install .bashrc
-    echo Updating .bashrc...
-    cp /fabric/.bashrc ~
-    if [ -f /fabric/.hol_sdwan ]
-    then
-        echo This is an SDWAN-only instance.
-        export HOL_SDWAN=1
-        echo HOL_SDWAN=1 > /fabric.env
-        echo export HOL_SDWAN=1 >> ~/.bashrc
-    fi    
+    echo --- Updating .bashrc...
+    cp /fabric/.bashrc /root
 
-    # Install ssh_config
-    echo Updating ssh_config...
-    cp /fabric/ssh_config ~/.ssh/config
+    echo --- Updating ssh_config...
+    cp /fabric/ssh_config /root/.ssh/config
     echo UserKnownHostsFile /dev/null >> /etc/ssh/ssh_config
     echo StrictHostKeyChecking no >> /etc/ssh/ssh_config
 
-    # Download HoL files and unpack the Deployer
-    echo Downloading HoL files and installing the Deployer...
+    echo --- Calling setup_deployer.sh...
     cd /fabric
     ./setup_deployer.sh
 
-    # Check boot status and license of FGTs
-    retries=19
+    echo
+    echo --- Calling check_devices.py to check boot and license status of the FGTs...
+    retries=9
     cd /fabric/autodeploy
     until ./check_devices.py || [ $retries -le 0 ]
     do
@@ -91,17 +89,13 @@ restore() {
     if [ $retries -gt 0 ];
     then
 
-        echo "--------------------------------"
-        echo "Calling configure_instance.sh..."
-        echo "--------------------------------"  
-
-        # Finalize instance configuration
+        echo --- Calling configure_instance.sh to finalize instance configuration...
         ./configure_instance.sh || status_fail=1
 
-        [ $status_fail -eq 0 ] || echo -e "\n\033[0;31mFATAL:\033[0m Some instance configuration tasks failed!"
+        [ $status_fail -eq 0 ] || echo -e "\nFATAL: Some instance configuration tasks failed!"
 
     else
-        echo -e "\n\033[0;31mFATAL:\033[0m Some devices didn't finish booting or do not have valid licenses!"
+        echo -e "\nFATAL: Some devices didn't finish booting or do not have valid licenses!"
         status_fail=1
     fi
 
