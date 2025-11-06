@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [ -f /fabric.env ]; then
     . /fabric.env
 fi
@@ -10,6 +12,10 @@ install() {
     # This is where you would download and install additional
     # packages.
 
+    echo --- Waiting for Internet access...
+    while ! ping -c 1 fortinet.com; do sleep 2; done
+
+    echo --- Installing packages...
     apt update
     apt install nodejs npm python3-paramiko python3-jinja2 python3-netaddr nano sshpass -y
     npm install -g newman
@@ -37,17 +43,16 @@ script() {
 }
 
 prepare() {
+
     # This script is executed every time before Fabric Studio backup
     # /fabric directory.
 
     # This is where you'd stop your services and copy the files you
     # want to backup from your system to /fabric directory.
 
-    # Example:
-    # service ldap stop
-    # cp /etc/ldap/db /fabric/
-    # service ldap start
-    true
+    echo --- Deleting Deployer and HoL files...
+    rm -rf /fabric/autodeploy
+
 }
 
 restore() {
@@ -76,37 +81,11 @@ restore() {
     ./setup_deployer.sh
 
     echo
-    echo --- Calling check_devices.py to check boot and license status of the FGTs...
-    retries=9
+    echo --- Calling configure_instance.sh to finalize instance configuration...
     cd /fabric/autodeploy
-    until ./check_devices.py || [ $retries -le 0 ]
-    do
-        echo "Some devices didn't finish booting (retries left = $retries)"
-        sleep 30
-        ((retries--))
-    done
+    ./configure_instance.sh 
 
-    if [ $retries -gt 0 ];
-    then
-
-        echo --- Calling configure_instance.sh to finalize instance configuration...
-        ./configure_instance.sh || status_fail=1
-
-        [ $status_fail -eq 0 ] || echo -e "\nFATAL: Some instance configuration tasks failed!"
-
-    else
-        echo -e "\nFATAL: Some devices didn't finish booting or do not have valid licenses!"
-        status_fail=1
-    fi
-
-    if [ $status_fail -eq 0 ];
-    then
-        echo "This instance has been successfully configured."
-    else
-        echo "Please check the above logs, fix the problem(s) and then manually run './configure_instance.sh' to complete instance configuration!"
-    fi
-
-    exit $status_fail
+    echo "This instance has been successfully configured."
 
 }
 

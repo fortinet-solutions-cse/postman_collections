@@ -1,0 +1,94 @@
+#!/bin/bash
+
+set -e
+
+if [ -f /fabric.env ]; then
+    . /fabric.env
+fi
+
+install() {
+    # This script is executed once after this device is installed.
+
+    # This is where you would download and install additional
+    # packages.
+
+    echo --- Waiting for Internet access...
+    while ! ping -c 1 fortinet.com; do sleep 2; done
+
+    # Set CSRF_TRUSTED_ORIGINS to allow Fabric Studio reverse proxy access
+    public_ip=`ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ident.me`
+    echo --- Setting CSRF_TRUSTED_ORIGINS to allow instance public IP = $public_ip...
+    echo CSRF_TRUSTED_ORIGINS=https://$public_ip:16018 >> /fabric.env
+
+    echo --- Installing packages...
+    apt update -y
+    apt install -y rsync
+
+	echo --- Stopping unnecessary services...
+	/bin/systemctl disable nginx
+	/bin/systemctl disable nmbd
+	/bin/systemctl disable smbd
+	/bin/systemctl disable vsftpd
+	/bin/systemctl disable slapd
+	/bin/systemctl disable tftpd-hpa
+
+	echo --- Creating directories...
+	mkdir /var/log/django
+	mkdir /var/log/dba
+
+   # Perform configuration restore
+   restore
+}
+
+script() {
+    if [ ! -f /fabric.script ]; then
+	return 0
+    fi
+    chmod +x /fabric.script
+    /fabric.script
+}
+
+prepare() {
+    # This script is executed every time before Fabric Studio backup
+    # /fabric directory.
+
+    # This is where you'd stop your services and copy the files you
+    # want to backup from your system to /fabric directory.
+
+    # Example:
+    # service ldap stop
+    # cp /etc/ldap/db /fabric/
+    # service ldap start
+    true
+}
+
+restore() {
+    # This script is executed every time after Fabric Studio will
+    # restore /fabric directory.
+
+    # This is where you'd copy the files you want to restore from
+    # /fabric directory to the system and restart your services.
+
+    echo --- Updating SSH configuration...
+    cp /fabric/wancontrol/ssh/* /root/.ssh
+
+    echo --- Installing fabric-run service...
+    cp /fabric/fabric-run.service /etc/systemd/system/
+    systemctl enable fabric-run
+    systemctl start fabric-run
+
+    # Run what we need on startup
+    /fabric/fabric-run start
+
+}
+
+COMMAND="$1"
+shift
+
+case ${COMMAND} in
+    (install|script|prepare|restore)
+	"${COMMAND}" "$@";;
+    *)
+	echo "ERROR: invalid command ${COMMAND}" >& 2
+	exit 254;;
+esac
