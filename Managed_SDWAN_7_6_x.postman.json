@@ -1474,229 +1474,6 @@
 							"response": []
 						},
 						{
-							"name": "Discover site2-H1",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"var jsonData = pm.response.json();",
-											"sn = jsonData.result[0].data.device.sn;",
-											"hostname = jsonData.result[0].data.device.name;",
-											"",
-											"pm.environment.set(\"sn_fgt_legacy\", sn);",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/discover/device\",\n            \"data\": {\n                \"device\": {\n                    \"adm_pass\": \"fortinet\",\n                    \"adm_usr\": \"admin\",\n                    \"ip\": \"192.168.0.43\"\n                }\n            }\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Onboard site2-H1",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"function waitOnTask(retries) {",
-											"    if (!retries) {",
-											"        pm.test(\"Task completed\", function() {",
-											"            pm.expect(0).to.equal(1, \"Timeout while waiting for task completion\");     ",
-											"        });",
-											"        postman.setNextRequest(null);",
-											"    }",
-											"    else {",
-											"        pm.sendRequest({",
-											"            url: \"https://\" + pm.environment.get(\"ip\") + \"/jsonrpc\",",
-											"            method: 'POST',",
-											"            header: \"Content-Type:application/json\",",
-											"            body: {",
-											"                mode: 'raw',",
-											"                raw: JSON.stringify({\"session\": pm.environment.get(\"session\"), \"id\": 1, \"method\": \"get\",\"params\": [{\"url\": \"/task/task/\" + taskid}]})",
-											"            }",
-											"        }, function(err, response) {",
-											"            var jsonData = response.json();",
-											"            if (jsonData.result[0].data.percent == 100) {",
-											"                // Task completed",
-											"                if (jsonData.result[0].data.num_err) {",
-											"                    postman.setNextRequest(null);",
-											"                }",
-											"                pm.test(\"Task completed\", function() {",
-											"                    pm.expect(jsonData.result[0].data.num_err).to.equal(0, \"Failed to add some devices\");     ",
-											"                });",
-											"            }",
-											"            else {",
-											"                console.log(\"Task is still not complete\");",
-											"                setTimeout(function() {",
-											"                    waitOnTask(--retries);",
-											"                }, 10000);",
-											"            }",
-											"        }); ",
-											"    }",
-											"}",
-											"",
-											"var jsonData = pm.response.json();",
-											"var taskid = jsonData.result[0].data.taskid;",
-											"",
-											"waitOnTask(10);",
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/dvm/cmd/add/dev-list\",\n            \"data\": {\n                \"adom\": \"OUTSIDE\",\n                \"flags\": [\n                    \"create_task\",\n                    \"nonblocking\"\n                ],\n                \"add-dev-list\": [\n                    {\n                        \"adm_pass\": \"fortinet\",\n                        \"adm_usr\": \"admin\",\n                        \"ip\": \"192.168.0.43\",\n                        \"name\": \"site2-H1\",\n                        \"sn\": \"{{sn_fgt_legacy}}\",\n                        \"mgmt_mode\": \"fmgfaz\",\n                        \"flags\": 24\n                    }\n                ]\n            }\n        }\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Assign Firewall Policy Package",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/OUTSIDE/default/scope member\",\n            \"data\": [\n                {\n                    \"name\": \"site2-H1\",\n                    \"vdom\": \"root\"\n                }\n            ]\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Add Permit-ANY Firewall Rule",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/OUTSIDE/pkg/default/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Permit-ANY\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"any\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n            ]\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Create IPSEC Template",
 							"event": [
 								{
@@ -1705,7 +1482,9 @@
 										"exec": [
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -1720,7 +1499,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/_ipsec/adom/OUTSIDE\",\n            \"data\": [\n                {\n                    \"name\": \"To-SDWAN\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"_ipsec\",\n                        \"widgets\": [\n                            \"_ipsec\"\n                        ]\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/_ipsec/adom/OUTSIDE\",\n            \"data\": [\n                {\n                    \"name\": \"To-SDWAN\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"_ipsec\",\n                        \"widgets\": [\n                            \"_ipsec\"\n                        ]\n                    }\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1794,7 +1573,9 @@
 										"exec": [
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -1809,7 +1590,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/router_bgp/adom/OUTSIDE\",\n            \"data\": [\n                {\n                    \"name\": \"SDWAN\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"router_bgp\",\n                        \"widgets\": [\n                            \"_bgp\"\n                        ]\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"root\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/router_bgp/adom/OUTSIDE\",\n            \"data\": [\n                {\n                    \"name\": \"SDWAN\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"router_bgp\",\n                        \"widgets\": [\n                            \"_bgp\"\n                        ]\n                    }\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1855,6 +1636,90 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/OUTSIDE/template/router_bgp/SDWAN/router/bgp\",\n            \"data\": {\n                \"as\": \"65100\",\n                \"ebgp-multipath\": 1,\n                \"holdtime-timer\": 15,\n                \"keepalive-timer\": 5,\n                \"neighbor\": [\n                    {\n                        \"ip\": \"192.168.1.2\",\n                        \"soft-reconfiguration\": 1,\n                        \"connect-timer\": 1,\n                        \"advertisement-interval\": 1,\n                        \"remote-as\": \"65001\"\n                    },\n                    {\n                        \"ip\": \"192.168.2.2\",\n                        \"soft-reconfiguration\": 1,\n                        \"connect-timer\": 1,\n                        \"advertisement-interval\": 1,\n                        \"remote-as\": \"65001\"\n                    }\n                ],\n                \"network\": [\n                    {\n                        \"id\": 1,\n                        \"prefix\": [\n                            \"10.4.0.0\",\n                            \"255.255.255.0\"\n                        ]\n                    }\n                ],\n                \"router-id\": \"100.64.4.1\"\n            }\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Permit-ANY Firewall Rule",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/OUTSIDE/pkg/default/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Permit-ANY\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"any\"\n                    ],\n                    \"dstintf\": [\n                        \"any\"\n                    ],\n                    \"srcaddr\": \"all\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n            ]\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Legacy Site Blueprint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/OUTSIDE/obj/fmg/device/blueprint\",\n            \"data\": [\n                {\n                    \"name\": \"LegacySite\",\n                    \"prov-type\": \"templates\",\n                    \"templates\": [\n                        \"4-1__To-SDWAN\",\n                        \"4-1240__SDWAN\"\n                    ],          \n                    \"cliprofs\": [\n                        \"LegacySite\"\n                    ],                              \n                    \"pkg\": \"default\",\n                    \"platform\": \"FortiGate-VM64-KVM\",\n                    \"vm-log-disk\": 1,\n                    \"port-provisioning\": 10\n                }\n            ]\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6856,7 +6721,8 @@
 							"postman.setEnvironmentVariable('status_code',data['result'][0]['status']['code']);"
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],

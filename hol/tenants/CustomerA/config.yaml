@@ -53,9 +53,15 @@ tasks:
     src: tenants/CustomerA/inventory.CustomerA.csv
     fos: 7.6
     tag: model_devices
-  - name: Deploy Legacy Site
+  - name: Prepare Legacy Site
     type: postman
     folder: CustomerA - Legacy Site
+    tag: legacy_site
+  - name: Create Model Device for Legacy Site
+    type: model_devices
+    src: tenants/CustomerA/inventory.legacysite_CustomerA.j2
+    fos: 7.6
+    adom: OUTSIDE
     tag: legacy_site
   - name: Connect to Legacy Site
     type: postman
@@ -75,7 +81,7 @@ tasks:
     tag: staging
   - name: Onboard Devices
     type: onboard
-    src: tenants/CustomerA/inventory.CustomerA.csv
+    src: tenants/CustomerA/inventory.all_CustomerA.csv
     monitor: yes
     retry: yes
     tag: onboard
