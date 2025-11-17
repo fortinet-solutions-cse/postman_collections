@@ -61,7 +61,7 @@ tasks:
     tag: legacy_site
   - name: Create Model Device for Legacy Site
     type: model_devices
-    src: tenants/CustomerA/inventory.legacysite_CustomerA.j2
+    src: tenants/CustomerA/inventory.legacysite_CustomerA.csv
     fos: 7.6
     adom: OUTSIDE
     tag: legacy_site
