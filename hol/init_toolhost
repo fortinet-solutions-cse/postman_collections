@@ -25,7 +25,7 @@ install() {
     then
         echo --- This is an SDWAN-only instance.
         export HOL_SDWAN=1
-        echo HOL_SDWAN=1 >> /fabric.env
+        echo export HOL_SDWAN=1 >> /fabric.env
     fi     
 
     # Perform configuration restore
