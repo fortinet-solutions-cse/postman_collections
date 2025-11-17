@@ -1656,6 +1656,75 @@
 							"response": []
 						},
 						{
+							"name": "Create CLI Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.variables.set(\"legacysite_cli_template\", JSON.stringify(",
+											"    `",
+											"config system global",
+											"    set hostname \"site2-H1\"",
+											"    set admin-scp enable",
+											"end",
+											"config system interface ",
+											"    edit \"port5\"",
+											"        set ip 10.4.0.1/24",
+											"        set allowaccess ping",
+											"    next",
+											"end",
+											"    `",
+											"));"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/OUTSIDE/obj/cli/template\",\n            \"data\": [\n                {\n                    \"name\": \"LegacySite\",\n                    \"type\": \"cli\",\n                    \"script\": {{legacysite_cli_template}}\n                }\n            ]\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Add Permit-ANY Firewall Rule",
 							"event": [
 								{

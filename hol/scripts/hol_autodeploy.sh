@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # hol_autodeploy.sh                                                    #
-# Uni-SASE HoL, Version 4.0 b100                                             #
+# Uni-SASE HoL, Version 4.5 b100                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
@@ -10,7 +10,7 @@
 
 start=`date +%s`
 
-api_ver=${API_VER:-hol-4.0}
+api_ver=${API_VER:-hol-4.5}
 jinja_ver=${JINJA_VER:-hol-4.0}
 
 echo -----------------------------------------------------------------------

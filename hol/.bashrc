@@ -22,7 +22,7 @@ if [ -f /fabric.env ]; then
 fi
 
 fab_ver() {
-  fgt_password=$(grep 'fgt_password:' tenants/shared/.secrets.yaml | awk '{print $2}')  
+  fgt_password=$(grep 'fgt_password:' /fabric/autodeploy/tenants/shared/.secrets.yaml | awk '{print $2}')  
   for d in FGT11 FGT12 FGT21 FGT1H1 FGT1H2 FGT2H1
   do
     sshpass -p $fgt_password ssh $d 'get system status' 2>/dev/null | grep -E "Version:|Status:"
@@ -34,7 +34,7 @@ fab_upgrade() {
 
   [ $# -eq 1 ] || { echo "Usage: $0 <image.out>"; return; }
 
-  fgt_password=$(grep 'fgt_password:' tenants/shared/.secrets.yaml | awk '{print $2}')  
+  fgt_password=$(grep 'fgt_password:' /fabric/autodeploy/tenants/shared/.secrets.yaml | awk '{print $2}')  
   for d in FGT11 FGT12 FGT21 FGT1H1 FGT1H2 FGT2H1
   do
     sshpass -p $fgt_password scp -O $1 ${d}:fgt-image &
@@ -45,7 +45,7 @@ fab_deploy() {
 
   [ $# -eq 1 ] || { echo "Usage: $0 <src_dir>"; return; }
 
-  fgt_password=$(grep 'fgt_password:' tenants/shared/.secrets.yaml | awk '{print $2}')  
+  fgt_password=$(grep 'fgt_password:' /fabric/autodeploy/tenants/shared/.secrets.yaml | awk '{print $2}')  
   for d in FGT11 FGT12 FGT21 FGT1H1 FGT1H2 FGT2H1
   do
     [[ -z $1 ]] && dir=. || dir=$1
@@ -58,7 +58,7 @@ fab_backup() {
 
   [ $# -eq 1 ] || { echo "Usage: $0 <target_dir>"; return; }
 
-  fgt_password=$(grep 'fgt_password:' tenants/shared/.secrets.yaml | awk '{print $2}')  
+  fgt_password=$(grep 'fgt_password:' /fabric/autodeploy/tenants/shared/.secrets.yaml | awk '{print $2}')  
   for d in FGT11 FGT12 FGT21 FGT1H1 FGT1H2 FGT2H1
   do
     [[ -z $1 ]] && dir=. || dir=$1
@@ -71,7 +71,7 @@ fab_restore() {
 
   [ $# -eq 1 ] || { echo "Usage: $0 <src_dir>"; return; }
 
-  fgt_password=$(grep 'fgt_password:' tenants/shared/.secrets.yaml | awk '{print $2}')  
+  fgt_password=$(grep 'fgt_password:' /fabric/autodeploy/tenants/shared/.secrets.yaml | awk '{print $2}')  
   for d in FGT11 FGT12 FGT21 FGT1H1 FGT1H2 FGT2H1
   do
     [[ -z $1 ]] && dir=. || dir=$1
@@ -84,7 +84,7 @@ fab_exec() {
 
   [ $# -eq 1 ] || { echo "Usage: $0 <command_file>"; return; }
 
-  fgt_password=$(grep 'fgt_password:' tenants/shared/.secrets.yaml | awk '{print $2}')  
+  fgt_password=$(grep 'fgt_password:' /fabric/autodeploy/tenants/shared/.secrets.yaml | awk '{print $2}')  
   for d in FGT11 FGT12 FGT21 FGT1H1 FGT1H2 FGT2H1
   do
     sshpass -p $fgt_password ssh $d < $1
@@ -96,7 +96,7 @@ fab_auth() {
   [ $# -eq 1 ] || { echo "Usage: $0 <ssh_key_file.pub>"; return; }
 
   sshkey="$(< $1)"
-  fgt_password=$(grep 'fgt_password:' tenants/shared/.secrets.yaml | awk '{print $2}')  
+  fgt_password=$(grep 'fgt_password:' /fabric/autodeploy/tenants/shared/.secrets.yaml | awk '{print $2}')  
   for d in FGT11 FGT12 FGT21 FGT1H1 FGT1H2 FGT2H1 
   do
     sshpass -p $fgt_password ssh $d <<- EOF
