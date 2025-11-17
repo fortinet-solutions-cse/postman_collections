@@ -1809,46 +1809,6 @@
 							"response": []
 						},
 						{
-							"name": "Install Policy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript",
-										"packages": {}
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"OUTSIDE\",\n                    \"pkg\": \"default\",\n                    \"scope\": [\n                        {\n                            \"name\": \"site2-H1\",\n                            \"vdom\": \"root\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
-								},
-								"url": {
-									"raw": "https://{{ip}}/jsonrpc",
-									"protocol": "https",
-									"host": [
-										"{{ip}}"
-									],
-									"path": [
-										"jsonrpc"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "- Breakpoint -",
 							"event": [
 								{
@@ -2623,7 +2583,34 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/4\",\n            \"data\": {\n                \"priority-in-sla\": 5,\n                \"priority-out-sla\": 995\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/5\",\n            \"data\": {\n                \"priority-in-sla\": 5,\n                \"priority-out-sla\": 995\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/6\",\n            \"data\": {\n                \"priority-in-sla\": 8,\n                \"priority-out-sla\": 998\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/7\",\n            \"data\": {\n                \"priority-in-sla\": 6,\n                \"priority-out-sla\": 996\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/8\",\n            \"data\": {\n                \"priority-in-sla\": 6,\n                \"priority-out-sla\": 996\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/9\",\n            \"data\": {\n                \"priority-in-sla\": 9,\n                \"priority-out-sla\": 999\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/health-check/HUB\",\n            \"data\": {\n                \"sla-id-redistribute\": 1\n            }\n        }        \n    ]\n}"
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/4\",\n            \"data\": {\n                \"priority-in-sla\": 5,\n                \"priority-out-sla\": 995\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/5\",\n            \"data\": {\n                \"priority-in-sla\": 5,\n                \"priority-out-sla\": 995\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/6\",\n            \"data\": {\n                \"priority-in-sla\": 8,\n                \"priority-out-sla\": 998\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/7\",\n            \"data\": {\n                \"priority-in-sla\": 6,\n                \"priority-out-sla\": 996\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/8\",\n            \"data\": {\n                \"priority-in-sla\": 6,\n                \"priority-out-sla\": 996\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/members/9\",\n            \"data\": {\n                \"priority-in-sla\": 9,\n                \"priority-out-sla\": 999\n            }\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/health-check/HUB\",\n            \"data\": {\n                \"sla-id-redistribute\": 1\n            }\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "https://{{ip}}/jsonrpc",
+									"protocol": "https",
+									"host": [
+										"{{ip}}"
+									],
+									"path": [
+										"jsonrpc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CustomerA - Add Neighbors to SDWAN Template - Edge",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/wanprof/Edge-SDWAN/system/sdwan/neighbor\",\n            \"data\": [\n                {\n                    \"health-check\": \"HUB\",\n                    \"ip\": \"10.200.1.253\",\n                    \"route-metric\": \"priority\",\n                    \"member\": [\n                        \"4\",\n                        \"5\",\n                        \"6\"\n                    ]\n                },\n                {\n                    \"health-check\": \"HUB\",\n                    \"ip\": \"10.200.1.254\",\n                    \"route-metric\": \"priority\",\n                    \"member\": [\n                        \"7\",\n                        \"8\",\n                        \"9\"\n                    ]\n                }\n            ]\n        }\n    ]\n}"
 								},
 								"url": {
 									"raw": "https://{{ip}}/jsonrpc",
