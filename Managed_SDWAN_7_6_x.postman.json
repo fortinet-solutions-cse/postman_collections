@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cd560bc8-409a-437c-98e6-4fd8d6628570",
+		"_postman_id": "bf394c3d-5ea0-4a3f-9263-c4158781d175",
 		"name": "Managed Secure SD-WAN 7.6.x",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "9895935"
@@ -250,7 +250,8 @@
 											""
 										],
 										"type": "text/javascript",
-										"packages": {}
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -264,7 +265,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/device/template/widget/dns/action-list\",\n            \"data\": {\n                \"action\": \"conf-sys-dns\",\n                \"model\": \"all\",\n                \"seq\": 1,\n                \"value\": {\n                    \"primary\": \"8.8.8.8\",\n                    \"secondary\": \"8.8.4.4\",\n                    \"protocol\": null                    \n                }\n            }\n        }\n    ]\n}",
+									"raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/devprof/Basic-Settings/system/dns\",\n            \"data\": {\n                \"primary\": \"8.8.8.8\",\n                \"secondary\": \"8.8.4.4\"\n            }\n        }\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
