@@ -16,7 +16,10 @@ install() {
     while ! ping -c 1 fortinet.com; do sleep 2; done
 
     # Set CSRF_TRUSTED_ORIGINS to allow Fabric Studio reverse proxy access
-    public_ip=`ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ident.me`
+    public_ip=$(
+        (ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ident.me) || 
+        (curl 'https://api.ipify.org?format=txt')
+    )    
     echo --- Setting CSRF_TRUSTED_ORIGINS to allow instance public IP = $public_ip...
     echo CSRF_TRUSTED_ORIGINS=https://$public_ip:16018 >> /fabric.env
 
