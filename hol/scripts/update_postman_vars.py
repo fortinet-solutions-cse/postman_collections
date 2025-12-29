@@ -7,7 +7,7 @@
 # -------------------------------------------------------------------------- #
 
 import sys, re
-from orch_base import runCLICommandTask
+from orch_base import readConfig, runCLICommandTask
 from yaml import safe_load, safe_dump
 
 def __get_public_ip_with_ipify(cfg, fgt, intf):
@@ -46,8 +46,7 @@ def main():
     dry = "--dry" in sys.argv
     if dry: print("Dry-run mode ON.")    
     
-    with open('tenants/shared/config.yaml', 'r') as cfgfile:
-        cfg = safe_load(cfgfile)
+    cfg = readConfig(shared=True, silent=True)        
 
     print("--> ISP1")
     isp1_ip = get_public_ip(cfg, "zz_ext", "port1")
