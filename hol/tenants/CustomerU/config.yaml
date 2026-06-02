@@ -4,7 +4,7 @@ fmg_user: admin
 fmg_adom: CustomerU
 
 postman_collection: tenants/shared/Managed_SDWAN_7_6_x.postman.json
-default_skip_tags: west-only
+default_skip_tags: west-only,bor
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
@@ -58,13 +58,13 @@ tasks:
     type: postman
     folder: CustomerU - Fine-tune SD-WAN
     tag: fine-tune-sdwan
-  - name: Import SSL Decryption Certificate
-    type: cli_templates
-    src: tenants/CustomerU/05-Edge-Cert.j2
-    tag: fine-tune-sase
+  # - name: Import SSL Decryption Certificate
+  #   type: cli_templates
+  #   src: tenants/CustomerU/05-Edge-Cert.j2
+  #   tag: fine-tune-sase
   - name: Fine-tune for Uni-SASE
     type: postman
-    folder: Fine-tune Uni-SASE
+    folder: CustomerU - Fine-tune Uni-SASE
     tag: fine-tune-sase
   - name: Create Model Devices - West-East
     type: model_devices
@@ -100,3 +100,7 @@ tasks:
     monitor: yes
     retry: yes
     tag: west-only
+  - name: Deploy BOR
+    type: postman
+    folder: CustomerU - BOR
+    tag: bor,west-only
