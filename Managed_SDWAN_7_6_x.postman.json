@@ -4531,56 +4531,6 @@
           "name": "CustomerU - Fine-tune Uni-SASE",
           "item": [
             {
-              "name": "CLI Template Groups",
-              "item": [
-                {
-                  "name": "Add SSL Cert Template",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "exec": [
-                          ""
-                        ],
-                        "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "// {\n//     \"session\": \"{{session}}\",\n//     \"id\": 1,\n//     \"method\": \"add\",\n//     \"params\": [\n//         {\n//             \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group/Edge-Template/member\",\n//             \"data\": [\n//                 \"05-Edge-Cert\"\n//             ]\n//         }\n//     ]\n// }",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "https://{{ip}}/jsonrpc",
-                      "protocol": "https",
-                      "host": [
-                        "{{ip}}"
-                      ],
-                      "path": [
-                        "jsonrpc"
-                      ]
-                    }
-                  },
-                  "response": []
-                }
-              ]
-            },
-            {
               "name": "Firewall Objects",
               "item": [
                 {
@@ -5208,7 +5158,8 @@
                           ""
                         ],
                         "type": "text/javascript",
-                        "packages": {}
+                        "packages": {},
+                        "requests": {}
                       }
                     },
                     {
@@ -5218,7 +5169,8 @@
                           ""
                         ],
                         "type": "text/javascript",
-                        "packages": {}
+                        "packages": {},
+                        "requests": {}
                       }
                     }
                   ],
@@ -5232,7 +5184,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": \"1\",\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/endpoint-control/fctems\",\n            \"data\": {\n                \"status\": 1,\n                \"fortinetone-cloud-authentication\": 1,\n                \"multi-site\": false,\n                \"pull-malware-hash\": 1,\n                \"pull-tags\": 1,\n                \"call-timeout\": 30,\n                \"certificate-fingerprint\": null,\n                \"cloud-authentication-access-key\": null,\n                \"dirty-reason\": 0,\n                \"ems-id\": 1,\n                \"https-port\": 443,\n                \"interface\": null,\n                \"interface-select-method\": 0,\n                \"name\": \"FortiSASE-EMS\",\n                \"out-of-sync-threshold\": 180,\n                \"preserve-ssl-session\": 0,\n                \"pull-avatars\": 1,\n                \"pull-sysinfo\": 1,\n                \"pull-vulnerabilities\": 1,\n                \"send-tags-to-all-vdoms\": 0,\n                \"server\": null,\n                \"source-ip\": \"0.0.0.0\",\n                \"trust-ca-cn\": 1,\n                \"websocket-override\": 0,\n                \"username\": null,\n                \"password\": null\n            }\n        }\n    ]\n}"
+                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": \"1\",\n    \"method\": \"update\",\n\t\"params\": [\n\t\t{\n\t\t\t\"url\": \"pm/config/adom/{{adom}}/obj/endpoint-control/fctems\",\n            \"data\": {\n\t\t\t\t\"call-timeout\": 30,\n\t\t\t\t\"certificate-fingerprint\": null,\n\t\t\t\t\"dirty-reason\": 0,\n\t\t\t\t\"ems-id\": 1,\n\t\t\t\t\"fortinetone-cloud-authentication\": 1,\n                \"cloud-authentication-access-key\": null,\n\t\t\t\t\"https-port\": 443,\n\t\t\t\t\"interface\": null,\n\t\t\t\t\"interface-select-method\": 0,\n\t\t\t\t\"multi-site\": false,\n\t\t\t\t\"name\": \"FortiSASE-EMS\",\n\t\t\t\t\"out-of-sync-threshold\": 180,\n\t\t\t\t\"password\": null,\n\t\t\t\t\"pull-avatars\": 1,\n\t\t\t\t\"pull-malware-hash\": 1,\n\t\t\t\t\"pull-sysinfo\": 1,\n\t\t\t\t\"pull-tags\": 1,\n\t\t\t\t\"pull-vulnerabilities\": 1,\n\t\t\t\t\"send-tags-to-all-vdoms\": 0,\n\t\t\t\t\"server\": null,\n\t\t\t\t\"source-ip\": \"0.0.0.0\",\n\t\t\t\t\"status\": 1,\n\t\t\t\t\"trust-ca-cn\": 1,\n\t\t\t\t\"username\": null,\n\t\t\t\t\"websocket-override\": 0\n\t\t\t}\n\n\t\t}\n\t]\n}\n"
                     },
                     "url": {
                       "raw": "https://{{ip}}/jsonrpc",
@@ -7671,6 +7623,7 @@
       "listen": "prerequest",
       "script": {
         "type": "text/javascript",
+        "requests": {},
         "exec": [
           ""
         ]
@@ -7680,6 +7633,7 @@
       "listen": "test",
       "script": {
         "type": "text/javascript",
+        "requests": {},
         "exec": [
           "var jsonData = pm.response.json()",
           "",
