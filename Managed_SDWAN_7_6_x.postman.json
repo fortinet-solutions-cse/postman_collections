@@ -4543,7 +4543,8 @@
                           ""
                         ],
                         "type": "text/javascript",
-                        "packages": {}
+                        "packages": {},
+                        "requests": {}
                       }
                     }
                   ],
@@ -4557,7 +4558,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group/Edge-Template/member\",\n            \"data\": [\n                \"05-Edge-Cert\"\n            ]\n        }\n    ]\n}",
+                      "raw": "// {\n//     \"session\": \"{{session}}\",\n//     \"id\": 1,\n//     \"method\": \"add\",\n//     \"params\": [\n//         {\n//             \"url\": \"/pm/config/adom/{{adom}}/obj/cli/template-group/Edge-Template/member\",\n//             \"data\": [\n//                 \"05-Edge-Cert\"\n//             ]\n//         }\n//     ]\n// }",
                       "options": {
                         "raw": {
                           "language": "json"
