@@ -54,10 +54,6 @@ tasks:
     folder: CustomerU - Finalize
     vars: tenants/CustomerU/postman.vars.yaml
     tag: foundation
-  - name: Fine-tune SD-WAN
-    type: postman
-    folder: CustomerU - Fine-tune SD-WAN
-    tag: fine-tune-sdwan
   # - name: Import SSL Decryption Certificate
   #   type: cli_templates
   #   src: tenants/CustomerU/05-Edge-Cert.j2
