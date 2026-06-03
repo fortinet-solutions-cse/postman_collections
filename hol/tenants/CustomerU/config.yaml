@@ -54,10 +54,6 @@ tasks:
     folder: CustomerU - Finalize
     vars: tenants/CustomerU/postman.vars.yaml
     tag: foundation
-  # - name: Import SSL Decryption Certificate
-  #   type: cli_templates
-  #   src: tenants/CustomerU/05-Edge-Cert.j2
-  #   tag: fine-tune-sase
   - name: Fine-tune for Uni-SASE
     type: postman
     folder: CustomerU - Fine-tune Uni-SASE
@@ -99,4 +95,4 @@ tasks:
   - name: Deploy BOR
     type: postman
     folder: CustomerU - BOR
-    tag: bor,west-only
+    tag: bor
