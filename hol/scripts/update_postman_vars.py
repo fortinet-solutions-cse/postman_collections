@@ -60,9 +60,11 @@ def main():
     if not dry:
         with open('tenants/CustomerU/postman.vars.yaml', 'r') as varfile:
             vars = safe_load(varfile)
-        with open('tenants/CustomerU/postman.vars.yaml', 'w') as varfile:        
+        with open('tenants/CustomerU/postman.vars.yaml', 'w') as varfile:      
             vars['west_h1_isp1'] = isp1_ip
+            print("Updating postman.vars.yaml west_h1_isp1 with: " + isp1_ip)  
             vars['west_h1_isp2'] = isp2_ip
+            print("Updating postman.vars.yaml west_h1_isp2 with: " + isp2_ip)
             safe_dump(vars, varfile, sort_keys=False, explicit_start=True)
 
 if __name__ == "__main__":
