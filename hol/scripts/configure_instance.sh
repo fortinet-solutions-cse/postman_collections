@@ -21,8 +21,10 @@ then
         sleep 5
         ((retries--))
     done
-
+    
     [ $retries -gt 0 ] || status_fail=1 
+    echo "Updated Postman Variables (CustomerU):"
+    cat ./tenants/CustomerU/postman_vars.yaml
 fi
 
 # Finalize FGT configuration
