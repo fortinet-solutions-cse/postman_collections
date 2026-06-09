@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "01d9ae93-e942-4548-a3a9-37fd8305f07c",
+    "_postman_id": "e6bdfe81-e4c0-4717-a7be-b404707224a9",
     "name": "Managed Secure SD-WAN 7.6.x - tags-4.5",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "34556426",
-    "_collection_link": "https://go.postman.co/collection/34556426-01d9ae93-e942-4548-a3a9-37fd8305f07c?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/34556426-e6bdfe81-e4c0-4717-a7be-b404707224a9?source=collection_link"
   },
   "item": [
     {
@@ -3926,60 +3926,55 @@
           "name": "CustomerU - Finalize",
           "item": [
             {
-              "name": "ZTNA -- to be reviewed!!!",
-              "item": [
+              "name": "update forticlient ems",
+              "event": [
                 {
-                  "name": "update forticlient ems",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "exec": [
-                          ""
-                        ],
-                        "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
-                      }
-                    },
-                    {
-                      "listen": "prerequest",
-                      "script": {
-                        "exec": [
-                          ""
-                        ],
-                        "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
                     ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": \"1\",\n    \"method\": \"update\",\n\t\"params\": [\n\t\t{\n\t\t\t\"url\": \"pm/config/adom/{{adom}}/obj/endpoint-control/fctems\",\n            \"data\": {\n\t\t\t\t\"call-timeout\": 30,\n\t\t\t\t\"certificate-fingerprint\": null,\n\t\t\t\t\"dirty-reason\": 0,\n\t\t\t\t\"ems-id\": 1,\n\t\t\t\t\"fortinetone-cloud-authentication\": 1,\n                \"cloud-authentication-access-key\": null,\n\t\t\t\t\"https-port\": 443,\n\t\t\t\t\"interface\": null,\n\t\t\t\t\"interface-select-method\": 0,\n\t\t\t\t\"multi-site\": false,\n\t\t\t\t\"name\": \"FortiSASE-EMS\",\n\t\t\t\t\"out-of-sync-threshold\": 180,\n\t\t\t\t\"password\": null,\n\t\t\t\t\"pull-avatars\": 1,\n\t\t\t\t\"pull-malware-hash\": 1,\n\t\t\t\t\"pull-sysinfo\": 1,\n\t\t\t\t\"pull-tags\": 1,\n\t\t\t\t\"pull-vulnerabilities\": 1,\n\t\t\t\t\"send-tags-to-all-vdoms\": 0,\n\t\t\t\t\"server\": null,\n\t\t\t\t\"source-ip\": \"0.0.0.0\",\n\t\t\t\t\"status\": 1,\n\t\t\t\t\"trust-ca-cn\": 1,\n\t\t\t\t\"username\": null,\n\t\t\t\t\"websocket-override\": 0\n\t\t\t}\n\n\t\t}\n\t]\n}\n"
-                    },
-                    "url": {
-                      "raw": "https://{{ip}}/jsonrpc",
-                      "protocol": "https",
-                      "host": [
-                        "{{ip}}"
-                      ],
-                      "path": [
-                        "jsonrpc"
-                      ]
-                    }
-                  },
-                  "response": []
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
                 }
-              ]
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": \"1\",\n    \"method\": \"update\",\n\t\"params\": [\n\t\t{\n\t\t\t\"url\": \"pm/config/adom/{{adom}}/obj/endpoint-control/fctems\",\n            \"data\": {\n\t\t\t\t\"call-timeout\": 30,\n\t\t\t\t\"certificate-fingerprint\": null,\n\t\t\t\t\"dirty-reason\": 0,\n\t\t\t\t\"ems-id\": 1,\n\t\t\t\t\"fortinetone-cloud-authentication\": 1,\n                \"cloud-authentication-access-key\": null,\n\t\t\t\t\"https-port\": 443,\n\t\t\t\t\"interface\": null,\n\t\t\t\t\"interface-select-method\": 0,\n\t\t\t\t\"multi-site\": false,\n\t\t\t\t\"name\": \"FortiSASE-EMS\",\n\t\t\t\t\"out-of-sync-threshold\": 180,\n\t\t\t\t\"password\": null,\n\t\t\t\t\"pull-avatars\": 1,\n\t\t\t\t\"pull-malware-hash\": 1,\n\t\t\t\t\"pull-sysinfo\": 1,\n\t\t\t\t\"pull-tags\": 1,\n\t\t\t\t\"pull-vulnerabilities\": 1,\n\t\t\t\t\"send-tags-to-all-vdoms\": 0,\n\t\t\t\t\"server\": null,\n\t\t\t\t\"source-ip\": \"0.0.0.0\",\n\t\t\t\t\"status\": 1,\n\t\t\t\t\"trust-ca-cn\": 1,\n\t\t\t\t\"username\": null,\n\t\t\t\t\"websocket-override\": 0\n\t\t\t}\n\n\t\t}\n\t]\n}\n"
+                },
+                "url": {
+                  "raw": "https://{{ip}}/jsonrpc",
+                  "protocol": "https",
+                  "host": [
+                    "{{ip}}"
+                  ],
+                  "path": [
+                    "jsonrpc"
+                  ]
+                }
+              },
+              "response": []
             },
             {
               "name": "Set Variable Defaults",
@@ -4006,7 +4001,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"west_h1_isp1\",\n                    \"value\": \"{{west_h1_isp1}}\"\n                },\n                {\n                    \"name\": \"west_h1_isp2\",\n                    \"value\": \"{{west_h1_isp2}}\"\n                },\n                {\n                    \"name\": \"west_h1_mpls\",\n                    \"value\": \"{{west_h1_mpls}}\"\n                },\n                {\n                    \"name\": \"west_h2_isp1\",\n                    \"value\": \"{{west_h2_isp1}}\"\n                },\n                {\n                    \"name\": \"west_h2_isp2\",\n                    \"value\": \"{{west_h2_isp2}}\"\n                },\n                {\n                    \"name\": \"west_h2_mpls\",\n                    \"value\": \"{{west_h2_mpls}}\"\n                },\n                {\n                    \"name\": \"east_h1_isp1\",\n                    \"value\": \"{{east_h1_isp1}}\"\n                },\n                {\n                    \"name\": \"east_h1_isp2\",\n                    \"value\": \"{{east_h1_isp2}}\"\n                },\n                {\n                    \"name\": \"east_h1_mpls\",\n                    \"value\": \"{{east_h1_mpls}}\"\n                },\n                {\n                    \"name\": \"fortidemo_ip\",\n                    \"value\": \"1.1.1.1\"\n                }\n            ]\n        }\n    ]\n}",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"west_h1_isp1\",\n                    \"value\": \"{{west_h1_isp1}}\"\n                },\n                {\n                    \"name\": \"west_h1_isp2\",\n                    \"value\": \"{{west_h1_isp2}}\"\n                },\n                {\n                    \"name\": \"west_h1_mpls\",\n                    \"value\": \"{{west_h1_mpls}}\"\n                },\n                {\n                    \"name\": \"west_h2_isp1\",\n                    \"value\": \"{{west_h2_isp1}}\"\n                },\n                {\n                    \"name\": \"west_h2_isp2\",\n                    \"value\": \"{{west_h2_isp2}}\"\n                },\n                {\n                    \"name\": \"west_h2_mpls\",\n                    \"value\": \"{{west_h2_mpls}}\"\n                },\n                {\n                    \"name\": \"east_h1_isp1\",\n                    \"value\": \"{{east_h1_isp1}}\"\n                },\n                {\n                    \"name\": \"east_h1_isp2\",\n                    \"value\": \"{{east_h1_isp2}}\"\n                },\n                {\n                    \"name\": \"east_h1_mpls\",\n                    \"value\": \"{{east_h1_mpls}}\"\n                }\n            ]\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -5024,6 +5019,38 @@
                   ]
                 },
                 {
+                  "name": "SSL TLS Profiles",
+                  "item": [
+                    {
+                      "name": "update-ssl-ssh profile",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/ssl-ssh-profile/custom-deep-inspection\",\n            \"data\": {\n                \"ssl\": {\n                    \"inspect-all\": 2\n          },\n                  \"ssl-exempt\": [\n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiClient\"\n          },\n          \n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiSASE\"\n          },       \n \n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"31\"\n          },\n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"33\"\n          }\n        ],\n        \"caname\": [\n                    \"Fortinet_CA_SSL\"\n                ]\n \n        }\n     }\n    ]\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
                   "name": "Profile Group",
                   "item": [
                     {
@@ -5789,43 +5816,6 @@
                       ]
                     }
                   ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "CustomerU - Post-Deployment",
-          "item": [
-            {
-              "name": "SSL TLS Profiles",
-              "item": [
-                {
-                  "name": "update-ssl-ssh profile",
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/ssl-ssh-profile/custom-deep-inspection\",\n            \"data\": {\n                \"ssl\": {\n                    \"inspect-all\": 2\n          },\n                  \"ssl-exempt\": [\n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiClient\"\n          },\n          \n          {\n            \"type\": 3,\n            \"wildcard-fqdn\": \"FortiSASE\"\n          },       \n \n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"31\"\n          },\n          {\n            \"type\": 0,\n            \"fortiguard-category\": \"33\"\n          }\n        ],\n        \"caname\": [\n                    \"Fortinet_CA_SSL\"\n                ]\n \n        }\n     }\n    ]\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "https://{{ip}}/jsonrpc",
-                      "protocol": "https",
-                      "host": [
-                        "{{ip}}"
-                      ],
-                      "path": [
-                        "jsonrpc"
-                      ]
-                    }
-                  },
-                  "response": []
                 }
               ]
             }

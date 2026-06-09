@@ -67,11 +67,7 @@ tasks:
     type: model_devices
     src: tenants/CustomerU/inventory.CustomerU_West.csv
     fos: 7.6
-    tag: west-only    
-  - name: Additional Post-Deployment Tasks
-    type: postman
-    folder: CustomerU - Post-Deployment
-    tag: post-deploy,fine-tune-sase    
+    tag: west-only 
   - name: Install Model Devices (Staging) - West-East
     type: postman
     folder: CustomerU - Staging
