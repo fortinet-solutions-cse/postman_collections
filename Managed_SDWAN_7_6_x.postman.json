@@ -1,9 +1,10 @@
 {
   "info": {
-    "_postman_id": "c95fe856-cbf2-4044-8b6f-5d1c4266f0c1",
+    "_postman_id": "01d9ae93-e942-4548-a3a9-37fd8305f07c",
     "name": "Managed Secure SD-WAN 7.6.x - tags-4.5",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "9895935"
+    "_exporter_id": "34556426",
+    "_collection_link": "https://go.postman.co/collection/34556426-01d9ae93-e942-4548-a3a9-37fd8305f07c?source=collection_link"
   },
   "item": [
     {
@@ -3834,7 +3835,8 @@
                       ""
                     ],
                     "type": "text/javascript",
-                    "packages": {}
+                    "packages": {},
+                    "requests": {}
                   }
                 }
               ],
@@ -3849,7 +3851,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"region\"\n                },\n                {\n                    \"name\": \"profile\"\n                },\n                {\n                    \"name\": \"hostname\"\n                },\n                {\n                    \"name\": \"loopback\"\n                },\n                {\n                    \"name\": \"isp1_intf\"\n                },\n                {\n                    \"name\": \"isp2_intf\"\n                },\n                {\n                    \"name\": \"mpls_intf\"\n                },\n                {\n                    \"name\": \"lan_intf\"\n                },\n                {\n                    \"name\": \"lan_ip\"\n                },\n                {\n                    \"name\": \"lan2_intf\"\n                },\n                {\n                    \"name\": \"lan2_ip\"\n                },                \n                {\n                    \"name\": \"west_h1_isp1\"\n                },\n                {\n                    \"name\": \"west_h1_isp2\"\n                },\n                {\n                    \"name\": \"west_h1_mpls\"\n                },\n                {\n                    \"name\": \"west_h2_isp1\"\n                },\n                {\n                    \"name\": \"west_h2_isp2\"\n                },\n                {\n                    \"name\": \"west_h2_mpls\"\n                },\n                {\n                    \"name\": \"east_h1_isp1\"\n                },\n                {\n                    \"name\": \"east_h1_isp2\"\n                },\n                {\n                    \"name\": \"east_h1_mpls\"\n                }\n            ]\n        }\n    ]\n}",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"region\"\n                },\n                {\n                    \"name\": \"profile\"\n                },\n                {\n                    \"name\": \"hostname\"\n                },\n                {\n                    \"name\": \"loopback\"\n                },\n                {\n                    \"name\": \"isp1_intf\"\n                },\n                {\n                    \"name\": \"isp2_intf\"\n                },\n                {\n                    \"name\": \"mpls_intf\"\n                },\n                {\n                    \"name\": \"lan_intf\"\n                },\n                {\n                    \"name\": \"lan_ip\"\n                },\n                {\n                    \"name\": \"lan2_intf\"\n                },\n                {\n                    \"name\": \"lan2_ip\"\n                },                \n                {\n                    \"name\": \"west_h1_isp1\"\n                },\n                {\n                    \"name\": \"west_h1_isp2\"\n                },\n                {\n                    \"name\": \"west_h1_mpls\"\n                },\n                {\n                    \"name\": \"west_h2_isp1\"\n                },\n                {\n                    \"name\": \"west_h2_isp2\"\n                },\n                {\n                    \"name\": \"west_h2_mpls\"\n                },\n                {\n                    \"name\": \"east_h1_isp1\"\n                },\n                {\n                    \"name\": \"east_h1_isp2\"\n                },\n                {\n                    \"name\": \"east_h1_mpls\"\n                },\n                {\n                    \"name\": \"fortidemo_ip\"\n                }\n            ]\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3924,6 +3926,62 @@
           "name": "CustomerU - Finalize",
           "item": [
             {
+              "name": "ZTNA -- to be reviewed!!!",
+              "item": [
+                {
+                  "name": "update forticlient ems",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          ""
+                        ],
+                        "type": "text/javascript",
+                        "packages": {},
+                        "requests": {}
+                      }
+                    },
+                    {
+                      "listen": "prerequest",
+                      "script": {
+                        "exec": [
+                          ""
+                        ],
+                        "type": "text/javascript",
+                        "packages": {},
+                        "requests": {}
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": \"1\",\n    \"method\": \"update\",\n\t\"params\": [\n\t\t{\n\t\t\t\"url\": \"pm/config/adom/{{adom}}/obj/endpoint-control/fctems\",\n            \"data\": {\n\t\t\t\t\"call-timeout\": 30,\n\t\t\t\t\"certificate-fingerprint\": null,\n\t\t\t\t\"dirty-reason\": 0,\n\t\t\t\t\"ems-id\": 1,\n\t\t\t\t\"fortinetone-cloud-authentication\": 1,\n                \"cloud-authentication-access-key\": null,\n\t\t\t\t\"https-port\": 443,\n\t\t\t\t\"interface\": null,\n\t\t\t\t\"interface-select-method\": 0,\n\t\t\t\t\"multi-site\": false,\n\t\t\t\t\"name\": \"FortiSASE-EMS\",\n\t\t\t\t\"out-of-sync-threshold\": 180,\n\t\t\t\t\"password\": null,\n\t\t\t\t\"pull-avatars\": 1,\n\t\t\t\t\"pull-malware-hash\": 1,\n\t\t\t\t\"pull-sysinfo\": 1,\n\t\t\t\t\"pull-tags\": 1,\n\t\t\t\t\"pull-vulnerabilities\": 1,\n\t\t\t\t\"send-tags-to-all-vdoms\": 0,\n\t\t\t\t\"server\": null,\n\t\t\t\t\"source-ip\": \"0.0.0.0\",\n\t\t\t\t\"status\": 1,\n\t\t\t\t\"trust-ca-cn\": 1,\n\t\t\t\t\"username\": null,\n\t\t\t\t\"websocket-override\": 0\n\t\t\t}\n\n\t\t}\n\t]\n}\n"
+                    },
+                    "url": {
+                      "raw": "https://{{ip}}/jsonrpc",
+                      "protocol": "https",
+                      "host": [
+                        "{{ip}}"
+                      ],
+                      "path": [
+                        "jsonrpc"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
               "name": "Set Variable Defaults",
               "event": [
                 {
@@ -3932,7 +3990,9 @@
                     "exec": [
                       ""
                     ],
-                    "type": "text/javascript"
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
                   }
                 }
               ],
@@ -3946,7 +4006,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"west_h1_isp1\",\n                    \"value\": \"{{west_h1_isp1}}\"\n                },\n                {\n                    \"name\": \"west_h1_isp2\",\n                    \"value\": \"{{west_h1_isp2}}\"\n                },\n                {\n                    \"name\": \"west_h1_mpls\",\n                    \"value\": \"{{west_h1_mpls}}\"\n                },\n                {\n                    \"name\": \"west_h2_isp1\",\n                    \"value\": \"{{west_h2_isp1}}\"\n                },\n                {\n                    \"name\": \"west_h2_isp2\",\n                    \"value\": \"{{west_h2_isp2}}\"\n                },\n                {\n                    \"name\": \"west_h2_mpls\",\n                    \"value\": \"{{west_h2_mpls}}\"\n                },\n                {\n                    \"name\": \"east_h1_isp1\",\n                    \"value\": \"{{east_h1_isp1}}\"\n                },\n                {\n                    \"name\": \"east_h1_isp2\",\n                    \"value\": \"{{east_h1_isp2}}\"\n                },\n                {\n                    \"name\": \"east_h1_mpls\",\n                    \"value\": \"{{east_h1_mpls}}\"\n                }\n            ]\n        }\n    ]\n}",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/fmg/variable\",\n            \"data\": [\n                {\n                    \"name\": \"west_h1_isp1\",\n                    \"value\": \"{{west_h1_isp1}}\"\n                },\n                {\n                    \"name\": \"west_h1_isp2\",\n                    \"value\": \"{{west_h1_isp2}}\"\n                },\n                {\n                    \"name\": \"west_h1_mpls\",\n                    \"value\": \"{{west_h1_mpls}}\"\n                },\n                {\n                    \"name\": \"west_h2_isp1\",\n                    \"value\": \"{{west_h2_isp1}}\"\n                },\n                {\n                    \"name\": \"west_h2_isp2\",\n                    \"value\": \"{{west_h2_isp2}}\"\n                },\n                {\n                    \"name\": \"west_h2_mpls\",\n                    \"value\": \"{{west_h2_mpls}}\"\n                },\n                {\n                    \"name\": \"east_h1_isp1\",\n                    \"value\": \"{{east_h1_isp1}}\"\n                },\n                {\n                    \"name\": \"east_h1_isp2\",\n                    \"value\": \"{{east_h1_isp2}}\"\n                },\n                {\n                    \"name\": \"east_h1_mpls\",\n                    \"value\": \"{{east_h1_mpls}}\"\n                },\n                {\n                    \"name\": \"fortidemo_ip\",\n                    \"value\": \"1.1.1.1\"\n                }\n            ]\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4426,7 +4486,7 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/address\",\n            \"data\": {\n                \"subnet\": \"10.0.101.101 255.255.255.255\",\n                \"associated-interface\": [\n                    \"any\"\n                ],\n                \"wildcard\": \"0.0.0.0/0.0.0.0\",\n                \"allow-routing\": 0,\n                \"cache-ttl\": 0,\n                \"clearpass-spt\": 0,\n                \"color\": 0,\n                \"dirty\": 1,\n                \"end-ip\": \"0.0.0.0\",\n                \"fabric-object\": 0,\n                \"node-ip-only\": 0,\n                \"obj-type\": 9,\n                \"sdn-addr-type\": 0,\n                \"start-ip\": \"0.0.0.0\",\n                \"sub-type\": 0,\n                \"type\": 0,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"site1-1-win\",\n                \"interface\": null,\n                \"dynamic_mapping\": []\n            },\n            \"revision note\": \"Windows Endpoint object creation\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/address\",\n            \"data\": {\n                \"subnet\": \"10.1.0.7 255.255.255.255\",\n                \"associated-interface\": [\n                    \"any\"\n                ],\n                \"wildcard\": \"0.0.0.0/0.0.0.0\",\n                \"allow-routing\": 0,\n                \"cache-ttl\": 0,\n                \"clearpass-spt\": 0,\n                \"color\": 0,\n                \"dirty\": 1,\n                \"end-ip\": \"0.0.0.0\",\n                \"fabric-object\": 0,\n                \"node-ip-only\": 0,\n                \"obj-type\": 9,\n                \"sdn-addr-type\": 0,\n                \"start-ip\": \"0.0.0.0\",\n                \"sub-type\": 0,\n                \"type\": 0,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"DC1APP-Server\",\n                \"interface\": null,\n                \"dynamic_mapping\": []\n            },\n            \"revision note\": \"dc1app server\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/address\",\n            \"data\": {\n                \"subnet\": \"10.0.1.101 255.255.255.255\",\n                \"associated-interface\": [\n                    \"any\"\n                ],\n                \"wildcard\": \"0.0.0.0/0.0.0.0\",\n                \"allow-routing\": 0,\n                \"cache-ttl\": 0,\n                \"clearpass-spt\": 0,\n                \"color\": 0,\n                \"dirty\": 1,\n                \"end-ip\": \"0.0.0.0\",\n                \"fabric-object\": 0,\n                \"node-ip-only\": 0,\n                \"obj-type\": 9,\n                \"sdn-addr-type\": 0,\n                \"start-ip\": \"0.0.0.0\",\n                \"sub-type\": 0,\n                \"type\": 0,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"BC1APP-Server\",\n                \"interface\": null,\n                \"dynamic_mapping\": []\n            },\n            \"revision note\": \"bc1app server\"\n        },\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/obj/firewall/address\",\n            \"data\": [\n                {\n                    \"name\": \"SASE\",\n                    \"subnet\": [\n                        \"10.200.1.128\",\n                        \"255.255.255.240\"\n                    ],\n                    \"type\": 0,\n                    \"associated-interface\": \"any\",\n                    \"color\": 22\n                }\n            ]\n        }\n    ]\n}",
+                      "raw": "{\n  \"id\": 1,\n  \"method\": \"set\",\n  \"params\": [{\n    \"url\": \"/pm/config/adom/{{adom}}/obj/firewall/address\",\n    \"data\": [\n      {\"name\": \"BC1APP-Server\", \"subnet\": [\"10.0.1.101\", \"255.255.255.255\"], \"type\": 0, \"color\": 0},\n      {\"name\": \"BOR_subnet_10\", \"subnet\": [\"10.251.1.128\", \"255.255.255.240\"], \"type\": 0, \"color\": 3},\n      {\"name\": \"CORP_LAN\", \"subnet\": [\"10.0.0.0\", \"255.0.0.0\"], \"type\": 0, \"color\": 22},\n      {\"name\": \"DC1APP-Server\", \"subnet\": [\"10.1.0.7\", \"255.255.255.255\"], \"type\": 0, \"color\": 0},\n      {\"name\": \"FSS_IPAM\", \"subnet\": [\"100.64.0.0\", \"255.192.0.0\"], \"type\": 0, \"color\": 22},\n      {\"name\": \"SASE\", \"subnet\": [\"10.200.1.192\", \"255.255.255.240\"], \"type\": 0, \"color\": 22},\n      {\"name\": \"site1-1-win\", \"subnet\": [\"10.0.101.101\", \"255.255.255.255\"], \"type\": 0, \"color\": 0},\n      {\"name\": \"site2-1-OT-client\", \"subnet\": [\"10.4.1.101\", \"255.255.255.255\"], \"type\": 0, \"color\": 0},\n      {\"name\": \"site2-1-win\", \"subnet\": [\"10.4.101.101\", \"255.255.255.255\"], \"type\": 0, \"color\": 0},\n      {\"name\": \"FAC-SAML-IP\", \"subnet\": [\"$(fortidemo_ip)\", \"255.255.255.255\"], \"type\": 0, \"color\": 0},\n\n    ]\n  }],\n  \"session\": \"{{session}}\"\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -4453,7 +4513,34 @@
                     "header": [],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/wildcard-fqdn/custom\",\n            \"data\": {\n                \"color\": 2,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"FortiClient\",\n                \"wildcard-fqdn\": \"*.forticlient-emsproxy.forticloud.com\"\n            },\n            \"revision note\": \"EMS Proxy Address Object\"\n        },\n\n        {\n            \"url\": \"pm/config/adom/CustomerU/obj/firewall/wildcard-fqdn/custom\",\n            \"data\": {\n            \"color\": 18,\n            \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"FortiSASE\",\n            \"wildcard-fqdn\": \"*.fortisase.com\"\n            }\n        }\n\n    ]\n}",
+                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/wildcard-fqdn/custom\",\n            \"data\": {\n                \"color\": 2,\n                \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n                \"name\": \"FortiClient\",\n                \"wildcard-fqdn\": \"*.forticlient-emsproxy.forticloud.com\"\n            },\n            \"revision note\": \"EMS Proxy Address Object\"\n        },\n        {\n            \"url\": \"pm/config/adom/CustomerU/obj/firewall/wildcard-fqdn/custom\",\n            \"data\": {\n            \"color\": 18,\n            \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"FortiSASE\",\n            \"wildcard-fqdn\": \"*.fortisase.com\"\n            }\n        },\n        {\n            \"url\": \"pm/config/adom/CustomerU/obj/firewall/wildcard-fqdn/custom\",\n            \"data\": {\n            \"color\": 18,\n            \"uuid\": \"00000000-0000-0000-0000-000000000000\",\n            \"name\": \"FortiDemo\",\n            \"wildcard-fqdn\": \"*.fortidemo.fortinet.com\"\n            }\n        }\n    ]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "https://{{ip}}/jsonrpc",
+                      "protocol": "https",
+                      "host": [
+                        "{{ip}}"
+                      ],
+                      "path": [
+                        "jsonrpc"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "add addr groups",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "  {\n    \"method\": \"add\",\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"params\": [\n      {\n        \"url\": \"pm/config/adom/{{adom}}/obj/firewall/addrgrp\",\n        \"data\": {\n          \"name\": \"BOR_resources\",\n          \"member\": [\"site2-1-win\"],\n          \"type\": 3\n        }\n      },\n      {\n        \"url\": \"pm/config/adom/{{adom}}/obj/firewall/addrgrp\",\n        \"data\": {\n          \"name\": \"SPA_resources\",\n          \"member\": [\"site1-1-win\", \"DC1APP-Server\", \"BC1APP-Server\"],\n          \"type\": 3\n        }\n      },\n      {\n        \"url\": \"pm/config/adom/{{adom}}/obj/firewall/addrgrp\",\n        \"data\": {\n          \"name\": \"OT_resources\",\n          \"member\": [\"site2-1-OT-client\"],\n          \"type\": 3\n        }\n      },\n      {\n        \"url\": \"pm/config/adom/{{adom}}/obj/firewall/addrgrp\",\n        \"data\": {\n          \"name\": \"Auth_servers\",\n          \"member\": [\"FAC-SAML-IP\"],\n          \"type\": 3\n        }\n      },\n      {\n        \"url\": \"pm/config/adom/{{adom}}/obj/firewall/addrgrp\",\n        \"data\": {\n          \"name\": \"CORP\",\n          \"member\": [\"CORP_LAN\", \"FSS_IPAM\"],\n          \"type\": 3\n        }\n      }\n    ]\n  }",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -4489,10 +4576,20 @@
                           "script": {
                             "exec": [
                               "let jsonData = pm.response.json();",
-                              "pm.environment.set(\"url_content_id\", jsonData[\"result\"][0][\"data\"][\"id\"]);"
+                              "let result = jsonData[\"result\"] && jsonData[\"result\"][0];",
+                              "",
+                              "if (result && result[\"status\"][\"code\"] === 0 && result[\"data\"] !== undefined) {",
+                              "    pm.environment.set(\"url_content_id\", result[\"data\"][\"id\"]);",
+                              "    console.log(\"url_content_id set to:\", result[\"data\"][\"id\"]);",
+                              "} else {",
+                              "    let code = result && result[\"status\"] ? result[\"status\"][\"code\"] : \"unknown\";",
+                              "    let message = result && result[\"status\"] ? result[\"status\"][\"message\"] : \"unknown\";",
+                              "    console.warn(\"Could not set url_content_id. Status code: \" + code + \", Message: \" + message);",
+                              "}"
                             ],
                             "type": "text/javascript",
-                            "packages": {}
+                            "packages": {},
+                            "requests": {}
                           }
                         }
                       ],
@@ -4930,18 +5027,18 @@
                   "name": "Profile Group",
                   "item": [
                     {
-                      "name": "set Profile group",
+                      "name": "Create All Profile Groups Copy",
                       "request": {
                         "method": "POST",
-                        "header": [],
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
                         "body": {
                           "mode": "raw",
-                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Creation of the Security profile-group\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"custom-deep-inspection\"\n                ],\n                \"name\": \"outbound-sia\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"webfilter-profile\": [\n                    \"outbound\"\n                ],\n                \"dnsfilter-profile\": [\n                    \"default\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"outbound\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"custom-deep-inspection\"\n                ],\n                \"name\": \"outbound-spa\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"outbound\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        },\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n            \"data\": {\n                \"profile-protocol-options\": [\n                    \"default\"\n                ],\n                \"ssl-ssh-profile\": [\n                    \"custom-deep-inspection\"\n                ],\n                \"name\": \"non-compliant\",\n                \"av-profile\": [\n                    \"outbound\"\n                ],\n                \"webfilter-profile\": [\n                    \"outbound\"\n                ],\n                \"dnsfilter-profile\": [\n                    \"default\"\n                ],\n                \"waf-profile\": [\n                    \"default\"\n                ],\n                \"application-list\": [\n                    \"non-compliant\"\n                ],\n                \"ips-sensor\": [\n                    \"outbound\"\n                ],\n                \"file-filter-profile\": [\n                    \"default\"\n                ],\n                \"dlp-profile\": [\n                    \"outbound\"\n                ]\n            },\n            \"revision note\": \"Security Profile Group\"\n        }\n    ]\n}",
-                          "options": {
-                            "raw": {
-                              "language": "json"
-                            }
-                          }
+                          "raw": "{\n  \"id\": 1,\n  \"method\": \"add\",\n  \"params\": [{\n    \"url\": \"/pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n    \"data\": [\n      {\n        \"name\": \"guest-sia\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"certificate-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"],\n        \"casb-profile\": [\"default\"]\n      },\n      {\n        \"name\": \"non-compliant\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"non-compliant\"],\n        \"ssl-ssh-profile\": [\"custom-deep-inspection\"],\n        \"waf-profile\": [\"default\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"uninspected\",\n        \"profile-protocol-options\": [\"default\"],\n        \"ssl-ssh-profile\": [\"no-inspection\"]\n      },\n      {\n        \"name\": \"unisase-sia\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"custom-deep-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"unisase-sia-crt-insp\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"certificate-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"unisase-spa\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"custom-deep-inspection\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"unisase-spa-crt-insp\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"certificate-inspection\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      }\n    ]\n  }],\n  \"session\": \"{{session}}\"\n}"
                         },
                         "url": {
                           "raw": "https://{{ip}}/jsonrpc",
@@ -4964,126 +5061,734 @@
               "name": "Firewall Policies",
               "item": [
                 {
-                  "name": "add firewall policy",
-                  "event": [
+                  "name": "Secure Edge Package",
+                  "item": [
                     {
-                      "listen": "test",
-                      "script": {
-                        "exec": [
-                          ""
-                        ],
-                        "type": "text/javascript",
-                        "packages": {}
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-Secured\",\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": {\n                        \"name\": \"Edge-West-RegionalHQ\"\n                    },\n                    \"type\": \"pkg\"\n                }\n            ]\n        }\n    ]\n}"
-                    },
-                    "url": {
-                      "raw": "https://{{ip}}/jsonrpc",
-                      "protocol": "https",
-                      "host": [
-                        "{{ip}}"
+                      "name": "add firewall policy",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "exec": [
+                              ""
+                            ],
+                            "type": "text/javascript",
+                            "packages": {}
+                          }
+                        }
                       ],
-                      "path": [
-                        "jsonrpc"
-                      ]
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-Secured\",\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": {\n                        \"name\": \"Edge-West-RegionalHQ\"\n                    },\n                    \"type\": \"pkg\"\n                }\n            ]\n        }\n    ]\n}"
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "set policy",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Security Policy created for SIA and SPA\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge-Secured/firewall/policy/\",\n            \"data\": [\n                \n                {\n                    \"name\": \"Bypass-FortiSASE-FCTEMS\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"internet-service\": 1,\n                    \"dstaddr\": \"all\",\n                    \"internet-service-name\": [\n                        \"Fortinet-FortiClient.EMS\",\n                        \"Fortinet-FortiSASE\"\n                    ],\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": \"no-inspection\",\n                    \"inspection-mode\": 0,\n                    \"profile-type\": 0,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                // {\n                //     \"name\": \"Allow-Private-DNS\",\n                //     \"policyid\": 2,\n                //     \"srcintf\": [\n                //         \"lan_zone\"\n                //     ],\n                //     \"dstintf\": [\n                //         \"overlay\"\n                //     ],\n                //     \"srcaddr\": [\n                //         \"CORP\"\n                //     ],\n                //     \"dstaddr\": [\n                //         \"CORP\"\n                //     ],\n                //     \"service\": \"DNS\",\n                //     \"action\": 1,\n                //     \"nat\": 0,\n                //     \"ztna-status\": 0,\n                //     \"utm-status\": 1,\n                //     \"status\": 1,\n                //     \"profile-protocol-options\": null,\n                //     \"ssl-ssh-profile\": \"no-inspection\",\n                //     \"inspection-mode\": 0,\n                //     \"profile-type\": 0,\n                //     \"schedule\": \"always\",\n                //     \"logtraffic\": 2\n                // },\n\n                {\n                    \"name\": \"Allow-Infra\",\n                    \"policyid\": 2,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\",\n                        \"underlay\",\n                        \"Lo\"\n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\",\n                        \"underlay\",\n                        \"Lo\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"service\": [\n                                \"PING\",\n                                \"IKE\",\n                                \"BGP\"\n                               ],\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },                \n                {\n                    \"name\": \"Block-Unsafe-Infra\",\n                    \"policyid\": 3,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"all\",\n                    \"internet-service\": 1,\n                    \"inspection-mode\": 0,\n                    \"action\": 0,\n                    \"nat\": 0,\n                    \"utm-status\": 1,\n                    \"ztna-status\": 1,\n                    \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"],\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"internet-service-name\": [\n                        \"GitHub-GitHub\",\n                        \"Microsoft-Office365\"\n                    ],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Block-Unsafe-App\",\n                    \"policyid\": 4,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"inspection-mode\": 0,\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"ztna-status\": 1,\n                    \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"],\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"profile-group\": [\n                        \"non-compliant\"\n                    ],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Block-Unsafe-SPA\",\n                    \"policyid\": 5,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                        \n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"CORP\"\n                    ],\n                    \"service\": [\n                        \"HTTP\",\n                        \"HTTPS\",\n                        \"SSH\"\n                    ],\n                    \"action\": 0,\n                    \"nat\": 0,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"ztna-status\": 1,\n                    \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"],\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n\n                },\n                {\n                    \"name\": \"Allow-Users-SIA\",\n                    \"policyid\": 6,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"profile-group\": [\n                        \"unisase-sia\"\n                    ],\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"inspection-mode\": 0,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Allow-Users-SPA\",\n                    \"policyid\": 7,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n\n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"CORP\"\n                    ],\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"profile-group\": [\n                        \"unisase-spa\"\n                    ],\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n\n            ]\n        }\n    ]\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
                     }
-                  },
-                  "response": []
+                  ]
                 },
                 {
-                  "name": "set policy",
-                  "request": {
-                    "method": "POST",
-                    "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Security Policy created for SIA and SPA\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge-Secured/firewall/policy/\",\n            \"data\": [\n                \n                {\n                    \"name\": \"Bypass-FortiSASE-FCTEMS\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP_LAN\"\n                    ],\n                    \"internet-service\": 1,\n                    \"dstaddr\": \"all\",\n                    \"internet-service-name\": [\n                        \"Fortinet-FortiClient.EMS\",\n                        \"Fortinet-FortiSASE\"\n                    ],\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": \"no-inspection\",\n                    \"inspection-mode\": 0,\n                    \"profile-type\": 0,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                // {\n                //     \"name\": \"Allow-Private-DNS\",\n                //     \"policyid\": 2,\n                //     \"srcintf\": [\n                //         \"lan_zone\"\n                //     ],\n                //     \"dstintf\": [\n                //         \"overlay\"\n                //     ],\n                //     \"srcaddr\": [\n                //         \"CORP_LAN\"\n                //     ],\n                //     \"dstaddr\": [\n                //         \"CORP_LAN\"\n                //     ],\n                //     \"service\": \"DNS\",\n                //     \"action\": 1,\n                //     \"nat\": 0,\n                //     \"ztna-status\": 0,\n                //     \"utm-status\": 1,\n                //     \"status\": 1,\n                //     \"profile-protocol-options\": null,\n                //     \"ssl-ssh-profile\": \"no-inspection\",\n                //     \"inspection-mode\": 0,\n                //     \"profile-type\": 0,\n                //     \"schedule\": \"always\",\n                //     \"logtraffic\": 2\n                // },\n\n                {\n                    \"name\": \"Allow-Infra\",\n                    \"policyid\": 2,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\",\n                        \"underlay\",\n                        \"Lo\"\n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\",\n                        \"underlay\",\n                        \"Lo\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"service\": [\n                                \"PING\",\n                                \"IKE\",\n                                \"BGP\"\n                               ],\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },                \n                {\n                    \"name\": \"Block-Unsafe-Infra\",\n                    \"policyid\": 3,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": \"CORP_LAN\",\n                    \"dstaddr\": \"all\",\n                    \"internet-service\": 1,\n                    \"inspection-mode\": 0,\n                    \"action\": 0,\n                    \"nat\": 0,\n                    \"utm-status\": 1,\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"internet-service-name\": [\n                        \"GitHub-GitHub\",\n                        \"Microsoft-Office365\"\n                    ],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Block-Unsafe-App\",\n                    \"policyid\": 4,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": \"CORP_LAN\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"inspection-mode\": 0,\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"profile-group\": [\n                        \"non-compliant\"\n                    ],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Block-Unsafe-SPA\",\n                    \"policyid\": 5,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                        \n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP_LAN\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"CORP_LAN\"\n                    ],\n                    \"service\": [\n                        \"HTTP\",\n                        \"HTTPS\",\n                        \"SSH\"\n                    ],\n                    \"action\": 0,\n                    \"nat\": 0,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n\n                },\n                {\n                    \"name\": \"Allow-Users-SIA\",\n                    \"policyid\": 6,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP_LAN\"\n                    ],\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"profile-group\": [\n                        \"outbound-sia\"\n                    ],\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"inspection-mode\": 0,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Allow-Users-SPA\",\n                    \"policyid\": 7,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n\n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP_LAN\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"CORP_LAN\"\n                    ],\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"profile-group\": [\n                        \"outbound-spa\"\n                    ],\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n\n            ]\n        }\n    ]\n}",
-                      "options": {
-                        "raw": {
-                          "language": "json"
+                  "name": "FortiSASE Package",
+                  "item": [
+                    {
+                      "name": "Policy Package Creation",
+                      "item": [
+                        {
+                          "name": "Create Policy Package",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"set\",\n  \"params\": [\n    {\n      \"url\": \"pm/pkg/adom/{{adom}}\",\n      \"data\": [\n        {\n          \"name\": \"FortiSASE\",\n          \"type\": \"pkg\",\n          \"package settings\": {\n            \"ngfw-mode\": 0,\n            \"central-nat\": 0,\n            \"policy-offload-level\": 0\n          }\n        }\n      ]\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 2\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Create a new policy package in the specified ADOM.\n\nKey fields:\n- name: package name (FortiSASE)\n- type: 'pkg' for a regular package\n- ngfw-mode: 0 = profile-based\n- central-nat: 0 = disabled\n- policy-offload-level: 0 = default\n\nExpected response: result[0].status.code == 0"
+                          },
+                          "response": []
                         }
-                      }
-                    },
-                    "url": {
-                      "raw": "https://{{ip}}/jsonrpc",
-                      "protocol": "https",
-                      "host": [
-                        "{{ip}}"
-                      ],
-                      "path": [
-                        "jsonrpc"
                       ]
-                    }
-                  },
-                  "response": []
-                }
-              ]
-            },
-            {
-              "name": "ZTNA",
-              "item": [
-                {
-                  "name": "update forticlient ems",
-                  "event": [
-                    {
-                      "listen": "test",
-                      "script": {
-                        "exec": [
-                          ""
-                        ],
-                        "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
-                      }
                     },
                     {
-                      "listen": "prerequest",
-                      "script": {
-                        "exec": [
-                          ""
-                        ],
-                        "type": "text/javascript",
-                        "packages": {},
-                        "requests": {}
-                      }
-                    }
-                  ],
-                  "request": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": \"1\",\n    \"method\": \"update\",\n\t\"params\": [\n\t\t{\n\t\t\t\"url\": \"pm/config/adom/{{adom}}/obj/endpoint-control/fctems\",\n            \"data\": {\n\t\t\t\t\"call-timeout\": 30,\n\t\t\t\t\"certificate-fingerprint\": null,\n\t\t\t\t\"dirty-reason\": 0,\n\t\t\t\t\"ems-id\": 1,\n\t\t\t\t\"fortinetone-cloud-authentication\": 1,\n                \"cloud-authentication-access-key\": null,\n\t\t\t\t\"https-port\": 443,\n\t\t\t\t\"interface\": null,\n\t\t\t\t\"interface-select-method\": 0,\n\t\t\t\t\"multi-site\": false,\n\t\t\t\t\"name\": \"FortiSASE-EMS\",\n\t\t\t\t\"out-of-sync-threshold\": 180,\n\t\t\t\t\"password\": null,\n\t\t\t\t\"pull-avatars\": 1,\n\t\t\t\t\"pull-malware-hash\": 1,\n\t\t\t\t\"pull-sysinfo\": 1,\n\t\t\t\t\"pull-tags\": 1,\n\t\t\t\t\"pull-vulnerabilities\": 1,\n\t\t\t\t\"send-tags-to-all-vdoms\": 0,\n\t\t\t\t\"server\": null,\n\t\t\t\t\"source-ip\": \"0.0.0.0\",\n\t\t\t\t\"status\": 1,\n\t\t\t\t\"trust-ca-cn\": 1,\n\t\t\t\t\"username\": null,\n\t\t\t\t\"websocket-override\": 0\n\t\t\t}\n\n\t\t}\n\t]\n}\n"
-                    },
-                    "url": {
-                      "raw": "https://{{ip}}/jsonrpc",
-                      "protocol": "https",
-                      "host": [
-                        "{{ip}}"
-                      ],
-                      "path": [
-                        "jsonrpc"
+                      "name": "Firewall Policy Creation",
+                      "item": [
+                        {
+                          "name": "Policy 01 - DNS_OT",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"DNS_Agentless\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"OT_resources\"],\n        \"dstaddr\": [\"all\"],\n        \"service\": [\"DNS\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 3,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-sia-crt-insp\"],\n        \"nat\": 0,\n        \"captive-portal-exempt\": 1,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 6\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "DNS policy for OT resources.\n- logtraffic: 1 = Log Security Events (UTM)\n- profile-group: unisase-sia\n- service: DNS only\n- ztna-status: 0 (no ZTNA enforcement)"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 02 - DNS_Users",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"DNS_Users\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"all\"],\n        \"dstaddr\": [\"all\"],\n        \"service\": [\"DNS\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 3,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-sia\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 7\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "General DNS policy for all users.\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia\n- service: DNS only\n- ztna-status: 0 (no ZTNA enforcement)"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 03 - DNSoToH_OT",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"DNSoToH_OT\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"OT_resources\"],\n        \"dstaddr\": null,\n        \"internet-service\": 1,\n        \"internet-service-negate\": 0,\n        \"internet-service-name\": [\"DNS-DoH_DoT\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 0,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-sia-crt-insp\"],\n        \"nat\": 0,\n        \"captive-portal-exempt\": 1,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 9\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Authentication traffic to Microsoft Azure AD (public cloud identity provider).\n- logtraffic: 0 = No Log\n- profile-group: uninspected\n- ztna-status: 0 (no ZTNA enforcement)"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 04 - DNSoToH_Users",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"DNSoToH_Users\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"gall\"],\n        \"dstaddr\": null,\n        \"internet-service\": 1,\n        \"internet-service-negate\": 0,\n        \"internet-service-name\": [\"DNS-DoH_DoT\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 0,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-sia\"],\n        \"nat\": 0,\n        \"captive-portal-exempt\": 1,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 9\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Authentication traffic to Microsoft Azure AD (public cloud identity provider).\n- logtraffic: 0 = No Log\n- profile-group: uninspected\n- ztna-status: 0 (no ZTNA enforcement)"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 04 - Authentication_Public",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Authentication_Public\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"gall\"],\n        \"dstaddr\": null,\n        \"internet-service\": 1,\n        \"internet-service-negate\": 0,\n        \"internet-service-name\": [\"Microsoft-Azure\", \"Microsoft-Azure.AD\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 0,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-sia-crt-insp\"],\n        \"nat\": 0,\n        \"captive-portal-exempt\": 1,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 9\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Authentication traffic to Microsoft Azure AD (public cloud identity provider).\n- logtraffic: 0 = No Log\n- profile-group: uninspected\n- ztna-status: 0 (no ZTNA enforcement)"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 05 - Authentication_Traffic",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Authentication_Traffic\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"gall\"],\n        \"dstaddr\": [\"Auth_servers\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 0,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"uninspected\"],\n        \"nat\": 0,\n        \"captive-portal-exempt\": 1,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 8\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Authentication traffic to internal Auth_servers.\n- logtraffic: 0 = No Log\n- profile-group: uninspected\n- ztna-status: 0 (no ZTNA enforcement)"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 06 - Forti_Services",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Forti_Services\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"gall\"],\n        \"srcaddr6\": null,\n        \"dstaddr\": null,\n        \"dstaddr6\": null,\n        \"internet-service\": 1,\n        \"internet-service-negate\": 0,\n        \"internet-service-name\": [\n          \"Fortinet-DNS\",\n          \"Fortinet-FortiClient.EMS\",\n          \"Fortinet-FortiCloud\",\n          \"Fortinet-FortiDLP.Cloud\",\n          \"Fortinet-FortiEDR\",\n          \"Fortinet-FortiGuard\",\n          \"Fortinet-FortiMonitor\",\n          \"Fortinet-FortiSASE\",\n          \"Fortinet-FortiSandbox\",\n          \"Fortinet-FortiSandbox.Cloud\",\n          \"Fortinet-NetBIOS.Name.Service\",\n          \"Fortinet-NetBIOS.Session.Service\"\n        ],\n        \"internet-service6\": 0,\n        \"service\": null,\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 0,\n        \"logtraffic-start\": 0,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"uninspected\"],\n        \"nat\": 0,\n        \"captive-portal-exempt\": 1,\n        \"outbound\": 1,\n        \"match-vip\": 1,\n        \"auto-asic-offload\": 1,\n        \"policy-offload\": 1,\n        \"inspection-mode\": 0,\n        \"policy-expiry\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 10\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "ISDB-based policy allowing traffic to Fortinet cloud services.\nUses Internet Service Database (ISDB) for destination matching — dstaddr must be null.\n\n- internet-service: 1 = ISDB destinations enabled\n- internet-service-name: list of Fortinet ISDB entries\n- dstaddr: null (required when internet-service is enabled)\n- service: null (required when internet-service is enabled)\n- logtraffic: 0 = No Log\n- profile-group: uninspected"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 07 - BOR_OT",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"OT_SIA\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"OT_resources\"],\n        \"dstaddr\": [\"all\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-sia-crt-insp\"],\n        \"nat\": 0,\n        \"captive-portal-exempt\": 1,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n      }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 11\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "ISDB-based policy for IoT Quarantine Zone — matches all internet services.\nNo specific internet-service-name list means all ISDB entries are matched.\n\n- internet-service: 1 = ISDB destinations enabled (all services)\n- dstaddr: null (required when internet-service is enabled)\n- service: null (required when internet-service is enabled)\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 08 - BOR-All_Users",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"BOR_SIA\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"BOR_resources\"],\n        \"dstaddr\": [\"all\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-sia\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 12\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Catch-all policy for all BOR (Branch Office Router) users.\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia\n- service: ALL\n- ztna-status: 0 (no ZTNA enforcement)"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 09 - Agent_Non-Compliant",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Agent_non-compliant\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"all\"],\n        \"dstaddr\": [\"all\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 1,\n        \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"],\n        \"profile-type\": 1,\n        \"profile-group\": [\"non-compliant\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 13\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Policy for non-compliant ZTNA agents (EMS posture tag: non-compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_non-compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 10 - Agent_Compliant",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Agent_compliant\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"all\"],\n        \"dstaddr\": [\"all\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 1,\n        \"ztna-ems-tag\": [\"EMS1_ZTNA_compliant\"],\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-sia\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 14\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Policy for compliant ZTNA agents (EMS posture tag: compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 11 - OT_SPA_1-2",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"OT_to_SPA_1-2\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_secure_private_access_zone\"],\n        \"srcaddr\": [\"OT_resources\"],\n        \"dstaddr\": [\"OT_resources\", \"BOR_resources\", \"SPA_resources\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-spa-crt-insp\"],\n        \"nat\": 0,\n        \"captive-portal-exempt\": 1,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n      }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 15\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "ISDB-based policy for IoT Quarantine Zone — matches all internet services.\nNo specific internet-service-name list means all ISDB entries are matched.\n\n- internet-service: 1 = ISDB destinations enabled (all services)\n- dstaddr: null (required when internet-service is enabled)\n- service: null (required when internet-service is enabled)\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 12 - BOR_SPA_1-2",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"BOR_SPA_1-2\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_secure_private_access_zone\"],\n        \"srcaddr\": [\"BOR_resources\"],\n        \"dstaddr\": [\"BOR_resources\", \"OT_resources\", \"SPA_resources\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-spa\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n      }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 17\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "ISDB-based policy for IoT Quarantine Zone — matches all internet services.\nNo specific internet-service-name list means all ISDB entries are matched.\n\n- internet-service: 1 = ISDB destinations enabled (all services)\n- dstaddr: null (required when internet-service is enabled)\n- service: null (required when internet-service is enabled)\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 13 - Agent_to_Agent_NCP_1-2",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Agent_to_Agent_NCP_1-2\",\n        \"status\": 1,\n        \"action\": 0,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_secure_private_access_zone\"],\n        \"srcaddr\": [\"all\"],\n        \"dstaddr\": [\"FSS_IPAM\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 1,\n        \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"]\n      }\n      }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 19\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "ISDB-based policy for IoT Quarantine Zone — matches all internet services.\nNo specific internet-service-name list means all ISDB entries are matched.\n\n- internet-service: 1 = ISDB destinations enabled (all services)\n- dstaddr: null (required when internet-service is enabled)\n- service: null (required when internet-service is enabled)\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 14 - Agent_to_Agent_CP_1-2",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Agent_to_Agent_CP_1-2\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_secure_private_access_zone\"],\n        \"srcaddr\": [\"all\"],\n        \"dstaddr\": [\"FSS_IPAM\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 1,\n        \"ztna-ems-tag\": [\"EMS1_ZTNA_compliant\"],\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-spa\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 20\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Policy for compliant ZTNA agents (EMS posture tag: compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 15 - Agent_SPA_NCP",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Agent_SPA_non-compliant\",\n        \"status\": 1,\n        \"action\": 0,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_secure_private_access_zone\"],\n        \"srcaddr\": [\"all\"],\n        \"dstaddr\": [\"BOR_resources\", \"SPA_resources\", \"OT_resources\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 1,\n        \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"]\n      }\n      }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 21\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "ISDB-based policy for IoT Quarantine Zone — matches all internet services.\nNo specific internet-service-name list means all ISDB entries are matched.\n\n- internet-service: 1 = ISDB destinations enabled (all services)\n- dstaddr: null (required when internet-service is enabled)\n- service: null (required when internet-service is enabled)\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 16 - Agent_SPA_CP",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Agent_SPA_compliant\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_secure_private_access_zone\"],\n        \"srcaddr\": [\"all\"],\n        \"dstaddr\": [\"BOR_resources\", \"SPA_resources\", \"OT_resources\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 1,\n        \"ztna-ems-tag\": [\"EMS1_ZTNA_compliant\"],\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-spa\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 22\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Policy for compliant ZTNA agents (EMS posture tag: compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 17 - BOR_SPA_2-2",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"BOR_SPA_2-2\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_secure_private_access_zone\"],\n        \"dstintf\": [\"SASE_ingress_zone\"],\n        \"srcaddr\": [\"BOR_resources\"],\n        \"dstaddr\": [\"all\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 0,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"uninspected\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 23\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Policy for compliant ZTNA agents (EMS posture tag: compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 18 - OT_SPA_2-2",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"OT_SPA_2-2\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_secure_private_access_zone\"],\n        \"dstintf\": [\"SASE_ingress_zone\"],\n        \"srcaddr\": [\"OT_resources\"],\n        \"dstaddr\": [\"all\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 0,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"uninspected\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 24\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Policy for compliant ZTNA agents (EMS posture tag: compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 19 - Agent_SPA_2-2",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Agent_SPA_2-2\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_secure_private_access_zone\"],\n        \"dstintf\": [\"SASE_ingress_zone\"],\n        \"srcaddr\": [\"FSS_IPAM\"],\n        \"dstaddr\": [\"all\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 0,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"uninspected\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 25\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Policy for compliant ZTNA agents (EMS posture tag: compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 20 - SPA_to_BOR",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"SPA_to_BOR\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_secure_private_access_zone\"],\n        \"dstintf\": [\"SASE_ingress_zone\"],\n        \"srcaddr\": [\"SPA_resources\"],\n        \"dstaddr\": [\"BOR_resources\", \"OT_resources\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-spa-crt-insp\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 26\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Policy for compliant ZTNA agents (EMS posture tag: compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 21 - SPA_to_Agents",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"SPA_to_Agents\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_secure_private_access_zone\"],\n        \"dstintf\": [\"SASE_ingress_zone\"],\n        \"srcaddr\": [\"SPA_resources\"],\n        \"dstaddr\": [\"FSS_IPAM\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 0,\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-spa-crt-insp\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 27\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Policy for compliant ZTNA agents (EMS posture tag: compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        }
                       ]
                     }
-                  },
-                  "response": []
+                  ]
                 }
               ]
             }
