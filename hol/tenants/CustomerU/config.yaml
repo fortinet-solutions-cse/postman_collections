@@ -4,7 +4,7 @@ fmg_user: admin
 fmg_adom: CustomerU
 
 postman_collection: tenants/shared/Managed_SDWAN_7_6_x.postman.json
-default_skip_tags: west-only,bor, fine-tune-sase
+default_skip_tags: west-only,bor,fine-tune-sase
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
@@ -40,7 +40,7 @@ tasks:
     type: cli_templates
     src: tenants/CustomerU/Project.mixed.j2
     rename: 00-Project
-    tag: mixed,fine-tune-sase
+    tag: mixed
   - name: Import Jinja CLI Templates
     type: cli_templates
     src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/*.j2
