@@ -4489,15 +4489,11 @@
                       "raw": "{\n  \"id\": 2,\n  \"method\": \"set\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/pm/pkg/global/default\",\n      \"data\": {\n        \"scope member\": [\n          {\n            \"name\": \"CustomerU\"\n          }\n        ]\n      }\n    }\n  ]\n}"
                     },
                     "url": {
-                      "raw": "https://34.154.202.129:14006/jsonrpc",
+                      "raw": "https://{{ip}}/jsonrpc",
                       "protocol": "https",
                       "host": [
-                        "34",
-                        "154",
-                        "202",
-                        "129"
+                        "{{ip}}"
                       ],
-                      "port": "14006",
                       "path": [
                         "jsonrpc"
                       ]
@@ -4540,15 +4536,11 @@
                       "raw": "{\n  \"id\": 3,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/assign/package\",\n      \"data\": {\n        \"flags\": [\n          \"cp_all_objs\"\n        ],\n        \"pkg\": \"default\",\n        \"target\": [\n          {\n            \"adom\": \"CustomerU\",\n            \"excluded\": \"disable\"\n          }\n        ]\n      }\n    }\n  ]\n}"
                     },
                     "url": {
-                      "raw": "https://34.154.202.129:14006/jsonrpc",
+                      "raw": "https://{{ip}}/jsonrpc",
                       "protocol": "https",
                       "host": [
-                        "34",
-                        "154",
-                        "202",
-                        "129"
+                        "{{ip}}"
                       ],
-                      "port": "14006",
                       "path": [
                         "jsonrpc"
                       ]
