@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "e6bdfe81-e4c0-4717-a7be-b404707224a9",
+    "_postman_id": "7958972e-589b-4e56-82c6-518a35196cb1",
     "name": "Managed Secure SD-WAN 7.6.x - tags-4.5",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "34556426",
-    "_collection_link": "https://go.postman.co/collection/34556426-e6bdfe81-e4c0-4717-a7be-b404707224a9?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/34556426-7958972e-589b-4e56-82c6-518a35196cb1?source=collection_link"
   },
   "item": [
     {
@@ -4471,6 +4471,93 @@
         {
           "name": "CustomerU - Fine-tune Uni-SASE",
           "item": [
+            {
+              "name": "Global Database",
+              "item": [
+                {
+                  "name": "1 – Set Scope Member",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": 2,\n  \"method\": \"set\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/pm/pkg/global/default\",\n      \"data\": {\n        \"scope member\": [\n          {\n            \"name\": \"CustomerU\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+                    },
+                    "url": {
+                      "raw": "https://34.154.202.129:14006/jsonrpc",
+                      "protocol": "https",
+                      "host": [
+                        "34",
+                        "154",
+                        "202",
+                        "129"
+                      ],
+                      "port": "14006",
+                      "path": [
+                        "jsonrpc"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "2 – Assign Global Package",
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "var resp = pm.response.json();",
+                          "try {",
+                          "    var taskId = resp.result[0].data.task;",
+                          "    pm.collectionVariables.set('task_id', taskId);",
+                          "    console.log('Task ID stored:', taskId);",
+                          "} catch(e) {",
+                          "    console.error('Could not extract task ID:', JSON.stringify(resp));",
+                          "}"
+                        ],
+                        "type": "text/javascript",
+                        "packages": {},
+                        "requests": {}
+                      }
+                    }
+                  ],
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": 3,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/assign/package\",\n      \"data\": {\n        \"flags\": [\n          \"cp_all_objs\"\n        ],\n        \"pkg\": \"default\",\n        \"target\": [\n          {\n            \"adom\": \"CustomerU\",\n            \"excluded\": \"disable\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+                    },
+                    "url": {
+                      "raw": "https://34.154.202.129:14006/jsonrpc",
+                      "protocol": "https",
+                      "host": [
+                        "34",
+                        "154",
+                        "202",
+                        "129"
+                      ],
+                      "port": "14006",
+                      "path": [
+                        "jsonrpc"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
             {
               "name": "Firewall Objects",
               "item": [
