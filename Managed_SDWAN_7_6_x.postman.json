@@ -795,7 +795,8 @@
                       ""
                     ],
                     "type": "text/javascript",
-                    "packages": {}
+                    "packages": {},
+                    "requests": {}
                   }
                 }
               ],
@@ -5144,7 +5145,7 @@
                         ],
                         "body": {
                           "mode": "raw",
-                          "raw": "{\n  \"id\": 1,\n  \"method\": \"add\",\n  \"params\": [{\n    \"url\": \"/pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n    \"data\": [\n      {\n        \"name\": \"guest-sia\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"certificate-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"],\n        \"casb-profile\": [\"default\"]\n      },\n      {\n        \"name\": \"non-compliant\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"non-compliant\"],\n        \"ssl-ssh-profile\": [\"custom-deep-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"uninspected\",\n        \"profile-protocol-options\": [\"default\"],\n        \"ssl-ssh-profile\": [\"no-inspection\"]\n      },\n      {\n        \"name\": \"unisase-sia\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"custom-deep-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"unisase-sia-crt-insp\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"certificate-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"unisase-spa\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"custom-deep-inspection\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"unisase-spa-crt-insp\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"certificate-inspection\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      }\n    ]\n  }],\n  \"session\": \"{{session}}\"\n}"
+                          "raw": "{\n  \"id\": 1,\n  \"method\": \"add\",\n  \"params\": [{\n    \"url\": \"/pm/config/adom/{{adom}}/obj/firewall/profile-group\",\n    \"data\": [\n      {\n        \"name\": \"guest-sia\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"certificate-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"],\n        \"casb-profile\": [\"default\"]\n      },\n      {\n        \"name\": \"non-compliant\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"non-compliant\"],\n        \"ssl-ssh-profile\": [\"custom-deep-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"waf-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"uninspected\",\n        \"profile-protocol-options\": [\"default\"],\n        \"ssl-ssh-profile\": [\"no-inspection\"]\n      },\n      {\n        \"name\": \"unisase-sia\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"custom-deep-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"unisase-sia-crt-insp\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"webfilter-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"certificate-inspection\"],\n        \"dnsfilter-profile\": [\"default\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"unisase-spa\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"custom-deep-inspection\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      },\n      {\n        \"name\": \"unisase-spa-crt-insp\",\n        \"profile-protocol-options\": [\"default\"],\n        \"av-profile\": [\"outbound\"],\n        \"ips-sensor\": [\"outbound\"],\n        \"application-list\": [\"outbound\"],\n        \"ssl-ssh-profile\": [\"certificate-inspection\"],\n        \"file-filter-profile\": [\"default\"],\n        \"dlp-profile\": [\"outbound\"]\n      }\n    ]\n  }],\n  \"session\": \"{{session}}\"\n}"
                         },
                         "url": {
                           "raw": "https://{{ip}}/jsonrpc",
@@ -5234,6 +5235,105 @@
                         }
                       },
                       "response": []
+                    },
+                    {
+                      "name": "install_pckg_edge",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": 1,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/install/package\",\n      \"data\": {\n        \"adom\": \"CustomerU\",\n        \"pkg\": \"Edge-Secured\",\n        \"scope\": [\n          {\n            \"name\": \"Edge-West-RegionalHQ\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Hub_Policy_Update",
+                  "item": [
+                    {
+                      "name": "update_firewall_rules_hub",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "exec": [
+                              ""
+                            ],
+                            "type": "text/javascript",
+                            "packages": {},
+                            "requests": {}
+                          }
+                        }
+                      ],
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-Edge\",\n                    \"policyid\": 1,\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"CORP\"\n                },\n                {\n                    \"name\": \"Edge-Hub\",\n                    \"policyid\": 2,\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"CORP\"\n                }\n            ]\n        }\n    ]\n}"
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "install_pckg_hub",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": 1,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/install/package\",\n      \"data\": {\n        \"adom\": \"CustomerU\",\n        \"pkg\": \"Hub\",\n        \"scope\": [\n          {\n            \"name\": \"Hubs\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
                     }
                   ]
                 },
@@ -5268,6 +5368,39 @@
                               ]
                             },
                             "description": "Create a new policy package in the specified ADOM.\n\nKey fields:\n- name: package name (FortiSASE)\n- type: 'pkg' for a regular package\n- ngfw-mode: 0 = profile-based\n- central-nat: 0 = disabled\n- policy-offload-level: 0 = default\n\nExpected response: result[0].status.code == 0"
+                          },
+                          "response": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Target Device Assignment",
+                      "item": [
+                        {
+                          "name": "Assign Target Device",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"set\",\n  \"params\": [\n    {\n      \"url\": \"pm/pkg/adom/{{adom}}/FortiSASE\",\n      \"data\": {\n        \"scope member\": [\n          {\n            \"name\": \"Connector_to_FortiSASE\",\n            \"vdom\": \"0\"\n          }\n        ]\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 5\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Assign a device/VDOM as an installation target (scope member) for the policy package.\n\nNote: This call REPLACES the scope member list. To ADD without removing existing members,\nfirst GET the current scope members and include them all in the data array.\n\nExpected response: result[0].status.code == 0"
                           },
                           "response": []
                         }
@@ -5889,6 +6022,38 @@
                               ]
                             },
                             "description": "Policy for compliant ZTNA agents (EMS posture tag: compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Policy Package Installation",
+                      "item": [
+                        {
+                          "name": "install_pckg_fss",
+                          "request": {
+                            "method": "POST",
+                            "header": [],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "https://{{ip}}/jsonrpc\n{\n  \"id\": 1,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/install/device\",\n      \"data\": {\n        \"adom\": \"CustomerU\",\n        \"flags\": [],\n        \"scope\": [\n          {\n            \"name\": \"Connector_to_FortiSASE\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            }
                           },
                           "response": []
                         }
