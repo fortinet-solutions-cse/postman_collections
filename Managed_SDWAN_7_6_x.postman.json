@@ -5168,176 +5168,6 @@
               "name": "Firewall Policies",
               "item": [
                 {
-                  "name": "Secure Edge Package",
-                  "item": [
-                    {
-                      "name": "add firewall policy",
-                      "event": [
-                        {
-                          "listen": "test",
-                          "script": {
-                            "exec": [
-                              ""
-                            ],
-                            "type": "text/javascript",
-                            "packages": {}
-                          }
-                        }
-                      ],
-                      "request": {
-                        "method": "POST",
-                        "header": [
-                          {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                          }
-                        ],
-                        "body": {
-                          "mode": "raw",
-                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-Secured\",\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": {\n                        \"name\": \"Edge-West-RegionalHQ\"\n                    },\n                    \"type\": \"pkg\"\n                }\n            ]\n        }\n    ]\n}"
-                        },
-                        "url": {
-                          "raw": "https://{{ip}}/jsonrpc",
-                          "protocol": "https",
-                          "host": [
-                            "{{ip}}"
-                          ],
-                          "path": [
-                            "jsonrpc"
-                          ]
-                        }
-                      },
-                      "response": []
-                    },
-                    {
-                      "name": "set policy",
-                      "request": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                          "mode": "raw",
-                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Security Policy created for SIA and SPA\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge-Secured/firewall/policy/\",\n            \"data\": [\n                \n                {\n                    \"name\": \"Bypass-FortiSASE-FCTEMS\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"internet-service\": 1,\n                    \"dstaddr\": \"all\",\n                    \"internet-service-name\": [\n                        \"Fortinet-FortiClient.EMS\",\n                        \"Fortinet-FortiSASE\"\n                    ],\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": \"no-inspection\",\n                    \"inspection-mode\": 0,\n                    \"profile-type\": 0,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                // {\n                //     \"name\": \"Allow-Private-DNS\",\n                //     \"policyid\": 2,\n                //     \"srcintf\": [\n                //         \"lan_zone\"\n                //     ],\n                //     \"dstintf\": [\n                //         \"overlay\"\n                //     ],\n                //     \"srcaddr\": [\n                //         \"CORP\"\n                //     ],\n                //     \"dstaddr\": [\n                //         \"CORP\"\n                //     ],\n                //     \"service\": \"DNS\",\n                //     \"action\": 1,\n                //     \"nat\": 0,\n                //     \"ztna-status\": 0,\n                //     \"utm-status\": 1,\n                //     \"status\": 1,\n                //     \"profile-protocol-options\": null,\n                //     \"ssl-ssh-profile\": \"no-inspection\",\n                //     \"inspection-mode\": 0,\n                //     \"profile-type\": 0,\n                //     \"schedule\": \"always\",\n                //     \"logtraffic\": 2\n                // },\n\n                {\n                    \"name\": \"Allow-Infra\",\n                    \"policyid\": 2,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\",\n                        \"underlay\",\n                        \"Lo\"\n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\",\n                        \"underlay\",\n                        \"Lo\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"service\": [\n                                \"PING\",\n                                \"IKE\",\n                                \"BGP\"\n                               ],\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },                \n                {\n                    \"name\": \"Block-Unsafe-Infra\",\n                    \"policyid\": 3,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"all\",\n                    \"internet-service\": 1,\n                    \"inspection-mode\": 0,\n                    \"action\": 0,\n                    \"nat\": 0,\n                    \"utm-status\": 1,\n                    \"ztna-status\": 1,\n                    \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"],\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"internet-service-name\": [\n                        \"GitHub-GitHub\",\n                        \"Microsoft-Office365\"\n                    ],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Block-Unsafe-App\",\n                    \"policyid\": 4,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"inspection-mode\": 0,\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"ztna-status\": 1,\n                    \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"],\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"profile-group\": [\n                        \"non-compliant\"\n                    ],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Block-Unsafe-SPA\",\n                    \"policyid\": 5,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                        \n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"CORP\"\n                    ],\n                    \"service\": [\n                        \"HTTP\",\n                        \"HTTPS\",\n                        \"SSH\"\n                    ],\n                    \"action\": 0,\n                    \"nat\": 0,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"ztna-status\": 1,\n                    \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"],\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n\n                },\n                {\n                    \"name\": \"Allow-Users-SIA\",\n                    \"policyid\": 6,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"profile-group\": [\n                        \"unisase-sia\"\n                    ],\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"inspection-mode\": 0,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Allow-Users-SPA\",\n                    \"policyid\": 7,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n\n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"CORP\"\n                    ],\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"profile-group\": [\n                        \"unisase-spa\"\n                    ],\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n\n            ]\n        }\n    ]\n}",
-                          "options": {
-                            "raw": {
-                              "language": "json"
-                            }
-                          }
-                        },
-                        "url": {
-                          "raw": "https://{{ip}}/jsonrpc",
-                          "protocol": "https",
-                          "host": [
-                            "{{ip}}"
-                          ],
-                          "path": [
-                            "jsonrpc"
-                          ]
-                        }
-                      },
-                      "response": []
-                    },
-                    {
-                      "name": "install_pckg_edge",
-                      "request": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                          "mode": "raw",
-                          "raw": "{\n  \"id\": 1,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/install/package\",\n      \"data\": {\n        \"adom\": \"CustomerU\",\n        \"pkg\": \"Edge-Secured\",\n        \"scope\": [\n          {\n            \"name\": \"Edge-West-RegionalHQ\"\n          }\n        ]\n      }\n    }\n  ]\n}",
-                          "options": {
-                            "raw": {
-                              "language": "json"
-                            }
-                          }
-                        },
-                        "url": {
-                          "raw": "https://{{ip}}/jsonrpc",
-                          "protocol": "https",
-                          "host": [
-                            "{{ip}}"
-                          ],
-                          "path": [
-                            "jsonrpc"
-                          ]
-                        }
-                      },
-                      "response": []
-                    }
-                  ]
-                },
-                {
-                  "name": "Hub_Policy_Update",
-                  "item": [
-                    {
-                      "name": "update_firewall_rules_hub",
-                      "event": [
-                        {
-                          "listen": "test",
-                          "script": {
-                            "exec": [
-                              ""
-                            ],
-                            "type": "text/javascript",
-                            "packages": {},
-                            "requests": {}
-                          }
-                        }
-                      ],
-                      "request": {
-                        "method": "POST",
-                        "header": [
-                          {
-                            "key": "Content-Type",
-                            "value": "application/json"
-                          }
-                        ],
-                        "body": {
-                          "mode": "raw",
-                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-Edge\",\n                    \"policyid\": 1,\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"CORP\"\n                },\n                {\n                    \"name\": \"Edge-Hub\",\n                    \"policyid\": 2,\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"CORP\"\n                }\n            ]\n        }\n    ]\n}"
-                        },
-                        "url": {
-                          "raw": "https://{{ip}}/jsonrpc",
-                          "protocol": "https",
-                          "host": [
-                            "{{ip}}"
-                          ],
-                          "path": [
-                            "jsonrpc"
-                          ]
-                        }
-                      },
-                      "response": []
-                    },
-                    {
-                      "name": "install_pckg_hub",
-                      "request": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                          "mode": "raw",
-                          "raw": "{\n  \"id\": 1,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/install/package\",\n      \"data\": {\n        \"adom\": \"CustomerU\",\n        \"pkg\": \"Hub\",\n        \"scope\": [\n          {\n            \"name\": \"Hubs\"\n          }\n        ]\n      }\n    }\n  ]\n}",
-                          "options": {
-                            "raw": {
-                              "language": "json"
-                            }
-                          }
-                        },
-                        "url": {
-                          "raw": "https://{{ip}}/jsonrpc",
-                          "protocol": "https",
-                          "host": [
-                            "{{ip}}"
-                          ],
-                          "path": [
-                            "jsonrpc"
-                          ]
-                        }
-                      },
-                      "response": []
-                    }
-                  ]
-                },
-                {
                   "name": "FortiSASE Package",
                   "item": [
                     {
@@ -5377,6 +5207,61 @@
                       "name": "Target Device Assignment",
                       "item": [
                         {
+                          "name": "get_device_oid",
+                          "event": [
+                            {
+                              "listen": "test",
+                              "script": {
+                                "exec": [
+                                  "var resp = pm.response.json();",
+                                  "try {",
+                                  "    var device = resp.result[0].data;",
+                                  "    ",
+                                  "    // Store device OID",
+                                  "    pm.environment.set('device_oid', device.oid);",
+                                  "    console.log('Device OID stored:', device.oid);",
+                                  "    ",
+                                  "    // Store vdom OID (root vdom)",
+                                  "    var rootVdom = device.vdom.find(v => v.name === 'root');",
+                                  "    pm.environment.set('vdom_oid', rootVdom.oid);",
+                                  "    console.log('VDOM OID stored:', rootVdom.oid);",
+                                  "    ",
+                                  "} catch(e) {",
+                                  "    console.error('Could not extract OIDs:', JSON.stringify(resp));",
+                                  "}"
+                                ],
+                                "type": "text/javascript",
+                                "packages": {},
+                                "requests": {}
+                              }
+                            }
+                          ],
+                          "request": {
+                            "method": "POST",
+                            "header": [],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": 1,\n  \"method\": \"get\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/dvmdb/adom/{{adom}}/device/Connector_to_FortiSASE\",\n      \"fields\": [\"name\", \"oid\"]\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            }
+                          },
+                          "response": []
+                        },
+                        {
                           "name": "Assign Target Device",
                           "request": {
                             "method": "POST",
@@ -5388,7 +5273,7 @@
                             ],
                             "body": {
                               "mode": "raw",
-                              "raw": "{\n  \"method\": \"set\",\n  \"params\": [\n    {\n      \"url\": \"pm/pkg/adom/{{adom}}/FortiSASE\",\n      \"data\": {\n        \"scope member\": [\n          {\n            \"name\": \"Connector_to_FortiSASE\",\n            \"vdom\": \"0\"\n          }\n        ]\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 5\n}"
+                              "raw": "{\n  \"id\": 2,\n  \"method\": \"set\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/pm/pkg/adom/{{adom}}/FortiSASE\",\n      \"data\": {\n        \"scope member\": [\n          {\n            \"oid\": \"{{device_oid}}\",\n            \"name\": \"Connector_to_FortiSASE\",\n            \"vdom_oid\": \"{{vdom_oid}}\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}"
                             },
                             "url": {
                               "raw": "https://{{ip}}/jsonrpc",
@@ -6037,7 +5922,7 @@
                             "header": [],
                             "body": {
                               "mode": "raw",
-                              "raw": "https://{{ip}}/jsonrpc\n{\n  \"id\": 1,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/install/device\",\n      \"data\": {\n        \"adom\": \"CustomerU\",\n        \"flags\": [],\n        \"scope\": [\n          {\n            \"name\": \"Connector_to_FortiSASE\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                              "raw": "{\n  \"id\": 1,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/install/package\",\n      \"data\": {\n        \"adom\": \"CustomerU\",\n        \"pkg\": \"FortiSASE\",\n        \"scope\": [\n          {\n            \"name\": \"Connector_to_FortiSASE\",\n            \"vdom\": \"root\"\n          }\n        ]\n      }\n    }\n  ]\n}",
                               "options": {
                                 "raw": {
                                   "language": "json"
@@ -6058,6 +5943,176 @@
                           "response": []
                         }
                       ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Secure Edge Package",
+                  "item": [
+                    {
+                      "name": "add firewall policy",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "exec": [
+                              ""
+                            ],
+                            "type": "text/javascript",
+                            "packages": {}
+                          }
+                        }
+                      ],
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/pkg/adom/{{adom}}\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-Secured\",\n                    \"package settings\": {\n                        \"central-nat\": 0,\n                        \"consolidated-firewall-mode\": 0,\n                        \"fwpolicy-implicit-log\": 0,\n                        \"fwpolicy6-implicit-log\": 0,\n                        \"ngfw-mode\": 0\n                    },\n                    \"scope member\": {\n                        \"name\": \"Edge-West-RegionalHQ\"\n                    },\n                    \"type\": \"pkg\"\n                }\n            ]\n        }\n    ]\n}"
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "set policy",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"add\",\n    \"revision note\": \"Security Policy created for SIA and SPA\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Edge-Secured/firewall/policy/\",\n            \"data\": [\n                \n                {\n                    \"name\": \"Bypass-FortiSASE-FCTEMS\",\n                    \"policyid\": 1,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"internet-service\": 1,\n                    \"dstaddr\": \"all\",\n                    \"internet-service-name\": [\n                        \"Fortinet-FortiClient.EMS\",\n                        \"Fortinet-FortiSASE\"\n                    ],\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": \"no-inspection\",\n                    \"inspection-mode\": 0,\n                    \"profile-type\": 0,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                // {\n                //     \"name\": \"Allow-Private-DNS\",\n                //     \"policyid\": 2,\n                //     \"srcintf\": [\n                //         \"lan_zone\"\n                //     ],\n                //     \"dstintf\": [\n                //         \"overlay\"\n                //     ],\n                //     \"srcaddr\": [\n                //         \"CORP\"\n                //     ],\n                //     \"dstaddr\": [\n                //         \"CORP\"\n                //     ],\n                //     \"service\": \"DNS\",\n                //     \"action\": 1,\n                //     \"nat\": 0,\n                //     \"ztna-status\": 0,\n                //     \"utm-status\": 1,\n                //     \"status\": 1,\n                //     \"profile-protocol-options\": null,\n                //     \"ssl-ssh-profile\": \"no-inspection\",\n                //     \"inspection-mode\": 0,\n                //     \"profile-type\": 0,\n                //     \"schedule\": \"always\",\n                //     \"logtraffic\": 2\n                // },\n\n                {\n                    \"name\": \"Allow-Infra\",\n                    \"policyid\": 2,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\",\n                        \"underlay\",\n                        \"Lo\"\n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\",\n                        \"underlay\",\n                        \"Lo\"\n                    ],\n                    \"srcaddr\": [\n                        \"all\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"all\"\n                    ],\n                    \"service\": [\n                                \"PING\",\n                                \"IKE\",\n                                \"BGP\"\n                               ],\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },                \n                {\n                    \"name\": \"Block-Unsafe-Infra\",\n                    \"policyid\": 3,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"all\",\n                    \"internet-service\": 1,\n                    \"inspection-mode\": 0,\n                    \"action\": 0,\n                    \"nat\": 0,\n                    \"utm-status\": 1,\n                    \"ztna-status\": 1,\n                    \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"],\n                    \"profile-type\": 0,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"internet-service-name\": [\n                        \"GitHub-GitHub\",\n                        \"Microsoft-Office365\"\n                    ],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Block-Unsafe-App\",\n                    \"policyid\": 4,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"inspection-mode\": 0,\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"utm-status\": 1,\n                    \"ztna-status\": 1,\n                    \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"],\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"profile-group\": [\n                        \"non-compliant\"\n                    ],\n                    \"status\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Block-Unsafe-SPA\",\n                    \"policyid\": 5,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                        \n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"CORP\"\n                    ],\n                    \"service\": [\n                        \"HTTP\",\n                        \"HTTPS\",\n                        \"SSH\"\n                    ],\n                    \"action\": 0,\n                    \"nat\": 0,\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"ztna-status\": 1,\n                    \"ztna-ems-tag\": [\"EMS1_ZTNA_non-compliant\"],\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n\n                },\n                {\n                    \"name\": \"Allow-Users-SIA\",\n                    \"policyid\": 6,\n                    \"srcintf\": [\n                        \"lan_zone\"\n                    ],\n                    \"dstintf\": [\n                        \"underlay\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"dstaddr\": \"all\",\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 1,\n                    \"profile-group\": [\n                        \"unisase-sia\"\n                    ],\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"inspection-mode\": 0,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                },\n                {\n                    \"name\": \"Allow-Users-SPA\",\n                    \"policyid\": 7,\n                    \"srcintf\": [\n                        \"lan_zone\",\n                        \"overlay\"\n\n                    ],\n                    \"dstintf\": [\n                        \"overlay\",\n                        \"lan_zone\"\n                    ],\n                    \"srcaddr\": [\n                        \"CORP\"\n                    ],\n                    \"inspection-mode\": 0,\n                    \"dstaddr\": [\n                        \"CORP\"\n                    ],\n                    \"service\": \"ALL\",\n                    \"action\": 1,\n                    \"nat\": 0,\n                    \"profile-group\": [\n                        \"unisase-spa\"\n                    ],\n                    \"ztna-status\": 0,\n                    \"utm-status\": 1,\n                    \"status\": 1,\n                    \"profile-protocol-options\": null,\n                    \"ssl-ssh-profile\": null,\n                    \"profile-type\": 1,\n                    \"schedule\": \"always\",\n                    \"logtraffic\": 2\n                }\n\n            ]\n        }\n    ]\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "install_pckg_edge",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": 1,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/install/package\",\n      \"data\": {\n        \"adom\": \"CustomerU\",\n        \"pkg\": \"Edge-Secured\",\n        \"scope\": [\n          {\n            \"name\": \"Edge-West-RegionalHQ\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Hub_Policy_Update",
+                  "item": [
+                    {
+                      "name": "update_firewall_rules_hub",
+                      "event": [
+                        {
+                          "listen": "test",
+                          "script": {
+                            "exec": [
+                              ""
+                            ],
+                            "type": "text/javascript",
+                            "packages": {},
+                            "requests": {}
+                          }
+                        }
+                      ],
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/pkg/Hub/firewall/policy/\",\n            \"data\": [\n                {\n                    \"name\": \"Edge-Edge\",\n                    \"policyid\": 1,\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"CORP\"\n                },\n                {\n                    \"name\": \"Edge-Hub\",\n                    \"policyid\": 2,\n                    \"srcaddr\": \"CORP\",\n                    \"dstaddr\": \"CORP\"\n                }\n            ]\n        }\n    ]\n}"
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "install_pckg_hub",
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": 1,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/install/package\",\n      \"data\": {\n        \"adom\": \"CustomerU\",\n        \"pkg\": \"Hub\",\n        \"scope\": [\n          {\n            \"name\": \"Hubs\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "https://{{ip}}/jsonrpc",
+                          "protocol": "https",
+                          "host": [
+                            "{{ip}}"
+                          ],
+                          "path": [
+                            "jsonrpc"
+                          ]
+                        }
+                      },
+                      "response": []
                     }
                   ]
                 }
@@ -8338,7 +8393,9 @@
               "postman.setEnvironmentVariable('session',data['session']);",
               "postman.setEnvironmentVariable('status_code',data['result'][0]['status']['code']);"
             ],
-            "type": "text/javascript"
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
           }
         }
       ],
@@ -8450,6 +8507,16 @@
           ""
         ]
       }
+    }
+  ],
+  "variable": [
+    {
+      "key": "device_oid",
+      "value": ""
+    },
+    {
+      "key": "vdom_oid",
+      "value": ""
     }
   ]
 }
