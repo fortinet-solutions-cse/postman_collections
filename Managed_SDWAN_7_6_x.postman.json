@@ -7001,96 +7001,6 @@
               "response": []
             },
             {
-              "name": "Create Static Route Template",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                }
-              ],
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/_router_static/adom/{{adom}}/\",\n            \"data\": [\n                {\n                    \"name\": \"bor\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"_router_static\",\n                        \"widgets\": [\n                            \"_router_static\"\n                        ]\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"BOR\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "https://{{ip}}/jsonrpc",
-                  "protocol": "https",
-                  "host": [
-                    "{{ip}}"
-                  ],
-                  "path": [
-                    "jsonrpc"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
-              "name": "Populate Static Route Template",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                }
-              ],
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/bor/action-list\",\n            \"data\": [\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 1,\n                    \"value\": {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"port10\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"192.168.0.254\",\n                        \"status\": \"disable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 2,\n                    \"value\": {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 3,\n                    \"value\": {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"fss_onramp\"\n                        ],\n                        \"distance\": 3,\n                        \"status\": \"enable\"\n                    }\n                },\n                {\n                    \"action\": \"conf-static-router\",\n                    \"model\": \"all\",\n                    \"seq\": 4,\n                    \"value\": {\n                        \"dst\": \"$(remote_gw) 255.255.255.255\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                    }\n                }\n            ]\n        }\n    ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "https://{{ip}}/jsonrpc",
-                  "protocol": "https",
-                  "host": [
-                    "{{ip}}"
-                  ],
-                  "path": [
-                    "jsonrpc"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
               "name": "Create CLI Template",
               "request": {
                 "method": "POST",
@@ -7243,6 +7153,96 @@
                 "body": {
                   "mode": "raw",
                   "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_ipsec/fss_onramp/action-list\",\n            \"data\": [\n                {\n                    \"seq\": 1,\n                    \"action\": \"conf-ipsec-template\",\n                    \"model\": \"all\",\n                    \"value\": {\n                        \"automatic-routing\": \"disable\",\n                        \"local-addr-type\": \"dynamic\",\n                        \"name\": \"fss_onramp\",\n                        \"nat\": \"disable\",\n                        \"remote-subnet\": [\n                            \"0.0.0.0/0.0.0.0\"\n                        ],\n                        \"vpn ipsec phase1-interface\": {\n                            \"authmethod\": 1,\n                            \"peertype\": 1,\n                            \"ike-version\": 2,\n                            \"interface\": [\n                                \"port1\"\n                            ],\n                            \"mode-cfg\": 1,\n                            \"name\": \"fss_onramp\",\n                            \"net-device\": 0,\n                            \"network-overlay\": 1,\n                            \"network-id\": \"1\",\n                            \"proposal\": [\n                                \"aes256-sha256\"\n                            ],\n                            \"psksecret\": [\n                                \"Fortisase345#\"\n                            ],\n                            \"remote-gw\": \"$(remote_gw)\"\n                        },\n                        \"vpn ipsec phase2-interface\": [\n                            {\n                                \"name\": \"fss_onramp\",\n                                \"auto-negotiate\": 1,\n                                \"phase1name\": [\n                                    \"fss_onramp\"\n                                ],\n                                \"proposal\": [\n                                    \"aes256-sha256\"\n                                ]\n                            }\n                        ]\n                    }\n                }\n            ]\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://{{ip}}/jsonrpc",
+                  "protocol": "https",
+                  "host": [
+                    "{{ip}}"
+                  ],
+                  "path": [
+                    "jsonrpc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Static Route Template",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/template/_router_static/adom/{{adom}}/\",\n            \"data\": [\n                {\n                    \"name\": \"bor\",\n                    \"type\": \"template\",\n                    \"template setting\": {\n                        \"stype\": \"_router_static\",\n                        \"widgets\": [\n                            \"_router_static\"\n                        ]\n                    },\n                    \"scope member\": [\n                        {\n                            \"name\": \"BOR\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://{{ip}}/jsonrpc",
+                  "protocol": "https",
+                  "host": [
+                    "{{ip}}"
+                  ],
+                  "path": [
+                    "jsonrpc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Populate Static Route Template",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/bor/router/static\",\n            \"data\": [\n                {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\"port10\"],\n                        \"distance\": 10,\n                        \"gateway\": \"192.168.0.254\",\n                        \"status\": \"disable\"\n                },\n                {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                },\n                {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"fss_onramp\"\n                        ],\n                        \"distance\": 3,\n                        \"status\": \"enable\"\n                },\n                {\n                        \"dst\": \"$(remote_gw) 255.255.255.255\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                }\n            ]\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
