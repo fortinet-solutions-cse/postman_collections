@@ -6,13 +6,12 @@
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
 
-from orch_base import applyCLIConfigTask
+from orch_base import readConfig, applyCLIConfigTask
 from yaml import safe_load
 
 def main():
 
-    with open('tenants/shared/config.yaml', 'r') as cfgfile:
-        cfg = safe_load(cfgfile)
+    cfg = readConfig(shared=True, silent=True)
 
     for d in ['site1-1']:
         task = {
