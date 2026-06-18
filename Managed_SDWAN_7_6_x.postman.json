@@ -7274,7 +7274,8 @@
                       ""
                     ],
                     "type": "text/javascript",
-                    "packages": {}
+                    "packages": {},
+                    "requests": {}
                   }
                 }
               ],
@@ -7289,7 +7290,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/router_bgp/fss_onramp/router/bgp\",\n            \"data\": {\n                \"as\": 65001,\n                \"ebgp-multipath\": 1,\n                \"holdtime-timer\": 15,\n                \"keepalive-timer\": 5,\n                \"neighbor\": [\n                    {\n                        \"ip\": \"10.251.1.143\",\n                        \"soft-reconfiguration\": 1,\n                        \"connect-timer\": 1,\n                        \"advertisement-interval\": 1,\n                        \"remote-as\": 65001,\n                        \"update-source\": \"fss_onramp\",\n                        \"interface\": \"fss_onramp\",\n                        \"next-hop-self\": 1\n                    }\n                ],\n                \"network\": [\n                    {\n                        \"id\": 1,\n                        \"prefix\": [\n                            \"10.$(lan_id).1.0\",\n                            \"255.255.255.0\"\n                        ]\n                    },\n                    {\n                        \"id\": 2,\n                        \"prefix\": [\n                            \"10.$(lan_id).101.0\",\n                            \"255.255.255.0\"\n                        ]\n                    }\n                ],\n                \"router-id\": \"10.251.1.2\"\n            }\n        }\n    ]\n}",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/router_bgp/fss_onramp/router/bgp\",\n            \"data\": {\n                \"as\": \"65001\",\n                \"ebgp-multipath\": 1,\n                \"holdtime-timer\": 15,\n                \"keepalive-timer\": 5,\n                \"neighbor\": [\n                    {\n                        \"ip\": \"10.251.1.143\",\n                        \"soft-reconfiguration\": 1,\n                        \"connect-timer\": 1,\n                        \"advertisement-interval\": 1,\n                        \"remote-as\": \"65001\",\n                        \"update-source\": \"fss_onramp\",\n                        \"interface\": \"fss_onramp\",\n                        \"next-hop-self\": 1\n                    }\n                ],\n                \"network\": [\n                    {\n                        \"id\": 1,\n                        \"prefix\": [\n                            \"10.$(lan_id).1.0\",\n                            \"255.255.255.0\"\n                        ]\n                    },\n                    {\n                        \"id\": 2,\n                        \"prefix\": [\n                            \"10.$(lan_id).101.0\",\n                            \"255.255.255.0\"\n                        ]\n                    }\n                ],\n                \"router-id\": \"10.251.1.2\"\n            }\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -8495,6 +8496,50 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Login Copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var data = JSON.parse(responseBody);",
+              "",
+              "postman.setEnvironmentVariable('session',data['session']);",
+              "postman.setEnvironmentVariable('status_code',data['result'][0]['status']['code']);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 1,\n  \"method\": \"exec\",\n  \"params\": [\n    {\n      \"url\": \"sys/login/user\",\n      \"data\": {\n        \"user\": \"{{username}}\",\n        \"passwd\": \"{{password}}\"\n      }\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "https://{{ip}}/jsonrpc",
+          "protocol": "https",
+          "host": [
+            "{{ip}}"
+          ],
+          "path": [
+            "jsonrpc"
+          ]
+        },
+        "description": "Authenticate to FortiManager and obtain a session token.\nThe session token is automatically saved to the {{fmg_session}} collection variable."
+      },
+      "response": []
     },
     {
       "name": "Logout",
