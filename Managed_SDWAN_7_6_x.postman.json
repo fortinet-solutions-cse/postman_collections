@@ -8498,7 +8498,7 @@
       ]
     },
     {
-      "name": "Login Copy",
+      "name": "Login",
       "event": [
         {
           "listen": "test",
