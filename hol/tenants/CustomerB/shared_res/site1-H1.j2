@@ -1,0 +1,59 @@
+config vpn ipsec phase1-interface
+   edit "OUTSIDE"
+      set interface "port4"
+      set ike-version 2
+      set peertype any
+      set net-device disable
+      set exchange-interface-ip enable
+      set proposal aes256gcm-prfsha256
+      set dhgrp 20 21
+      set remote-gw 172.16.4.5
+      set psk v3rys3cr3T!
+   next
+end
+config vpn ipsec phase2-interface
+   edit "OUTSIDE"
+      set phase1name "OUTSIDE"
+      set proposal aes256gcm
+      set dhgrp 20 21
+      set keepalive enable
+   next
+end
+config system interface
+   edit "port4"
+      set mode dhcp
+      set allowaccess ping       
+   next
+   edit "OUTSIDE"
+      set ip 192.168.1.1/32
+      set remote-ip 192.168.1.2/30
+      set vrf 10
+      set allowaccess ping
+   next
+end
+config router bgp
+   config neighbor
+      edit "192.168.1.2"
+         set advertisement-interval 1
+         set ebgp-enforce-multihop enable 
+         set soft-reconfiguration enable
+         set interface "OUTSIDE"
+         set remote-as 65010
+         set connect-timer 1
+         set update-source "OUTSIDE"
+      next
+   end   
+end
+config firewall policy
+   edit 10
+      set name "Shared-Resource"
+      set srcintf "any"
+      set dstintf "OUTSIDE"
+      set action accept
+      set srcaddr "all"
+      set dstaddr "all"
+      set schedule "always"
+      set service "ALL"
+      set skip-vrf-match enable 
+   next
+end

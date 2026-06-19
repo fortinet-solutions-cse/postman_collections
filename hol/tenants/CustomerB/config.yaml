@@ -3,7 +3,8 @@ fmg_host: 192.168.0.15
 fmg_user: admin
 fmg_adom: CustomerB
 
-postman_collection: tenants/shared/Managed_SDWAN_7_6_x.postman.json
+postman_collection: tenants/shared/Managed_SDWAN_8_0_x.postman.json
+default_skip_tags: lab
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
@@ -17,6 +18,8 @@ sites:
     ip: 192.168.0.41
   site1-H2:
     ip: 192.168.0.42
+  site2-H1:
+    ip: 192.168.0.43
 
 tasks:
   - name: Create Foundation
@@ -34,7 +37,7 @@ tasks:
     tag: foundation
   - name: Import Jinja CLI Templates
     type: cli_templates
-    src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/*.j2
+    src: tenants/shared/sdwan-advpn-reference-hol-5.0/dynamic-bgp-on-lo/*.j2
     tag: foundation
   - name: Create CLI Template Groups
     type: postman
@@ -44,14 +47,14 @@ tasks:
     type: postman
     folder: CustomerB - Finalize
     tag: foundation
-  - name: Fine-tune 
+  - name: Provide Internet Access
     type: postman
-    folder: CustomerB - Fine-tune
-    tag: fine-tune
+    folder: CustomerB - Provide Internet Access
+    tag: lab
   - name: Create Model Devices
     type: model_devices
     src: tenants/CustomerB/inventory.CustomerB.csv
-    fos: 7.6
+    fos: 8.0
     tag: model_devices
   - name: Install Model Devices (Staging)
     type: postman
@@ -63,3 +66,7 @@ tasks:
     monitor: yes
     retry: yes
     tag: onboard
+  - name: Shared Resource
+    type: apply_cli
+    src: tenants/CustomerB/shared_res/*.j2
+    tag: lab,shared_res

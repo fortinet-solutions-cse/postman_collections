@@ -1,0 +1,64 @@
+config vpn ipsec phase1-interface
+   edit "SDWAN"
+      set interface "port4"
+      set ike-version 2
+      set peertype any
+      set net-device disable
+      set exchange-interface-ip enable
+      set proposal aes256gcm-prfsha256
+      set dhgrp 20 21
+      set remote-gw 172.16.1.5
+      set psk v3rys3cr3T!
+   next
+end
+config vpn ipsec phase2-interface
+   edit "SDWAN"
+      set phase1name "SDWAN"
+      set proposal aes256gcm
+      set dhgrp 20 21
+      set keepalive enable
+   next
+end
+config system interface
+   edit "Lo-shared"
+      set vdom "root"
+      set type loopback
+      set ip 172.17.10.100/32
+      set allowaccess ping
+   next
+   edit "SDWAN"
+      set ip 192.168.1.2/32
+      set remote-ip 192.168.1.1/30
+      set allowaccess ping
+   next   
+end
+config router bgp
+   set as 65010
+   set router-id 192.168.1.1
+   config neighbor
+      edit "192.168.1.1"
+         set advertisement-interval 1
+         set ebgp-enforce-multihop enable 
+         set soft-reconfiguration enable
+         set remote-as 65001
+         set connect-timer 1
+      next
+   end
+   config network
+      edit 1
+         set prefix 172.17.10.100/32
+      next
+   end   
+end
+config firewall policy
+   edit 1
+      set name "Shared-Resource"
+      set srcintf "SDWAN"
+      set dstintf "Lo-shared"
+      set action accept
+      set srcaddr "all"
+      set dstaddr "all"
+      set schedule "always"
+      set service "ALL"
+   next
+end
