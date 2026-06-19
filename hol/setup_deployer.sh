@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # setup_deployer.sh                                                          #
-# Uni-SASE HoL, Version 4.5 b100                                             #
+# Uni-SASE HoL, Version 5.0 b500                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
@@ -13,7 +13,7 @@ cd /fabric
 rm -rf autodeploy 
 
 deployer_ver=${DEPLOYER_VER:-7.6.x}
-hol_ver=${HOL_VER:-hol-4.5}
+hol_ver=${HOL_VER:-hol-5.0}
 
 echo ------ Downloading Solution Deployer, Version $deployer_ver...
 wget -O solution_deployer.tgz https://github.com/fortinet-solutions-cse/solution-deployer/archive/refs/tags/$deployer_ver.tar.gz
