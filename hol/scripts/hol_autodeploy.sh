@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # hol_autodeploy.sh                                                    #
-# Uni-SASE HoL, Version 4.5 b100                                             #
+# Uni-SASE HoL, Version 5.0 b500                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
@@ -10,8 +10,8 @@
 
 start=`date +%s`
 
-api_ver=${API_VER:-hol-4.5}
-jinja_ver=${JINJA_VER:-hol-4.0}
+api_ver=${API_VER:-hol-5.0}
+jinja_ver=${JINJA_VER:-hol-5.0}
 
 echo -----------------------------------------------------------------------
 echo Downloading the latest version of the Jinja Orchestrator for $jinja_ver...
@@ -24,7 +24,7 @@ echo
 echo -----------------------------------------------------------------------
 echo Downloading the latest version of the Postman collection for $api_ver...
 echo -----------------------------------------------------------------------
-wget -O tenants/shared/Managed_SDWAN_7_6_x.postman.json https://raw.githubusercontent.com/fortinet-solutions-cse/postman_collections/refs/tags/$api_ver/Managed_SDWAN_7_6_x.postman.json
+wget -O tenants/shared/Managed_SDWAN_8_0_x.postman.json https://raw.githubusercontent.com/fortinet-solutions-cse/postman_collections/refs/tags/$api_ver/Managed_SDWAN_8_0_x.postman.json
 
 echo
 echo ------------------------------
