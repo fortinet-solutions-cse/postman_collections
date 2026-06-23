@@ -1,0 +1,12 @@
+config firewall address
+   edit "SHARED_SERVER"
+      set subnet 172.17.10.100/32
+   next
+end
+config system sdwan
+   config service
+      edit 1
+         append dst SHARED_SERVER
+      next
+   end
+end
