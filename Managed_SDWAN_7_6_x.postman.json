@@ -22,7 +22,8 @@
                       ""
                     ],
                     "type": "text/javascript",
-                    "packages": {}
+                    "packages": {},
+                    "requests": {}
                   }
                 }
               ],
@@ -36,7 +37,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom\",\n            \"current_adom\": 3,\n            \"data\": {\n                \"name\": \"{{adom}}\",\n                \"flags\": [\n                    \"no_vpn_console\"\n                ],\n                \"log_db_retention_hours\": 1440,\n                \"log_disk_quota\": 0,\n                \"log_disk_quota_alert_thres\": 90,\n                \"log_disk_quota_split_ratio\": 70,\n                \"log_file_retention_hours\": 8760,\n                \"mode\": 1,\n                \"mr\": 6,\n                \"os_ver\": 7,\n                \"restricted_prds\": 1,\n                \"state\": 1,\n                \"workspace_mode\": 0\n            }\n        }\n    ]\n}",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom\",\n            \"current_adom\": 3,\n            \"data\": {\n                \"name\": \"{{adom}}\",\n                \"flags\": [\n                    \"no_vpn_console\"\n                ],\n                \"log_db_retention_hours\": 1440,\n                \"log_disk_quota\": 0,\n                \"log_disk_quota_alert_thres\": 90,\n                \"log_disk_quota_split_ratio\": 70,\n                \"log_file_retention_hours\": 8760,\n                \"mode\": 1,\n                \"mr\": 6,\n                \"os_ver\": 7,\n                \"restricted_prds\": \"fabric\",\n                \"state\": 1,\n                \"workspace_mode\": 0\n            }\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -4534,6 +4535,38 @@
                     "body": {
                       "mode": "raw",
                       "raw": "{\n  \"id\": 3,\n  \"method\": \"exec\",\n  \"session\": \"{{session}}\",\n  \"params\": [\n    {\n      \"url\": \"/securityconsole/assign/package\",\n      \"data\": {\n        \"flags\": [\n          \"cp_all_objs\"\n        ],\n        \"pkg\": \"default\",\n        \"target\": [\n          {\n            \"adom\": \"CustomerU\",\n            \"excluded\": \"disable\"\n          }\n        ]\n      }\n    }\n  ]\n}"
+                    },
+                    "url": {
+                      "raw": "https://{{ip}}/jsonrpc",
+                      "protocol": "https",
+                      "host": [
+                        "{{ip}}"
+                      ],
+                      "path": [
+                        "jsonrpc"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "System Settings",
+              "item": [
+                {
+                  "name": "Static Route",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": 2,\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"/cli/global/system/route\",\n      \"data\": {\n        \"device\": \"port2\",\n        \"gateway\": \"10.1.0.1\",\n        \"dst\": [\n          \"10.200.1.128\", \"255.255.255.240\"\n        ],\n        \"seq_num\": 2\n      }\n    }\n  ],\n  \"session\": \"{{session}}\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
                     },
                     "url": {
                       "raw": "https://{{ip}}/jsonrpc",
