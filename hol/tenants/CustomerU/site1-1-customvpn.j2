@@ -225,7 +225,7 @@ end
 config vpn ipsec phase2-interface
     edit "CORP_VPN"
         set phase1name "CORP_VPN"
-        set proposal aes128-sha256 aes256-sha256
+        set proposal aes128-sha256 aes256-sha256 aes256-sha1 aes128-sha1
         set dhgrp 5 15
     next
 
