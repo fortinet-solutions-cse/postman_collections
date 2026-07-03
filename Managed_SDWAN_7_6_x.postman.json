@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "039286fb-6d4c-4932-84b6-afb5323d21f3",
+    "_postman_id": "752e3e9e-7217-42ea-831c-8ed13fb369b3",
     "name": "Managed Secure SD-WAN 7.6.x - hol-4.5",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "34556426"
@@ -4585,7 +4585,10 @@
                   "name": "Delete SDWAN Template - Edge",
                   "request": {
                     "method": "GET",
-                    "header": []
+                    "header": [],
+                    "url": {
+                      "raw": ""
+                    }
                   },
                   "response": []
                 },
@@ -5867,7 +5870,35 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 11 - OT_SPA_1-2",
+                          "name": "Policy 11 - DNS_SPA_Agentless",
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"method\": \"add\",\n  \"params\": [\n    {\n      \"url\": \"pm/config/adom/{{adom}}/pkg/FortiSASE/firewall/policy\",\n      \"data\": {\n        \"name\": \"Agent_compliant\",\n        \"status\": 1,\n        \"action\": 1,\n        \"srcintf\": [\"SASE_ingress_zone\"],\n        \"dstintf\": [\"SASE_public_zone\"],\n        \"srcaddr\": [\"all\"],\n        \"dstaddr\": [\"all\"],\n        \"service\": [\"ALL\"],\n        \"schedule\": [\"always\"],\n        \"inspection-mode\": 0,\n        \"logtraffic\": 2,\n        \"utm-status\": 1,\n        \"ztna-status\": 1,\n        \"ztna-ems-tag\": [\"EMS1_ZTNA_compliant\"],\n        \"profile-type\": 1,\n        \"profile-group\": [\"unisase-sia\"],\n        \"nat\": 0,\n        \"ip-version-type\": \"ipv4\",\n        \"policy-behaviour-type\": \"standard\"\n      }\n    }\n  ],\n  \"session\": \"{{session}}\",\n  \"id\": 14\n}"
+                            },
+                            "url": {
+                              "raw": "https://{{ip}}/jsonrpc",
+                              "protocol": "https",
+                              "host": [
+                                "{{ip}}"
+                              ],
+                              "path": [
+                                "jsonrpc"
+                              ]
+                            },
+                            "description": "Policy for compliant ZTNA agents (EMS posture tag: compliant).\n- ztna-status: 1 = ZTNA enforcement active\n- ztna-ems-tag: EMS1_ZTNA_compliant\n- logtraffic: 2 = Log All Sessions\n- profile-group: unisase-sia"
+                          },
+                          "response": []
+                        },
+                        {
+                          "name": "Policy 12 - OT_SPA_1-2",
                           "request": {
                             "method": "POST",
                             "header": [
@@ -5895,7 +5926,7 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 12 - BOR_SPA_1-2",
+                          "name": "Policy 13 - BOR_SPA_1-2",
                           "request": {
                             "method": "POST",
                             "header": [
@@ -5923,7 +5954,7 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 13 - Agent_to_Agent_NCP_1-2",
+                          "name": "Policy 14 - Agent_to_Agent_NCP_1-2",
                           "request": {
                             "method": "POST",
                             "header": [
@@ -5951,7 +5982,7 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 14 - Agent_to_Agent_CP_1-2",
+                          "name": "Policy 15 - Agent_to_Agent_CP_1-2",
                           "request": {
                             "method": "POST",
                             "header": [
@@ -5979,7 +6010,7 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 15 - Agent_SPA_NCP",
+                          "name": "Policy 16 - Agent_SPA_NCP",
                           "request": {
                             "method": "POST",
                             "header": [
@@ -6007,7 +6038,7 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 16 - Agent_SPA_CP",
+                          "name": "Policy 17 - Agent_SPA_CP",
                           "request": {
                             "method": "POST",
                             "header": [
@@ -6035,7 +6066,7 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 17 - BOR_SPA_2-2",
+                          "name": "Policy 18 - BOR_SPA_2-2",
                           "request": {
                             "method": "POST",
                             "header": [
@@ -6063,7 +6094,7 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 18 - OT_SPA_2-2",
+                          "name": "Policy 19 - OT_SPA_2-2",
                           "request": {
                             "method": "POST",
                             "header": [
@@ -6091,7 +6122,7 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 19 - Agent_SPA_2-2",
+                          "name": "Policy 20 - Agent_SPA_2-2",
                           "request": {
                             "method": "POST",
                             "header": [
@@ -6119,7 +6150,7 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 20 - SPA_to_BOR",
+                          "name": "Policy 21 - SPA_to_BOR",
                           "request": {
                             "method": "POST",
                             "header": [
@@ -6147,7 +6178,7 @@
                           "response": []
                         },
                         {
-                          "name": "Policy 21 - SPA_to_Agents",
+                          "name": "Policy 22 - SPA_to_Agents",
                           "request": {
                             "method": "POST",
                             "header": [
