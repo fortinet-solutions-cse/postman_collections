@@ -37,7 +37,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom\",\n            \"current_adom\": 3,\n            \"data\": {\n                \"name\": \"{{adom}}\",\n                \"flags\": [\n                    \"no_vpn_console\"\n                ],\n                \"log_db_retention_hours\": 1440,\n                \"log_disk_quota\": 0,\n                \"log_disk_quota_alert_thres\": 90,\n                \"log_disk_quota_split_ratio\": 70,\n                \"log_file_retention_hours\": 8760,\n                \"mode\": 1,\n                \"mr\": 0,\n                \"os_ver\": 8,\n                \"restricted_prds\": 1,\n                \"state\": 1,\n                \"workspace_mode\": 0\n            }\n        }\n    ]\n}",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom\",\n            \"current_adom\": 3,\n            \"data\": {\n                \"name\": \"{{adom}}\",\n                \"flags\": [\n                    \"no_vpn_console\"\n                ],\n                \"log_db_retention_hours\": 1440,\n                \"log_disk_quota\": 0,\n                \"log_disk_quota_alert_thres\": 90,\n                \"log_disk_quota_split_ratio\": 70,\n                \"log_file_retention_hours\": 8760,\n                \"mode\": 1,\n                \"mr\": 0,\n                \"os_ver\": 8,\n                \"restricted_prds\": \"fabric\",\n                \"state\": 1,\n                \"workspace_mode\": 0\n            }\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1414,7 +1414,8 @@
                       ""
                     ],
                     "type": "text/javascript",
-                    "packages": {}
+                    "packages": {},
+                    "requests": {}
                   }
                 }
               ],
@@ -1429,7 +1430,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom\",\n            \"current_adom\": 3,\n            \"data\": {\n                \"name\": \"OUTSIDE\",\n                \"flags\": [\n                    \"no_vpn_console\"\n                ],\n                \"log_db_retention_hours\": 1440,\n                \"log_disk_quota\": 0,\n                \"log_disk_quota_alert_thres\": 90,\n                \"log_disk_quota_split_ratio\": 70,\n                \"log_file_retention_hours\": 8760,\n                \"mode\": 1,\n                \"mr\": 6,\n                \"os_ver\": 7,\n                \"restricted_prds\": 1,\n                \"state\": 1,\n                \"workspace_mode\": 0\n            }\n        }\n    ]\n}",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/dvmdb/adom\",\n            \"current_adom\": 3,\n            \"data\": {\n                \"name\": \"OUTSIDE\",\n                \"flags\": [\n                    \"no_vpn_console\"\n                ],\n                \"log_db_retention_hours\": 1440,\n                \"log_disk_quota\": 0,\n                \"log_disk_quota_alert_thres\": 90,\n                \"log_disk_quota_split_ratio\": 70,\n                \"log_file_retention_hours\": 8760,\n                \"mode\": 1,\n                \"mr\": 0,\n                \"os_ver\": 8,\n                \"restricted_prds\": 1,\n                \"state\": 1,\n                \"workspace_mode\": 0\n            }\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
