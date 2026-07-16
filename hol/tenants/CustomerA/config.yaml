@@ -3,7 +3,7 @@ fmg_host: 192.168.0.15
 fmg_user: admin
 fmg_adom: CustomerA
 
-postman_collection: tenants/shared/Managed_SDWAN_7_6_x.postman.json
+postman_collection: tenants/shared/Managed_SDWAN_8_0_x.postman.json
 extra_adom:
   - OUTSIDE 
 
@@ -40,7 +40,7 @@ tasks:
     tag: foundation
   - name: Import Jinja CLI Templates
     type: cli_templates
-    src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/*.j2
+    src: tenants/shared/sdwan-advpn-reference-hol-5.0/dynamic-bgp-on-lo/*.j2
     tag: foundation
   - name: Create CLI Template Groups
     type: postman
@@ -53,7 +53,7 @@ tasks:
   - name: Create Model Devices
     type: model_devices
     src: tenants/CustomerA/inventory.CustomerA.csv
-    fos: 7.6
+    fos: 8.0
     tag: model_devices
   - name: Prepare Legacy Site
     type: postman
@@ -62,7 +62,7 @@ tasks:
   - name: Create Model Device for Legacy Site
     type: model_devices
     src: tenants/CustomerA/inventory.legacysite_CustomerA.csv
-    fos: 7.6
+    fos: 8.0
     adom: OUTSIDE
     tag: legacy_site
   - name: Connect to Legacy Site
