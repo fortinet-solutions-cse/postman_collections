@@ -54,6 +54,7 @@ tasks:
     type: model_devices
     src: tenants/CustomerA/inventory.CustomerA.csv
     fos: 8.0
+    admin_user: admin
     tag: model_devices
   - name: Prepare Legacy Site
     type: postman
@@ -63,6 +64,7 @@ tasks:
     type: model_devices
     src: tenants/CustomerA/inventory.legacysite_CustomerA.csv
     fos: 8.0
+    admin_user: admin
     adom: OUTSIDE
     tag: legacy_site
   - name: Connect to Legacy Site

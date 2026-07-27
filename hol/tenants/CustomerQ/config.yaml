@@ -3,7 +3,7 @@ fmg_host: 192.168.0.15
 fmg_user: admin
 fmg_adom: CustomerQ
 
-postman_collection: tenants/shared/Managed_SDWAN_7_6_x.postman.json
+postman_collection: tenants/shared/Managed_SDWAN_8_0_x.postman.json
 default_skip_tags: lab
 
 fgfm_ip: 192.168.0.15
@@ -39,7 +39,7 @@ tasks:
     tag: foundation
   - name: Import Jinja CLI Templates
     type: cli_templates
-    src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/*.j2
+    src: tenants/shared/sdwan-advpn-reference-hol-5.0/dynamic-bgp-on-lo/*.j2
     tag: foundation
   - name: Create CLI Template Groups
     type: postman
@@ -57,7 +57,8 @@ tasks:
   - name: Create Model Devices
     type: model_devices
     src: tenants/CustomerQ/inventory.CustomerQ.csv
-    fos: 7.6
+    fos: 8.0
+    admin_user: admin
     tag: model_devices
   - name: Install Model Devices (Staging)
     type: postman

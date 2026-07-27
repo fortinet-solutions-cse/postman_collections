@@ -62,11 +62,13 @@ tasks:
     type: model_devices
     src: tenants/CustomerU/inventory.CustomerU.csv
     fos: 8.0
+    admin_user: admin
     tag: west-east
   - name: Create Model Devices - West-only
     type: model_devices
     src: tenants/CustomerU/inventory.CustomerU_West.csv
     fos: 8.0
+    admin_user: admin
     tag: west-only 
   - name: Install Model Devices (Staging) - West-East
     type: postman

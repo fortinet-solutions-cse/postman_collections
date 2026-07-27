@@ -54,6 +54,7 @@ tasks:
     type: model_devices
     src: tenants/CustomerB/inventory.CustomerB.csv
     fos: 8.0
+    admin_user: admin
     tag: model_devices
   - name: Install Model Devices (Staging)
     type: postman
