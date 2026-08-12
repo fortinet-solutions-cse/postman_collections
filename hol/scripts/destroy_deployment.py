@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # destroy_deployment.py                                                      #
-# Uni-SASE HoL, Version 4.0 b105                                             #
+# Uni-SASE HoL, Version 5.0 b500                                             #
 # -------------------------------------------------------------------------- #
 # Maintainers: CSE Telco/MSSP EMEA, Fortinet                                 #
 # -------------------------------------------------------------------------- #
@@ -11,14 +11,12 @@ from orch_base import readConfig, getApiSession
 
 def main():
 
-   # Config from config.yaml
-   cfg = readConfig()
+   cfg = readConfig(silent=True)
    session = getApiSession(cfg)
 
    print("Destroying deployment...")
 
-   # Destroy tenant ADOM + any extra ADOMs it uses, as per config
-   todo = cfg.get('extra_adom', []) + [cfg['fmg_adom']]
+   todo = [ a['name'] for a in session.getAdoms() ]
    for adom in todo:
       try:
          session.deleteDevices(
