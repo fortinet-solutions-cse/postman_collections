@@ -626,7 +626,8 @@
                       ""
                     ],
                     "type": "text/javascript",
-                    "packages": {}
+                    "packages": {},
+                    "requests": {}
                   }
                 }
               ],
@@ -640,7 +641,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/Underlay-Static/router/static/\",\n            \"data\": [\n                {\n                    \"seq-num\": 100,\n                    \"_seq-num\": 100,\n                    \"status\": \"enable\",\n                    \"dst\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"sdwan-zone\": [\n                        \"underlay\",\n                        \"overlay\"\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/Underlay-Static/router/static/\",\n            \"data\": [\n                {\n                    \"status\": \"enable\",\n                    \"dst\": [\n                        \"0.0.0.0\",\n                        \"0.0.0.0\"\n                    ],\n                    \"sdwan-zone\": [\n                        \"underlay\",\n                        \"overlay\"\n                    ]\n                }\n            ]\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
