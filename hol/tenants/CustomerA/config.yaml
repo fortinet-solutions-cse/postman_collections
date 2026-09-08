@@ -4,8 +4,6 @@ fmg_user: admin
 fmg_adom: CustomerA
 
 postman_collection: tenants/shared/Managed_SDWAN_8_0_x.postman.json
-extra_adom:
-  - OUTSIDE 
 
 fgfm_ip: 192.168.0.15
 fgt_user: admin
