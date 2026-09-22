@@ -8,6 +8,5 @@
 
 # $@ : optional Deployer args (e.g. '--verbose')
 
-[[ $HOL_SDWAN -eq 1 ]]
 
 ORCH_TENANT=CustomerS ./hol_autodeploy.sh "$@"

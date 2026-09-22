@@ -32,15 +32,11 @@ tasks:
     type: postman
     folder: CustomerS - Variables
     tag: foundation    
-  - name: Import Project Template (dyn_bgp only)
+  - name: Import Project Template
     type: cli_templates
-    src: tenants/CustomerS/Project.dyn_bgp.j2
+    src: tenants/CustomerS/Project.j2
     rename: 00-Project
-#  - name: Import Project Template (mixed)
-#    type: cli_templates
-#    src: tenants/CustomerS/Project.mixed.j2
-#    rename: 00-Project
-#    tag: mixed
+    tag: mixed
   - name: Import Jinja CLI Templates
     type: cli_templates
     src: tenants/shared/sdwan-advpn-reference-hol-4.0/dynamic-bgp-on-lo/*.j2
@@ -58,33 +54,18 @@ tasks:
     type: postman
     folder: CustomerS - Fine-tune Uni-SASE
     tag: fine-tune-sase
-#  - name: Create Model Devices - West-East
-#    type: model_devices
-#    src: tenants/CustomerS/inventory.CustomerS.csv
-#    fos: 7.6
-#    tag: west-east
   - name: Create Model Devices - West-only
     type: model_devices
-    src: tenants/CustomerS/inventory.CustomerS_West.csv
+    src: tenants/CustomerS/inventory.CustomerS.csv
     fos: 7.6
     tag: west-only 
-#  - name: Install Model Devices (Staging) - West-East
-#    type: postman
-#    folder: CustomerS - Staging
-#    tag: west-east
   - name: Install Model Devices (Staging) - West-only
     type: postman
     folder: CustomerS - Staging West
     tag: west-only
-#  - name: Onboard Devices - West-East
-#    type: onboard
-#    src: tenants/CustomerS/inventory.CustomerS.csv
-#    monitor: yes
-#    retry: yes
-#    tag: west-east
   - name: Onboard Devices - West-only
     type: onboard
-    src: tenants/CustomerS/inventory.CustomerS_West.csv
+    src: tenants/CustomerS/inventory.CustomerS.csv
     monitor: yes
     retry: yes
     tag: west-only
