@@ -24,7 +24,12 @@ echo
 echo -----------------------------------------------------------------------
 echo Downloading the latest version of the Postman collection for $api_ver...
 echo -----------------------------------------------------------------------
-wget -O tenants/shared/Managed_SDWAN_7_6_x.postman.json https://raw.githubusercontent.com/fortinet-solutions-cse/postman_collections/refs/tags/$api_ver/Managed_SDWAN_7_6_x.postman.json
+tenant_config="tenants/$ORCH_TENANT/config.yaml"
+postman_collection=$(awk -F': *' '/^postman_collection:/{print $2; exit}' "$tenant_config")
+echo Postman collection: $postman_collection
+postman_file=$(basename "$postman_collection")
+mkdir -p "$(dirname "$postman_collection")"
+wget -O "$postman_collection" https://raw.githubusercontent.com/fortinet-solutions-cse/postman_collections/refs/tags/$api_ver/$postman_file
 
 echo
 echo ------------------------------
