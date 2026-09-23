@@ -7491,38 +7491,6 @@
               "response": []
             },
             {
-              "name": "Update IPsec Nat-Traversal",
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/device/site2-1/vdom/root/vpn/ipsec/phase1-interface/sovsase_onramp\",\n            \"data\": {\n                \"nattraversal\": 22\n            }\n        }\n    ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "https://{{ip}}/jsonrpc",
-                  "protocol": "https",
-                  "host": [
-                    "{{ip}}"
-                  ],
-                  "path": [
-                    "jsonrpc"
-                  ]
-                }
-              },
-              "response": []
-            },
-            {
               "name": "Install Policy",
               "event": [
                 {
@@ -7590,6 +7558,38 @@
                 "body": {
                   "mode": "raw",
                   "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"exec\",\n    \"params\": [\n        {\n            \"url\": \"/securityconsole/install/package\",\n            \"data\": [\n                {\n                    \"adom\": \"{{adom}}\",\n                    \"pkg\": \"BOR\",\n                    \"scope\": [\n                        {\n                            \"name\": \"BOR\"\n                        }\n                    ],\n                    \"flags\": \"none\"\n                }\n            ]\n        }\n    ]\n}"
+                },
+                "url": {
+                  "raw": "https://{{ip}}/jsonrpc",
+                  "protocol": "https",
+                  "host": [
+                    "{{ip}}"
+                  ],
+                  "path": [
+                    "jsonrpc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update IPsec Nat-Traversal",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"update\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/device/site2-1/vdom/root/vpn/ipsec/phase1-interface/sovsase_onramp\",\n            \"data\": {\n                \"nattraversal\": 22\n            }\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
                 },
                 "url": {
                   "raw": "https://{{ip}}/jsonrpc",
