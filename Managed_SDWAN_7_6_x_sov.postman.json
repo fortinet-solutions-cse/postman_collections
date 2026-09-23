@@ -7192,19 +7192,6 @@
             },
             {
               "name": "Populate Static Route Template",
-              "event": [
-                {
-                  "listen": "test",
-                  "script": {
-                    "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                }
-              ],
               "request": {
                 "method": "POST",
                 "header": [
@@ -7215,7 +7202,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/bor/router/static\",\n            \"data\": [\n                {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\"port10\"],\n                        \"distance\": 10,\n                        \"gateway\": \"192.168.0.254\",\n                        \"status\": \"disable\"\n                },\n                {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                },\n                {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"fss_onramp\"\n                        ],\n                        \"distance\": 3,\n                        \"status\": \"enable\"\n                },\n                {\n                        \"dst\": \"$(remote_gw) 255.255.255.255\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                }\n            ]\n        }\n    ]\n}",
+                  "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"/pm/config/adom/{{adom}}/template/_router_static/bor/router/static\",\n            \"data\": [\n                {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\"port10\"],\n                        \"distance\": 10,\n                        \"gateway\": \"192.168.0.254\",\n                        \"status\": \"disable\"\n                },\n                {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                },\n                {\n                        \"dst\": \"0.0.0.0/0.0.0.0\",\n                        \"device\": [\n                            \"sovsase_onramp\"\n                        ],\n                        \"distance\": 3,\n                        \"status\": \"enable\"\n                },\n                {\n                        \"dst\": \"$(remote_gw) 255.255.255.255\",\n                        \"device\": [\n                            \"port1\"\n                        ],\n                        \"distance\": 10,\n                        \"gateway\": \"205.0.115.2\",\n                        \"status\": \"enable\"\n                }\n            ]\n        }\n    ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
