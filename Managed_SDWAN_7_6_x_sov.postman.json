@@ -5581,22 +5581,10 @@
                         {
                           "listen": "test",
                           "script": {
-                            "exec": [
-                              "let jsonData = pm.response.json();",
-                              "let result = jsonData[\"result\"] && jsonData[\"result\"][0];",
-                              "",
-                              "if (result && result[\"status\"][\"code\"] === 0 && result[\"data\"] !== undefined) {",
-                              "    pm.environment.set(\"url_content_id\", result[\"data\"][\"id\"]);",
-                              "    console.log(\"url_content_id set to:\", result[\"data\"][\"id\"]);",
-                              "} else {",
-                              "    let code = result && result[\"status\"] ? result[\"status\"][\"code\"] : \"unknown\";",
-                              "    let message = result && result[\"status\"] ? result[\"status\"][\"message\"] : \"unknown\";",
-                              "    console.warn(\"Could not set url_content_id. Status code: \" + code + \", Message: \" + message);",
-                              "}"
-                            ],
                             "type": "text/javascript",
-                            "packages": {},
-                            "requests": {}
+                            "exec": [
+                              "let jsonData = pm.response.json();\nlet result = jsonData[\"result\"] && jsonData[\"result\"][0];\n\nif (result && result[\"status\"][\"code\"] === 0 && result[\"data\"] !== undefined) {\n    pm.environment.set(\"url_content_id\", result[\"data\"][\"id\"]);\n    console.log(\"url_content_id set to:\", result[\"data\"][\"id\"]);\n} else {\n    let code = result && result[\"status\"] ? result[\"status\"][\"code\"] : \"unknown\";\n    let message = result && result[\"status\"] ? result[\"status\"][\"message\"] : \"unknown\";\n    console.warn(\"Could not set url_content_id. Status code: \" + code + \", Message: \" + message);\n}"
+                            ]
                           }
                         }
                       ],
@@ -5605,7 +5593,7 @@
                         "header": [],
                         "body": {
                           "mode": "raw",
-                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/content\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"lang\": 0,\n                        \"pattern-type\": 0,\n                        \"score\": 10,\n                        \"name\": \"Tesla\"\n                    }\n                ],\n                \"name\": \"outbound_content\"\n            }\n        }\n    ]\n}",
+                          "raw": "{\n    \"session\": \"{{session}}\",\n    \"id\": 1,\n    \"method\": \"set\",\n    \"params\": [\n        {\n            \"url\": \"pm/config/adom/{{adom}}/obj/webfilter/content\",\n            \"data\": {\n                \"id\": 0,\n                \"entries\": [\n                    {\n                        \"status\": 1,\n                        \"action\": 1,\n                        \"lang\": 0,\n                        \"pattern-type\": 0,\n                        \"score\": 10,\n                        \"name\": \"bitcoin\"\n                    }\n                ],\n                \"name\": \"outbound_content\"\n            }\n        }\n    ]\n}",
                           "options": {
                             "raw": {
                               "language": "json"
