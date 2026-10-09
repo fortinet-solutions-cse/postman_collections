@@ -77,6 +77,11 @@ tasks:
     type: postman
     folder: CustomerA - SD-Branch
     tag: lab
+  - name: Create Model Device for SD-Branch site
+    type: model_devices
+    src: tenants/CustomerA/inventory.largeoffice_CustomerA.csv
+    fos: 7.6
+    tag: lab    
   - name: Install Model Devices (Staging)
     type: postman
     folder: CustomerA - Staging
@@ -87,3 +92,9 @@ tasks:
     monitor: yes
     retry: yes
     tag: onboard
+  - name: Onboard SD-Branch device
+    type: onboard
+    src: tenants/CustomerA/inventory.largeoffice_CustomerA.csv
+    monitor: yes
+    retry: yes
+    tag: lab    
