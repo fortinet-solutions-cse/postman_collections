@@ -89,27 +89,33 @@ config router static
     next
 end
 config router policy
-    edit 1
+    edit 10
+        set input-device "port9"
+        set dst "100.64.0.0/255.255.0.0" "192.2.0.0/255.255.255.224" "203.0.113.0/255.255.255.0"
+        set action deny
+        set comments "Inter-site hairpin: use routing table"
+    next
+    edit 11
         set input-device "port9"
         set src "100.64.1.1/255.255.255.255"
         set output-device "port1"
     next
-    edit 2
+    edit 12
         set input-device "port9"
         set src "100.64.1.9/255.255.255.255"
         set output-device "port2"
     next
-    edit 3
+    edit 13
         set input-device "port9"
         set src "192.2.0.1/255.255.255.255"
         set output-device "port3"
     next
-    edit 4
+    edit 14
         set input-device "port9"
         set src "192.2.0.9/255.255.255.255"
         set output-device "port4"
     next
-    edit 5
+    edit 15
         set input-device "port9"
         set src "203.0.113.1/255.255.255.255"
         set output-device "port5"
